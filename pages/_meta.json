@@ -1,15 +1,22 @@
 {
-  "index": "Introduction",
-  "another": "Another Page",
-  "advanced": "Advanced (A Folder)",
-  "about": {
-    "title": "About",
+  "index": {
+    "title": "about:benjie"
+  },
+  "graphql-trusted-documents": {
+    "title": "Trusted Documents"
+  },
+  "book": {
+    "title": "📞 Book a call",
     "type": "page"
   },
-  "contact": {
-    "title": "Contact ↗",
+  "prepaid": {
+    "title": "📞 Book a prepaid call",
     "type": "page",
-    "href": "https://twitter.com/shuding_",
-    "newWindow": true
+    "display": "hidden"
+  },
+  "support": {
+    "title": "📞 Book a support call",
+    "type": "page",
+    "display": "hidden"
   }
 }

@@ -1,0 +1,282 @@
+---
+type: page
+title: GraphQL Trusted Documents
+description:
+  An attempt to standardize the "persisted queries" approach to securing a
+  GraphQL API via an allowlist, without having a name that's easily confusible with automatic
+  persisted queries.
+tag: graphql
+author: Benjie
+breadcrumb: false
+---
+
+import { Pullquote } from "../components/Pullquote";
+
+# GraphQL Trusted Documents
+
+[GraphQLConf 2023](https://graphql.org/conf/) was an absolute delight! I
+finally met many of the people that I've worked with at the GraphQL Working
+Group over the past few years, and they're even nicer in person! And the
+attendees were delightful; it was really interesting hearing about how they use
+GraphQL.
+
+My biggest takeaway from the first day of the conference was that almost
+everyone should be protecting their GraphQL endpoints with an allowlist, but almost
+no-one is!
+
+<Pullquote>
+
+almost everyone should be protecting their GraphQL endpoints with an allowlist, **but almost no-one is**!
+
+</Pullquote>
+
+## Who should be using a GraphQL allowlist?
+
+Anyone who
+
+1. exposes their GraphQL endpoint to the internet, and
+2. doesn't intend their GraphQL API to be consumed by third parties.
+
+This is anyone who is using GraphQL to power their own websites, mobile apps and
+desktop apps but isn't deliberately exposing their API for others to use. Those
+of you who this applies to (and that is the vast majority of GraphQL users!)
+should be using an allowlist so that only GraphQL operations that your own
+developers write can be executed against your GraphQL schema.
+
+Adopting a GraphQL allowlist significantly decreases the attack surface of your
+GraphQL API since only operations that your developers have written can be
+executed. This technique has been used within Facebook since before GraphQL was
+open sourced, it's very much a best practice if you meet the criteria above!
+
+<Pullquote>
+
+a GraphQL allowlist **significantly decreases the attack surface** of your
+API
+
+</Pullquote>
+
+
+## Why isn't everyone using GraphQL allowlists already?
+
+Many haven't heard of the technique. Of those who have, many knew that they
+should be doing it, but failed to find resources on the "how," or expected it to
+be a lot of work. Another issue was people confusing the allowlist technique
+known as "persisted queries" (aka "stored operations", "persisted documents",
+and various other names) for the bandwidth-saving technique "automatic persisted
+queries (APQ)".
+
+Worst of all, people felt that they were already protecting their endpoints by
+disabling query introspection, when in reality there are so many ways for an
+attacker to work around that: extracting hints from error messages, sniffing
+network traffic, and fuzzing field names to name just a few. At best, disabling
+introspection gives you security-through-obscurity.
+
+<Pullquote>
+
+if you're **disabling introspection** then you're **doing it wrong**
+
+</Pullquote>
+
+
+In my opinion, if you're disabling introspection then you're doing it wrong;
+you should instead be using an operation allowlist such as "trusted documents" to prevent untrusted operations
+from running against your API.
+
+
+## What is a trusted document?
+
+In GraphQL, an _executable document_ is a text string that consists of one or
+more query, mutation or subscription operations and their associated fragments
+using the GraphQL language. People commonly refer to them as "queries", but that
+term is a little ambiguous —
+["executable document"](https://spec.graphql.org/draft/#ExecutableDocument) is
+the precise term.
+
+A _trusted document_ is an executable document, identified via a unique
+identifier (typically a hash), that you've told the server to trust. In most
+cases, a trusted document would be written by the developers of your web, mobile
+and/or desktop apps.
+
+<Pullquote>
+
+a **trusted document** is any GraphQL document the server can trust, typically because it was **written by your developers**
+
+</Pullquote>
+
+
+Yes, "trusted document" is _yet another_ name for persisted queries/persisted
+operations/stored operations. But this time, the critical part (that it's
+_trusted_!) is in the name. It's much more obvious what a "trusted document"
+means, and no risk of confusing it with "automatic persisted queries". I hope
+that the entire GraphQL ecosystem can move towards using the term "trusted
+document" when referring to this concept.
+
+On top of the new naming, I recently wrote up
+[a specification for Persisted Documents](https://github.com/graphql/graphql-over-http/pull/264/files?short_path=9be5577#diff-9be5577e05ae2112d2b8f95584b162d0dec01453bf6c85df58bf5db4f2c9727a)
+which can be used to implement trusted documents (or automatic persisted
+queries).
+
+
+
+## How do I add trusted documents to my stack?
+
+If you already use code generation with your GraphQL clients (e.g. for type
+safety) then it's relatively easy. When you build your application:
+
+1. Have the code generator write out the document(s) that your client is using,
+2. Generate a hash for each of these documents using SHA256, and
+3. Have your server store into a trusted key-value store the GraphQL document as
+   the value and the SHA256 hash as the key.
+
+When the client issues a request to the GraphQL endpoint, it should replace the
+`query` parameter with a `documentId` parameter which is `sha256:` followed by
+the SHA256 hash of your document.
+
+When the server receives a request, it should look for this `documentId`. If
+there is no `documentId` in the request, it should raise an exception\* and stop
+processing the request. Otherwise, it should look up the GraphQL document for
+this `documentId` in the key-value store, and continue executing the request as
+if this were the `query` the client submitted all along.
+
+\* _If you're doing this for existing GraphQL APIs then you may wish to capture
+the hashes of all documents in use for the next month or so, and explicitly
+allow these through to avoid breaking existing clients._
+
+<Pullquote>
+
+**clients send hash to server, server finds associated document** and continues
+as normal
+
+</Pullquote>
+
+
+That's really all there is to it. Choosing what to use as a key-value store is
+entirely up to you; but here's a couple of ideas:
+
+- If you have a monorepo for your server and client(s), you could store the
+  operations as `.trusted_documents/<hash>.graphql` into the git repository;
+  this will even help you know when and why the given document was generated.
+- Otherwise, maybe from CI, your client build process should issue the queries
+  that are needed (and their hashes) to an authenticated endpoint on the server.
+  The server should then store these wherever it finds convenient: a database, a
+  persistent key-value store service (e.g. Redis), or maybe an external service
+  like DynoDB or S3.
+
+
+## Do trusted documents have more benefits?
+
+Besides security, you mean? Well, as it happens, yes!
+
+<Pullquote>
+
+**security**, **bandwidth**, **caching**, and **schema evolution**
+
+</Pullquote>
+
+Trusted documents can help reduce network bandwidth because you don't need to
+send the (rather long, at times) GraphQL documents from the client to the server
+each time — just a short hash instead.
+
+If you set your server up such that it accepts GraphQL queries (but NOT
+mutations!) via GET requests, you can easily make your queries HTTP cacheable:
+use a dedicated URL for each trusted document/operationName combo (e.g.
+`https://example.com/graphql/<hash>/<operationName>`) and set the relevant
+caching headers (don't forget to use `Vary` if you have your client send
+variables via headers!) and voila! You could even combine this with a content
+delivery network to get caching on the edge; though this is quite coarse
+whole-response caching. (For a more powerful take on GraphQL caching at the
+edge, check out [my sponsor](https://github.com/sponsors/benjie) Stellate's
+[partial query caching](https://stellate.co/blog/partial-query-caching) — it
+looks fantastic!)
+
+One huge benefit of trusted documents that's not talked about enough is that
+they give you a great insight into exactly which fields are used, and by which
+clients. Want to remove a field from your GraphQL API, but you're not sure it's
+safe to do so? Simply remove it and then validate all of your trusted documents
+against the new GraphQL API — if the validations pass then you know it's safe to
+remove.
+
+
+## Are trusted documents a silver bullet?
+
+It might seem at first that with persisted operations there's no need for the
+server to:
+
+- disable introspection
+- apply depth limits
+- apply pagination limits
+- perform query cost analysis
+
+And you're right; those needs are significantly diminished! But you still need
+to be careful about the queries you write. Though an attacker can no longer
+issue arbitrary queries against your GraphQL API, they can still take the
+queries you already have and issue them with their own carefully crafted inputs.
+
+<Pullquote>
+
+you still need to **be careful** about the queries you write
+
+</Pullquote>
+
+
+Each of the above concerns still exists, but now it applies to just the trusted
+documents that your developers are writing, rather than runtime checks against
+arbitrary operations your server is receiving. You should check your documents
+before you persist them to ensure that they meet your requirements for safety;
+this is a one-time cost per document rather than a cost incurred for every
+request as before.
+
+You should also train your developers on the writing of "safe" operations.
+Imagine you trusted a document such as:
+
+```graphql
+query TopUsers($limit: Int! = 10) {
+  topUsers(first: $limit) {
+    id
+    name
+    avatar
+  }
+}
+```
+
+An attacker could issue this query with a `$limit` of `2147483647` and now your
+server is on the hook to return up to 2 billion results. Teaching your
+developers to hardcode pagination limits into the query itself is one solution
+to this, another is to maintain limits in the server and throw out requests that
+clearly exceed sensible bounds.
+
+Similarly if you have large input object trees (for example "filter" objects)
+then it's best to specify as much as you can into the query itself, and make the
+variables only for the "leaves" - this way an attacker can't make a punishingly
+complex filter for your server to execute.
+
+## Share the news of trusted documents today!
+
+"Persisted queries" has been an imprecise technique that is widely adopted; on
+the client side Relay
+[has a specification for their Persisted Queries](https://relay.dev/docs/guides/persisted-queries/),
+and Apollo also
+[has their own](https://www.apollographql.com/docs/kotlin/advanced/persisted-queries/).
+The Guild (another of the companies
+[sponsoring my open source work](https://github.com/sponsors/benjie)) also
+[specifies persisted operations for GraphQL Yoga](https://the-guild.dev/graphql/yoga-server/docs/features/persisted-operations)
+and Valu Digital have
+[a plugin for GraphQL Code Generator](https://github.com/valu-digital/graphql-codegen-persisted-query-ids)
+to generate the persisted query IDs for you.
+
+With the introduction of a vendor agnostic GraphQL Foundation-hosted
+specification for persisted documents as part of the GraphQL-over-HTTP project,
+I aim to work with the maintainers of these projects to maximize compatibility and ease adoption
+of trusted documents across the entire ecosystem.
+
+<Pullquote>
+
+aim to **maximize compatibility** and **ease adoption** of trusted documents across the entire ecosystem
+
+</Pullquote>
+
+_I'm a community-funded open source developer; if you would like to support the
+work I'm doing please consider
+[becoming a sponsor](https://github.com/sponsors/benjie) for as little or as
+much as you can afford each month. I couldn't do what I do without the support
+of my sponsors. Thank you!_
