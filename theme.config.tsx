@@ -25,7 +25,7 @@ export default {
   chat: {
     link: "https://discord.gg/graphile",
   },
-  docsRepositoryBase: "https://github.com/benjie/.dev",
+  docsRepositoryBase: "https://github.com/benjie/.dev/tree/main",
   useNextSeoProps() {
     const { asPath } = useRouter();
     if (asPath !== "/") {
