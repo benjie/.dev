@@ -3,8 +3,8 @@ type: page
 title: GraphQL Trusted Documents
 description:
   An attempt to standardize the "persisted queries" approach to securing a
-  GraphQL API via an allowlist, without having a name that's easily confusible with automatic
-  persisted queries.
+  GraphQL API via an allowlist, without having a name that's easily confusible
+  with automatic persisted queries.
 tag: graphql
 author: Benjie
 breadcrumb: false
@@ -14,19 +14,19 @@ import { Pullquote } from "../../components/Pullquote";
 
 # GraphQL Trusted Documents
 
-[GraphQLConf 2023](https://graphql.org/conf/) was an absolute delight! I
-finally met many of the people that I've worked with at the GraphQL Working
-Group over the past few years, and they're even nicer in person! And the
-attendees were delightful; it was really interesting hearing about how they use
-GraphQL.
+[GraphQLConf 2023](https://graphql.org/conf/) was an absolute delight! I finally
+met many of the people that I've worked with at the GraphQL Working Group over
+the past few years, and they're even nicer in person! And the attendees were
+delightful; it was really interesting hearing about how they use GraphQL.
 
 My biggest takeaway from the first day of the conference was that almost
-everyone should be protecting their GraphQL endpoints with an allowlist, but almost
-no-one is!
+everyone should be protecting their GraphQL endpoints with an allowlist, but
+almost no-one is!
 
 <Pullquote>
 
-**almost everyone should** be protecting their GraphQL endpoints with an allowlist, but **almost no-one is**!
+**almost everyone should** be protecting their GraphQL endpoints with an
+allowlist, but **almost no-one is**!
 
 </Pullquote>
 
@@ -50,11 +50,9 @@ open sourced, it's very much a best practice if you meet the criteria above!
 
 <Pullquote>
 
-a GraphQL allowlist **significantly decreases the attack surface** of your
-API
+a GraphQL allowlist **significantly decreases the attack surface** of your API
 
 </Pullquote>
-
 
 ## Why isn't everyone using GraphQL allowlists already?
 
@@ -77,11 +75,9 @@ if you're **disabling introspection** then you're **doing it wrong**
 
 </Pullquote>
 
-
-In my opinion, if you're disabling introspection then you're doing it wrong;
-you should instead be using an operation allowlist such as "trusted documents" to prevent untrusted operations
-from running against your API.
-
+In my opinion, if you're disabling introspection then you're doing it wrong; you
+should instead be using an operation allowlist such as "trusted documents" to
+prevent untrusted operations from running against your API.
 
 ## What is a trusted document?
 
@@ -99,10 +95,10 @@ and/or desktop apps.
 
 <Pullquote>
 
-a **trusted document** is any GraphQL document the server can trust, typically because it was **written by your developers**
+a **trusted document** is any GraphQL document the server can trust, typically
+because it was **written by your developers**
 
 </Pullquote>
-
 
 Yes, "trusted document" is _yet another_ name for persisted queries/persisted
 operations/stored operations. But this time, the critical part (that it's
@@ -115,8 +111,6 @@ On top of the new naming, I recently wrote up
 [a specification for Persisted Documents](https://github.com/graphql/graphql-over-http/pull/264/files?short_path=9be5577#diff-9be5577e05ae2112d2b8f95584b162d0dec01453bf6c85df58bf5db4f2c9727a)
 which can be used to implement trusted documents (or automatic persisted
 queries).
-
-
 
 ## How do I add trusted documents to my stack?
 
@@ -149,7 +143,6 @@ as normal
 
 </Pullquote>
 
-
 That's really all there is to it. Choosing what to use as a key-value store is
 entirely up to you; but here's a couple of ideas:
 
@@ -161,7 +154,6 @@ entirely up to you; but here's a couple of ideas:
   The server should then store these wherever it finds convenient: a database, a
   persistent key-value store service (e.g. Redis), or maybe an external service
   like DynoDB or S3.
-
 
 ## Do trusted documents have more benefits?
 
@@ -196,7 +188,6 @@ safe to do so? Simply remove it and then validate all of your trusted documents
 against the new GraphQL API — if the validations pass then you know it's safe to
 remove.
 
-
 ## Are trusted documents a silver bullet?
 
 It might seem at first that with persisted operations there's no need for the
@@ -217,7 +208,6 @@ queries you already have and issue them with their own carefully crafted inputs.
 you still need to **be careful** about the queries you write
 
 </Pullquote>
-
 
 Each of the above concerns still exists, but now it applies to just the trusted
 documents that your developers are writing, rather than runtime checks against
@@ -266,12 +256,13 @@ to generate the persisted query IDs for you.
 
 With the introduction of a vendor agnostic GraphQL Foundation-hosted
 specification for persisted documents as part of the GraphQL-over-HTTP project,
-I aim to work with the maintainers of these projects to maximize compatibility and ease adoption
-of trusted documents across the entire ecosystem.
+I aim to work with the maintainers of these projects to maximize compatibility
+and ease adoption of trusted documents across the entire ecosystem.
 
 <Pullquote>
 
-aim to **maximize compatibility** and **ease adoption** of trusted documents across the entire ecosystem
+aim to **maximize compatibility** and **ease adoption** of trusted documents
+across the entire ecosystem
 
 </Pullquote>
 
