@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "scripts": {
+    "lint:fix": "prettier --ignore .eslintignore --write .",
     "start": "next dev"
   },
   "license": "UNLICENSED",
