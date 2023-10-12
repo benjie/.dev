@@ -2,8 +2,8 @@
   "index": {
     "title": "about:benjie"
   },
-  "graphql-trusted-documents": {
-    "title": "Trusted Documents"
+  "graphql": {
+    "title": "GraphQL"
   },
   "book": {
     "title": "📞 Book a call",
