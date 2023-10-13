@@ -11,8 +11,21 @@ breadcrumb: false
 ---
 
 import { Pullquote } from "../../components/Pullquote";
+import { Tldr } from "../../components/Tldr";
 
 # GraphQL Trusted Documents
+
+<Tldr>
+
+**Use trusted documents** if your GraphQL API is only for your own apps (most
+GraphQL APIs!) for a **massively decreased attack-surface**, increased
+performance, and decreased bandwidth usage.
+
+At app build time, extract the GraphQL documents (queries, etc) and make them
+available to the server. At run time, send `documentId` instead of the whole
+document; only accept requests with a `documentId`.
+
+</Tldr>
 
 [GraphQLConf 2023](https://graphql.org/conf/) was an absolute delight! I finally
 met many of the people that I've worked with at the GraphQL Working Group over
