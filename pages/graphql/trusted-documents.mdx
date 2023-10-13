@@ -114,14 +114,18 @@ because it was **written by your developers**
 
 </Pullquote>
 
-Yes, "trusted document" is _yet another_ name for persisted queries/persisted
-operations/stored operations. But this time, the critical part (that it's
-_trusted_!) is in the name. It's much more obvious what a "trusted document"
-means, and no risk of confusing it with "automatic persisted queries". I hope
-that the entire GraphQL ecosystem can move towards using the term "trusted
-document" when referring to this concept.
+Yes, a "trusted document" is an instance of what we've traditionally called a
+"persisted query" (or persisted document/stored operation/etc); but specifically
+it is one the server can trust (typically because it was written by your
+developers) and thus can be used to form an allowlist.
 
-On top of the new naming, I recently wrote up
+I hope that the entire GraphQL ecosystem can move towards using the term
+"trusted document" when referring to this concept. It's much more obvious what
+the term "trusted document" implies, and it clearly differentiates this use from
+"automatic persisted queries" (a bandwidth optimization), and "registered
+documents" (an untrusted allowlist, requiring greater run-time scrutiny).
+
+Very much related, I recently wrote up
 [a specification for Persisted Documents](https://github.com/graphql/graphql-over-http/pull/264/files?short_path=9be5577#diff-9be5577e05ae2112d2b8f95584b162d0dec01453bf6c85df58bf5db4f2c9727a)
 which can be used to implement trusted documents (or automatic persisted
 queries).
