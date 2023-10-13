@@ -227,8 +227,8 @@ Each of the above concerns still exists, but now it applies to just the trusted
 documents that your developers are writing, rather than runtime checks against
 arbitrary operations your server is receiving. You should check your documents
 before you persist them to ensure that they meet your requirements for safety;
-this is a one-time cost per document rather than a cost incurred for every
-request as before.
+this is a one-time cost at document persistence time rather than a cost incurred
+for every request.
 
 You should also train your developers on the writing of "safe" operations.
 Imagine you trusted a document such as:
