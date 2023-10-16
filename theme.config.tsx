@@ -60,6 +60,7 @@ export default {
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={image} />
+        <script src="https://assets.calendly.com/assets/external/widget.js"></script>
       </>
     );
   },
