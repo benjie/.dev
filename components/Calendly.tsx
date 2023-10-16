@@ -20,7 +20,7 @@ export const Calendly: FC<{ url?: string }> = ({
 
   useEffect(() => {
     ref.current.innerHTML = "";
-    (window.Calendly as any)?.initInlineWidget({
+    (window as any).Calendly?.initInlineWidget({
       url,
       parentElement: ref.current,
       prefill: {},
