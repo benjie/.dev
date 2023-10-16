@@ -9,6 +9,11 @@
     "title": "📞 Book a call",
     "type": "page"
   },
+  "sponsors-discount": {
+    "title": "📞 Book a discounted call",
+    "type": "page",
+    "display": "hidden"
+  },
   "prepaid": {
     "title": "📞 Book a prepaid call",
     "type": "page",
