@@ -23,5 +23,10 @@
     "title": "📞 Book a support call",
     "type": "page",
     "display": "hidden"
+  },
+  "quick": {
+    "title": "📞 Book a quick call",
+    "type": "page",
+    "display": "hidden"
   }
 }
