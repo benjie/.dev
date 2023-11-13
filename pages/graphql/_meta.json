@@ -1,5 +1,8 @@
 {
   "trusted-documents": {
     "title": "Trusted documents"
+  },
+  "nested-mutations": {
+    "title": "Nested mutations"
   }
 }
