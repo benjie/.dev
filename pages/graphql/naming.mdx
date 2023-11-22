@@ -1,0 +1,299 @@
+---
+type: page
+title: 'GraphQL Naming Conventions'
+description: "Benjie's researched opinion on GraphQL naming"
+tag: graphql
+author: Benjie
+breadcrumb: false
+---
+
+import { Tldr } from "../../components/Tldr";
+import { Pullquote } from "../../components/Pullquote";
+
+# Naming conventions
+
+_I rushed this article out a little... Feel free to challenge anything on here
+and I'll be happy to add more detail!_
+
+<Pullquote>
+
+CapitalCase/PascalCase was a reserved space for types &mdash; if I see
+something in PascalCase I default to assuming it's a type in the schema, if I
+see something camelCase I assume it's something other than that. Obviously,
+the convention for field names and argument names and variable names is all
+camel case. Fragment names are a little bit in an in&ndash;between space there.
+Made sense to me to treat them more similarly to a field than more similarly
+to a type.
+
+&mdash; _Lee Byron, editor of the GraphQL Specification_
+
+</Pullquote>
+
+
+This document aims to outline a standard naming conventions for the various
+entities that make up a GraphQL schema or executable document, and explain why
+the conventions were chosen (and reasons you might consider an alternative). 
+
+In general, this guide defers to the conventions used in the GraphQL
+Specification (the "Spec"). 
+
+_Important note: it does not matter what the name used in your underlying
+business logic or data storage is, GraphQL is the names that you present to the
+world and it should follow conventions that the schema users will find easy to
+follow._
+
+For a quick summary, use the table of contents.
+
+<Tldr>
+
+- `UpperCamelCase` for type names.
+- `camelCase` for field names, argument names, directive names, operation names, variable names, and aliases.
+- `CONSTANT_CASE` for enum values.
+- Name fragments however you want... but if in doubt, use `camelCase`.
+
+</Tldr>
+
+## Schema
+
+A GraphQL schema defines a number of types of named entities:
+
+- types: scalar, enum, object, interface, union, input object
+- enum values
+- fields (objects and interfaces)
+- input fields (input objects)
+- directives
+- arguments (fields and directives)
+
+Let's look at naming conventions for each of these in turn.
+
+### Types
+
+There are 6 kind of "type" in GraphQL: `scalar`, `enum`, `type` ("object"),
+`interface`, `union` and `input` ("input object"). All these types live in the
+same namespace, i.e. if you have a `type` called `Frog` then you cannot also
+have an `input` called `Frog`.
+
+The naming conventions for all 6 kinds of "type" in GraphQL tend to be aligned.
+
+#### `Query`, `Mutation`, `Subscription`
+
+["Root operation
+types"](https://spec.graphql.org/draft/#sec-Root-Operation-Types) are special
+types that are used as the type of the `query`, `mutation` and `subscription`
+operations. You should name these `Query`, `Mutation` and `Subscription`
+respectively so you don't need to declare the supported operations/types via
+the `schema` keyword.
+
+#### UpperCamelCase
+
+The root operation types already use this naming convention, and it's used
+throughout the Spec. Seems uncontroversial.
+
+#### Singular
+
+If you have a type that represents a person, the type should be called
+something like `Person`. It should not be called `People`. There are no plural
+type names in the Spec.
+
+#### Prefix: none
+
+GraphQL types should not be prefixed, for example an interface representing
+"media" would be called `Media`, **not** `IMedia`.
+
+#### Suffix: mostly none
+
+In general GraphQL types should not have suffixes, for example a custom scalar
+representing a UUID would be called `UUID`, **not** `UUIDScalar`. One exception
+to this is input object types...
+
+#### Suffixes for `input`s
+
+At time of writing the Spec includes the following non-placeholder `input`s in
+examples:
+
+- `input Point`
+- `input Point2D`
+- `input FindDogInput`
+
+In real-world schemas it's rare to find input objects that don't have a suffix;
+this is because it's very common for an `input` to have an associated `type`,
+and these types cannot use the same name. Generally the `type` will use the
+"base name" (e.g. `Point`) and the input will use a derived name that has a
+suffix, for example `PointInput`, `PointPatch` or similar.
+
+Common suffixes used for input objects are:
+
+- `Input` - generally used for the input version of an output type (e.g. for a "create" or "upsert" mutation)
+- `Patch` or `Update` (Benjie prefers "Patch") - generally used when applying an update to an output type, typically all of the fields are nullable so that you can choose to only update the fields you specify (e.g. for an "update" mutation)
+- `Filter` - generally used to specify how to filter a collection
+- `Order` - generally used for ordering (sorting) a collection
+
+Reason: PostGraphile API, GitHub API
+
+### Enum values
+
+#### CONSTANT_CASE
+
+Reason: the Spec, PostGraphile API, GitHub API
+
+### Fields (objects and interfaces)
+
+#### camelCase
+
+Reason: the Spec, PostGraphile API, GitHub API
+
+### Input fields (input objects)
+
+Generally the same as object fields.
+
+#### camelCase
+
+Reason: the Spec, PostGraphile API, GitHub API
+
+### Directives
+
+#### camelCase
+
+The built in directives `@skip` and `@include` could be camelCase or even
+snake_case; but we discussed this at the GraphQL WG regarding the `@oneOf`
+directive and it was decided that we would use camelCase going forward.
+
+Reason: the (future) Spec
+
+### Arguments (fields and directives)
+
+#### camelCase
+
+Reason: the Spec
+
+## Executable documents
+
+A GraphQL "executable document" (the document in a GraphQL request, often
+imprecisely referred to as a "query") generally uses the names defined in the
+schema, but it also defines a number of types of named entities:
+
+- operation names
+- fragment names
+- aliases
+
+### Operation names
+
+e.g. in the Spec one example document is `query getDogName { dog { name } }`;
+the operation name in this is `getDogName`. Operation names are optional.
+
+#### camelCase
+
+The Spec uses a mixture of `camelCase` and `UpperCamelCase` for operation
+names, but there are significantly more examples using `camelCase` than
+`UpperCamelCase`, so that's what we recommend.
+
+Reason: the Spec
+
+### Fragments
+
+One [example](https://spec.graphql.org/draft/#example-80138) in the Spec:
+
+```graphql
+fragment userFragment on User {
+  friends {
+    count
+  }
+}
+```
+
+#### camelCase (or whatever)
+
+This one is a little controversial.
+
+In the April 20th 2023 Spec WG [I asked
+Lee](https://youtu.be/Dk7zQA0bUVc?t=539) why camelCase was generally used in
+the spec for naming fragments. Lee said:
+
+> CapitalCase/PascalCase was a reserved space for types &mdash; if I see
+> something in PascalCase I default to assuming it's a type in the schema, if I
+> see something camelCase I assume it's something other than that. Obviously,
+> the convention for field names and argument names and variable names is all
+> camel case. Fragment names are a little bit in an in&ndash;between space there.
+> Made sense to me to treat them more similarly to a field than more similarly
+> to a type.
+>
+> -- https://youtu.be/Dk7zQA0bUVc?t=539
+
+There's actually a mixture of naming for fragments in the spec, some use
+UpperCamelCase but the majority use camelCase.
+
+It's worth noting that Relay requires that fragment names start with the name of the
+file in which they're defined.
+
+You should use whatever your team wants to use; but if in doubt then the spec leans towards camelCase.
+
+Reason: the Spec.
+
+### Aliases
+
+## Extra research
+
+### Example schema
+
+The Spec contains [this example
+schema](https://spec.graphql.org/draft/#example-8b4ff):
+
+```graphql
+type Query {
+  dog: Dog
+  findDog(searchBy: FindDogInput): Dog
+}
+
+enum DogCommand {
+  SIT
+  DOWN
+  HEEL
+}
+
+type Dog implements Pet {
+  name: String!
+  nickname: String
+  barkVolume: Int
+  doesKnowCommand(dogCommand: DogCommand!): Boolean!
+  isHouseTrained(atOtherHomes: Boolean): Boolean!
+  owner: Human
+}
+
+interface Sentient {
+  name: String!
+}
+
+interface Pet {
+  name: String!
+}
+
+type Alien implements Sentient {
+  name: String!
+  homePlanet: String
+}
+
+type Human implements Sentient {
+  name: String!
+  pets: [Pet!]
+}
+
+enum CatCommand {
+  JUMP
+}
+
+type Cat implements Pet {
+  name: String!
+  nickname: String
+  doesKnowCommand(catCommand: CatCommand!): Boolean!
+  meowVolume: Int
+}
+
+union CatOrDog = Cat | Dog
+union DogOrHuman = Dog | Human
+union HumanOrAlien = Human | Alien
+
+input FindDogInput {
+  name: String
+  owner: String
+}
+```
