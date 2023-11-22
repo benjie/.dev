@@ -45,3 +45,15 @@ mutations:
 - [Serial fields](https://github.com/graphql/graphql-spec/issues/252)
 - [Namespaces](https://github.com/graphql/graphql-spec/issues/163)
 
+:::info
+
+The term "nested mutations" has also been used by some people to describe the
+practice where a single mutation field accepts as input a nested tree of
+(possibly lists of) input objects which define the mutations to occur. All
+mutations still happen within this single root-level Mutation field, and thus
+this pattern *is* valid GraphQL (and is not the subject of this article).
+
+A better name for this pattern might be "mutation" or "mutation with nested
+input objects".
+
+:::
