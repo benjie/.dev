@@ -231,6 +231,24 @@ Reason: the Spec.
 
 ### Aliases
 
+#### camelCase
+
+Aliases are just different names for fields, generally they should use the same
+naming convention as fields unless you have a good reason (e.g. you're trying
+to match some external data format).
+
+#### Short
+
+Aliases have three main purposes:
+
+1. Abbreviating long field names (e.g. `fullName` -> `name`)
+2. Allowing you to reference the same field twice with different parameters
+   (e.g. `smallPic: profilePic(size: 64), bigPic: profilePic(size: 1024)`)
+3. Clarifying intent (e.g. `nodes` -> `people`)
+
+In all cases, the alias you use should be short. Using too many aliases, or
+aliases that are too long, may trigger a server's security protections.
+
 ## Extra research
 
 ### Example schema
