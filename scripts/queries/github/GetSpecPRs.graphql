@@ -14,14 +14,26 @@ query GetSpecPRs($after: String) {
         ]
       ) {
         edges {
+          cursor
           node {
             id
             number
             title
+            createdAt
+            updatedAt
+            author {
+              login
+            }
+            assignees(first: 100) {
+              nodes {
+                login
+              }
+            }
             labels(first: 100) {
               edges {
                 node {
                   id
+                  name
                   color
                   description
                 }

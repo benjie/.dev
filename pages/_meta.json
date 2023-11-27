@@ -5,6 +5,9 @@
   "graphql": {
     "title": "GraphQL"
   },
+  "rfcs": {
+    "title": "RFCs"
+  },
   "book": {
     "title": "📞 Book a call",
     "type": "page"
