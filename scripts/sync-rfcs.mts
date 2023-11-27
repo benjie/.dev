@@ -296,6 +296,7 @@ async function generateIndexAndMeta(ctx: Ctx) {
     `\
 ---
 title: "GraphQL RFCs"
+sidebar_position: 3
 ---
 
 # GraphQL RFCs
@@ -315,12 +316,12 @@ function stageWeight(stage: string): number {
   return stage === "3"
     ? -4
     : stage === "?"
-    ? -3
-    : stage === "X"
-    ? -2
-    : stage === "0"
-    ? -1
-    : 1;
+      ? -3
+      : stage === "X"
+        ? -2
+        : stage === "0"
+          ? -1
+          : 1;
 }
 
 function tidyTitle(title: string): string {
