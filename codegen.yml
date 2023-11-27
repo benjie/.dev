@@ -1,0 +1,9 @@
+schema: https://docs.github.com/public/schema.docs.graphql
+documents:
+  - scripts/queries/**/*.graphql
+generates:
+  scripts/sdk.mts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-graphql-request

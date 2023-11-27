@@ -1,0 +1,35 @@
+query GetSpecPRs($after: String) {
+  organization(login: "graphql") {
+    repository(name: "graphql-spec") {
+      pullRequests(
+        first: 100
+        after: $after
+        orderBy: { field: UPDATED_AT, direction: DESC }
+        labels: [
+          "🗑 Rejected (RFC X)"
+          "💭 Strawman (RFC 0)"
+          "📄 Draft (RFC 2)"
+          "🏁 Accepted (RFC 3)"
+          "💡 Proposal (RFC 1)"
+        ]
+      ) {
+        edges {
+          node {
+            id
+            number
+            title
+            labels(first: 100) {
+              edges {
+                node {
+                  id
+                  color
+                  description
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

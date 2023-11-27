@@ -1,0 +1,13 @@
+diff --git a/node_modules/@graphql-codegen/typescript-graphql-request/cjs/index.js b/node_modules/@graphql-codegen/typescript-graphql-request/cjs/index.js
+index b8e0493..d94c61c 100644
+--- a/node_modules/@graphql-codegen/typescript-graphql-request/cjs/index.js
++++ b/node_modules/@graphql-codegen/typescript-graphql-request/cjs/index.js
+@@ -30,7 +30,7 @@ const plugin = (schema, documents, config) => {
+ };
+ exports.plugin = plugin;
+ const validate = async (schema, documents, config, outputFile) => {
+-    if ((0, path_1.extname)(outputFile) !== '.ts') {
++    if (!['.ts', '.mts', '.cts'].includes((0, path_1.extname)(outputFile))) {
+         throw new Error(`Plugin "typescript-graphql-request" requires extension to be ".ts"!`);
+     }
+ };
