@@ -1,0 +1,28 @@
+.tldr {
+  font-size: 1.2em;
+  position: relative;
+  background: rgba(127, 127, 127, 0.15);
+  border-radius: 7px;
+  margin: 2rem 0 2rem 0;
+}
+.inner {
+  padding: 3rem 1rem 1rem 3.5rem;
+  border: none;
+}
+.inner p {
+  margin: 0.5em 0 0 0;
+  line-spacing: 120%;
+}
+.tldr::before {
+  content: "TL;DR";
+  font-weight: bold;
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  font-size: 2rem;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  opacity: 0.3;
+  font-family: Georgia;
+}

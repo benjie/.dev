@@ -1,0 +1,59 @@
+---
+type: page
+title: 'Nested Mutations'
+description: 'NO!'
+tag: graphql
+author: Benjie
+toc: false
+sidebar_position: 3
+---
+
+import { Pullquote } from "@site/src/components/Pullquote";
+
+# "GraphQL" Nested Mutations
+
+### <span style={{fontSize: "8rem"}}>🛑 NO! ⛔</span>
+
+<Pullquote>
+
+a schema using "nested mutations" **is not a GraphQL schema**
+
+</Pullquote>
+
+"Nested mutations" is the practice of performing side-effects in child fields
+of the mutation fields. This is explicitly forbidden by the GraphQL spec:
+
+> the resolution of fields other than top-level mutation fields must always be
+> side effect-free and idempotent
+>
+> &mdash; https://spec.graphql.org/draft/#sel-GANRNDABiEBuHxyV
+
+Therefore, a schema using "nested mutations" **is not a GraphQL
+schema** &mdash; it does not comply with the GraphQL specification.
+
+There's a number of reasons for this, but the most convincing one for me is
+that GraphQL is client-focussed and it's important for clients to have a mental
+model of what the server will do. If the server might perform
+mutations/side-effects anywhere then the client can't safely cache anything.
+However, if the client knows that mutations/side-effects only happen in
+specific locations (currently only in root-level mutation fields) then it can
+use this knowledge to factor into its caching and re-rendering strategies.
+
+There are some RFCs proposed to address some of the desires behind nested
+mutations:
+
+- [Serial fields](https://github.com/graphql/graphql-spec/issues/252)
+- [Namespaces](https://github.com/graphql/graphql-spec/issues/163)
+
+:::info
+
+The term "nested mutations" has also been used by some people to describe the
+practice where a single mutation field accepts as input a nested tree of
+(possibly lists of) input objects which define the mutations to occur. All
+mutations still happen within this single root-level Mutation field, and thus
+this pattern *is* valid GraphQL (and is not the subject of this article).
+
+A better name for this pattern might be "mutation" or "mutation with nested
+input objects".
+
+:::
