@@ -7,8 +7,8 @@ events:
     date: 2021-01-07T11:18:22-08:00
     href: https://github.com/graphql/graphql-wg/blob/257673b7ede31f1856b53ae833a43fc5034ac99b/rfcs/SchemaCoordinates.md
     actor: Mark Larah
+related: 733, 735, 746
 shortname: Schema Coordinates
-related: 733, 746
 ---
 
 ## At a glance

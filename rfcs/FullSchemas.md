@@ -7,8 +7,8 @@ events:
     date: 2023-08-26T11:15:53+02:00
     href: https://github.com/graphql/graphql-wg/blob/297b11eabb3de0fff2457401ea147ecdb8228e24/rfcs/FullSchemas.md
     actor: Martin Bonnin
+related: 1036, 300
 shortname: Full Schemas
-related: "1036"
 ---
 
 ## At a glance

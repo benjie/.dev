@@ -11,8 +11,8 @@ events:
     date: 2022-07-07T17:52:49+01:00
     href: https://github.com/graphql/graphql-wg/blob/ab0985750e561225fedaf322157e974c631aadda/rfcs/MetadataStructs.md
     actor: Benjie Gillam
+related: "300"
 shortname: Metadata Structs
-related: ""
 ---
 
 ## At a glance

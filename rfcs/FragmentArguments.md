@@ -7,8 +7,8 @@ events:
     date: 2023-02-10T06:26:50-05:00
     href: https://github.com/graphql/graphql-wg/blob/7f882eb24f26b54b7663f766c69d0a3b0ef76535/rfcs/FragmentArguments.md
     actor: Matt Mahoney
+related: "1045"
 shortname: Fragment Arguments
-related: ""
 ---
 
 ## At a glance
@@ -17,6 +17,7 @@ related: ""
 - **Stage**: [RFC0: Strawman](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-0-strawman)
 - **Champion**: -
 - **PR**: -
+- **Related**: [#1045](/rfcs/1045) (Remove fragmentSpreadName from visitedFragments when visit is complete)
 
 <!-- BEGIN_CUSTOM_TEXT -->
 

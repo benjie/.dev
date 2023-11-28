@@ -284,6 +284,11 @@ const sidebars = {
         },
         {
           type: "doc",
+          id: "wg1410",
+          label: "wg1410: Strict Semantic Nullability [RFC0]",
+        },
+        {
+          type: "doc",
           id: "1050",
           label: "1050*: Directive proposal for opting out of null bubbling [RFC0]",
         },
@@ -291,6 +296,11 @@ const sidebars = {
           type: "doc",
           id: "1048",
           label: "1048*: Null-Only-On-Error / Semantically-Non-Null type (asterisk) [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "wg1394",
+          label: "wg1394: True Nullability Schema [RFC0]",
         },
         {
           type: "doc",
@@ -339,6 +349,11 @@ const sidebars = {
         },
         {
           type: "doc",
+          id: "wg1239",
+          label: "wg1239: Fragment Arguments: RFC + Implementation Details [RFC0]",
+        },
+        {
+          type: "doc",
           id: "999",
           label: "999: introduce ExecuteGroupedFieldSet, CollectRootFields and CollectSubfields [RFC0]",
         },
@@ -356,6 +371,16 @@ const sidebars = {
           type: "doc",
           id: "AnnotationStructs",
           label: "AnnotationStructs: Annotation Structs [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "wg1096",
+          label: "wg1096: \"Metadata Directives\" Proposal [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "wg1071",
+          label: "wg1071*: Struct type [RFC0]",
         },
         {
           type: "doc",
@@ -389,8 +414,23 @@ const sidebars = {
         },
         {
           type: "doc",
+          id: "wg944",
+          label: "wg944: New Intersection Type [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "wg857",
+          label: "wg857: Fragment Modularity [RFC0]",
+        },
+        {
+          type: "doc",
           id: "FragmentModularity",
           label: "FragmentModularity: Fragment Modularity [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "wg815",
+          label: "wg815: Nested GraphQL Mutations [RFC0]",
         },
         {
           type: "doc",

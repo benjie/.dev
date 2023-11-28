@@ -15,8 +15,8 @@ events:
     date: 2022-06-06T10:02:31+02:00
     href: https://github.com/graphql/graphql-wg/blob/cc4f5789a56def08ff5b664965078264198cc6df/rfcs/OptInFeatures.md
     actor: Martin Bonnin
+related: 300, wg1006
 shortname: Opt-in features
-related: ""
 ---
 
 ## At a glance

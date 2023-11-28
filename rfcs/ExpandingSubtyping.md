@@ -7,8 +7,8 @@ events:
     date: 2022-08-31T21:54:38+03:00
     href: https://github.com/graphql/graphql-wg/blob/cb872fe1a574121eb3dd2e9fdb848da70a552d9f/rfcs/ExpandingSubtyping.md
     actor: Yaacov Rydzinski
+related: 518, 711, 939, 950, 977, wg944
 shortname: Expanding Subtyping (for output types)
-related: 939, 950, 977
 ---
 
 ## At a glance
@@ -17,7 +17,7 @@ related: 939, 950, 977
 - **Stage**: [RFC0: Strawman](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-0-strawman)
 - **Champion**: -
 - **PR**: -
-- **Related**: [#939](/rfcs/939) (allow unions to declare implementation of interfaces), [#950](/rfcs/950) (allow unions to include interfaces and unions)
+- **Related**: [#939](/rfcs/939) (allow unions to declare implementation of interfaces), [#950](/rfcs/950) (allow unions to include interfaces and unions), [wg944](/rfcs/wg944) (New Intersection Type)
 
 <!-- BEGIN_CUSTOM_TEXT -->
 

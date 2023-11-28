@@ -187,8 +187,8 @@ events:
     date: 2019-06-20T02:21:00-07:00
     href: https://github.com/graphql/graphql-wg/blob/4868aa41cc940ce9e47d0eae588118411afb112b/rfcs/InputUnion.md
     actor: Vince Foley
+related: 202, 395, 488, 586, 733, Struct, wg426
 shortname: GraphQL Input Union
-related: 395, 586, 733
 ---
 
 ## At a glance
@@ -197,7 +197,7 @@ related: 395, 586, 733
 - **Stage**: [RFC0: Strawman](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-0-strawman)
 - **Champion**: -
 - **PR**: -
-- **Related**: [#395](/rfcs/395) (inputUnion type), [#586](/rfcs/586) (Input Objects accepting exactly @oneField), [#733](/rfcs/733) (Tagged type)
+- **Related**: [#395](/rfcs/395) (inputUnion type), [#586](/rfcs/586) (Input Objects accepting exactly @oneField), [#733](/rfcs/733) (Tagged type), [Struct](/rfcs/Struct) (Polymorphic-capable composite symmetric input/output type (`struct`))
 
 <!-- BEGIN_CUSTOM_TEXT -->
 

@@ -19,8 +19,8 @@ events:
     date: 2021-11-04T10:16:37-07:00
     href: https://github.com/graphql/graphql-wg/blob/c24d2a3474418d159cb17f147e9a53bef37e0bc6/rfcs/ClientControlledNullability.md
     actor: Alex Reilly
+related: 867, 895, FragmentModularity, wg1394, wg864
 shortname: Client Controlled Nullability
-related: "895"
 ---
 
 ## At a glance
@@ -29,7 +29,7 @@ related: "895"
 - **Stage**: [RFC0: Strawman](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-0-strawman)
 - **Champion**: -
 - **PR**: -
-- **Related**: [#895](/rfcs/895) (Client Controlled Nullability)
+- **Related**: [#895](/rfcs/895) (Client Controlled Nullability), [FragmentModularity](/rfcs/FragmentModularity) (Fragment Modularity), [wg1394](/rfcs/wg1394) (True Nullability Schema)
 
 <!-- BEGIN_CUSTOM_TEXT -->
 

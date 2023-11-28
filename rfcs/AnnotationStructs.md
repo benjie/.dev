@@ -11,8 +11,8 @@ events:
     date: 2022-08-16T10:36:49+01:00
     href: https://github.com/graphql/graphql-wg/blob/6883f460ae07a954e5c9cc240bb280733e2a184b/rfcs/AnnotationStructs.md
     actor: Benjie
+related: 300, wg1096
 shortname: Annotation Structs
-related: ""
 ---
 
 ## At a glance
@@ -21,6 +21,7 @@ related: ""
 - **Stage**: [RFC0: Strawman](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-0-strawman)
 - **Champion**: -
 - **PR**: -
+- **Related**: [wg1096](/rfcs/wg1096) ("Metadata Directives" Proposal)
 
 <!-- BEGIN_CUSTOM_TEXT -->
 

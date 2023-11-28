@@ -7,8 +7,8 @@ events:
     date: 2022-01-06T03:59:59-05:00
     href: https://github.com/graphql/graphql-wg/blob/d6103434afc3e516240f7b53721eb7b728ca525c/rfcs/FragmentModularity.md
     actor: Matt Mahoney
+related: 137, 865, 879, 895, ClientControlledNullability, wg857
 shortname: Fragment Modularity
-related: 865, 879, 895
 ---
 
 ## At a glance
@@ -17,7 +17,7 @@ related: 865, 879, 895
 - **Stage**: [RFC0: Strawman](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-0-strawman)
 - **Champion**: -
 - **PR**: -
-- **Related**: [#865](/rfcs/865) (Fragment Arguments (parameterized fragments) for GraphQL), [#879](/rfcs/879) (__fulfilled meta field), [#895](/rfcs/895) (Client Controlled Nullability)
+- **Related**: [#865](/rfcs/865) (Fragment Arguments (parameterized fragments) for GraphQL), [#879](/rfcs/879) (__fulfilled meta field), [#895](/rfcs/895) (Client Controlled Nullability), [ClientControlledNullability](/rfcs/ClientControlledNullability) (Client Controlled Nullability), [wg857](/rfcs/wg857) (Fragment Modularity)
 
 <!-- BEGIN_CUSTOM_TEXT -->
 

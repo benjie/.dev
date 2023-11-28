@@ -11,8 +11,8 @@ events:
     date: 2021-09-02T23:37:06+02:00
     href: https://github.com/graphql/graphql-wg/blob/7bd64884c6ec08547d810d3b2ade4fae2c01764d/rfcs/ImplicitInheritance.md
     actor: Tobias Diez
+related: 500, 533
 shortname: Implicit Inheritance
-related: ""
 ---
 
 ## At a glance

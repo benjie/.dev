@@ -11,8 +11,8 @@ events:
     date: 2023-08-19T03:02:15-07:00
     href: https://github.com/graphql/graphql-wg/blob/ced6f6f0566fcf06f775c2fb312ddbfbc47b9bf8/rfcs/FeatureDiscovery.md
     actor: Young Min Kim
+related: 865, 895, wg839
 shortname: Feature Discovery
-related: 865, 895
 ---
 
 ## At a glance

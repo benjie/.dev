@@ -31,8 +31,8 @@ events:
     date: 2022-07-07T17:52:49+01:00
     href: https://github.com/graphql/graphql-wg/blob/ab0985750e561225fedaf322157e974c631aadda/rfcs/Struct.md
     actor: Benjie Gillam
+related: 127, 147, 237, 688, 929, 942, InputUnion, wg1071
 shortname: Polymorphic-capable composite symmetric input/output type (`struct`)
-related: ""
 ---
 
 ## At a glance
@@ -41,6 +41,7 @@ related: ""
 - **Stage**: [RFC0: Strawman](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-0-strawman)
 - **Champion**: -
 - **PR**: -
+- **Related**: [InputUnion](/rfcs/InputUnion) (GraphQL Input Union), [wg1071](/rfcs/wg1071) (Struct type)
 
 <!-- BEGIN_CUSTOM_TEXT -->
 

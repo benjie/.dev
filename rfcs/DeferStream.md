@@ -31,8 +31,8 @@ events:
     date: 2020-01-09T13:11:49-05:00
     href: https://github.com/graphql/graphql-wg/blob/dcfa2fc6c2e79ea0095cfe2b4370571dcfea2e42/rfcs/DeferStream.md
     actor: Liliana Matos
+related: wg329
 shortname: GraphQL Defer and Stream Directives
-related: ""
 ---
 
 ## At a glance
