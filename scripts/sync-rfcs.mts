@@ -136,14 +136,20 @@ async function loadRfcs(ctx: Ctx) {
     if (file === "index.md") continue;
     const identifier = file.substring(0, file.length - 3);
     const filePath = `${ROOT}/rfcs/${file}`;
-    const { frontmatter, body } = await readMd(filePath);
-    ctx.rfcs[identifier] = { frontmatter, filePath, identifier, body };
+    const { frontmatter, body, verbatim } = await readMd(filePath);
+    ctx.rfcs[identifier] = {
+      frontmatter,
+      filePath,
+      identifier,
+      body,
+      verbatim,
+    };
   }
 }
 
 async function writeRfcs(ctx: Ctx) {
   for (const rfc of Object.values(ctx.rfcs)) {
-    const { frontmatter, body, identifier, filePath } = rfc;
+    const { frontmatter, body, identifier, filePath, verbatim } = rfc;
     if (!frontmatter.shortname) {
       frontmatter.shortname = frontmatter.title;
     }
@@ -193,6 +199,10 @@ ${body.trim()}
 <!-- END_CUSTOM_TEXT -->
 
 ${foot.trim()}
+
+<!-- VERBATIM -->
+
+${verbatim.trim()}
 `,
     );
   }
@@ -228,8 +238,9 @@ async function syncRfcPRs(ctx: Ctx) {
         break;
       }
 
+      const identifier = `${node.number}`;
       await updateRfc(ctx, {
-        identifier: `${node.number}`,
+        identifier,
         title: tidyTitle(node.title),
         stage: labelsToStage(
           node.labels?.edges?.map((e) => e?.node?.name) ?? [],
@@ -247,6 +258,12 @@ async function syncRfcPRs(ctx: Ctx) {
           },
         ],
       });
+
+      ctx.rfcs[identifier].verbatim = `\
+---
+
+${sanitizeMarkdown(node.body)}
+`;
 
       if (!firstPr) {
         firstPr = { number: node.number, updatedAt: node.updatedAt };
@@ -295,6 +312,12 @@ async function syncRfcDocs(ctx: Ctx) {
         title: tidyTitle(header),
         events,
       });
+
+      ctx.rfcs[identifier].verbatim = `\
+---
+
+${sanitizeMarkdown(content)}
+`;
     }),
   );
 }
@@ -332,6 +355,7 @@ async function updateRfc(ctx: Ctx, details: Frontmatter) {
       body: "",
       identifier,
       filePath: `${ROOT}/rfcs/${identifier}.md`,
+      verbatim: "",
     };
   }
   const rfc = ctx.rfcs[identifier];
@@ -391,7 +415,7 @@ function labelsToStage(
 async function readMd(filePath: string) {
   const existing = await fs.readFile(filePath, "utf8");
   const matches = existing.match(
-    /^---\n(?:([\s\S]+?)\n)?---\n(?:([\s\S]*)\n)?<!-- BEGIN_CUSTOM_TEXT -->\n(?:([\s\S]*)\n)?<!-- END_CUSTOM_TEXT -->\n([\s\S]*)$/,
+    /^---\n(?:([\s\S]+?)\n)?---\n(?:([\s\S]*?)\n)?<!-- BEGIN_CUSTOM_TEXT -->\n(?:([\s\S]*?)\n)?<!-- END_CUSTOM_TEXT -->\n([\s\S]*)$/,
   );
   if (!matches) {
     throw new Error(
@@ -400,8 +424,13 @@ async function readMd(filePath: string) {
   }
   const [, rawFrontmatter, rawHead, rawCustom, rawFoot] = matches;
   const frontmatter = yaml.parse(rawFrontmatter.trim());
-  const body = matches[3].trim();
-  return { frontmatter, body };
+  const body = rawCustom.trim();
+  const VERBATIM_SEARCH = "\n<!-- VERBATIM -->";
+  const i = rawFoot.indexOf(VERBATIM_SEARCH);
+  const verbatim =
+    i >= 0 ? rawFoot.slice(i + VERBATIM_SEARCH.length).trim() : "";
+
+  return { frontmatter, body, verbatim };
 }
 
 interface RFCFile {
@@ -412,6 +441,8 @@ interface RFCFile {
   identifier: string;
   /** The human-written body */
   body: string;
+  /** A large amount of markdown text that may be updated from time to time (e.g. the PR description) */
+  verbatim: string;
 }
 
 async function generateIndexAndMeta(ctx: Ctx) {
@@ -714,6 +745,27 @@ function printEachRelated(ctx: Ctx, related: string): string[] {
         rfcs[identifier].frontmatter.shortname
       })`,
   );
+}
+
+function sanitizeMarkdown(md: string | null | undefined): string {
+  if (md == null) return "";
+  const escapeUrl = (url: string) => {
+    if (url.startsWith("https://") || url.startsWith("http://")) {
+      return url;
+    } else {
+      // Make it relative
+      return `https://github.com/graphql/graphql-wg/raw/main/rfcs/${url}`;
+    }
+  };
+  return md
+    .replace(/\r\n/g, "\n")
+    .replace(/\r/g, "\n")
+    .replace(/<([^>]*)>/g, (_, t) => `[${t}]($t)`)
+    .replace(/{([^}]*)}/g, (_, t) => `\\{${t}\\}`)
+    .replace(
+      /!\[([^\]]*)\]\(([^)]*)\)/g,
+      (_, alt, href) => `![${alt}](${escapeUrl(href)})`,
+    );
 }
 
 main().catch((e) => {
