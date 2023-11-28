@@ -200,7 +200,7 @@ Changes to the schema introspection types:
 
 ```graphql
 # Each annotation directive will have a struct implicitly defined for it, named
-# `__Annotation_$\{directiveName\}` with a field for each argument the directive
+# `__Annotation_${directiveName}` with a field for each argument the directive
 # accepts. The type of these fields will be the same as the type of the
 # directive arguments.
 

@@ -67,7 +67,7 @@ fragment Foo on Actor {
 }
 
 fragment Bar on HasPhoto {
-  photo \{ uri \}
+  photo { uri }
 }
 ```
 
@@ -159,11 +159,11 @@ fragment Bar on HasAccount {
 }
 ```
 
-If **every** fragment spread was aliased with the above syntax, then we’d have some neat request/response symmetry: every fragment, inline or not, would have their selection set’s response brackets exactly line up with **one** set of `\{\}` within the executable document.
+If **every** fragment spread was aliased with the above syntax, then we’d have some neat request/response symmetry: every fragment, inline or not, would have their selection set’s response brackets exactly line up with **one** set of `{}` within the executable document.
 
 Personally, this is @mjmahone's current favored potential solution to adding fragment keys to the response.
 
-### Syntax #2: aliased object `Foo: \{ ...Foo \}`
+### Syntax #2: aliased object `Foo: { ...Foo }`
 
 For this option, we’d allow arbitrary object aliasing. Dan Schafer found this syntax pleasant, as it provides a way to keep brackets matched between the executable document and response. On the other hand, that symmetry ignores that we *already* have mismatched brackets with inline fragment spreads.
 

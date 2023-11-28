@@ -103,14 +103,14 @@ type Query {
     random: String
 }
 
-type __Schema \{ ... \}
-type __Type \{ ... \}
-enum __TypeKind \{ ... \}
-type __Field \{ ... \}
-type __InputValue \{ ... \}
-type __EnumValue \{ ... \}
-type __Directive \{ ... \}
-enum __DirectiveLocation \{ ... \}
+type __Schema { ... }
+type __Type { ... }
+enum __TypeKind { ... }
+type __Field { ... }
+type __InputValue { ... }
+type __EnumValue { ... }
+type __Directive { ... }
+enum __DirectiveLocation { ... }
 ```
 
 Although technically nothing would use the `__Schema` type. For this, we would need to add the `__schema` meta-field:

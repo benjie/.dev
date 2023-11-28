@@ -4,6 +4,10 @@ stage: "0"
 title: Polymorphic-capable composite symmetric input/output type (`struct`)
 events:
   - type: docUpdated
+    date: 2023-11-28T17:56:45+00:00
+    href: https://github.com/graphql/graphql-wg/blob/c46f67dad4154c3b693d337c815900a5c7909423/rfcs/Struct.md
+    actor: Benjie
+  - type: docUpdated
     date: 2023-08-24T18:44:37+05:30
     href: https://github.com/graphql/graphql-wg/blob/c599436ddf5737dcee28d46e77eec567921c0ac1/rfcs/Struct.md
     actor: Tushar Mathur
@@ -46,6 +50,7 @@ related: ""
 
 ## Timeline
 
+- **[RFC document updated](https://github.com/graphql/graphql-wg/blob/c46f67dad4154c3b693d337c815900a5c7909423/rfcs/Struct.md)** on 2023-11-28 by Benjie
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/c599436ddf5737dcee28d46e77eec567921c0ac1/rfcs/Struct.md)** on 2023-08-24 by Tushar Mathur
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/a64fd6caea23299587aba7a66cd0d157ad9bcc3e/rfcs/Struct.md)** on 2023-01-19 by Benjie
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/ab192ae0b078566ad2d2fafafb24248aab017968/rfcs/Struct.md)** on 2022-10-24 by Alexander Varwijk
@@ -451,7 +456,7 @@ would be equivalent to:
 }
 ```
 
-(Note that the object with both `title` and `socials\{twitter\}` satisfies both
+(Note that the object with both `title` and `socials{twitter}` satisfies both
 selection sets.)
 
 And similarly, the following:
@@ -591,6 +596,7 @@ primatives:
   }
   ...
 }
+```
 
 This clearly poses challanges for developers maintaining this query, who might
 reasonably prefer to write a query like this:

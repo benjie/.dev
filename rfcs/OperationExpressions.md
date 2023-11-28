@@ -222,36 +222,36 @@ might model:
 
 #### Operations
 
-The expression `>me>name` would expand to `{ me \{ name \} }`.
+The expression `>me>name` would expand to `{ me { name } }`.
 
 If you want to create a mutation or subscription operation, you can prefix the
 path with the operation type (you can do this for queries too, but just like in
 operation documents, the query keyword is optional):
 
 - `mutation>createUser>user>name` expands to
-  `mutation ($input: CreateUserInput!) { createUser(input: $input) { user \{ name \} } }`
+  `mutation ($input: CreateUserInput!) { createUser(input: $input) { user { name } } }`
 - `subscription>currentUserUpdated>name` expands to
-  `subscription { currentUserUpdated \{ name \} }`
-- `query>me>name` expands to `query { me \{ name \} }`
+  `subscription { currentUserUpdated { name } }`
+- `query>me>name` expands to `query { me { name } }`
 
 You may name operations by prefixing with an operation name followed by a colon;
 for example:
 
 - `MyQuery:>me>name` and `MyQuery:query>me>name` expand to
-  `query MyQuery { me \{ name \} }`.
+  `query MyQuery { me { name } }`.
 - `MyMutation:mutation>createUser>name` expands to
-  `mutation MyMutation { createUser \{ name \} }`.
+  `mutation MyMutation { createUser { name } }`.
 - `MySubscription:subscription>userCreated>name` expands to
-  `subscription MySubscription { userCreated \{ name \} }`.
+  `subscription MySubscription { userCreated { name } }`.
 
 #### Fragments
 
 Fragments start with a type name followed by a period: `User.friends>name`
-expands to `... on User { friends \{ name \} }`.
+expands to `... on User { friends { name } }`.
 
 You can name fragments by prefixing with a fragment name and a colon:
 `FriendNames:User.friends>name` expands to
-`fragment FriendNames on User { friends \{ name \} }`.
+`fragment FriendNames on User { friends { name } }`.
 
 Other examples:
 

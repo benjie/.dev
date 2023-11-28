@@ -4,6 +4,10 @@ stage: "0"
 title: GraphQL Input Union
 events:
   - type: docUpdated
+    date: 2023-11-28T17:58:57+00:00
+    href: https://github.com/graphql/graphql-wg/blob/5bfb8d590cc9693db1149b547d8db5041f05b731/rfcs/InputUnion.md
+    actor: Benjie Gillam
+  - type: docUpdated
     date: 2021-09-03T11:28:51-07:00
     href: https://github.com/graphql/graphql-wg/blob/8079f5885f03f78a5910a6a5bdeaea063f9a3184/rfcs/InputUnion.md
     actor: Lee Byron
@@ -199,6 +203,7 @@ related: 395, 586, 733
 
 ## Timeline
 
+- **[RFC document updated](https://github.com/graphql/graphql-wg/blob/5bfb8d590cc9693db1149b547d8db5041f05b731/rfcs/InputUnion.md)** on 2023-11-28 by Benjie Gillam
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/8079f5885f03f78a5910a6a5bdeaea063f9a3184/rfcs/InputUnion.md)** on 2021-09-03 by Lee Byron
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/f520be18cc7794d6179f7c6e126b45085f273f1f/rfcs/InputUnion.md)** on 2021-09-02 by Ivan Goncharov
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/34c8f9d377e4338088a85389127a3cd6ea1ec792/rfcs/InputUnion.md)** on 2021-09-02 by ericvergnaud
@@ -282,9 +287,9 @@ Let's imagine an animal shelter for our example. When querying for a list of the
       __typename
       name
       age
-      ... on Cat \{ livesLeft \}
-      ... on Dog \{ breed \}
-      ... on Snake \{ venom \}
+      ... on Cat { livesLeft }
+      ... on Dog { breed }
+      ... on Snake { venom }
     }
   }
 }
@@ -792,7 +797,7 @@ type Mutation {
 * [P. Error states and messages should be clear and helpful][criteria-p]
   * ✅
 * [Q. No new polymorphic type construct should be introduced][criteria-q]
-  * 🚫️ ``ìnputunion```is a new type construct
+  * 🚫️ ``ìnputunion`` is a new type construct
 
 ## 💡 2. Explicit configurable Discriminator field
 

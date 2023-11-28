@@ -294,7 +294,7 @@ async function syncRfcPRs(ctx: Ctx) {
       ctx.rfcs[identifier].verbatim = `\
 ---
 
-${sanitizeMarkdown(node.body)}
+${sanitizeMarkdown(node.body, identifier)}
 `;
 
       if (!firstPr) {
@@ -349,7 +349,7 @@ async function syncRfcDocs(ctx: Ctx) {
       ctx.rfcs[identifier].verbatim = `\
 ---
 
-${sanitizeMarkdown(content)}
+${sanitizeMarkdown(content, identifier)}
 `;
     }),
   );
@@ -793,17 +793,131 @@ function printEachRelated(ctx: Ctx, related: string): string[] {
     .filter(Boolean) as string[];
 }
 
-function sanitizeMarkdown(md: string | null | undefined): string {
+function sanitizeMarkdown(
+  md: string | null | undefined,
+  identifier: string,
+): string {
   if (md == null) return "";
-  const escapeUrl = (url: string) => {
-    if (url.startsWith("https://") || url.startsWith("http://")) {
-      return url;
+  let current = 0;
+  let escapedLine = "";
+  let active: string | null = null;
+  const backticks = [...md.matchAll(/`+/g)];
+  for (const backtickMatch of backticks) {
+    const position = backtickMatch.index!;
+    const ticks = backtickMatch[0];
+    if (active) {
+      if (ticks === active) {
+        // End of backticks
+        active = null;
+        escapedLine += md
+          .substring(current, position)
+          .replace(/\r\n/g, "\n")
+          .replace(/\r/g, "\n");
+        escapedLine += ticks;
+        current = position + ticks.length;
+      } else {
+        console.log(`Skipping '${ticks}' !== '${active}' at ${position}`);
+        // Ignore
+      }
     } else {
-      // Make it relative
-      return `https://github.com/graphql/graphql-wg/raw/main/rfcs/${url}`;
+      // Start of backticks
+      active = ticks;
+      escapedLine += escapeMdInner(md.substring(current, position));
+      escapedLine += ticks;
+      current = position + ticks.length;
     }
-  };
-  return md
+  }
+  if (active) {
+    //console.dir({ active, backticks });
+    throw new Error(
+      `Mismatched backticks in '${identifier}.md'? Active: '${active}'`,
+    );
+  } else {
+    escapedLine += escapeMdInner(md.substring(current, md.length));
+  }
+  if (Math.random() < 2) return escapedLine;
+  const lines = md.split("\n");
+  let inCodeBlock: string | null = null;
+  const escapedLines: string[] = [];
+  for (const line of lines) {
+    const match = line.match(/^(```+)/);
+    if (match) {
+      if (inCodeBlock) {
+        if (inCodeBlock === match[1]) {
+          inCodeBlock = null;
+          escapedLines.push(line);
+          continue;
+        }
+      } else {
+        inCodeBlock = match[1];
+        escapedLines.push(line);
+        continue;
+      }
+    }
+    if (inCodeBlock) {
+      escapedLines.push(line);
+    } else {
+      const backticks = [...line.matchAll(/`+/g)];
+      /*
+      // Strip out the backticks that don't match
+      for (let i = 0; i < backticks.length; i++) {
+        if (!active) {
+          active = backticks[i][0];
+        } else {
+          if (backticks[i][0] !== active) {
+            backticks.splice(i, 1);
+            i--;
+          }
+        }
+      }
+      */
+      let current = 0;
+      let escapedLine = "";
+      let active: string | null = null;
+      for (const backtickMatch of backticks) {
+        const position = backtickMatch.index!;
+        const ticks = backtickMatch[0];
+        if (active) {
+          if (backtickMatch[0] === active) {
+            // End of backticks
+            active = null;
+            escapedLine += line.substring(current, position);
+            escapedLine += ticks;
+            current = position + ticks.length;
+          } else {
+            // Ignore
+          }
+        } else {
+          // Start of backticks
+          active = ticks;
+          escapedLine += escapeMdInner(line.substring(current, position));
+          escapedLine += ticks;
+          current = position + ticks.length;
+        }
+      }
+      if (active) {
+        console.dir({ line, backticks });
+        throw new Error(
+          `Mismatched backticks in '${identifier}.md'? (This could be because there's a newline inside backticks. We don't support that yet.)`,
+        );
+      }
+      escapedLines.push(escapedLine);
+    }
+  }
+  return escapedLines.join("\n");
+}
+
+const escapeUrl = (url: string) => {
+  if (url.startsWith("https://") || url.startsWith("http://")) {
+    return url;
+  } else {
+    // Make it relative
+    return `https://github.com/graphql/graphql-wg/raw/main/rfcs/${url}`;
+  }
+};
+
+const escapeMdInner = (s: string) =>
+  s
     .replace(/\r\n/g, "\n")
     .replace(/\r/g, "\n")
     .replace(/<(https?:\/\/[^>]*)>/g, (_, t) => `[${t}]($t)`)
@@ -813,7 +927,6 @@ function sanitizeMarkdown(md: string | null | undefined): string {
       /!\[([^\]]*)\]\(([^)]*)\)/g,
       (_, alt, href) => `![${alt}](${escapeUrl(href)})`,
     );
-}
 
 function getRelated(markdown: string): string | undefined {
   const related = new Set<string>();

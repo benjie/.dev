@@ -65,7 +65,7 @@ fragment AnySizedFriendsList on User {
 
 fragment TopFriendsUserProfile on User {
   name
-  profile_picture \{ uri \}
+  profile_picture { uri }
   ...FriendsList
 }
 ```
@@ -109,7 +109,7 @@ fragment AnySizedFriendsList on User {
 
 fragment TopFriendsUserProfile on User {
   name
-  profile_picture \{ uri \}
+  profile_picture { uri }
   ...FriendsList @arguments(nFriends: 10)
 }
 ```
@@ -126,7 +126,7 @@ fragment FriendsList on User {
 
 fragment TopFriendsUserProfile on User {
   name
-  profile_picture \{ uri \}
+  profile_picture { uri }
   ...FriendsList
 }
 ```
@@ -187,7 +187,7 @@ fragment AnySizedFriendsList on User {
 
 fragment TopFriendsUserProfile on User {
   name
-  profile_picture \{ uri \}
+  profile_picture { uri }
   ...FriendsList(nFriends: 10)
 }
 ```
