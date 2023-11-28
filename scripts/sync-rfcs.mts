@@ -5,6 +5,7 @@ import * as fs from "node:fs/promises";
 import { createHash } from "node:crypto";
 import * as yaml from "yaml";
 import { SidebarsConfig } from "@docusaurus/plugin-content-docs";
+import { SidebarItemConfig } from "@docusaurus/plugin-content-docs/lib/sidebars/types";
 import JSON5 from "json5";
 
 const __dirname = new URL(".", import.meta.url).pathname;
@@ -361,39 +362,90 @@ async function generateIndexAndMeta(ctx: Ctx) {
     return 0;
   });
 
-  const sidebars: SidebarsConfig = {
+  const RFC0 = {
+    type: "category",
+    label: "Stage 0: Strawman",
+    collapsed: true,
+    collapsible: true,
+    items: [] as SidebarItemConfig[],
+  } satisfies SidebarItemConfig;
+  const RFC1 = {
+    type: "category",
+    label: "Stage 1: Proposal",
+    collapsed: false,
+    collapsible: true,
+    items: [] as SidebarItemConfig[],
+  } satisfies SidebarItemConfig;
+  const RFC2 = {
+    type: "category",
+    label: "Stage 2: Draft",
+    collapsed: false,
+    collapsible: true,
+    items: [] as SidebarItemConfig[],
+  } satisfies SidebarItemConfig;
+  const RFC3 = {
+    type: "category",
+    label: "Stage 3: Accepted",
+    collapsed: true,
+    collapsible: true,
+    items: [] as SidebarItemConfig[],
+  } satisfies SidebarItemConfig;
+  const RFCX = {
+    type: "category",
+    label: "Stage X: Rejected",
+    collapsed: true,
+    collapsible: true,
+    items: [] as SidebarItemConfig[],
+  } satisfies SidebarItemConfig;
+  const RFCUnknown = {
+    type: "category",
+    label: "Other",
+    collapsed: true,
+    collapsible: true,
+    items: [] as SidebarItemConfig[],
+  } satisfies SidebarItemConfig;
+
+  const sidebars = {
     rfcsSidebar: [
       {
-        type: "category",
-        label: "GraphQL RFCs",
-        collapsed: false,
-        collapsible: false,
-        items: [],
-        link: {
-          type: "doc",
-          id: "index",
-        },
+        type: "doc",
+        id: "index",
       },
+      RFC3,
+      RFC2,
+      RFC1,
+      RFC0,
+      RFCX,
     ],
-  };
+  } satisfies SidebarsConfig;
   for (const thing of everything) {
     const {
       key,
       frontmatter: { identifier, stage, shortname, champion },
     } = thing;
-    const hide =
-      stage === "X" ||
-      stage === "?" ||
-      ((stage === "3" || stage === "0") && champion !== "benjie");
-    if (!hide) {
-      sidebars.rfcsSidebar[0].items.push({
-        type: "doc",
-        id: key,
-        label: `${identifier}${
-          champion === "benjie" ? "*" : ""
-        }: ${shortname} [RFC${stage}]`,
-      });
-    }
+    const RFCCategory =
+      stage === "0"
+        ? RFC0
+        : stage === "1"
+          ? RFC1
+          : stage === "2"
+            ? RFC2
+            : stage === "3"
+              ? RFC3
+              : stage === "X"
+                ? RFCX
+                : RFCUnknown;
+    RFCCategory.items.push({
+      type: "doc",
+      id: key,
+      label: `${identifier}${
+        champion === "benjie" ? "*" : ""
+      }: ${shortname} [RFC${stage}]`,
+    });
+  }
+
+  if (RFCUnknown.items.length > 0) {
+    sidebars.rfcsSidebar.push(RFCUnknown);
   }
 
   await fs.writeFile(

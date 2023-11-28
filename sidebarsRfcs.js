@@ -4,15 +4,132 @@
 const sidebars = {
   rfcsSidebar: [
     {
+      type: "doc",
+      id: "index",
+    },
+    {
       type: "category",
-      label: "GraphQL RFCs",
+      label: "Stage 3: Accepted",
+      collapsed: true,
+      collapsible: true,
+      items: [
+        {
+          type: "doc",
+          id: "987",
+          label: "987*: Fix ambiguity around when schema definition may be omitted [RFC3]",
+        },
+        {
+          type: "doc",
+          id: "891",
+          label: "891: Add explanation about argument name uniqueness. [RFC3]",
+        },
+        {
+          type: "doc",
+          id: "849",
+          label: "849: Allow full unicode range [RFC3]",
+        },
+        {
+          type: "doc",
+          id: "805",
+          label: "805: Allow deprecation of input values (field args, directive args, input fields) [RFC3]",
+        },
+        {
+          type: "doc",
+          id: "803",
+          label: "803*: Replace 'query error' with 'request error' [RFC3]",
+        },
+        {
+          type: "doc",
+          id: "776",
+          label: "776*: __typename is not valid at subscription root [RFC3]",
+        },
+        {
+          type: "doc",
+          id: "701",
+          label: "701: Disallow non-breakable chains of circular references in Input Objects [RFC3]",
+        },
+        {
+          type: "doc",
+          id: "649",
+          label: "649: Custom Scalar Specification URLs [RFC3]",
+        },
+        {
+          type: "doc",
+          id: "601",
+          label: "601: Number value literal lookahead restrictions [RFC3]",
+        },
+        {
+          type: "doc",
+          id: "599",
+          label: "599: Clarify that lexing is greedy [RFC3]",
+        },
+        {
+          type: "doc",
+          id: "598",
+          label: "598: Avoid parse ambiguity on types & extensions [RFC3]",
+        },
+        {
+          type: "doc",
+          id: "510",
+          label: "510: Allow directives on variable definitions [RFC3]",
+        },
+        {
+          type: "doc",
+          id: "472",
+          label: "472: Repeatable directives [RFC3]",
+        },
+        {
+          type: "doc",
+          id: "470",
+          label: "470: \"Directive order is significant\" section [RFC3]",
+        },
+        {
+          type: "doc",
+          id: "466",
+          label: "466: Add description to Schema [RFC3]",
+        },
+        {
+          type: "doc",
+          id: "463",
+          label: "463: Ensure validation of directive arguments [RFC3]",
+        },
+        {
+          type: "doc",
+          id: "462",
+          label: "462: Input & Output type definition [RFC3]",
+        },
+        {
+          type: "doc",
+          id: "459",
+          label: "459: Remove Interface is implemented by 1+ Objects validation [RFC3]",
+        },
+        {
+          type: "doc",
+          id: "454",
+          label: "454: Add validation steps for schema extensions [RFC3]",
+        },
+        {
+          type: "doc",
+          id: "445",
+          label: "445: Disallow non-breakable chains of circular references in Input Objects [RFC3]",
+        },
+        {
+          type: "doc",
+          id: "373",
+          label: "373: Allow interfaces to implement other interfaces [RFC3]",
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Stage 2: Draft",
       collapsed: false,
-      collapsible: false,
+      collapsible: true,
       items: [
         {
           type: "doc",
           id: "825",
-          label: "825*: OneOf Input Objects [RFC2]",
+          label: "825*: @oneOf Directive [RFC2]",
         },
         {
           type: "doc",
@@ -34,6 +151,14 @@ const sidebars = {
           id: "525",
           label: "525: Allow deprecation of input values [RFC2]",
         },
+      ],
+    },
+    {
+      type: "category",
+      label: "Stage 1: Proposal",
+      collapsed: false,
+      collapsible: true,
+      items: [
         {
           type: "doc",
           id: "1010",
@@ -109,6 +234,14 @@ const sidebars = {
           id: "395",
           label: "395: inputUnion type [RFC1]",
         },
+      ],
+    },
+    {
+      type: "category",
+      label: "Stage 0: Strawman",
+      collapsed: true,
+      collapsible: true,
+      items: [
         {
           type: "doc",
           id: "1065",
@@ -146,6 +279,11 @@ const sidebars = {
         },
         {
           type: "doc",
+          id: "1052",
+          label: "1052: deduplicated incremental delivery [RFC0]",
+        },
+        {
+          type: "doc",
           id: "1050",
           label: "1050*: Directive proposal for opting out of null bubbling [RFC0]",
         },
@@ -161,13 +299,58 @@ const sidebars = {
         },
         {
           type: "doc",
+          id: "1034",
+          label: "1034: incremental delivery with deduplication + concurrent execution [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "1026",
+          label: "1026: incremental delivery with deduplication + concurrent execution [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "1023",
+          label: "1023: incremental delivery without branching [RFC0]",
+        },
+        {
+          type: "doc",
           id: "1018",
           label: "1018*: Alternative proposal for `@stream`/`@defer` [RFC0]",
         },
         {
           type: "doc",
+          id: "1015",
+          label: "1015: \"Root\" Types clarity → \"Operation Type\" [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "999",
+          label: "999: introduce ExecuteGroupedFieldSet, CollectRootFields and CollectSubfields [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "998",
+          label: "998: add spec edits for references [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "960",
+          label: "960: Allow recursion within ResolveAbstractType [RFC0]",
+        },
+        {
+          type: "doc",
           id: "948",
           label: "948*: OneOf Objects [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "888",
+          label: "888: Map type [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "879",
+          label: "879: __fulfilled meta field [RFC0]",
         },
         {
           type: "doc",
@@ -181,29 +364,103 @@ const sidebars = {
         },
         {
           type: "doc",
+          id: "710",
+          label: "710: Add namedType and punctuatedName to __Type [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "706",
+          label: "706: Add support for directives for an object field name [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "674",
+          label: "674: allow empty selections [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "673",
+          label: "673: Servers must preserve lexical ordering between SDL and introspection [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "667",
+          label: "667: [RFC Sketch] Defer and Stream Directives [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "631",
+          label: "631: Make root query operation type optional [RFC0]",
+        },
+        {
+          type: "doc",
           id: "586",
           label: "586*: Input Objects accepting exactly @oneField [RFC0]",
         },
         {
           type: "doc",
-          id: "987",
-          label: "987*: Fix ambiguity around when schema definition may be omitted [RFC3]",
+          id: "567",
+          label: "567: allow directives on directive definitions [RFC0]",
         },
         {
           type: "doc",
-          id: "803",
-          label: "803*: Replace 'query error' with 'request error' [RFC3]",
+          id: "556",
+          label: "556: Document Directives [RFC0]",
         },
         {
           type: "doc",
-          id: "776",
-          label: "776*: __typename is not valid at subscription root [RFC3]",
+          id: "521",
+          label: "521: Scalar serialize as built-in scalar type [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "471",
+          label: "471: Limit uniqueness to `@skip`, `@include` and `@deprecated` directives [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "326",
+          label: "326: Scalar serialize as built-in scalar type [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "325",
+          label: "325: Add \"Any\" scalar type [RFC0]",
         },
       ],
-      link: {
-        type: "doc",
-        id: "index",
-      },
+    },
+    {
+      type: "category",
+      label: "Stage X: Rejected",
+      collapsed: true,
+      collapsible: true,
+      items: [
+        {
+          type: "doc",
+          id: "606",
+          label: "606: Support empty composite types [RFCX]",
+        },
+        {
+          type: "doc",
+          id: "460",
+          label: "460: Require Interfaces to have 1+ Objects implementing [RFCX]",
+        },
+        {
+          type: "doc",
+          id: "319",
+          label: "319: Add '@ignoreIfUnknown' to allow forward compatibility for clients [RFCX]",
+        },
+        {
+          type: "doc",
+          id: "315",
+          label: "315: Support DateTime scalar [RFCX]",
+        },
+        {
+          type: "doc",
+          id: "232",
+          label: "232: __id field for unique identifiers [RFCX]",
+        },
+      ],
     },
   ],
 };
