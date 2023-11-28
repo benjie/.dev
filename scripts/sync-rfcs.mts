@@ -8,6 +8,7 @@ import { SidebarsConfig } from "@docusaurus/plugin-content-docs";
 import { SidebarItemConfig } from "@docusaurus/plugin-content-docs/lib/sidebars/types";
 import JSON5 from "json5";
 import { $, cd } from "zx";
+import { glob } from "glob";
 
 const __dirname = new URL(".", import.meta.url).pathname;
 const ROOT = __dirname + "/..";
@@ -122,7 +123,10 @@ async function main() {
   const ctx: Ctx = { state, sdk, rfcs: Object.create(null) };
   await loadRfcs(ctx);
   await syncRfcPRs(ctx);
+  // await syncRfcIssues(ctx);
+  // await syncRfcDiscussions(ctx);
   await syncRfcDocs(ctx);
+  await findMentions(ctx);
   await writeRfcs(ctx);
   await generateIndexAndMeta(ctx);
   await saveState(ctx.state);
@@ -355,8 +359,16 @@ interface DocUpdatedEvent extends EventBase {
 interface WgAgendaEvent extends EventBase {
   type: "wgAgenda";
 }
+interface WgNotesEvent extends EventBase {
+  type: "wgNotes";
+}
 
-type Event = PrCreatedEvent | DocCreatedEvent | DocUpdatedEvent | WgAgendaEvent;
+type Event =
+  | PrCreatedEvent
+  | DocCreatedEvent
+  | DocUpdatedEvent
+  | WgAgendaEvent
+  | WgNotesEvent;
 
 async function updateRfc(ctx: Ctx, details: Frontmatter) {
   const { identifier } = details;
@@ -686,6 +698,10 @@ function formatTimelineEvent(event: Event, frontmatter: Frontmatter): string {
       return `**Added to [${formatDate(event.date)} WG agenda](${
         event.href
       })**`;
+    case "wgNotes":
+      return `**Mentioned in [${formatDate(event.date)} WG notes](${
+        event.href
+      })**`;
     default: {
       const never: never = event;
       throw new Error(`Unexpected event ${JSON.stringify(never)}`);
@@ -731,7 +747,7 @@ function printTable(things: RFCFile[]) {
     } | ${
       thing.frontmatter.prUrl ? `[Yes](${thing.frontmatter.prUrl})` : `No?`
     } | ${formatTimelineEvent(
-      thing.frontmatter.events[thing.frontmatter.events.length - 1],
+      thing.frontmatter.events[0],
       thing.frontmatter,
     )} |`;
   };
@@ -775,8 +791,9 @@ function sanitizeMarkdown(md: string | null | undefined): string {
   return md
     .replace(/\r\n/g, "\n")
     .replace(/\r/g, "\n")
-    .replace(/<([^>]*)>/g, (_, t) => `[${t}]($t)`)
-    .replace(/{([^}]*)}/g, (_, t) => `\\{${t}\\}`)
+    .replace(/<(https?:\/\/[^>]*)>/g, (_, t) => `[${t}]($t)`)
+    .replace(/{([a-zA-Z. ]*)}/g, (_, t) => `\\{${t}\\}`) // {your suggestion here}
+    .replace(/<hr>/gi, (_, t) => `<hr/>`)
     .replace(
       /!\[([^\]]*)\]\(([^)]*)\)/g,
       (_, alt, href) => `![${alt}](${escapeUrl(href)})`,
@@ -802,6 +819,87 @@ function getRelated(markdown: string): string | undefined {
 
 function parseRelated(related: string | undefined): Set<string> {
   return related ? new Set(related.split(",").map((s) => s.trim())) : new Set();
+}
+
+async function findMentions(ctx: Ctx) {
+  // Delete all existing mentions
+  for (const rfc of Object.values(ctx.rfcs)) {
+    rfc.frontmatter.events = rfc.frontmatter.events.filter(
+      (e) => e.type !== "wgAgenda" && e.type !== "wgNotes",
+    );
+  }
+
+  const agendas = await glob(`${ROOT}/temp/wg/agendas/**/*.md`);
+  const notes = await glob(`${ROOT}/temp/wg/notes/**/*.md`);
+  await Promise.all([
+    ...agendas.map((agendaFile) => findInAgenda(ctx, agendaFile)),
+    ...notes.map((notesFile) => findInNotes(ctx, notesFile)),
+  ]);
+}
+
+async function findInAgenda(ctx: Ctx, filePath: string) {
+  if (filePath.endsWith("README.md")) return;
+  const content = await fs.readFile(filePath, "utf8");
+  doMentions(ctx, filePath, content, "wgAgenda");
+}
+
+async function findInNotes(ctx: Ctx, filePath: string) {
+  if (filePath.endsWith("README.md")) return;
+  const content = await fs.readFile(filePath, "utf8");
+  doMentions(ctx, filePath, content, "wgNotes");
+}
+
+function doMentions(
+  ctx: Ctx,
+  filePath: string,
+  content: string,
+  eventType: Event["type"],
+) {
+  const [fileDate, eventDate] = getDateFromNoteOrAgendaFile(filePath);
+  const path = filePath.substring(ROOT.length + "/temp/wg/".length);
+  const href = `https://github.com/graphql/graphql-wg/blob/main/${path}`;
+  for (const match of content.matchAll(
+    /https:\/\/github.com\/graphql\/graphql-spec\/pull\/([0-9]+)/gi,
+  )) {
+    const identifier = match[1];
+    const rfc = ctx.rfcs[identifier];
+    if (rfc) {
+      rfc.frontmatter.events.push({
+        type: eventType,
+        href,
+        date: eventDate,
+        actor: null,
+      });
+    }
+  }
+}
+
+function getDateFromNoteOrAgendaFile(file: string): [string, string] {
+  const numbers = file
+    .substring(ROOT.length)
+    .replace(/[^0-9-]+/g, "-")
+    .replace(/-+/g, "-");
+  const matches = numbers.match(/([0-9]{4}-[0-9]{2}-[0-9]{2})(?![0-9])/);
+  if (matches) {
+    return [matches[1], matches[1]];
+  }
+  const matches2 = numbers.match(/([0-9]{4})-([0-9]{2})(?![0-9])/);
+  if (matches2) {
+    const [, yyyy, mm] = matches2;
+    const date = new Date(
+      parseInt(yyyy, 10),
+      parseInt(mm, 10) - 1,
+      1,
+      12,
+      0,
+      0,
+      0,
+    );
+    date.setMonth(date.getMonth() + 1);
+    date.setDate(date.getDate() - 1);
+    return [`${yyyy}-${mm}`, date.toISOString().substring(0, 10)];
+  }
+  throw new Error(`Couldn't extract date from ${file}`);
 }
 
 main().catch((e) => {
