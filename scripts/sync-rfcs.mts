@@ -206,6 +206,9 @@ async function writeRfcs(ctx: Ctx) {
   for (const rfc of Object.values(ctx.rfcs)) {
     const { frontmatter, body, identifier, filePath, verbatim } = rfc;
     frontmatter.related = [...relatedByIdentifier[identifier]].join(", ");
+    if (frontmatter.related.length === 0) {
+      delete frontmatter.related;
+    }
     if (!frontmatter.shortname) {
       frontmatter.shortname = frontmatter.title;
     }
