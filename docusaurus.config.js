@@ -45,8 +45,9 @@ const config = {
       {
         id: "rfcs",
         path: "rfcs",
-        routeBasePath: "rfcs",
+        routeBasePath: "/rfcs",
         sidebarPath: "./sidebarsRfcs.js",
+        breadcrumbs: false,
         // ... other options
       },
     ],
