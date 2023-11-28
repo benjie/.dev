@@ -270,18 +270,14 @@ async function updateRfc(
 
 - **Stage**: ${stageMarkdown(frontmatter.stage)}
 - **Champion**: ${championMarkdown(frontmatter.champion)}
-- **PR**: ${
-    frontmatter.prUrl
-      ? `[${frontmatter.title ?? frontmatter.prUrl}](${frontmatter.prUrl})`
-      : "-"
-  }
+- **PR**: ${formatPr(frontmatter)}
 `;
 
   const foot = `\
 ## Timeline
 
 ${frontmatter.events
-  .map((event) => formatTimelineEvent(event, frontmatter))
+  .map((event) => `- ` + formatTimelineEvent(event, frontmatter))
   .join("\n")}
 `;
 
@@ -333,14 +329,14 @@ async function readMd(filePath: string) {
   const body = matches[3].trim();
   return { frontmatter, body };
 }
-
+interface Thing {
+  frontmatter: Frontmatter;
+  file: string;
+  key: string;
+}
 async function generateIndexAndMeta(ctx: Ctx) {
   const files = await fs.readdir(`${ROOT}/rfcs`);
-  const everything: Array<{
-    frontmatter: Frontmatter;
-    file: string;
-    key: string;
-  }> = [];
+  const everything: Array<Thing> = [];
   for (const file of files) {
     if (file.startsWith(".")) continue;
     if (!file.endsWith(".md")) continue;
@@ -479,8 +475,7 @@ Benjie. It does not claim to be a complete, accurate, or up to date
 representation of the RFCs; it is generated in part by automated scripts but may
 be helpful for people to keep track of the various RFCs.
 
-Note: to prevent the sidebar being too large, only the RFC1/RFC2 RFCs and those
-authored by Benjie are shown. All tracked RFCs are linked in the table below.
+${printTables(everything)}
 `,
   );
 }
@@ -501,18 +496,32 @@ function tidyTitle(title: string): string {
   return title.replace(/^(?:\[RFC\]|RFC):?/i, "").trim();
 }
 
-function stageMarkdown(stage: string | undefined): string {
+function stageMarkdown(
+  stage: string | undefined,
+  { prefix: rawPrefix, short }: { prefix?: string; short?: boolean } = {},
+): string {
+  const prefix = rawPrefix ?? (short ? "" : "RFC");
   switch (stage) {
     case "0":
-      return `[RFC0: Strawman](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-0-strawman)`;
+      return short
+        ? `${prefix}0/Strawman`
+        : `[${prefix}0: Strawman](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-0-strawman)`;
     case "1":
-      return `[RFC1: Proposal](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-1-proposal)`;
+      return short
+        ? `${prefix}1/Proposal`
+        : `[${prefix}1: Proposal](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-1-proposal)`;
     case "2":
-      return `[RFC2: Draft](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-2-draft)`;
+      return short
+        ? `${prefix}2/Draft`
+        : `[${prefix}2: Draft](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-2-draft)`;
     case "3":
-      return `[RFC3: Accepted](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-3-accepted)`;
+      return short
+        ? `${prefix}3/Accepted`
+        : `[${prefix}3: Accepted](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-3-accepted)`;
     case "X":
-      return `[RFCX: Rejected](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-x-rejected)`;
+      return short
+        ? `${prefix}X/Rejected`
+        : `[${prefix}X: Rejected](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-x-rejected)`;
     default:
       return "Unknown";
   }
@@ -534,11 +543,11 @@ function formatIdentifier(identifier: string): string {
 function formatTimelineEvent(event: Event, frontmatter: Frontmatter): string {
   switch (event.type) {
     case "prCreated":
-      return `- **[Spec PR](${event.href}) created** on ${formatDate(
+      return `**[Spec PR](${event.href}) created** on ${formatDate(
         event.date,
       )} by ${event.actor ?? "unknown"}`;
     case "wgAgenda":
-      return `- **Added to [${formatDate(event.date)} WG agenda](${
+      return `**Added to [${formatDate(event.date)} WG agenda](${
         event.href
       })**`;
     default: {
@@ -553,6 +562,54 @@ function formatDate(date: string): string {
   const d = new Date(date);
   const pad = (n: number): string => String(n).padStart(2, "0");
   return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+}
+
+function printTables(everything: Thing[]) {
+  const thingsByStage = {};
+  for (const thing of everything) {
+    const stage = thing.frontmatter.stage ?? "?";
+    thingsByStage[stage] ??= [];
+    thingsByStage[stage].push(thing);
+  }
+  const output: string[] = [];
+  for (const stage of ["2", "1", "0", "3", "X", "?"]) {
+    const things = thingsByStage[stage];
+    if (things?.length) {
+      output.push(`\
+## ${stageMarkdown(stage, { prefix: "Stage " })}
+
+${printTable(things)}
+
+`);
+    }
+  }
+  return output.join("\n\n");
+}
+
+function printTable(things: Thing[]) {
+  const printRow = (thing: Thing) => {
+    return `| [${formatIdentifier(thing.frontmatter.identifier)}](/rfcs/${
+      thing.frontmatter.identifier
+    }) | ${championMarkdown(thing.frontmatter.champion)} | ${
+      thing.frontmatter.fullTitle ?? thing.frontmatter.title
+    } | ${
+      thing.frontmatter.prUrl ? `[Yes](${thing.frontmatter.prUrl})` : `-`
+    } | ${formatTimelineEvent(
+      thing.frontmatter.events[thing.frontmatter.events.length - 1],
+      thing.frontmatter,
+    )} |`;
+  };
+  return `
+<!-- prettier-ignore -->
+| RFC | Champion | Title | Spec&nbsp;PR | Latest |
+| --- | --- | --- | --- | --- |
+${things.map(printRow).join("\n")}
+`;
+}
+function formatPr(frontmatter: Frontmatter) {
+  return frontmatter.prUrl
+    ? `[${frontmatter.title ?? frontmatter.prUrl}](${frontmatter.prUrl})`
+    : "-";
 }
 
 main().catch((e) => {
