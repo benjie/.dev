@@ -158,6 +158,9 @@ async function writeRfcs(ctx: Ctx) {
     }
     frontmatter.identifier = identifier;
     frontmatter.events.sort((a, z) => Date.parse(z.date) - Date.parse(a.date));
+    const related = frontmatter.related
+      ? printEachRelated(ctx, frontmatter.related)
+      : [];
 
     const head = `\
 ## At a glance
@@ -166,13 +169,7 @@ async function writeRfcs(ctx: Ctx) {
 - **Stage**: ${stageMarkdown(frontmatter.stage)}
 - **Champion**: ${championMarkdown(frontmatter.champion)}
 - **PR**: ${formatPr(frontmatter)}
-${
-  frontmatter.related
-    ? `- **Related**: ${printEachRelated(ctx, frontmatter.related).join(
-        ", ",
-      )}\n`
-    : ``
-}\
+${related.length > 0 ? `- **Related**: ${related.join(", ")}\n` : ``}\
 `;
 
     const foot = `\
@@ -257,6 +254,7 @@ async function syncRfcPRs(ctx: Ctx) {
             actor: node.author?.login ?? null,
           },
         ],
+        related: getRelated(node.body),
       });
 
       ctx.rfcs[identifier].verbatim = `\
@@ -311,6 +309,7 @@ async function syncRfcDocs(ctx: Ctx) {
         stage: "0",
         title: tidyTitle(header),
         events,
+        related: getRelated(content),
       });
 
       ctx.rfcs[identifier].verbatim = `\
@@ -739,12 +738,15 @@ function formatPr(frontmatter: Frontmatter) {
 function printEachRelated(ctx: Ctx, related: string): string[] {
   const { rfcs } = ctx;
   const identifiers = related.split(",").map((s) => s.trim());
-  return identifiers.map(
-    (identifier) =>
-      `[${formatIdentifier(identifier)}](/rfcs/${identifier}) (${
-        rfcs[identifier].frontmatter.shortname
-      })`,
-  );
+  return identifiers
+    .map((identifier) => {
+      const target = rfcs[identifier];
+      if (!target) return null;
+      return `[${formatIdentifier(identifier)}](/rfcs/${identifier}) (${
+        target.frontmatter.shortname
+      })`;
+    })
+    .filter(Boolean) as string[];
 }
 
 function sanitizeMarkdown(md: string | null | undefined): string {
@@ -766,6 +768,23 @@ function sanitizeMarkdown(md: string | null | undefined): string {
       /!\[([^\]]*)\]\(([^)]*)\)/g,
       (_, alt, href) => `![${alt}](${escapeUrl(href)})`,
     );
+}
+
+function getRelated(markdown: string): string | undefined {
+  const related = new Set<string>();
+  for (const match of markdown.matchAll(
+    /(?:builds on|fixes|relates to|replaces|supercedes) #([0-9]+)/gi,
+  )) {
+    related.add(match[1]);
+  }
+  for (const match of markdown.matchAll(
+    /https:\/\/github.com\/graphql\/graphql-spec\/pull\/([0-9]+)/gi,
+  )) {
+    related.add(match[1]);
+  }
+
+  if (related.size === 0) return undefined;
+  else return [...related].join(", ");
 }
 
 main().catch((e) => {
