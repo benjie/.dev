@@ -129,7 +129,7 @@ const sidebars = {
         {
           type: "doc",
           id: "825",
-          label: "825*: @oneOf Directive [RFC2]",
+          label: "825*: OneOf Input Objects [RFC2]",
         },
         {
           type: "doc",
@@ -244,101 +244,6 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          id: "AnnotationStructs",
-          label: "AnnotationStructs: Annotation Structs [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "ClientControlledNullability",
-          label: "ClientControlledNullability: RFC: Client Controlled Nullability [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "CompositeSchemas",
-          label: "CompositeSchemas: RFC: GraphQL Composite Schemas [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "DeferStream",
-          label: "DeferStream: GraphQL Defer and Stream Directives [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "ExpandingSubtyping",
-          label: "ExpandingSubtyping: RFC: Expanding Subtyping (for output types) [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "FeatureDiscovery",
-          label: "FeatureDiscovery: RFC: Feature Discovery [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "FragmentArguments",
-          label: "FragmentArguments: RFC: Fragment Arguments [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "FragmentModularity",
-          label: "FragmentModularity: RFC: Fragment Modularity [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "FullSchemas",
-          label: "FullSchemas: RFC: Full Schemas [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "ImplicitInheritance",
-          label: "ImplicitInheritance: RFC: Implicit Inheritance [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "InputUnion",
-          label: "InputUnion: GraphQL Input Union [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "MetadataStructs",
-          label: "MetadataStructs: Metadata Structs [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "OperationExpressions",
-          label: "OperationExpressions: RFC: Operation Expressions [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "OptInFeatures",
-          label: "OptInFeatures: RFC: Opt-in features [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "README",
-          label: "README: GraphQL RFC (request for comments) Working Documents [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "SchemaCoordinates",
-          label: "SchemaCoordinates: RFC: Schema Coordinates [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "SchemaFragments",
-          label: "SchemaFragments: RFC: Schema Fragments [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "Struct",
-          label: "Struct: Polymorphic-capable composite symmetric input/output type (`struct`) [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "Subscriptions",
-          label: "Subscriptions: NOTE: this document is kept for historic purposes; GraphQL Subscriptions have been specified and released as part of the official [June 2018 GraphQL Specification](https://spec.graphql.org/June2018/). [RFC0]",
-        },
-        {
-          type: "doc",
           id: "1065",
           label: "1065*: SemanticNonNull type (null only on error) [RFC0]",
         },
@@ -394,6 +299,16 @@ const sidebars = {
         },
         {
           type: "doc",
+          id: "FullSchemas",
+          label: "FullSchemas: Full Schemas [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "FeatureDiscovery",
+          label: "FeatureDiscovery: Feature Discovery [RFC0]",
+        },
+        {
+          type: "doc",
           id: "1034",
           label: "1034: incremental delivery with deduplication + concurrent execution [RFC0]",
         },
@@ -414,6 +329,11 @@ const sidebars = {
         },
         {
           type: "doc",
+          id: "FragmentArguments",
+          label: "FragmentArguments: Fragment Arguments [RFC0]",
+        },
+        {
+          type: "doc",
           id: "1015",
           label: "1015: \"Root\" Types clarity → \"Operation Type\" [RFC0]",
         },
@@ -429,8 +349,38 @@ const sidebars = {
         },
         {
           type: "doc",
+          id: "ExpandingSubtyping",
+          label: "ExpandingSubtyping: Expanding Subtyping (for output types) [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "AnnotationStructs",
+          label: "AnnotationStructs: Annotation Structs [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "MetadataStructs",
+          label: "MetadataStructs: Metadata Structs [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "Struct",
+          label: "Struct: Polymorphic-capable composite symmetric input/output type (`struct`) [RFC0]",
+        },
+        {
+          type: "doc",
           id: "960",
           label: "960: Allow recursion within ResolveAbstractType [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "OptInFeatures",
+          label: "OptInFeatures: Opt-in features [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "CompositeSchemas",
+          label: "CompositeSchemas: GraphQL Composite Schemas [RFC0]",
         },
         {
           type: "doc",
@@ -439,8 +389,38 @@ const sidebars = {
         },
         {
           type: "doc",
+          id: "FragmentModularity",
+          label: "FragmentModularity: Fragment Modularity [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "ClientControlledNullability",
+          label: "ClientControlledNullability: Client Controlled Nullability [RFC0]",
+        },
+        {
+          type: "doc",
           id: "888",
           label: "888: Map type [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "README",
+          label: "README: GraphQL RFC (request for comments) Working Documents [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "OperationExpressions",
+          label: "OperationExpressions: Operation Expressions [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "ImplicitInheritance",
+          label: "ImplicitInheritance: Implicit Inheritance [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "SchemaFragments",
+          label: "SchemaFragments: Schema Fragments [RFC0]",
         },
         {
           type: "doc",
@@ -451,6 +431,11 @@ const sidebars = {
           type: "doc",
           id: "823",
           label: "823*: operation expressions [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "SchemaCoordinates",
+          label: "SchemaCoordinates: Schema Coordinates [RFC0]",
         },
         {
           type: "doc",
@@ -479,6 +464,11 @@ const sidebars = {
         },
         {
           type: "doc",
+          id: "DeferStream",
+          label: "DeferStream: GraphQL Defer and Stream Directives [RFC0]",
+        },
+        {
+          type: "doc",
           id: "667",
           label: "667: [RFC Sketch] Defer and Stream Directives [RFC0]",
         },
@@ -486,6 +476,11 @@ const sidebars = {
           type: "doc",
           id: "631",
           label: "631: Make root query operation type optional [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "InputUnion",
+          label: "InputUnion: GraphQL Input Union [RFC0]",
         },
         {
           type: "doc",
@@ -521,6 +516,11 @@ const sidebars = {
           type: "doc",
           id: "325",
           label: "325: Add \"Any\" scalar type [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "Subscriptions",
+          label: "Subscriptions: NOTE: this document is kept for historic purposes; GraphQL Subscriptions have been specified and released as part of the official [June 2018 GraphQL Specification](https://spec.graphql.org/June2018/). [RFC0]",
         },
       ],
     },

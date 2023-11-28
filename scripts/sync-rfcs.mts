@@ -187,11 +187,11 @@ async function syncRfcDocs(ctx: Ctx) {
       const identifier = doc.substring(0, doc.length - 3);
       const content = await fs.readFile(fullPath, "utf8");
       const [header] = content.split("\n", 2);
-      const [createdAt, author] = (
+      const [, createdAt, author] = (
         await $`git log --diff-filter=A --follow --format="%aI %an" ${doc}`
       ).stdout
         .trim()
-        .split(" ");
+        .match(/^([\S]+) ([\s\S]+)$/)!;
       console.log(identifier, fullPath, createdAt);
 
       await updateRfc(ctx, identifier, {
@@ -289,9 +289,7 @@ async function updateRfc(
   }
   // There must always be at least one key
   if (!draftFrontmatter.title) {
-    draftFrontmatter.title = `${formatIdentifier(identifier)}: ${
-      draftFrontmatter.fullTitle
-    }`;
+    draftFrontmatter.title = draftFrontmatter.fullTitle;
   }
   if (!draftFrontmatter.shortname) {
     draftFrontmatter.shortname = draftFrontmatter.fullTitle;
@@ -310,6 +308,7 @@ async function updateRfc(
   const head = `\
 ## At a glance
 
+- **Identifier**: ${formatIdentifier(frontmatter.identifier)}
 - **Stage**: ${stageMarkdown(frontmatter.stage)}
 - **Champion**: ${championMarkdown(frontmatter.champion)}
 - **PR**: ${formatPr(frontmatter)}
@@ -543,7 +542,9 @@ function stageWeight(stage: string | undefined): number {
 
 function tidyTitle(title: string): string {
   return title
+    .trim()
     .replace(/^#+/, "")
+    .trim()
     .replace(/^(?:\[RFC\]|RFC):?/i, "")
     .trim();
 }
