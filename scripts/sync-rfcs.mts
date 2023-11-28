@@ -475,6 +475,13 @@ Benjie. It does not claim to be a complete, accurate, or up to date
 representation of the RFCs; it is generated in part by automated scripts but may
 be helpful for people to keep track of the various RFCs.
 
+:::info Not up to date?
+
+Ping \`@benjie\` on the [GraphQL Discord](https://discord.graphql.org) (\`#wg\`
+channel) and ask for him to run an update!
+
+:::
+
 ${printTables(everything)}
 `,
   );
@@ -593,7 +600,7 @@ function printTable(things: Thing[]) {
     }) | ${championMarkdown(thing.frontmatter.champion)} | ${
       thing.frontmatter.fullTitle ?? thing.frontmatter.title
     } | ${
-      thing.frontmatter.prUrl ? `[Yes](${thing.frontmatter.prUrl})` : `-`
+      thing.frontmatter.prUrl ? `[Yes](${thing.frontmatter.prUrl})` : `No?`
     } | ${formatTimelineEvent(
       thing.frontmatter.events[thing.frontmatter.events.length - 1],
       thing.frontmatter,
