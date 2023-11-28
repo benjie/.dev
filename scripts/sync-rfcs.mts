@@ -33,6 +33,29 @@ interface Ctx {
   sdk: ReturnType<typeof getSdk>;
 }
 
+interface Frontmatter {
+  title: string;
+  identifier: string;
+  events: Event[];
+  shortname?: string;
+  fullTitle?: string;
+  stage?: "0" | "1" | "2" | "3" | "X" | "?";
+  champion?: string;
+  //createdAt?: string;
+  //updatedAt?: string;
+  prUrl?: string;
+  rfcDocUrl?: string;
+  issueUrl?: string;
+}
+
+function assertFrontmatter(
+  frontmatter: Partial<Frontmatter>,
+): asserts frontmatter is Frontmatter {
+  if (!frontmatter.title || !frontmatter.identifier || !frontmatter.events) {
+    throw new Error(`Missing required frontmatter field`);
+  }
+}
+
 async function loadState(): Promise<State> {
   try {
     const data = JSON.parse(await fs.readFile(`${ROOT}/state.json`, "utf8"));
@@ -126,12 +149,15 @@ async function syncRfcPRs(ctx: Ctx) {
         ),
         champion: node.assignees.nodes?.[0]?.login ?? node.author?.login,
 
-        // We cannot use the 'updatedAt' value otherwise every tiny nudge would
-        // move each RFC to the top; we should only bump this when there are new
-        // commits, or related activity (WG, etc)
-        updatedAt: node.createdAt,
+        prUrl: `https://github.com/graphql/graphql-spec/pull/${node.number}`,
 
-        prUrl: `https://github.com/graphql/graphql-spec/pulls/${node.number}`,
+        events: [
+          {
+            type: "prCreated",
+            date: node.createdAt,
+            href: `https://github.com/graphql/graphql-spec/pull/${node.number}`,
+          },
+        ],
       });
 
       if (!firstPr) {
@@ -145,27 +171,42 @@ async function syncRfcPRs(ctx: Ctx) {
   await generateIndexAndMeta(ctx);
 }
 
+interface EventBase {
+  type: string;
+  date: string;
+  href: string;
+}
+
+interface PrCreatedEvent extends EventBase {
+  type: "prCreated";
+}
+interface WgAgendaEvent extends EventBase {
+  type: "wgAgenda";
+}
+
+type Event = PrCreatedEvent | WgAgendaEvent;
+
 async function updateRfc(
   ctx: Ctx,
   identifier: string,
   details: {
     title: string;
-    stage?: string;
+    stage?: "0" | "1" | "2" | "3" | "X" | "?";
     champion?: string;
-    updatedAt?: string;
     rfcDocUrl?: string;
     issueUrl?: string;
     prUrl?: string;
+    events?: Event[];
   },
 ) {
   if (!identifier.match(/^[a-zA-Z0-9_]+$/)) {
     throw new Error(`Invalid RFC identifier: ${identifier}`);
   }
-  let frontmatter: Record<string, any> = {};
+  let draftFrontmatter: Partial<Frontmatter> = {};
   let body: string = "";
   const filePath = `${ROOT}/rfcs/${identifier}.md`;
   try {
-    ({ frontmatter, body } = await readMd(filePath));
+    ({ frontmatter: draftFrontmatter, body } = await readMd(filePath));
   } catch (e) {
     if (e.code === "ENOENT") {
       /* File doesn't exist yet; continue */
@@ -173,38 +214,73 @@ async function updateRfc(
       throw e;
     }
   }
+  if (!draftFrontmatter.events) {
+    draftFrontmatter.events = [];
+  }
   if (details.title) {
-    frontmatter.fullTitle = details.title;
+    draftFrontmatter.fullTitle = details.title;
   }
   if (details.stage) {
-    frontmatter.stage = details.stage;
+    draftFrontmatter.stage = details.stage;
   }
   if (details.champion) {
-    frontmatter.champion = details.champion;
-  }
-  if (details.updatedAt) {
-    const newWhen = Date.parse(details.updatedAt);
-    if (!frontmatter.updatedAt || Date.parse(frontmatter.updatedAt) < newWhen) {
-      frontmatter.updatedAt = details.updatedAt;
-    }
+    draftFrontmatter.champion = details.champion;
   }
   if (details.rfcDocUrl) {
-    frontmatter.rfcDocUrl = details.rfcDocUrl;
+    draftFrontmatter.rfcDocUrl = details.rfcDocUrl;
   }
   if (details.issueUrl) {
-    frontmatter.issueUrl = details.issueUrl;
+    draftFrontmatter.issueUrl = details.issueUrl;
   }
   if (details.prUrl) {
-    frontmatter.prUrl = details.prUrl;
+    draftFrontmatter.prUrl = details.prUrl;
+  }
+  if (details.events) {
+    for (const event of details.events) {
+      const existingMatchingEvent = draftFrontmatter.events.find(
+        (e) => e.type === event.type && e.date === event.date,
+      );
+      if (!existingMatchingEvent) {
+        draftFrontmatter.events.push(event);
+      }
+    }
   }
   // There must always be at least one key
-  if (!frontmatter.title) {
-    frontmatter.title = `${identifier}: ${frontmatter.fullTitle}`;
+  if (!draftFrontmatter.title) {
+    draftFrontmatter.title = `${formatIdentifier(identifier)}: ${
+      draftFrontmatter.fullTitle
+    }`;
   }
-  if (!frontmatter.shortname) {
-    frontmatter.shortname = frontmatter.fullTitle;
+  if (!draftFrontmatter.shortname) {
+    draftFrontmatter.shortname = draftFrontmatter.fullTitle;
   }
-  frontmatter.identifier = identifier;
+  draftFrontmatter.identifier = identifier;
+  draftFrontmatter.events.sort(
+    (a, z) => Date.parse(z.date) - Date.parse(a.date),
+  );
+
+  assertFrontmatter(draftFrontmatter);
+  const frontmatter = draftFrontmatter;
+
+  const head = `\
+## At a glance
+
+- **Stage**: ${stageMarkdown(frontmatter.stage)}
+- **Champion**: ${championMarkdown(frontmatter.champion)}
+- **PR**: ${
+    frontmatter.prUrl
+      ? `[${frontmatter.title ?? frontmatter.prUrl}](${frontmatter.prUrl})`
+      : "-"
+  }
+`;
+
+  const foot = `\
+## Timeline
+
+${frontmatter.events
+  .map((event) => formatTimelineEvent(event, frontmatter))
+  .join("\n")}
+`;
 
   await fs.writeFile(
     filePath,
@@ -212,17 +288,27 @@ async function updateRfc(
 ---
 ${yaml.stringify(frontmatter).trim()}
 ---
-${body}\
+${head}
+
+<!-- BEGIN_CUSTOM_TEXT -->
+
+${body}
+
+<!-- END_CUSTOM_TEXT -->
+
+${foot}
 `,
   );
 }
 
-function labelsToStage(labels: (string | undefined)[]): string {
+function labelsToStage(
+  labels: (string | undefined)[],
+): "0" | "1" | "2" | "3" | "X" | "?" {
   for (const label of labels) {
     if (!label) continue;
     const matches = label.match(/RFC\s*([0123X])/);
     if (matches) {
-      return matches[1];
+      return matches[1] as "0" | "1" | "2" | "3" | "X";
     }
   }
   return "?";
@@ -230,19 +316,24 @@ function labelsToStage(labels: (string | undefined)[]): string {
 
 async function readMd(filePath: string) {
   const existing = await fs.readFile(filePath, "utf8");
-  const frontmatterMatch = existing.match(/^---\n([\s\S]+?)\n---\n(.*)$/);
-  if (!frontmatterMatch) {
-    throw new Error(`Could not find frontmatter!`);
+  const matches = existing.match(
+    /^---\n(?:([\s\S]+?)\n)?---\n(?:([\s\S]*)\n)?<!-- BEGIN_CUSTOM_TEXT -->\n(?:([\s\S]*)\n)?<!-- END_CUSTOM_TEXT -->\n([\s\S]*)$/,
+  );
+  if (!matches) {
+    throw new Error(
+      `Document '${filePath}' did not have the expected structure`,
+    );
   }
-  const frontmatter = yaml.parse(frontmatterMatch[1].trim());
-  const body = frontmatterMatch[2];
+  const [, rawFrontmatter, rawHead, rawCustom, rawFoot] = matches;
+  const frontmatter = yaml.parse(rawFrontmatter.trim());
+  const body = matches[3].trim();
   return { frontmatter, body };
 }
 
 async function generateIndexAndMeta(ctx: Ctx) {
   const files = await fs.readdir(`${ROOT}/rfcs`);
   const everything: Array<{
-    frontmatter: Record<string, any>;
+    frontmatter: Frontmatter;
     file: string;
     key: string;
   }> = [];
@@ -260,8 +351,9 @@ async function generateIndexAndMeta(ctx: Ctx) {
     const s =
       stageWeight(z.frontmatter.stage) - stageWeight(a.frontmatter.stage);
     if (s !== 0) return s;
-    const t =
-      Date.parse(z.frontmatter.updatedAt) - Date.parse(a.frontmatter.updatedAt);
+    const aOldestEvent = a.frontmatter.events[a.frontmatter.events.length - 1];
+    const zOldestEvent = z.frontmatter.events[z.frontmatter.events.length - 1];
+    const t = Date.parse(zOldestEvent.date) - Date.parse(aOldestEvent.date);
     if (t !== 0) return t;
     return 0;
   });
@@ -338,10 +430,10 @@ authored by Benjie are shown. All tracked RFCs are linked in the table below.
   );
 }
 
-function stageWeight(stage: string): number {
+function stageWeight(stage: string | undefined): number {
   return stage === "3"
     ? -4
-    : stage === "?"
+    : stage === "?" || stage == null
       ? -3
       : stage === "X"
         ? -2
@@ -352,6 +444,60 @@ function stageWeight(stage: string): number {
 
 function tidyTitle(title: string): string {
   return title.replace(/^(?:\[RFC\]|RFC):?/i, "").trim();
+}
+
+function stageMarkdown(stage: string | undefined): string {
+  switch (stage) {
+    case "0":
+      return `[RFC0: Strawman](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-0-strawman)`;
+    case "1":
+      return `[RFC1: Proposal](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-1-proposal)`;
+    case "2":
+      return `[RFC2: Draft](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-2-draft)`;
+    case "3":
+      return `[RFC3: Accepted](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-3-accepted)`;
+    case "X":
+      return `[RFCX: Rejected](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-x-rejected)`;
+    default:
+      return "Unknown";
+  }
+}
+
+function championMarkdown(champion: string | undefined): string {
+  if (!champion) return "-";
+  return `[@${champion}](https://github.com/${champion})`;
+}
+
+function formatIdentifier(identifier: string): string {
+  if (String(parseInt(identifier, 10)) === identifier) {
+    return `#${identifier}`;
+  } else {
+    return identifier;
+  }
+}
+
+function formatTimelineEvent(event: Event, frontmatter: Frontmatter): string {
+  switch (event.type) {
+    case "prCreated":
+      return `- **[Spec PR](${event.href}) created**: ${formatDate(
+        event.date,
+      )}`;
+    case "wgAgenda":
+      return `- **Added to [${formatDate(event.date)} WG agenda](${
+        event.href
+      })**`;
+    default: {
+      const never: never = event;
+      throw new Error(`Unexpected event ${JSON.stringify(never)}`);
+    }
+  }
+}
+
+// Format date as YYYY-MM-DD
+function formatDate(date: string): string {
+  const d = new Date(date);
+  const pad = (n: number): string => String(n).padStart(2, "0");
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
 }
 
 main().catch((e) => {
