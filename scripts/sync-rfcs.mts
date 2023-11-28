@@ -311,7 +311,7 @@ async function syncRfcPRs(ctx: Ctx) {
             actor: node.author?.login ?? null,
           },
         ],
-        related: getRelated(node.body),
+        related: getRelated(node.body, ""),
       });
 
       ctx.rfcs[identifier].verbatim = ALLOW_EMBED.includes(
@@ -382,7 +382,7 @@ async function syncRfcDiscussions(ctx: Ctx) {
             actor: node.author?.login ?? null,
           },
         ],
-        related: getRelated(node.body),
+        related: getRelated(node.body, "wg"),
       });
 
       ctx.rfcs[identifier].verbatim = ALLOW_EMBED.includes(
@@ -442,7 +442,7 @@ async function syncRfcDocs(ctx: Ctx) {
         stage: "0",
         title: tidyTitle(header),
         events,
-        related: getRelated(content),
+        related: getRelated(content, "wg"),
       });
 
       ctx.rfcs[identifier].verbatim = `\
@@ -1053,15 +1053,21 @@ const escapeMdInner = (s: string) =>
       (_, alt, href) => `![${alt}](${escapeUrl(href)})`,
     );
 
-function getRelated(markdown: string): string | undefined {
+function getRelated(markdown: string, prefix: string): string | undefined {
   const related = new Set<string>();
   for (const match of markdown.matchAll(
     /(?:builds on|fixes|relates to|replaces|supercedes|identical to|addresses) #([0-9]+)/gi,
   )) {
-    related.add(match[1]);
+    related.add(`${prefix}${match[1]}`);
   }
   for (const match of markdown.matchAll(
-    /https:\/\/github.com\/graphql\/graphql-spec\/pull\/([0-9]+)/gi,
+    /https:\/\/github.com\/graphql\/graphql-(spec|wg)\/(?:pull|issues|discussions)\/([0-9]+)/gi,
+  )) {
+    const repo = match[1];
+    related.add((repo === "wg" ? "wg" : "") + match[2]);
+  }
+  for (const match of markdown.matchAll(
+    /https:\/\/github.com\/graphql\/graphql-wg\/blob\/main\/rfcs\/([A-Za-z0-9_-]+)\.md/gi,
   )) {
     related.add(match[1]);
   }
