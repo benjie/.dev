@@ -156,6 +156,7 @@ async function syncRfcPRs(ctx: Ctx) {
             type: "prCreated",
             date: node.createdAt,
             href: `https://github.com/graphql/graphql-spec/pull/${node.number}`,
+            actor: node.author?.login ?? null,
           },
         ],
       });
@@ -175,6 +176,7 @@ interface EventBase {
   type: string;
   date: string;
   href: string;
+  actor: string | null;
 }
 
 interface PrCreatedEvent extends EventBase {
@@ -288,15 +290,16 @@ ${frontmatter.events
 ---
 ${yaml.stringify(frontmatter).trim()}
 ---
-${head}
+
+${head.trim()}
 
 <!-- BEGIN_CUSTOM_TEXT -->
 
-${body}
+${body.trim()}
 
 <!-- END_CUSTOM_TEXT -->
 
-${foot}
+${foot.trim()}
 `,
   );
 }
@@ -479,9 +482,9 @@ function formatIdentifier(identifier: string): string {
 function formatTimelineEvent(event: Event, frontmatter: Frontmatter): string {
   switch (event.type) {
     case "prCreated":
-      return `- **[Spec PR](${event.href}) created**: ${formatDate(
+      return `- **[Spec PR](${event.href}) created** on ${formatDate(
         event.date,
-      )}`;
+      )} by ${event.actor ?? "unknown"}`;
     case "wgAgenda":
       return `- **Added to [${formatDate(event.date)} WG agenda](${
         event.href
