@@ -244,6 +244,101 @@ const sidebars = {
       items: [
         {
           type: "doc",
+          id: "AnnotationStructs",
+          label: "AnnotationStructs: Annotation Structs [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "ClientControlledNullability",
+          label: "ClientControlledNullability: RFC: Client Controlled Nullability [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "CompositeSchemas",
+          label: "CompositeSchemas: RFC: GraphQL Composite Schemas [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "DeferStream",
+          label: "DeferStream: GraphQL Defer and Stream Directives [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "ExpandingSubtyping",
+          label: "ExpandingSubtyping: RFC: Expanding Subtyping (for output types) [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "FeatureDiscovery",
+          label: "FeatureDiscovery: RFC: Feature Discovery [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "FragmentArguments",
+          label: "FragmentArguments: RFC: Fragment Arguments [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "FragmentModularity",
+          label: "FragmentModularity: RFC: Fragment Modularity [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "FullSchemas",
+          label: "FullSchemas: RFC: Full Schemas [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "ImplicitInheritance",
+          label: "ImplicitInheritance: RFC: Implicit Inheritance [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "InputUnion",
+          label: "InputUnion: GraphQL Input Union [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "MetadataStructs",
+          label: "MetadataStructs: Metadata Structs [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "OperationExpressions",
+          label: "OperationExpressions: RFC: Operation Expressions [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "OptInFeatures",
+          label: "OptInFeatures: RFC: Opt-in features [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "README",
+          label: "README: GraphQL RFC (request for comments) Working Documents [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "SchemaCoordinates",
+          label: "SchemaCoordinates: RFC: Schema Coordinates [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "SchemaFragments",
+          label: "SchemaFragments: RFC: Schema Fragments [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "Struct",
+          label: "Struct: Polymorphic-capable composite symmetric input/output type (`struct`) [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "Subscriptions",
+          label: "Subscriptions: NOTE: this document is kept for historic purposes; GraphQL Subscriptions have been specified and released as part of the official [June 2018 GraphQL Specification](https://spec.graphql.org/June2018/). [RFC0]",
+        },
+        {
+          type: "doc",
           id: "1065",
           label: "1065*: SemanticNonNull type (null only on error) [RFC0]",
         },

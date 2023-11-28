@@ -21,3 +21,4 @@ yarn-error.log*
 /scripts/sdk.mts
 /state.json
 /pages/rfcs/index.mdx
+/temp

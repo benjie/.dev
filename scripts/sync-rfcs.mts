@@ -7,6 +7,7 @@ import * as yaml from "yaml";
 import { SidebarsConfig } from "@docusaurus/plugin-content-docs";
 import { SidebarItemConfig } from "@docusaurus/plugin-content-docs/lib/sidebars/types";
 import JSON5 from "json5";
+import { $, cd } from "zx";
 
 const __dirname = new URL(".", import.meta.url).pathname;
 const ROOT = __dirname + "/..";
@@ -40,7 +41,7 @@ interface Frontmatter {
   events: Event[];
   shortname?: string;
   fullTitle?: string;
-  stage?: "0" | "1" | "2" | "3" | "X" | "?";
+  stage: "0" | "1" | "2" | "3" | "X" | "?";
   champion?: string;
   //createdAt?: string;
   //updatedAt?: string;
@@ -110,6 +111,8 @@ async function main() {
   const sdk = getSdk(graphqlClient);
   const ctx: Ctx = { state, sdk };
   await syncRfcPRs(ctx);
+  await syncRfcDocs(ctx);
+  await generateIndexAndMeta(ctx);
   await saveState(ctx.state);
 }
 
@@ -169,8 +172,41 @@ async function syncRfcPRs(ctx: Ctx) {
     }
   } while (cursor);
   // state.mostRecentPr = firstPr;
+}
 
-  await generateIndexAndMeta(ctx);
+async function syncRfcDocs(ctx: Ctx) {
+  const { sdk, state } = ctx;
+  const basePath = `${ROOT}/temp/wg/rfcs`;
+  cd(basePath);
+  const rfcDocs = await fs.readdir(basePath);
+  await Promise.all(
+    rfcDocs.map(async (doc) => {
+      if (!doc.endsWith(".md")) return;
+      if (doc.startsWith(".")) return;
+      const fullPath = `${basePath}/${doc}`;
+      const identifier = doc.substring(0, doc.length - 3);
+      const content = await fs.readFile(fullPath, "utf8");
+      const [header] = content.split("\n", 2);
+      const [createdAt, author] = (
+        await $`git log --diff-filter=A --follow --format="%aI %an" ${doc}`
+      ).stdout
+        .trim()
+        .split(" ");
+      console.log(identifier, fullPath, createdAt);
+
+      await updateRfc(ctx, identifier, {
+        title: tidyTitle(header),
+        events: [
+          {
+            type: "docCreated",
+            date: createdAt,
+            href: `https://github.com/graphql/graphql-wg/blob/main/rfcs/${doc}`,
+            actor: author,
+          },
+        ],
+      });
+    }),
+  );
 }
 
 interface EventBase {
@@ -183,11 +219,14 @@ interface EventBase {
 interface PrCreatedEvent extends EventBase {
   type: "prCreated";
 }
+interface DocCreatedEvent extends EventBase {
+  type: "docCreated";
+}
 interface WgAgendaEvent extends EventBase {
   type: "wgAgenda";
 }
 
-type Event = PrCreatedEvent | WgAgendaEvent;
+type Event = PrCreatedEvent | DocCreatedEvent | WgAgendaEvent;
 
 async function updateRfc(
   ctx: Ctx,
@@ -256,6 +295,9 @@ async function updateRfc(
   }
   if (!draftFrontmatter.shortname) {
     draftFrontmatter.shortname = draftFrontmatter.fullTitle;
+  }
+  if (!draftFrontmatter.stage) {
+    draftFrontmatter.stage = "0";
   }
   draftFrontmatter.identifier = identifier;
   draftFrontmatter.events.sort(
@@ -500,7 +542,10 @@ function stageWeight(stage: string | undefined): number {
 }
 
 function tidyTitle(title: string): string {
-  return title.replace(/^(?:\[RFC\]|RFC):?/i, "").trim();
+  return title
+    .replace(/^#+/, "")
+    .replace(/^(?:\[RFC\]|RFC):?/i, "")
+    .trim();
 }
 
 function stageMarkdown(
@@ -551,6 +596,10 @@ function formatTimelineEvent(event: Event, frontmatter: Frontmatter): string {
   switch (event.type) {
     case "prCreated":
       return `**[Spec PR](${event.href}) created** on ${formatDate(
+        event.date,
+      )} by ${event.actor ?? "unknown"}`;
+    case "docCreated":
+      return `**[RFC Document](${event.href}) created** on ${formatDate(
         event.date,
       )} by ${event.actor ?? "unknown"}`;
     case "wgAgenda":
@@ -618,6 +667,8 @@ function formatPr(frontmatter: Frontmatter) {
     ? `[${frontmatter.title ?? frontmatter.prUrl}](${frontmatter.prUrl})`
     : "-";
 }
+
+async function wgCmd(cmdline) {}
 
 main().catch((e) => {
   console.error(e);
