@@ -45,13 +45,14 @@ const graphqlClient = new GraphQLClient("https://api.github.com/graphql", {
   },
 });
 
-interface PrUpdate {
+interface IssueLikeUpdate {
   number: number;
   updatedAt: string;
 }
 
 interface State {
-  mostRecentPr?: PrUpdate;
+  mostRecentPr?: IssueLikeUpdate;
+  mostRecentWgDiscussion?: IssueLikeUpdate;
   cache?: Record<
     string,
     {
@@ -74,13 +75,14 @@ interface Frontmatter {
   events: Event[];
   /** Human controlled */
   shortname?: string;
-  stage: "0" | "1" | "2" | "3" | "X" | "?";
+  stage: "0" | "1" | "2" | "3" | "X" | null;
   champion?: string;
   //createdAt?: string;
   //updatedAt?: string;
   prUrl?: string;
   rfcDocUrl?: string;
   issueUrl?: string;
+  wgDiscussionUrl?: string;
   /** Human controlled */
   superceded?: {
     /** identifier */
@@ -160,7 +162,7 @@ async function main() {
   await loadRfcs(ctx);
   await syncRfcPRs(ctx);
   // await syncRfcIssues(ctx);
-  // await syncRfcDiscussions(ctx);
+  await syncRfcDiscussions(ctx);
   await syncRfcDocs(ctx);
   await findMentions(ctx);
   await writeRfcs(ctx);
@@ -262,7 +264,7 @@ ${verbatim.trim()}
 
 async function syncRfcPRs(ctx: Ctx) {
   const { sdk, state } = ctx;
-  let firstPr: PrUpdate | undefined;
+  let firstIssueLike: IssueLikeUpdate | undefined;
   let cursor: string | undefined;
   let stop = state.mostRecentPr?.updatedAt
     ? Date.parse(state.mostRecentPr.updatedAt)
@@ -322,13 +324,84 @@ ${sanitizeMarkdown(node.body, identifier)}
 `
         : `---\n\n(Embedding not enabled for ${node.author?.login})`;
 
-      if (!firstPr) {
-        firstPr = { number: node.number, updatedAt: node.updatedAt };
+      if (!firstIssueLike) {
+        firstIssueLike = { number: node.number, updatedAt: node.updatedAt };
       }
       cursor = currentCursor;
     }
   } while (cursor);
-  // state.mostRecentPr = firstPr;
+  // state.mostRecentPr = firstIssueLike;
+}
+
+async function syncRfcDiscussions(ctx: Ctx) {
+  const { sdk, state } = ctx;
+  let firstDiscussion: IssueLikeUpdate | undefined;
+  let cursor: string | undefined;
+  let stop = state.mostRecentWgDiscussion?.updatedAt
+    ? Date.parse(state.mostRecentWgDiscussion.updatedAt)
+    : new Date(1970, 1, 1);
+  do {
+    const prs = await cache(ctx, sdk.GetWgDiscussions, { after: cursor });
+    // Stop unless a new cursor is found
+    cursor = undefined;
+    const edges = prs.organization?.repository?.discussions.edges;
+    if (!edges || edges.length === 0) {
+      break;
+    }
+    for (const edge of edges) {
+      if (!edge) {
+        throw new Error(`Missing edge! Aborting.`);
+      }
+      const { cursor: currentCursor, node } = edge;
+      if (!node) {
+        throw new Error(`Missing node! Aborting.`);
+      }
+      const nodeUpdated = Date.parse(node.updatedAt);
+      if (nodeUpdated < stop) {
+        console.log("Found older PR; stopping");
+        cursor = undefined;
+        break;
+      }
+
+      const identifier = `wg${node.number}`;
+      await updateRfc(ctx, {
+        identifier,
+        title: tidyTitle(node.title),
+        stage:
+          labelsToStage(node.labels?.edges?.map((e) => e?.node?.name) ?? []) ??
+          "0",
+        champion: node.author?.login,
+
+        wgDiscussionUrl: `https://github.com/graphql/graphql-wg/discussions/${node.number}`,
+
+        events: [
+          {
+            type: "wgDiscussionCreated",
+            date: node.createdAt,
+            href: `https://github.com/graphql/graphql-wg/discussions/${node.number}`,
+            actor: node.author?.login ?? null,
+          },
+        ],
+        related: getRelated(node.body),
+      });
+
+      ctx.rfcs[identifier].verbatim = ALLOW_EMBED.includes(
+        node.author?.login.toLowerCase(),
+      )
+        ? `\
+---
+
+${sanitizeMarkdown(node.body, identifier)}
+`
+        : `---\n\n(Embedding not enabled for ${node.author?.login})`;
+
+      if (!firstDiscussion) {
+        firstDiscussion = { number: node.number, updatedAt: node.updatedAt };
+      }
+      cursor = currentCursor;
+    }
+  } while (cursor);
+  // state.mostRecentWgDiscussion = firstIssueLike;
 }
 
 async function syncRfcDocs(ctx: Ctx) {
@@ -397,6 +470,9 @@ interface DocCreatedEvent extends EventBase {
 interface DocUpdatedEvent extends EventBase {
   type: "docUpdated";
 }
+interface WgDiscussionCreatedEvent extends EventBase {
+  type: "wgDiscussionCreated";
+}
 interface WgAgendaEvent extends EventBase {
   type: "wgAgenda";
 }
@@ -409,7 +485,8 @@ type Event =
   | DocCreatedEvent
   | DocUpdatedEvent
   | WgAgendaEvent
-  | WgNotesEvent;
+  | WgNotesEvent
+  | WgDiscussionCreatedEvent;
 
 async function updateRfc(ctx: Ctx, details: Frontmatter) {
   const { identifier } = details;
@@ -466,7 +543,7 @@ async function updateRfc(ctx: Ctx, details: Frontmatter) {
 
 function labelsToStage(
   labels: (string | undefined)[],
-): "0" | "1" | "2" | "3" | "X" | "?" {
+): "0" | "1" | "2" | "3" | "X" | null {
   for (const label of labels) {
     if (!label) continue;
     const matches = label.match(/RFC\s*([0123X])/);
@@ -474,7 +551,7 @@ function labelsToStage(
       return matches[1] as "0" | "1" | "2" | "3" | "X";
     }
   }
-  return "?";
+  return null;
 }
 
 async function readMd(filePath: string) {
@@ -659,7 +736,7 @@ ${printTables(everything)}
 function stageWeight(stage: string | undefined): number {
   return stage === "3"
     ? -4
-    : stage === "?" || stage == null
+    : stage == null
       ? -3
       : stage === "X"
         ? -2
@@ -743,6 +820,10 @@ function formatTimelineEvent(event: Event, frontmatter: Frontmatter): string {
       return `**Mentioned in [${formatDate(event.date)} WG notes](${
         event.href
       })**`;
+    case "wgDiscussionCreated":
+      return `**[WG discussion](${event.href}) created** on ${formatDate(
+        event.date,
+      )} by ${event.actor ?? "unknown"}`;
     default: {
       const never: never = event;
       throw new Error(`Unexpected event ${JSON.stringify(never)}`);
@@ -842,7 +923,15 @@ function sanitizeMarkdown(
         escapedLine += ticks;
         current = position + ticks.length;
       } else {
-        console.log(`Skipping '${ticks}' !== '${active}' at ${position}`);
+        if (ticks.length < 3 && active.length >= 3) {
+          // Fully ignore
+        } else if (ticks.length === 1 && active.length === 2) {
+          // Fully ignore
+        } else {
+          console.log(
+            `${identifier}: Skipping '${ticks}' !== '${active}' at ${position}`,
+          );
+        }
         // Ignore
       }
     } else {
@@ -953,10 +1042,8 @@ const escapeMdInner = (s: string) =>
     .replace(/<(https?:\/\/[^>]*)>/g, (_, t) => `\`${t}\``)
     .replace(/[{<]/g, "\\$&")
     .replace(/\\<(\/?(?:details|summary|hr))\/?>/g, "<$1>")
-    //.replace(/^\\>/gm, ">")
     .replace(/\\<!-- prettier-ignore -->/g, "<!-- prettier-ignore -->")
     .replace(/<hr>/gi, (_, t) => `<hr/>`)
-    //.replace(/\n\s*(import|export|class|const|var|let)\s/gi, "_ $&")
     .replace(
       /(import|require|eval|Function|export|class|const|var|let)(?![a-zA-Z])/g,
       "$&\u200b",
@@ -969,7 +1056,7 @@ const escapeMdInner = (s: string) =>
 function getRelated(markdown: string): string | undefined {
   const related = new Set<string>();
   for (const match of markdown.matchAll(
-    /(?:builds on|fixes|relates to|replaces|supercedes) #([0-9]+)/gi,
+    /(?:builds on|fixes|relates to|replaces|supercedes|identical to|addresses) #([0-9]+)/gi,
   )) {
     related.add(match[1]);
   }

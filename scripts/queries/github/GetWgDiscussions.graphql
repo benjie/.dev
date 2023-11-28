@@ -1,0 +1,37 @@
+query GetWgDiscussions($after: String) {
+  organization(login: "graphql") {
+    repository(name: "graphql-wg") {
+      discussions(
+        first: 100
+        after: $after
+        orderBy: { field: UPDATED_AT, direction: DESC }
+        categoryId: "DIC_kwDOBervg84B_uIH" #Ideas
+      ) {
+        edges {
+          cursor
+          node {
+            id
+            number
+            title
+            createdAt
+            updatedAt
+            author {
+              login
+            }
+            labels(first: 100) {
+              edges {
+                node {
+                  id
+                  name
+                  color
+                  description
+                }
+              }
+            }
+            body
+          }
+        }
+      }
+    }
+  }
+}
