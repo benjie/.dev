@@ -14,6 +14,9 @@ const __dirname = new URL(".", import.meta.url).pathname;
 const ROOT = __dirname + "/..";
 
 const CACHE_ENABLED = true;
+const SECOND = 1000;
+const MINUTE = 60 * SECOND;
+const CACHE_DURATION = 15 * MINUTE;
 
 const graphqlClient = new GraphQLClient("https://api.github.com/graphql", {
   headers: {
@@ -28,7 +31,13 @@ interface PrUpdate {
 
 interface State {
   mostRecentPr?: PrUpdate;
-  cache?: Record<string, any>;
+  cache?: Record<
+    string,
+    {
+      timestamp: number;
+      content: any;
+    }
+  >;
 }
 
 interface Ctx {
@@ -106,13 +115,19 @@ async function cache<TArgs extends any[], TResult>(
     throw new Error(`cache can only be used with named functions`);
   }
   const signature = md5(`${fn.name}|${JSON.stringify(args)}`);
-  if (cache[signature]) {
+  if (
+    cache[signature] &&
+    cache[signature].timestamp > Date.now() - CACHE_DURATION
+  ) {
     console.log("Cache hit");
-    return cache[signature];
+    return cache[signature].content;
   } else {
     console.log("Cache miss; calling fn");
     const result = await fn(...args);
-    cache[signature] = result;
+    cache[signature] = {
+      timestamp: Date.now(),
+      content: result,
+    };
     return result;
   }
 }
