@@ -246,7 +246,7 @@ Option 2 is tempting because in the other scenarios `struct` and
 one rather than the other. However, it suffers from some backwards-compatibility
 concerns - namely that an input object being used on output is likely to confuse
 existing tooling such as GraphiQL, and it's entirely unknown to them whether an
-input object should require a selection set or not.
+input object should require​ a selection set or not.
 
 Option 1 feels like it could be done in a more backwards-compatible manner since
 the majority of existing tools and clients would not look at the `fields` entry

@@ -315,6 +315,7 @@ async function syncRfcDocs(ctx: Ctx) {
     rfcDocs.map(async (doc) => {
       if (!doc.endsWith(".md")) return;
       if (doc.startsWith(".")) return;
+      if (doc === "README.md") return;
       const fullPath = `${basePath}/${doc}`;
       const identifier = doc.substring(0, doc.length - 3);
       const content = await fs.readFile(fullPath, "utf8");
@@ -920,9 +921,21 @@ const escapeMdInner = (s: string) =>
   s
     .replace(/\r\n/g, "\n")
     .replace(/\r/g, "\n")
-    .replace(/<(https?:\/\/[^>]*)>/g, (_, t) => `[${t}]($t)`)
-    .replace(/{([a-zA-Z. ]*)}/g, (_, t) => `\\{${t}\\}`) // {your suggestion here}
+    .replace(
+      /\[([^\]]+)\]\(<(https?:\/\/[^>]*)>\)/g,
+      (_, t, l) => `${t} (${l})`,
+    )
+    .replace(/<(https?:\/\/[^>]*)>/g, (_, t) => `\`${t}\``)
+    .replace(/[{<]/g, "\\$&")
+    .replace(/\\<(\/?(?:details|summary|hr))\/?>/g, "<$1>")
+    //.replace(/^\\>/gm, ">")
+    .replace(/\\<!-- prettier-ignore -->/g, "<!-- prettier-ignore -->")
     .replace(/<hr>/gi, (_, t) => `<hr/>`)
+    //.replace(/\n\s*(import|export|class|const|var|let)\s/gi, "_ $&")
+    .replace(
+      /(import|require|eval|Function|export|class|const|var|let)(?![a-zA-Z])/g,
+      "$&\u200b",
+    )
     .replace(
       /!\[([^\]]*)\]\(([^)]*)\)/g,
       (_, alt, href) => `![${alt}](${escapeUrl(href)})`,

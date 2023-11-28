@@ -143,7 +143,7 @@ The problems with the current behavior are:
 - If a field in an implementing type differs from the field in the interface, it is not clear if that is due to carelessness/omission or if it is an intended overwrite.
   The same applies to differences in documentation.
 - It is hard to recognize changes or overwrites (e.g. `topSpeed: SmallFloat` in `Motorcycle` doesn't stick out).
-- Changes to a root interface require multiple repetitive changes in the implementing interfaces and types.
+- Changes to a root interface require​ multiple repetitive changes in the implementing interfaces and types.
 - Since there is no indication that a field is inherited, readers who are already aware of the interface fields don't know what to "skip" when reading other types, so they waste time.
 - The schema is longer due to the repetition, which makes reading the schema more intimidating and leads to skimming in place of actual reading.
 
@@ -212,9 +212,9 @@ type Truck implements Automobile {
 - The schema is easier to scale and maintain.
   In particular, addition of new types implementing multiple interfaces is easier and doesn't involve copy & paste.
 - Changes to interface stay mostly local to that interface.
-  That is, addition or change of a field in an interface for the most part doesn't require changes in the implementing types.
+  That is, addition or change of a field in an interface for the most part doesn't require​ changes in the implementing types.
 - Interfaces can be used as a kind of `fragment` on the schema-side by extracting common structures and making them easy to reuse.
-- Shorter schema, which require less writing and are easier to skim/read.
+- Shorter schema, which require​ less writing and are easier to skim/read.
 - Aligns with the handling of interfaces in other object-oriented languages such as TypeScript and with, e.g., the documentation of the Github GraphQL API which doesn't include inherited fields, see [for example](https://docs.github.com/en/graphql/reference/objects#issue).
   Following established conventions leads to an easier knowledge transfer.
   Moreover, it also aligns the way the schema is defined with other alternatives to SDL like [TypeGraphQL](https://typegraphql.com/).
@@ -239,7 +239,7 @@ It should be noted that these disadvantages can mostly be mitigated using tools 
 
 - Favor no change: ✅
 
-  The proposed changes are very minimal and do not require any new keywords or changes in parsing.
+  The proposed changes are very minimal and do not require​ any new keywords or changes in parsing.
 
   > **Editor's rebuttal**
   >
@@ -262,7 +262,7 @@ It should be noted that these disadvantages can mostly be mitigated using tools 
   >
   > ⚠️ This proposal is an advocation of terseness at the expense of simplicity. It is simpler for a type definition to be locally defined, inherting field definitions is new complicating behavior introducing potential problems like inheritance conflicts.
   >
-  > This behavior is not consistent with most object-oriented languages which may be a surprise to users. Nearly all OOP languages require a type that declares it implements an interface to provide that implementation. See [TypeScript example](https://www.typescriptlang.org/play?#code/JYOwLgpgTgZghgYwgAgJLIN4FgBQz-IzAQA2AJgFzIDOYUoA5rgL664IlzXXIDCywALYAHEhEERwPdNjwEA9POQA5APaRkYABbAeYAJ7CUwqKrIBXJDzghk0U1AA0AsMjKqIPEOoEgt0YFdAgHIeUEhYRAhQwmJyagA6FlwgA).
+  > This behavior is not consistent with most object-oriented languages which may be a surprise to users. Nearly all OOP languages require​ a type that declares it implements an interface to provide that implementation. See [TypeScript example](https://www.typescriptlang.org/play?#code/JYOwLgpgTgZghgYwgAgJLIN4FgBQz-IzAQA2AJgFzIDOYUoA5rgL664IlzXXIDCywALYAHEhEERwPdNjwEA9POQA5APaRkYABbAeYAJ7CUwqKrIBXJDzghk0U1AA0AsMjKqIPEOoEgt0YFdAgHIeUEhYRAhQwmJyagA6FlwgA).
 
 - Preserve option value: ✅
 

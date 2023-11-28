@@ -404,11 +404,6 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "README",
-          label: "README: GraphQL RFC (request for comments) Working Documents [RFC0]",
-        },
-        {
-          type: "doc",
           id: "OperationExpressions",
           label: "OperationExpressions: Operation Expressions [RFC0]",
         },

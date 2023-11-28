@@ -77,7 +77,7 @@ There is no obvious way to determine whether the `...Bar` or `... on HasName` se
 
 Our goal with this proposal is to address fragment modularity and the three main challenges above. Specifically:
 
-* GraphQL should provide a first-class syntax for using fragments in a modular way, such that developers can reason locally about fragments as they do with UI components. It should be easy to write code such that by design it cannot violate no-conflicting-alias rule.
+* GraphQL should provide a first-class​ syntax for using fragments in a modular way, such that developers can reason locally about fragments as they do with UI components. It should be easy to write code such that by design it cannot violate no-conflicting-alias rule.
 * Similarly, build tools should be able to exploit this property to avoid whole-program checks when fragments are spread using the modular syntax.
 * Finally, the new syntax would offer developers a way to easily check which fragments are fulfilled, and refer precisely to the results of a fragment without any unrelated sibling field data.
 
@@ -289,6 +289,6 @@ User:0 {
 
 In this world, the `Query.me` field points to a specific entity, `User` with `id` `0`.  `...Bar` is a fragment spread that also points to that same `User`. If for some reason `Bar` was unfulfilled in the query (i.e. `me` does not fulfill `HasAccount`), the fragment spread pointer could be null.
 
-The above response format would require the server understanding how to merge two fields that logically represent the same value, but are present in two completely different places in the request tree. There are many potential ways to solve this problem: above, we're solving it by keying each entity by its type and some server-defined “primary key”, but we could make this entity key more explicit or even less formalized within the specification.
+The above response format would require​ the server understanding how to merge two fields that logically represent the same value, but are present in two completely different places in the request tree. There are many potential ways to solve this problem: above, we're solving it by keying each entity by its type and some server-defined “primary key”, but we could make this entity key more explicit or even less formalized within the specification.
 
 We could also combine the new graph response with a new fragment “key” syntax, such that regular fragment spreads still act as inheritance, and only the new keys end up in the graph response. However, given the lower cost for duplicated fields in a graph format, this may not be a major issue.

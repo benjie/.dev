@@ -370,7 +370,7 @@ Letter :: one of
 Digit :: one of
   `0` `1` `2` `3` `4` `5` `6` `7` `8` `9`
 
-IntValue :: IntegerPart [lookahead != {Digit, `.`, NameStart}]
+IntValue :: IntegerPart [lookahead != \{Digit, `.`, NameStart}]
 
 IntegerPart ::
   - NegativeSign? 0

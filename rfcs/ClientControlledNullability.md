@@ -50,7 +50,7 @@ related: "895"
 - [Alex Reilly](https://github.com/twof) - Yelp iOS
 - [Liz Jakubowski](https://github.com/lizjakubowski) - Yelp iOS
 - [Mark Larah](https://github.com/magicmark) - Yelp Web
-- [Sanae Rosen](<social or github link here>) - Yelp Android
+- Sanae Rosen - Yelp Android
 - [Stephen Spalding](https://github.com/fotoetienne) - Netflix GraphQL Server Infrastructure
 - [Wei Xue](https://github.com/xuewei8910) - Yelp iOS
 - [Young Min Kim](https://github.com/aprilrd) - Netflix UI
@@ -319,7 +319,7 @@ years ([the initial RFC from April 2021](https://github.com/twof/graphql-spec/pu
 
 One of the contentious discussions we encountered was around the proposed behaviors of the nullability designator 
 `?`. Regardless of the chosen path, it had unintuitive semantics (see graphql/client-controlled-nullability-wg#2), 
-which require other RFCs, such as [fragment boundaries](https://github.com/graphql/graphql-wg/blob/main/rfcs/FragmentModularity.md), or new ideas like inline errors.
+which require​ other RFCs, such as [fragment boundaries](https://github.com/graphql/graphql-wg/blob/main/rfcs/FragmentModularity.md), or new ideas like inline errors.
 
 Even though we recognize the value of having a counterpart to `!`, we made a tradeoff decision to provide value 
 to the community sooner than later.

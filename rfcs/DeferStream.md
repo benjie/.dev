@@ -252,7 +252,7 @@ The GraphQL WG is not ruling out supporting `@defer` on fields in the future if 
 
 With incremental delivery, where multiple responses are delivered in one request, client code could re-render its UI multiple times in a short period of time. This could degrade performance of the application, negating the performance gains from using `@defer` or `@stream`. There are a few approaches that could be taken to mitigate this. Each of these approaches are orthogonal to one another, i.e. the working group could decide that more than one of these should be included in the spec or be labeled as best practices.
 
-These solutions require the GraphQL client to efficiently process multiple responses at the same time. (Relay support added here: https://github.com/facebook/relay/commit/b4c92a23ae061943ea7a2ddb5e2f7686d3af8c0e)
+These solutions require​ the GraphQL client to efficiently process multiple responses at the same time. (Relay support added here: https://github.com/facebook/relay/commit/b4c92a23ae061943ea7a2ddb5e2f7686d3af8c0e)
 
 1. __Client relies on transport to receive multiple responses.__ If the incremental responses are being sent over HTTP connection with chunked encoding, the client may receive multiple responses in a single read of HTTP stream and process them at the same time. This is only likely to happen when the responses are small and sent very close together. This would not work for all possible transport types, e.g. web sockets where each frame is received separately.
 
@@ -351,7 +351,7 @@ An example batched response:
 
 
 
-1. __Server can ignore `@defer`/`@stream`.__ This approach allows the GraphQL server to treat `@defer` and `@stream` as hints. The server can ignore these directives and include the deferred data in previous responses. This requires clients to be written with the expectation that deferred data could arrive in either its own incrementally delivered response or part of a previously delivered response. This solution does not require the client to be able to process multiple responses at the same time.
+1. __Server can ignore `@defer`/`@stream`.__ This approach allows the GraphQL server to treat `@defer` and `@stream` as hints. The server can ignore these directives and include the deferred data in previous responses. This requires clients to be written with the expectation that deferred data could arrive in either its own incrementally delivered response or part of a previously delivered response. This solution does not require​ the client to be able to process multiple responses at the same time.
 
 # Additional material
 - [1] [Lee Byron on idea of @defer and @stream](https://www.youtube.com/watch?v=ViXL0YQnioU&feature=youtu.be&t=9m4s)

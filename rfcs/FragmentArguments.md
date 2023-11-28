@@ -42,7 +42,7 @@ component has a corresponding fragment, then each of those screens can include
 exactly the data required by having each query spread the child component's
 fragment.
 
-This modularity begins to break down for variables. As an example, let's imagine
+This modularity begins to break down for variables. As an example, let​'s imagine
 a FriendsList component that shows a variable number of friends. We would have a
 fragment for that component like so:
 
@@ -204,7 +204,7 @@ alternatives here are:
     with a value", and that's not what's happening.
 
 Notably, this proposed syntax, of using `$name` at the definition and usage
-site, and `name:` when calling the Fragment/Function, is the convention that PHP
+site, and `name:` when calling the Fragment/Function​, is the convention that PHP
 uses for
 [Named Arguments](https://www.php.net/manual/en/functions.arguments.php#functions.named-arguments).
 Given GraphQL was designed with many PHP-isms, it seems like we should re-use
@@ -351,7 +351,7 @@ but not the spec, still de-duplicated common fragment spreads.
 With this change, we can just treat deduplicated fragment spreads as being keyed
 by (name, arguments) rather than just by name. When visiting child selections,
 we need to apply any fragment argument values (basically replace them with
-either variable or const values), and then any time we encounter duplicated
+either variable or const​ values), and then any time we encounter duplicated
 fragment spreads with different arguments within merging selections, we consider
 that invalid.
 
@@ -396,7 +396,7 @@ fragment within a single operation (the clients I work on cannot use Relay's
 trick).
 
 This validation rule is more strict than necessary: the graphql-js
-implementation did not require it, given the Overlapping Fields Can Be Merged
+implementation did not require​ it, given the Overlapping Fields Can Be Merged
 changes that protect against mis-merged fields.
 
 This validation rule may end up being more strict than required, but it would be easier to relax the rule than make it more strict later.

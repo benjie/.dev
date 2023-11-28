@@ -555,7 +555,7 @@ input I { x: String }
 input union IU = I | { y: Int }
 ```
 
-* ✂️ Objection: achieving this by indicating the default in the union (either explicitly or implicitly via the order) is undesirable as it may require multiple equivalent unions being created where only the default differs.
+* ✂️ Objection: achieving this by indicating the default in the union (either explicitly or implicitly via the order) is undesirable as it may require​ multiple equivalent unions being created where only the default differs.
 * ✂️ Objection: Numerous changes to a schema currently introduce breaking changes. The possibility of a breaking change isn't a breaking change and shouldn't prevent a polymorphic input type from existing.
 
 | [1][solution-1] | [2][solution-2] | [3][solution-3] | [4][solution-4] | [5][solution-5] | [6][solution-6] | [7][solution-7]
@@ -580,9 +580,9 @@ Criteria score: X (not considered)
 
 Clients should be able to pass "natural" input data to unions without specially formatting it or adding extra metadata.
 
-In other words: data should require minimal or no transformation and metadata over the wire
+In other words: data should require​ minimal or no transformation and metadata over the wire
 
-* ✂️ Objection: This is a matter of taste - legitimate [Prior Art](#-prior-art) exists that require formatting / extra metadata.
+* ✂️ Objection: This is a matter of taste - legitimate [Prior Art](#-prior-art) exists that require​ formatting / extra metadata.
 
 | [1][solution-1] | [2][solution-2] | [3][solution-3] | [4][solution-4] | [5][solution-5] | [6][solution-6] | [7][solution-7]
 |----|----|----|----|----|----|----|
@@ -674,7 +674,7 @@ Criteria score: 🥈
 ## 🎯 O. Unconstrained combination of input types to unions
 
 It should be possible to combine existing or new input types to unions freely and with ease.
-Adding an input to one or more unions should not require extraneous changes, constrain or be constrained by schema design.
+Adding an input to one or more unions should not require​ extraneous changes, constrain or be constrained by schema design.
 
 | [1][solution-1] | [2][solution-2] | [3][solution-3] | [4][solution-4] | [5][solution-5] | [6][solution-6] | [7][solution-7]
 |----|----|----|----|----|----|----|
@@ -913,7 +913,7 @@ inputunion AnimalInput @discriminator(field: "species") =
 * [P. Error states and messages should be clear and helpful][criteria-p]
   * ✅
 * [Q. No new polymorphic type construct should be introduced][criteria-q]
-  * 🚫️ ``ìnputunion```is a new type construct
+  * 🚫️ ``ìnputunion`` is a new type construct
 
 ## 💡 3. Order based discrimination
 
@@ -1103,7 +1103,7 @@ input DogInput {
 * [P. Error states and messages should be clear and helpful][criteria-p]
   * 🚫 Structural uniqueness checks are very complex and have many hard-to-describe failure states.
 * [Q. No new polymorphic type construct should be introduced][criteria-q]
-  * 🚫️ ``ìnputunion```is a new type construct
+  * 🚫️ ``ìnputunion`` is a new type construct
 
 ## 💡 5. One Of (Tagged Union)
 
@@ -1311,7 +1311,7 @@ https://github.com/graphql/graphql-spec/pull/733
 * [P. Error states and messages should be clear and helpful][criteria-p]
   * ✅
 * [Q. No new polymorphic type construct should be introduced][criteria-q]
-  * 🚫️ ``tagged```is a new type construct
+  * 🚫️ ``tagged`` is a new type construct
 
 ### Summary of spec changes
 

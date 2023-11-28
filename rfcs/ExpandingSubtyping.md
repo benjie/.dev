@@ -62,18 +62,18 @@ Currently, GraphQL recognizes subtypes of two forms:
 1. A type (object or interface type) may implement an interface. The given type (object or interface) can therefore be recognized as a subtype of that interface.
 2. A type (object type) may be a member of a union. The given object type is recognized as a subtype of that union.
 
-Recognization as a subtype is important for the ["IsValidImplementation"]([https://spec.graphql.org/October2021/#IsValidImplementation()]($t)) and ["IsValidImplementationFieldType"]([https://spec.graphql.org/October2021/#IsValidImplementationFieldType()]($t)) algorithms.
+Recognization as a subtype is important for the "IsValidImplementation" (https://spec.graphql.org/October2021/#IsValidImplementation()) and "IsValidImplementationFieldType" (https://spec.graphql.org/October2021/#IsValidImplementationFieldType()) algorithms.
 
 To quote the former, emphasis added here:
 
-> 2. e) \{field\} must return a type which is equal to **or a sub-type of (covariant)** the return type of \{implementedField\} field’s return type
+> 2. e) \{field} must return a type which is equal to **or a sub-type of (covariant)** the return type of \{implementedField} field’s return type
 
 The latter algorithm contains the steps that check whether a type is indeed a subtype of another:
 
-> 3. If \{fieldType\} is the same type as \{implementedFieldType\} then return \{true\}
-> 4. If \{fieldType\} is an Object type and \{implementedFieldType\} is a Union type and \{fieldType\} is a possible type of \{implementedFieldType\} then return \{true\}.
-> 5. If \{fieldType\} is an Object or Interface type and \{implementedFieldType\} is an Interface type and \{fieldType\} declares it implements \{implementedFieldType\} then return \{true\}.
-> 6. Otherwise return \{false\}.
+> 3. If \{fieldType} is the same type as \{implementedFieldType} then return \{true}
+> 4. If \{fieldType} is an Object type and \{implementedFieldType} is a Union type and \{fieldType} is a possible type of \{implementedFieldType} then return \{true}.
+> 5. If \{fieldType} is an Object or Interface type and \{implementedFieldType} is an Interface type and \{fieldType} declares it implements \{implementedFieldType} then return \{true}.
+> 6. Otherwise return \{false}.
 
 [Note [that there exists a PR](https://github.com/graphql/graphql-spec/pull/977) to break out this subtyping algorithm into a separate small algorithm "IsSubType".]
 
@@ -308,7 +308,7 @@ We can allow union to be member types of unions, such that all member types of t
 
 Schema construction will now cause some level of recursion. Determining the `possibleTypes` of `Animal` requires first determining the possible types of `CowOrWolf`. Cycles must be forbidden as well, similar to how cycles are forbidden for interfaces implementing interfaces.
 
-This new construction would require changes to introspection:
+This new construction would require​ changes to introspection:
 
 ##### Suboption A
 
@@ -366,7 +366,7 @@ We can allow interfaces to be member types of unions, such that all implementati
 
 Schema construction will now be somewhat increased in complexity. Determining the `possibleTypes` of `Employee` requires first determining all the implementations of `Programmer`; this is not a recursive process, however.
 
-This new construction would require changes to introspection:
+This new construction would require​ changes to introspection:
 
 ##### Suboption A
 

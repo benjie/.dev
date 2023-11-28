@@ -262,7 +262,7 @@ serialization algorithm may optionally choose to output all permutations of fiel
 arguments used, should this be specified.
 
 A library has been written to demonstrate this mapping:
-[https://github.com/sharkcore/extract-schema-coordinates]($t).
+`https://github.com/sharkcore/extract-schema-coordinates`.
 
 ## 🗳️ Alternatives considered
 
