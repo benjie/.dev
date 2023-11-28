@@ -17,6 +17,27 @@ const CACHE_ENABLED = true;
 const SECOND = 1000;
 const MINUTE = 60 * SECOND;
 const CACHE_DURATION = 15 * MINUTE;
+const ALLOW_EMBED: Array<string | undefined> = [
+  "benjie",
+  "eapache",
+  "fotoetienne",
+  "ivangoncharov",
+  "leebyron",
+  "magicmark",
+  "martinbonnin",
+  "mike-marcacci",
+  "mjmahone",
+  "olegilyenko",
+  "robrichard",
+  "saerdnaer",
+  "spawnia",
+  "stubailo",
+  "taion",
+  "tgriesser",
+  "twof",
+  "victorandree",
+  "yaacovcr",
+].map((s) => s?.toLowerCase());
 
 const graphqlClient = new GraphQLClient("https://api.github.com/graphql", {
   headers: {
@@ -291,11 +312,15 @@ async function syncRfcPRs(ctx: Ctx) {
         related: getRelated(node.body),
       });
 
-      ctx.rfcs[identifier].verbatim = `\
+      ctx.rfcs[identifier].verbatim = ALLOW_EMBED.includes(
+        node.author?.login.toLowerCase(),
+      )
+        ? `\
 ---
 
 ${sanitizeMarkdown(node.body, identifier)}
-`;
+`
+        : `---\n\n(Embedding not enabled for ${node.author?.login})`;
 
       if (!firstPr) {
         firstPr = { number: node.number, updatedAt: node.updatedAt };

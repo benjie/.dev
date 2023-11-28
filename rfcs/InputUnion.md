@@ -4,6 +4,10 @@ stage: "0"
 title: GraphQL Input Union
 events:
   - type: docUpdated
+    date: 2023-11-28T18:43:39+00:00
+    href: https://github.com/graphql/graphql-wg/blob/ca0fc775c66ae0e31c4ed605503a2679d9390705/rfcs/InputUnion.md
+    actor: Benjie Gillam
+  - type: docUpdated
     date: 2023-11-28T17:58:57+00:00
     href: https://github.com/graphql/graphql-wg/blob/5bfb8d590cc9693db1149b547d8db5041f05b731/rfcs/InputUnion.md
     actor: Benjie Gillam
@@ -203,6 +207,7 @@ related: 395, 586, 733
 
 ## Timeline
 
+- **[RFC document updated](https://github.com/graphql/graphql-wg/blob/ca0fc775c66ae0e31c4ed605503a2679d9390705/rfcs/InputUnion.md)** on 2023-11-28 by Benjie Gillam
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/5bfb8d590cc9693db1149b547d8db5041f05b731/rfcs/InputUnion.md)** on 2023-11-28 by Benjie Gillam
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/8079f5885f03f78a5910a6a5bdeaea063f9a3184/rfcs/InputUnion.md)** on 2021-09-03 by Lee Byron
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/f520be18cc7794d6179f7c6e126b45085f273f1f/rfcs/InputUnion.md)** on 2021-09-02 by Ivan Goncharov

@@ -4,6 +4,10 @@ stage: "0"
 title: Client Controlled Nullability
 events:
   - type: docUpdated
+    date: 2023-11-28T18:43:39+00:00
+    href: https://github.com/graphql/graphql-wg/blob/ca0fc775c66ae0e31c4ed605503a2679d9390705/rfcs/ClientControlledNullability.md
+    actor: Benjie Gillam
+  - type: docUpdated
     date: 2023-08-03T00:39:21-07:00
     href: https://github.com/graphql/graphql-wg/blob/64c7f2e88b018de61763c780294d887b3c593b1e/rfcs/ClientControlledNullability.md
     actor: Calvin Cestari
@@ -35,6 +39,7 @@ related: "895"
 
 ## Timeline
 
+- **[RFC document updated](https://github.com/graphql/graphql-wg/blob/ca0fc775c66ae0e31c4ed605503a2679d9390705/rfcs/ClientControlledNullability.md)** on 2023-11-28 by Benjie Gillam
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/64c7f2e88b018de61763c780294d887b3c593b1e/rfcs/ClientControlledNullability.md)** on 2023-08-03 by Calvin Cestari
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/e975ecc5c67a07e6074550f21b60751d32be7d27/rfcs/ClientControlledNullability.md)** on 2022-05-16 by Alex Reilly
 - **[RFC document created](https://github.com/graphql/graphql-wg/blob/c24d2a3474418d159cb17f147e9a53bef37e0bc6/rfcs/ClientControlledNullability.md)** on 2021-11-04 by Alex Reilly
