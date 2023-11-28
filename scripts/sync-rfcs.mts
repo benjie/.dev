@@ -4,6 +4,8 @@ import { getSdk } from "./sdk.mjs";
 import * as fs from "node:fs/promises";
 import { createHash } from "node:crypto";
 import * as yaml from "yaml";
+import { SidebarsConfig } from "@docusaurus/plugin-content-docs";
+import JSON5 from "json5";
 
 const __dirname = new URL(".", import.meta.url).pathname;
 const ROOT = __dirname + "/..";
@@ -161,7 +163,7 @@ async function updateRfc(
   }
   let frontmatter: Record<string, any> = {};
   let body: string = "";
-  const filePath = `${ROOT}/pages/rfcs/${identifier}.md`;
+  const filePath = `${ROOT}/rfcs/${identifier}.md`;
   try {
     ({ frontmatter, body } = await readMd(filePath));
   } catch (e) {
@@ -238,7 +240,7 @@ async function readMd(filePath: string) {
 }
 
 async function generateIndexAndMeta(ctx: Ctx) {
-  const files = await fs.readdir(`${ROOT}/pages/rfcs`);
+  const files = await fs.readdir(`${ROOT}/rfcs`);
   const everything: Array<{
     frontmatter: Record<string, any>;
     file: string;
@@ -249,7 +251,7 @@ async function generateIndexAndMeta(ctx: Ctx) {
     if (!file.endsWith(".md")) continue;
     if (file === "index.md") continue;
     const key = file.substring(0, file.length - 3);
-    const filePath = `${ROOT}/pages/rfcs/${file}`;
+    const filePath = `${ROOT}/rfcs/${file}`;
     const { frontmatter, body } = await readMd(filePath);
     everything.push({ frontmatter, file, key });
   }
@@ -264,35 +266,59 @@ async function generateIndexAndMeta(ctx: Ctx) {
     return 0;
   });
 
-  const obj = Object.create(null);
-  const everythingSortedByKey = [...everything].sort((a, z) =>
-    a.key.localeCompare(z.key, "en-US"),
-  );
-  for (const thing of everythingSortedByKey) {
+  const sidebars: SidebarsConfig = {
+    rfcsSidebar: [
+      {
+        type: "category",
+        label: "GraphQL RFCs",
+        collapsed: false,
+        collapsible: false,
+        items: [],
+        link: {
+          type: "doc",
+          id: "index",
+        },
+      },
+    ],
+  };
+  for (const thing of everything) {
     const {
       key,
       frontmatter: { identifier, stage, shortname, champion },
     } = thing;
-    obj[key] = {
-      title: `${identifier}${
-        champion === "benjie" ? "*" : ""
-      }: ${shortname} [RFC${stage}]`,
-      href: `/rfcs/${identifier}`,
-      ...(stage === "X" ||
+    const hide =
+      stage === "X" ||
       stage === "?" ||
-      ((stage === "3" || stage === "0") && champion !== "benjie")
-        ? { display: "hidden" }
-        : null),
-    };
+      ((stage === "3" || stage === "0") && champion !== "benjie");
+    if (!hide) {
+      sidebars.rfcsSidebar[0].items.push({
+        type: "doc",
+        id: key,
+        label: `${identifier}${
+          champion === "benjie" ? "*" : ""
+        }: ${shortname} [RFC${stage}]`,
+      });
+    }
   }
 
   await fs.writeFile(
-    `${ROOT}/pages/rfcs/_meta.json`,
-    JSON.stringify(obj, null, 2) + "\n",
+    `${ROOT}/sidebarsRfcs.js`,
+    `\
+// @ts-check
+
+/** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
+const sidebars = ${JSON5.stringify(sidebars, {
+      replacer: null,
+      space: 2,
+      quote: '"',
+    })};
+
+export default sidebars;
+`,
   );
 
   await fs.writeFile(
-    `${ROOT}/pages/rfcs/index.md`,
+    `${ROOT}/rfcs/index.md`,
     `\
 ---
 title: "GraphQL RFCs"
@@ -321,7 +347,7 @@ function stageWeight(stage: string): number {
         ? -2
         : stage === "0"
           ? -1
-          : 1;
+          : parseInt(stage, 10);
 }
 
 function tidyTitle(title: string): string {

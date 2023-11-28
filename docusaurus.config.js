@@ -30,12 +30,25 @@ const config = {
         docs: {
           routeBasePath: "/",
           path: "pages",
+          sidebarCollapsible: false,
         },
         blog: false,
         theme: {
           customCss: "./src/css/custom.css",
         },
       }),
+    ],
+  ],
+  plugins: [
+    [
+      "@docusaurus/plugin-content-docs",
+      {
+        id: "rfcs",
+        path: "rfcs",
+        routeBasePath: "rfcs",
+        sidebarPath: "./sidebarsRfcs.js",
+        // ... other options
+      },
     ],
   ],
 
@@ -50,6 +63,13 @@ const config = {
           src: "img/avatar.jpg",
         },
         items: [
+          {
+            type: "doc",
+            docId: "index",
+            position: "left",
+            label: "RFCs",
+            docsPluginId: "rfcs",
+          },
           {
             to: "book",
             position: "right",
