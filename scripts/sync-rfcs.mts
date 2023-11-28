@@ -33,14 +33,16 @@ interface State {
 interface Ctx {
   state: State;
   sdk: ReturnType<typeof getSdk>;
+  rfcs: Record<string, RFCFile>;
 }
 
 interface Frontmatter {
   title: string;
   identifier: string;
+  /** Append only */
   events: Event[];
+  /** Human controlled */
   shortname?: string;
-  fullTitle?: string;
   stage: "0" | "1" | "2" | "3" | "X" | "?";
   champion?: string;
   //createdAt?: string;
@@ -48,6 +50,14 @@ interface Frontmatter {
   prUrl?: string;
   rfcDocUrl?: string;
   issueUrl?: string;
+  /** Human controlled */
+  superceded?: {
+    /** identifier */
+    by: string;
+    date: string;
+  };
+  /** Append only, comma-separated list */
+  related?: string;
 }
 
 function assertFrontmatter(
@@ -109,11 +119,83 @@ async function cache<TArgs extends any[], TResult>(
 async function main() {
   const state = await loadState();
   const sdk = getSdk(graphqlClient);
-  const ctx: Ctx = { state, sdk };
+  const ctx: Ctx = { state, sdk, rfcs: Object.create(null) };
+  await loadRfcs(ctx);
   await syncRfcPRs(ctx);
   await syncRfcDocs(ctx);
+  await writeRfcs(ctx);
   await generateIndexAndMeta(ctx);
   await saveState(ctx.state);
+}
+
+async function loadRfcs(ctx: Ctx) {
+  const files = await fs.readdir(`${ROOT}/rfcs`);
+  for (const file of files) {
+    if (file.startsWith(".")) continue;
+    if (!file.endsWith(".md")) continue;
+    if (file === "index.md") continue;
+    const identifier = file.substring(0, file.length - 3);
+    const filePath = `${ROOT}/rfcs/${file}`;
+    const { frontmatter, body } = await readMd(filePath);
+    ctx.rfcs[identifier] = { frontmatter, filePath, identifier, body };
+  }
+}
+
+async function writeRfcs(ctx: Ctx) {
+  for (const rfc of Object.values(ctx.rfcs)) {
+    const { frontmatter, body, identifier, filePath } = rfc;
+    if (!frontmatter.shortname) {
+      frontmatter.shortname = frontmatter.title;
+    }
+    if (!frontmatter.stage) {
+      frontmatter.stage = "0";
+    }
+    frontmatter.identifier = identifier;
+    frontmatter.events.sort((a, z) => Date.parse(z.date) - Date.parse(a.date));
+
+    const head = `\
+## At a glance
+
+- **Identifier**: ${formatIdentifier(frontmatter.identifier)}
+- **Stage**: ${stageMarkdown(frontmatter.stage)}
+- **Champion**: ${championMarkdown(frontmatter.champion)}
+- **PR**: ${formatPr(frontmatter)}
+${
+  frontmatter.related
+    ? `- **Related**: ${printEachRelated(ctx, frontmatter.related).join(
+        ", ",
+      )}\n`
+    : ``
+}\
+`;
+
+    const foot = `\
+## Timeline
+
+${frontmatter.events
+  .map((event) => `- ` + formatTimelineEvent(event, frontmatter))
+  .join("\n")}
+`;
+
+    await fs.writeFile(
+      filePath,
+      `\
+---
+${yaml.stringify(frontmatter).trim()}
+---
+
+${head.trim()}
+
+<!-- BEGIN_CUSTOM_TEXT -->
+
+${body.trim()}
+
+<!-- END_CUSTOM_TEXT -->
+
+${foot.trim()}
+`,
+    );
+  }
 }
 
 async function syncRfcPRs(ctx: Ctx) {
@@ -146,7 +228,8 @@ async function syncRfcPRs(ctx: Ctx) {
         break;
       }
 
-      await updateRfc(ctx, `${node.number}`, {
+      await updateRfc(ctx, {
+        identifier: `${node.number}`,
         title: tidyTitle(node.title),
         stage: labelsToStage(
           node.labels?.edges?.map((e) => e?.node?.name) ?? [],
@@ -187,23 +270,30 @@ async function syncRfcDocs(ctx: Ctx) {
       const identifier = doc.substring(0, doc.length - 3);
       const content = await fs.readFile(fullPath, "utf8");
       const [header] = content.split("\n", 2);
-      const [, createdAt, author] = (
-        await $`git log --diff-filter=A --follow --format="%aI %an" ${doc}`
-      ).stdout
-        .trim()
-        .match(/^([\S]+) ([\s\S]+)$/)!;
-      console.log(identifier, fullPath, createdAt);
+      const gitResult = await $`git log --follow --format="%H %aI %an" ${doc}`;
+      const commits = gitResult.stdout
+        .split("\n")
+        .filter((s) => s.trim() !== "");
 
-      await updateRfc(ctx, identifier, {
+      const events: Event[] = [];
+      for (let i = 0, l = commits.length; i < l; i++) {
+        const commit = commits[i];
+        const [, hash, createdAt, author] = commit
+          .trim()
+          .match(/^([\S]+) ([\S]+) ([\s\S]+)$/)!;
+        events.push({
+          type: i === l - 1 ? "docCreated" : "docUpdated",
+          date: createdAt,
+          href: `https://github.com/graphql/graphql-wg/blob/${hash}/rfcs/${doc}`,
+          actor: author,
+        });
+      }
+
+      await updateRfc(ctx, {
+        identifier,
+        stage: "0",
         title: tidyTitle(header),
-        events: [
-          {
-            type: "docCreated",
-            date: createdAt,
-            href: `https://github.com/graphql/graphql-wg/blob/main/rfcs/${doc}`,
-            actor: author,
-          },
-        ],
+        events,
       });
     }),
   );
@@ -222,124 +312,67 @@ interface PrCreatedEvent extends EventBase {
 interface DocCreatedEvent extends EventBase {
   type: "docCreated";
 }
+interface DocUpdatedEvent extends EventBase {
+  type: "docUpdated";
+}
 interface WgAgendaEvent extends EventBase {
   type: "wgAgenda";
 }
 
-type Event = PrCreatedEvent | DocCreatedEvent | WgAgendaEvent;
+type Event = PrCreatedEvent | DocCreatedEvent | DocUpdatedEvent | WgAgendaEvent;
 
-async function updateRfc(
-  ctx: Ctx,
-  identifier: string,
-  details: {
-    title: string;
-    stage?: "0" | "1" | "2" | "3" | "X" | "?";
-    champion?: string;
-    rfcDocUrl?: string;
-    issueUrl?: string;
-    prUrl?: string;
-    events?: Event[];
-  },
-) {
+async function updateRfc(ctx: Ctx, details: Frontmatter) {
+  const { identifier } = details;
   if (!identifier.match(/^[a-zA-Z0-9_]+$/)) {
     throw new Error(`Invalid RFC identifier: ${identifier}`);
   }
-  let draftFrontmatter: Partial<Frontmatter> = {};
-  let body: string = "";
+  if (!ctx.rfcs[identifier]) {
+    ctx.rfcs[identifier] = {
+      frontmatter: details,
+      body: "",
+      identifier,
+      filePath: `${ROOT}/rfcs/${identifier}.md`,
+    };
+  }
+  const rfc = ctx.rfcs[identifier];
   const filePath = `${ROOT}/rfcs/${identifier}.md`;
-  try {
-    ({ frontmatter: draftFrontmatter, body } = await readMd(filePath));
-  } catch (e) {
-    if (e.code === "ENOENT") {
-      /* File doesn't exist yet; continue */
-    } else {
-      throw e;
-    }
+  const { frontmatter } = rfc;
+  if (!frontmatter.events) {
+    frontmatter.events = [];
   }
-  if (!draftFrontmatter.events) {
-    draftFrontmatter.events = [];
-  }
-  if (details.title) {
-    draftFrontmatter.fullTitle = details.title;
-  }
-  if (details.stage) {
-    draftFrontmatter.stage = details.stage;
-  }
-  if (details.champion) {
-    draftFrontmatter.champion = details.champion;
-  }
-  if (details.rfcDocUrl) {
-    draftFrontmatter.rfcDocUrl = details.rfcDocUrl;
-  }
-  if (details.issueUrl) {
-    draftFrontmatter.issueUrl = details.issueUrl;
-  }
-  if (details.prUrl) {
-    draftFrontmatter.prUrl = details.prUrl;
-  }
-  if (details.events) {
-    for (const event of details.events) {
-      const existingMatchingEvent = draftFrontmatter.events.find(
-        (e) => e.type === event.type && e.date === event.date,
-      );
-      if (!existingMatchingEvent) {
-        draftFrontmatter.events.push(event);
+
+  // Apply updates. Most keys overwrite, but some have special handling
+  for (const key of Object.keys(details) as (keyof typeof details)[]) {
+    if (key === "events") {
+      if (details.events == null) continue;
+      for (const event of details.events) {
+        const existingMatchingEvent = frontmatter.events.find(
+          (e) => e.type === event.type && e.date === event.date,
+        );
+        if (!existingMatchingEvent) {
+          frontmatter.events.push(event);
+        }
       }
+    } else if (key === "related") {
+      if (details.related == null) continue;
+      const related = frontmatter.related
+        ? new Set(frontmatter.related.split(",").map((s) => s.trim()))
+        : new Set();
+      for (const rel of details.related.split(",").map((s) => s.trim())) {
+        related.add(rel);
+      }
+      frontmatter.related = Array.from(related).sort().join(", ");
+      // These keys only replace if not already set
+    } else if (["shortname", "superceded"].includes(key)) {
+      if (details.superceded == null) continue;
+      if (!frontmatter[key]) {
+        frontmatter[key] = details[key] as any;
+      }
+    } else {
+      if (details[key] == null) continue;
+      frontmatter[key] = details[key] as any;
     }
   }
-  // There must always be at least one key
-  if (!draftFrontmatter.title) {
-    draftFrontmatter.title = draftFrontmatter.fullTitle;
-  }
-  if (!draftFrontmatter.shortname) {
-    draftFrontmatter.shortname = draftFrontmatter.fullTitle;
-  }
-  if (!draftFrontmatter.stage) {
-    draftFrontmatter.stage = "0";
-  }
-  draftFrontmatter.identifier = identifier;
-  draftFrontmatter.events.sort(
-    (a, z) => Date.parse(z.date) - Date.parse(a.date),
-  );
-
-  assertFrontmatter(draftFrontmatter);
-  const frontmatter = draftFrontmatter;
-
-  const head = `\
-## At a glance
-
-- **Identifier**: ${formatIdentifier(frontmatter.identifier)}
-- **Stage**: ${stageMarkdown(frontmatter.stage)}
-- **Champion**: ${championMarkdown(frontmatter.champion)}
-- **PR**: ${formatPr(frontmatter)}
-`;
-
-  const foot = `\
-## Timeline
-
-${frontmatter.events
-  .map((event) => `- ` + formatTimelineEvent(event, frontmatter))
-  .join("\n")}
-`;
-
-  await fs.writeFile(
-    filePath,
-    `\
----
-${yaml.stringify(frontmatter).trim()}
----
-
-${head.trim()}
-
-<!-- BEGIN_CUSTOM_TEXT -->
-
-${body.trim()}
-
-<!-- END_CUSTOM_TEXT -->
-
-${foot.trim()}
-`,
-  );
 }
 
 function labelsToStage(
@@ -370,25 +403,24 @@ async function readMd(filePath: string) {
   const body = matches[3].trim();
   return { frontmatter, body };
 }
-interface Thing {
+
+interface RFCFile {
   frontmatter: Frontmatter;
-  file: string;
-  key: string;
+  /** The full path to the file */
+  filePath: string;
+  /** The RFC identifier */
+  identifier: string;
+  /** The human-written body */
+  body: string;
 }
+
 async function generateIndexAndMeta(ctx: Ctx) {
-  const files = await fs.readdir(`${ROOT}/rfcs`);
-  const everything: Array<Thing> = [];
-  for (const file of files) {
-    if (file.startsWith(".")) continue;
-    if (!file.endsWith(".md")) continue;
-    if (file === "index.md") continue;
-    const key = file.substring(0, file.length - 3);
-    const filePath = `${ROOT}/rfcs/${file}`;
-    const { frontmatter, body } = await readMd(filePath);
-    everything.push({ frontmatter, file, key });
-  }
+  const everything = Object.values(ctx.rfcs);
 
   everything.sort((a, z) => {
+    const r =
+      (a.frontmatter.superceded ? 1 : 0) - (z.frontmatter.superceded ? 1 : 0);
+    if (r !== 0) return r;
     const s =
       stageWeight(z.frontmatter.stage) - stageWeight(a.frontmatter.stage);
     if (s !== 0) return s;
@@ -457,8 +489,8 @@ async function generateIndexAndMeta(ctx: Ctx) {
   } satisfies SidebarsConfig;
   for (const thing of everything) {
     const {
-      key,
-      frontmatter: { identifier, stage, shortname, champion },
+      identifier,
+      frontmatter: { stage, shortname, champion },
     } = thing;
     const RFCCategory =
       stage === "0"
@@ -474,7 +506,7 @@ async function generateIndexAndMeta(ctx: Ctx) {
                 : RFCUnknown;
     RFCCategory.items.push({
       type: "doc",
-      id: key,
+      id: identifier,
       label: `${identifier}${
         champion === "benjie" ? "*" : ""
       }: ${shortname} [RFC${stage}]`,
@@ -600,7 +632,11 @@ function formatTimelineEvent(event: Event, frontmatter: Frontmatter): string {
         event.date,
       )} by ${event.actor ?? "unknown"}`;
     case "docCreated":
-      return `**[RFC Document](${event.href}) created** on ${formatDate(
+      return `**[RFC document created](${event.href})** on ${formatDate(
+        event.date,
+      )} by ${event.actor ?? "unknown"}`;
+    case "docUpdated":
+      return `**[RFC document updated](${event.href})** on ${formatDate(
         event.date,
       )} by ${event.actor ?? "unknown"}`;
     case "wgAgenda":
@@ -621,7 +657,7 @@ function formatDate(date: string): string {
   return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
 }
 
-function printTables(everything: Thing[]) {
+function printTables(everything: RFCFile[]) {
   const thingsByStage = {};
   for (const thing of everything) {
     const stage = thing.frontmatter.stage ?? "?";
@@ -643,12 +679,12 @@ ${printTable(things)}
   return output.join("\n\n");
 }
 
-function printTable(things: Thing[]) {
-  const printRow = (thing: Thing) => {
+function printTable(things: RFCFile[]) {
+  const printRow = (thing: RFCFile) => {
     return `| [${formatIdentifier(thing.frontmatter.identifier)}](/rfcs/${
       thing.frontmatter.identifier
     }) | ${championMarkdown(thing.frontmatter.champion)} | ${
-      thing.frontmatter.fullTitle ?? thing.frontmatter.title
+      thing.frontmatter.title
     } | ${
       thing.frontmatter.prUrl ? `[Yes](${thing.frontmatter.prUrl})` : `No?`
     } | ${formatTimelineEvent(
@@ -669,7 +705,16 @@ function formatPr(frontmatter: Frontmatter) {
     : "-";
 }
 
-async function wgCmd(cmdline) {}
+function printEachRelated(ctx: Ctx, related: string): string[] {
+  const { rfcs } = ctx;
+  const identifiers = related.split(",").map((s) => s.trim());
+  return identifiers.map(
+    (identifier) =>
+      `[${formatIdentifier(identifier)}](/rfcs/${identifier}) (${
+        rfcs[identifier].frontmatter.shortname
+      })`,
+  );
+}
 
 main().catch((e) => {
   console.error(e);
