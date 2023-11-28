@@ -148,8 +148,22 @@ async function loadRfcs(ctx: Ctx) {
 }
 
 async function writeRfcs(ctx: Ctx) {
+  const relatedByIdentifier: Record<string, Set<string>> = {};
+
+  // Cross-polinate the relateds
   for (const rfc of Object.values(ctx.rfcs)) {
     const { frontmatter, body, identifier, filePath, verbatim } = rfc;
+    relatedByIdentifier[identifier] = parseRelated(frontmatter.related);
+  }
+  for (const [identifier, related] of Object.entries(relatedByIdentifier)) {
+    for (const rel of related) {
+      relatedByIdentifier[rel]?.add(identifier);
+    }
+  }
+
+  for (const rfc of Object.values(ctx.rfcs)) {
+    const { frontmatter, body, identifier, filePath, verbatim } = rfc;
+    frontmatter.related = [...relatedByIdentifier[identifier]].join(", ");
     if (!frontmatter.shortname) {
       frontmatter.shortname = frontmatter.title;
     }
@@ -158,6 +172,7 @@ async function writeRfcs(ctx: Ctx) {
     }
     frontmatter.identifier = identifier;
     frontmatter.events.sort((a, z) => Date.parse(z.date) - Date.parse(a.date));
+
     const related = frontmatter.related
       ? printEachRelated(ctx, frontmatter.related)
       : [];
@@ -378,10 +393,8 @@ async function updateRfc(ctx: Ctx, details: Frontmatter) {
       }
     } else if (key === "related") {
       if (details.related == null) continue;
-      const related = frontmatter.related
-        ? new Set(frontmatter.related.split(",").map((s) => s.trim()))
-        : new Set();
-      for (const rel of details.related.split(",").map((s) => s.trim())) {
+      const related = parseRelated(frontmatter.related);
+      for (const rel of parseRelated(details.related)) {
         related.add(rel);
       }
       frontmatter.related = Array.from(related).sort().join(", ");
@@ -737,7 +750,7 @@ function formatPr(frontmatter: Frontmatter) {
 
 function printEachRelated(ctx: Ctx, related: string): string[] {
   const { rfcs } = ctx;
-  const identifiers = related.split(",").map((s) => s.trim());
+  const identifiers = [...parseRelated(related)];
   return identifiers
     .map((identifier) => {
       const target = rfcs[identifier];
@@ -785,6 +798,10 @@ function getRelated(markdown: string): string | undefined {
 
   if (related.size === 0) return undefined;
   else return [...related].join(", ");
+}
+
+function parseRelated(related: string | undefined): Set<string> {
+  return related ? new Set(related.split(",").map((s) => s.trim())) : new Set();
 }
 
 main().catch((e) => {
