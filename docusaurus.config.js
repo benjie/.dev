@@ -6,7 +6,7 @@ const config = {
   title: "benjie.dev",
   tagline:
     "Learnings from GraphQL TSC member and community-funded open source developer, Benjie",
-  favicon: "img/favicon.ico",
+  favicon: "favicon.ico",
   url: "https://benjie.dev",
   baseUrl: "/",
   organizationName: "benjie",
