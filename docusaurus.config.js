@@ -79,7 +79,7 @@ const config = {
       },
       footer: {
         style: "dark",
-        copyright: `Copyright © ${new Date().getFullYear()} Benjie Gillam; all rights reserved`,
+        copyright: `Copyright © ${new Date().getFullYear()} Benjie Gillam; all rights reserved. RFC pages pull content from public GitHub issues/PRs/files/etc; this content remains owned its various authors.`,
       },
       prism: {
         theme: prismThemes.github,
