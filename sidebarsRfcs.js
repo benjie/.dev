@@ -10,6 +10,7 @@ const sidebars = {
     {
       type: "doc",
       id: "activity",
+      label: "Activity",
     },
     {
       type: "category",

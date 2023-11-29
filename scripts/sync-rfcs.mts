@@ -714,6 +714,7 @@ async function generateIndexAndMeta(ctx: Ctx) {
       {
         type: "doc",
         id: "activity",
+        label: "Activity",
       },
       RFC3,
       RFC2,
