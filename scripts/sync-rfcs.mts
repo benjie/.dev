@@ -655,9 +655,9 @@ async function generateIndexAndMeta(ctx: Ctx) {
     const s =
       stageWeight(z.frontmatter.stage) - stageWeight(a.frontmatter.stage);
     if (s !== 0) return s;
-    const aOldestEvent = a.frontmatter.events[a.frontmatter.events.length - 1];
-    const zOldestEvent = z.frontmatter.events[z.frontmatter.events.length - 1];
-    const t = Date.parse(zOldestEvent.date) - Date.parse(aOldestEvent.date);
+    const aNewestEvent = a.frontmatter.events[0];
+    const zNewestEvent = z.frontmatter.events[0];
+    const t = Date.parse(zNewestEvent.date) - Date.parse(aNewestEvent.date);
     if (t !== 0) return t;
     return 0;
   });
@@ -778,7 +778,7 @@ description: "Tracks the various GraphQL RFCs, their major events and status."
 keywords: [graphql, rfc, rfcs, tracker, history, active, merged, spec, specification, wg, benjie]
 ---
 
-# GraphQL RFCs
+# GraphQL RFC Tracker
 
 The following is a rough tracker of GraphQL RFCs, compiled and maintained by
 Benjie. It does not claim to be a complete, accurate, or up to date
@@ -845,7 +845,7 @@ function rfcLink(
   }`;
 }
 
-function stageWeight(stage: string | undefined): number {
+function stageWeight(stage: string | null | undefined): number {
   return stage === "3"
     ? -4
     : stage == null

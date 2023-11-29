@@ -30,18 +30,13 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "849",
-          label: "849: Allow full unicode range [RFC3]",
-        },
-        {
-          type: "doc",
           id: "805",
           label: "805: Allow deprecation of input values (field args, directive args, input fields) [RFC3]",
         },
         {
           type: "doc",
-          id: "803",
-          label: "803*: Replace 'query error' with 'request error' [RFC3]",
+          id: "849",
+          label: "849: Allow full unicode range [RFC3]",
         },
         {
           type: "doc",
@@ -50,13 +45,38 @@ const sidebars = {
         },
         {
           type: "doc",
+          id: "649",
+          label: "649: Custom Scalar Specification URLs [RFC3]",
+        },
+        {
+          type: "doc",
+          id: "803",
+          label: "803*: Replace 'query error' with 'request error' [RFC3]",
+        },
+        {
+          type: "doc",
           id: "701",
           label: "701: Disallow non-breakable chains of circular references in Input Objects [RFC3]",
         },
         {
           type: "doc",
-          id: "649",
-          label: "649: Custom Scalar Specification URLs [RFC3]",
+          id: "373",
+          label: "373: Allow interfaces to implement other interfaces [RFC3]",
+        },
+        {
+          type: "doc",
+          id: "472",
+          label: "472: Repeatable directives [RFC3]",
+        },
+        {
+          type: "doc",
+          id: "445",
+          label: "445: Disallow non-breakable chains of circular references in Input Objects [RFC3]",
+        },
+        {
+          type: "doc",
+          id: "599",
+          label: "599: Clarify that lexing is greedy [RFC3]",
         },
         {
           type: "doc",
@@ -70,18 +90,8 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "599",
-          label: "599: Clarify that lexing is greedy [RFC3]",
-        },
-        {
-          type: "doc",
           id: "510",
           label: "510: Allow directives on variable definitions [RFC3]",
-        },
-        {
-          type: "doc",
-          id: "472",
-          label: "472: Repeatable directives [RFC3]",
         },
         {
           type: "doc",
@@ -113,16 +123,6 @@ const sidebars = {
           id: "454",
           label: "454: Add validation steps for schema extensions [RFC3]",
         },
-        {
-          type: "doc",
-          id: "445",
-          label: "445: Disallow non-breakable chains of circular references in Input Objects [RFC3]",
-        },
-        {
-          type: "doc",
-          id: "373",
-          label: "373: Allow interfaces to implement other interfaces [RFC3]",
-        },
       ],
     },
     {
@@ -133,23 +133,23 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          id: "825",
-          label: "825*: OneOf Input Objects [RFC2]",
-        },
-        {
-          type: "doc",
           id: "793",
           label: "793*: Default value coercion rules [RFC2]",
         },
         {
           type: "doc",
-          id: "794",
-          label: "794: Schema Coordinates [RFC2]",
+          id: "825",
+          label: "825*: OneOf Input Objects [RFC2]",
         },
         {
           type: "doc",
           id: "742",
           label: "742: Spec edits for @defer/@stream [RFC2]",
+        },
+        {
+          type: "doc",
+          id: "794",
+          label: "794: Schema Coordinates [RFC2]",
         },
         {
           type: "doc",
@@ -166,8 +166,8 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          id: "1010",
-          label: "1010: Fragment Arguments: Spec Implementation [RFC1]",
+          id: "860",
+          label: "860*: Prevent @skip and @include on root subscription selection set [RFC1]",
         },
         {
           type: "doc",
@@ -176,8 +176,13 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "955",
-          label: "955: Add validation rule that operation types exist [RFC1]",
+          id: "1010",
+          label: "1010: Fragment Arguments: Spec Implementation [RFC1]",
+        },
+        {
+          type: "doc",
+          id: "865",
+          label: "865: Fragment Arguments (parameterized fragments) for GraphQL [RFC1]",
         },
         {
           type: "doc",
@@ -186,18 +191,23 @@ const sidebars = {
         },
         {
           type: "doc",
+          id: "955",
+          label: "955: Add validation rule that operation types exist [RFC1]",
+        },
+        {
+          type: "doc",
           id: "939",
           label: "939: allow unions to declare implementation of interfaces [RFC1]",
         },
         {
           type: "doc",
-          id: "907",
-          label: "907: Add support for directives on directives [RFC1]",
+          id: "895",
+          label: "895: Client Controlled Nullability [RFC1]",
         },
         {
           type: "doc",
-          id: "895",
-          label: "895: Client Controlled Nullability [RFC1]",
+          id: "907",
+          label: "907: Add support for directives on directives [RFC1]",
         },
         {
           type: "doc",
@@ -213,16 +223,6 @@ const sidebars = {
           type: "doc",
           id: "877",
           label: "877: Forbid duplicating argument names [RFC1]",
-        },
-        {
-          type: "doc",
-          id: "865",
-          label: "865: Fragment Arguments (parameterized fragments) for GraphQL [RFC1]",
-        },
-        {
-          type: "doc",
-          id: "860",
-          label: "860*: Prevent @skip and @include on root subscription selection set [RFC1]",
         },
         {
           type: "doc",
@@ -254,11 +254,6 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "1059",
-          label: "1059*: Introduce Strict and Legacy All Variable Usages Are Allowed [RFC0]",
-        },
-        {
-          type: "doc",
           id: "1053",
           label: "1053*: Implementations may not deprecate a field that the interface hasn't deprecated [RFC0]",
         },
@@ -279,6 +274,41 @@ const sidebars = {
         },
         {
           type: "doc",
+          id: "1059",
+          label: "1059*: Introduce Strict and Legacy All Variable Usages Are Allowed [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "ClientControlledNullability",
+          label: "ClientControlledNullability: Client Controlled Nullability [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "InputUnion",
+          label: "InputUnion: GraphQL Input Union [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "FeatureDiscovery",
+          label: "FeatureDiscovery: Feature Discovery [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "Struct",
+          label: "Struct: Polymorphic-capable composite symmetric input/output type (`struct`) [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "1065",
+          label: "1065*: SemanticNonNull type (null only on error) [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "1052",
+          label: "1052: deduplicated incremental delivery [RFC0]",
+        },
+        {
+          type: "doc",
           id: "wg1410",
           label: "wg1410: Strict Semantic Nullability [RFC0]",
         },
@@ -289,13 +319,13 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "1065",
-          label: "1065*: SemanticNonNull type (null only on error) [RFC0]",
+          id: "1048",
+          label: "1048*: Null-Only-On-Error / Semantically-Non-Null type (asterisk) [RFC0]",
         },
         {
           type: "doc",
-          id: "1048",
-          label: "1048*: Null-Only-On-Error / Semantically-Non-Null type (asterisk) [RFC0]",
+          id: "1034",
+          label: "1034: incremental delivery with deduplication + concurrent execution [RFC0]",
         },
         {
           type: "doc",
@@ -314,8 +344,13 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "FeatureDiscovery",
-          label: "FeatureDiscovery: Feature Discovery [RFC0]",
+          id: "999",
+          label: "999: introduce ExecuteGroupedFieldSet, CollectRootFields and CollectSubfields [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "1026",
+          label: "1026: incremental delivery with deduplication + concurrent execution [RFC0]",
         },
         {
           type: "doc",
@@ -324,8 +359,8 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "FragmentArguments",
-          label: "FragmentArguments: Fragment Arguments [RFC0]",
+          id: "1023",
+          label: "1023: incremental delivery without branching [RFC0]",
         },
         {
           type: "doc",
@@ -334,18 +369,23 @@ const sidebars = {
         },
         {
           type: "doc",
+          id: "FragmentArguments",
+          label: "FragmentArguments: Fragment Arguments [RFC0]",
+        },
+        {
+          type: "doc",
           id: "wg1239",
           label: "wg1239: Fragment Arguments: RFC + Implementation Details [RFC0]",
         },
         {
           type: "doc",
-          id: "999",
-          label: "999: introduce ExecuteGroupedFieldSet, CollectRootFields and CollectSubfields [RFC0]",
+          id: "998",
+          label: "998: add spec edits for references [RFC0]",
         },
         {
           type: "doc",
-          id: "998",
-          label: "998: add spec edits for references [RFC0]",
+          id: "OptInFeatures",
+          label: "OptInFeatures: Opt-in features [RFC0]",
         },
         {
           type: "doc",
@@ -359,33 +399,13 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "wg1096",
-          label: "wg1096: \"Metadata Directives\" Proposal [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "wg1071",
-          label: "wg1071*: Struct type [RFC0]",
-        },
-        {
-          type: "doc",
           id: "MetadataStructs",
           label: "MetadataStructs: Metadata Structs [RFC0]",
         },
         {
           type: "doc",
-          id: "Struct",
-          label: "Struct: Polymorphic-capable composite symmetric input/output type (`struct`) [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "960",
-          label: "960: Allow recursion within ResolveAbstractType [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "OptInFeatures",
-          label: "OptInFeatures: Opt-in features [RFC0]",
+          id: "wg1096",
+          label: "wg1096: \"Metadata Directives\" Proposal [RFC0]",
         },
         {
           type: "doc",
@@ -394,8 +414,33 @@ const sidebars = {
         },
         {
           type: "doc",
+          id: "wg1071",
+          label: "wg1071*: Struct type [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "960",
+          label: "960: Allow recursion within ResolveAbstractType [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "673",
+          label: "673: Servers must preserve lexical ordering between SDL and introspection [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "948",
+          label: "948*: OneOf Objects [RFC0]",
+        },
+        {
+          type: "doc",
           id: "wg944",
           label: "wg944: New Intersection Type [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "DeferStream",
+          label: "DeferStream: GraphQL Defer and Stream Directives [RFC0]",
         },
         {
           type: "doc",
@@ -414,23 +459,18 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "ClientControlledNullability",
-          label: "ClientControlledNullability: Client Controlled Nullability [RFC0]",
-        },
-        {
-          type: "doc",
           id: "888",
           label: "888: Map type [RFC0]",
         },
         {
           type: "doc",
-          id: "OperationExpressions",
-          label: "OperationExpressions: Operation Expressions [RFC0]",
+          id: "ImplicitInheritance",
+          label: "ImplicitInheritance: Implicit Inheritance [RFC0]",
         },
         {
           type: "doc",
-          id: "ImplicitInheritance",
-          label: "ImplicitInheritance: Implicit Inheritance [RFC0]",
+          id: "OperationExpressions",
+          label: "OperationExpressions: Operation Expressions [RFC0]",
         },
         {
           type: "doc",
@@ -444,33 +484,8 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "948",
-          label: "948*: OneOf Objects [RFC0]",
-        },
-        {
-          type: "doc",
           id: "823",
           label: "823*: operation expressions [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "1023",
-          label: "1023: incremental delivery without branching [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "1026",
-          label: "1026: incremental delivery with deduplication + concurrent execution [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "1034",
-          label: "1034: incremental delivery with deduplication + concurrent execution [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "1052",
-          label: "1052: deduplicated incremental delivery [RFC0]",
         },
         {
           type: "doc",
@@ -481,6 +496,11 @@ const sidebars = {
           type: "doc",
           id: "806",
           label: "806*: __typename should be valid at subscription root [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "Subscriptions",
+          label: "Subscriptions: NOTE: this document is kept for historic purposes; GraphQL Subscriptions have been specified and released as part of the official [June 2018 GraphQL Specification](https://spec.graphql.org/June2018/). [RFC0]",
         },
         {
           type: "doc",
@@ -499,16 +519,6 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "673",
-          label: "673: Servers must preserve lexical ordering between SDL and introspection [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "DeferStream",
-          label: "DeferStream: GraphQL Defer and Stream Directives [RFC0]",
-        },
-        {
-          type: "doc",
           id: "667",
           label: "667: [RFC Sketch] Defer and Stream Directives [RFC0]",
         },
@@ -516,11 +526,6 @@ const sidebars = {
           type: "doc",
           id: "631",
           label: "631: Make root query operation type optional [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "InputUnion",
-          label: "InputUnion: GraphQL Input Union [RFC0]",
         },
         {
           type: "doc",
@@ -539,13 +544,13 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "471",
-          label: "471: Limit uniqueness to `@skip`, `@include` and `@deprecated` directives [RFC0]",
+          id: "521",
+          label: "521: Scalar serialize as built-in scalar type [RFC0]",
         },
         {
           type: "doc",
-          id: "325",
-          label: "325: Add \"Any\" scalar type [RFC0]",
+          id: "471",
+          label: "471: Limit uniqueness to `@skip`, `@include` and `@deprecated` directives [RFC0]",
         },
         {
           type: "doc",
@@ -554,13 +559,8 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "521",
-          label: "521: Scalar serialize as built-in scalar type [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "Subscriptions",
-          label: "Subscriptions: NOTE: this document is kept for historic purposes; GraphQL Subscriptions have been specified and released as part of the official [June 2018 GraphQL Specification](https://spec.graphql.org/June2018/). [RFC0]",
+          id: "325",
+          label: "325: Add \"Any\" scalar type [RFC0]",
         },
       ],
     },
@@ -572,6 +572,11 @@ const sidebars = {
       items: [
         {
           type: "doc",
+          id: "319",
+          label: "319: Add '@ignoreIfUnknown' to allow forward compatibility for clients [RFCX]",
+        },
+        {
+          type: "doc",
           id: "606",
           label: "606: Support empty composite types [RFCX]",
         },
@@ -579,11 +584,6 @@ const sidebars = {
           type: "doc",
           id: "460",
           label: "460: Require Interfaces to have 1+ Objects implementing [RFCX]",
-        },
-        {
-          type: "doc",
-          id: "319",
-          label: "319: Add '@ignoreIfUnknown' to allow forward compatibility for clients [RFCX]",
         },
         {
           type: "doc",
