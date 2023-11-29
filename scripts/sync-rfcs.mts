@@ -236,7 +236,10 @@ ${related.length > 0 ? `- **Related**: ${related.join(", ")}\n` : ``}\
 ## Timeline
 
 ${frontmatter.events
-  .map((event) => `- ` + formatTimelineEvent(event, frontmatter))
+  .map(
+    (event) =>
+      `- ` + formatTimelineEvent(event, frontmatter).replace(/\n/g, "\n  "),
+  )
   .join("\n")}
 `;
 
@@ -543,17 +546,17 @@ async function updateRfc(ctx: Ctx, details: Frontmatter) {
   if (!identifier.match(/^[a-zA-Z0-9_]+$/)) {
     throw new Error(`Invalid RFC identifier: ${identifier}`);
   }
+  const filePath = `${ROOT}/rfcs/${identifier}.md`;
   if (!ctx.rfcs[identifier]) {
     ctx.rfcs[identifier] = {
       frontmatter: details,
       body: "",
       identifier,
-      filePath: `${ROOT}/rfcs/${identifier}.md`,
+      filePath,
       verbatim: "",
     };
   }
   const rfc = ctx.rfcs[identifier];
-  const filePath = `${ROOT}/rfcs/${identifier}.md`;
   const { frontmatter } = rfc;
   if (!frontmatter.events) {
     frontmatter.events = [];
@@ -564,10 +567,12 @@ async function updateRfc(ctx: Ctx, details: Frontmatter) {
     if (key === "events") {
       if (details.events == null) continue;
       for (const event of details.events) {
-        const existingMatchingEvent = frontmatter.events.find(
+        const existingMatchingEventIndex = frontmatter.events.findIndex(
           (e) => e.type === event.type && e.date === event.date,
         );
-        if (!existingMatchingEvent) {
+        if (existingMatchingEventIndex >= 0) {
+          frontmatter.events[existingMatchingEventIndex] = event;
+        } else {
           frontmatter.events.push(event);
         }
       }
@@ -843,9 +848,23 @@ function githubUsernameMarkdown(champion: string | undefined): string {
 function formatIdentifier(identifier: string): string {
   if (String(parseInt(identifier, 10)) === identifier) {
     return `#${identifier}`;
+  } else if (
+    identifier.startsWith("wg") &&
+    String(parseInt(identifier.substring(2), 10)) === identifier.substring(2)
+  ) {
+    return `wg#${identifier.substring(2)}`;
   } else {
     return identifier;
   }
+}
+
+function commitAuthorMarkdown(commit: {
+  ghUser: string | null;
+  authorName: string | null;
+}) {
+  return commit.ghUser
+    ? githubUsernameMarkdown(commit.ghUser)
+    : commit.authorName ?? "unknown";
 }
 
 function formatTimelineEvent(event: Event, frontmatter: Frontmatter): string {
@@ -857,17 +876,21 @@ function formatTimelineEvent(event: Event, frontmatter: Frontmatter): string {
     case "commitsPushed":
       if (event.commits.length === 1) {
         const commit = event.commits[0];
-        return `**Commit pushed**: ['${commit.headline}'](${
+        return `**Commit pushed**: ['${lossilyEscapeMd(commit.headline)}'](${
           commit.href
-        }) on ${formatDate(event.date)} by ${
-          commit.ghUser
-            ? githubUsernameMarkdown(commit.ghUser)
-            : commit.authorName ?? "unknown"
-        }`;
+        }) on ${formatDate(event.date)} by ${commitAuthorMarkdown(commit)}`;
       } else {
-        return `**${event.commits.length} commits pushed** [(latest commit)](${
-          event.href
-        }) on ${formatDate(event.date)} by ${event.actor ?? "unknown"}`;
+        return `**${event.commits.length} commits pushed** on ${formatDate(
+          event.date,
+        )}:
+${event.commits
+  .map(
+    (commit) =>
+      `- [${lossilyEscapeMd(commit.headline)}](${
+        commit.href
+      }) by ${commitAuthorMarkdown(commit)}`,
+  )
+  .join("\n")}`;
       }
     case "docCreated":
       return `**[RFC document created](${event.href})** on ${formatDate(
@@ -1224,6 +1247,13 @@ function getDateFromNoteOrAgendaFile(file: string): [string, string] {
     return [`${yyyy}-${mm}`, date.toISOString().substring(0, 10)];
   }
   throw new Error(`Couldn't extract date from ${file}`);
+}
+
+function lossilyEscapeMd(md: string): string {
+  return md
+    .replace(/[`\\]/g, "")
+    .replace(/[{<[]/g, "\\$&")
+    .replace(/[^-a-zA-Z0-9:_/\\?!.,;{}<>[\]()'"\s@…#]+/g, "_");
 }
 
 main().catch((e) => {
