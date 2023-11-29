@@ -8,6 +8,7 @@ events:
     href: https://github.com/graphql/graphql-wg/blob/40a5e9ddbb41af18972df0cbc74945c09fb7b935/rfcs/OperationExpressions.md
     actor: Benjie Gillam
 shortname: Operation Expressions
+image: /img/rfc_tracker.png
 ---
 
 ## At a glance

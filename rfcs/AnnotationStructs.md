@@ -13,6 +13,7 @@ events:
     actor: Benjie
 related: 300, wg1096
 shortname: Annotation Structs
+image: /img/rfc_tracker.png
 ---
 
 ## At a glance

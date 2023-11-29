@@ -189,6 +189,7 @@ events:
     actor: Vince Foley
 related: 202, 395, 488, 586, 733, Struct, wg426
 shortname: GraphQL Input Union
+image: /img/rfc_tracker.png
 ---
 
 ## At a glance

@@ -84,6 +84,7 @@ events:
     href: https://github.com/graphql/graphql-wg/blob/32893b5ab54ac7f5d62e2ad7c8dd268baf8c97aa/rfcs/CompositeSchemas.md
     actor: Benjie Gillam
 shortname: GraphQL Composite Schemas
+image: /img/rfc_tracker.png
 ---
 
 ## At a glance

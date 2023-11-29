@@ -1,6 +1,7 @@
 ---
 title: "GraphQL RFC Tracker: Activity"
 description: "Activity log of all tracked GraphQL RFCs"
+image: /img/rfc_tracker.png
 ---
 
 # Activity overview

@@ -13,6 +13,7 @@ events:
     actor: Benjie Gillam
 related: "300"
 shortname: Metadata Structs
+image: /img/rfc_tracker.png
 ---
 
 ## At a glance

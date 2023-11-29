@@ -9,6 +9,7 @@ events:
     actor: Matt Mahoney
 related: "1045"
 shortname: Fragment Arguments
+image: /img/rfc_tracker.png
 ---
 
 ## At a glance

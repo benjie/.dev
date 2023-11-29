@@ -17,6 +17,7 @@ events:
     actor: Martin Bonnin
 related: 300, wg1006
 shortname: Opt-in features
+image: /img/rfc_tracker.png
 ---
 
 ## At a glance

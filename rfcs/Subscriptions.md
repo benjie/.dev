@@ -44,6 +44,7 @@ events:
 shortname: "NOTE: this document is kept for historic purposes; GraphQL
   Subscriptions have been specified and released as part of the official [June
   2018 GraphQL Specification](https://spec.graphql.org/June2018/)."
+image: /img/rfc_tracker.png
 ---
 
 ## At a glance

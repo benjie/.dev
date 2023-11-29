@@ -33,6 +33,7 @@ events:
     actor: Liliana Matos
 related: wg329
 shortname: GraphQL Defer and Stream Directives
+image: /img/rfc_tracker.png
 ---
 
 ## At a glance

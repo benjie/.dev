@@ -21,6 +21,7 @@ events:
     actor: Alex Reilly
 related: 867, 895, FragmentModularity, wg1394, wg864
 shortname: Client Controlled Nullability
+image: /img/rfc_tracker.png
 ---
 
 ## At a glance

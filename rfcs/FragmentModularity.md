@@ -9,6 +9,7 @@ events:
     actor: Matt Mahoney
 related: 137, 865, 879, 895, ClientControlledNullability, wg857
 shortname: Fragment Modularity
+image: /img/rfc_tracker.png
 ---
 
 ## At a glance

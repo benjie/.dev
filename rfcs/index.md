@@ -2,6 +2,7 @@
 title: "GraphQL RFC Tracker"
 description: "Tracks the various GraphQL RFCs, their major events and status."
 keywords: [graphql, rfc, rfcs, tracker, history, active, merged, spec, specification, wg, benjie]
+image: /img/rfc_tracker.png
 ---
 
 # GraphQL RFC Tracker

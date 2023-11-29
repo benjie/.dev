@@ -9,6 +9,7 @@ events:
     actor: Mark Larah
 related: 733, 735, 746
 shortname: Schema Coordinates
+image: /img/rfc_tracker.png
 ---
 
 ## At a glance

@@ -39,6 +39,7 @@ const ALLOW_EMBED: Array<string | undefined> = [
   "victorandree",
   "yaacovcr",
 ].map((s) => s?.toLowerCase());
+const RFC_TRACKER_IMAGE = "/img/rfc_tracker.png";
 
 const graphqlClient = new GraphQLClient("https://api.github.com/graphql", {
   headers: {
@@ -92,6 +93,7 @@ interface Frontmatter {
   };
   /** Append only, comma-separated list */
   related?: string;
+  image?: string;
 }
 
 function assertFrontmatter(
@@ -221,6 +223,7 @@ async function writeRfcs(ctx: Ctx) {
     }
     frontmatter.identifier = identifier;
     frontmatter.events.sort((a, z) => Date.parse(z.date) - Date.parse(a.date));
+    frontmatter.image = RFC_TRACKER_IMAGE;
 
     const related = frontmatter.related
       ? printEachRelated(ctx, frontmatter.related)
@@ -776,6 +779,7 @@ export default sidebars;
 title: "GraphQL RFC Tracker"
 description: "Tracks the various GraphQL RFCs, their major events and status."
 keywords: [graphql, rfc, rfcs, tracker, history, active, merged, spec, specification, wg, benjie]
+image: ${RFC_TRACKER_IMAGE}
 ---
 
 # GraphQL RFC Tracker
@@ -811,6 +815,7 @@ ${printTables(everything)}
 ---
 title: "GraphQL RFC Tracker: Activity"
 description: "Activity log of all tracked GraphQL RFCs"
+image: ${RFC_TRACKER_IMAGE}
 ---
 
 # Activity overview

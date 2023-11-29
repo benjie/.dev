@@ -8,6 +8,7 @@ events:
     href: https://github.com/graphql/graphql-wg/blob/47d7a8004b1469a9d0480446c820dc9ad01e78b9/rfcs/SchemaFragments.md
     actor: Daniel Starns
 shortname: Schema Fragments
+image: /img/rfc_tracker.png
 ---
 
 ## At a glance

@@ -13,6 +13,7 @@ events:
     actor: Young Min Kim
 related: 865, 895, wg839
 shortname: Feature Discovery
+image: /img/rfc_tracker.png
 ---
 
 ## At a glance

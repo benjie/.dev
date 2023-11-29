@@ -9,6 +9,7 @@ events:
     actor: Martin Bonnin
 related: 1036, 300
 shortname: Full Schemas
+image: /img/rfc_tracker.png
 ---
 
 ## At a glance

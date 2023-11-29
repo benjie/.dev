@@ -33,6 +33,7 @@ events:
     actor: Benjie Gillam
 related: 127, 147, 237, 688, 929, 942, InputUnion, wg1071
 shortname: Polymorphic-capable composite symmetric input/output type (`struct`)
+image: /img/rfc_tracker.png
 ---
 
 ## At a glance

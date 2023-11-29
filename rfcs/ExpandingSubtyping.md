@@ -9,6 +9,7 @@ events:
     actor: Yaacov Rydzinski
 related: 518, 711, 939, 950, 977, wg944
 shortname: Expanding Subtyping (for output types)
+image: /img/rfc_tracker.png
 ---
 
 ## At a glance

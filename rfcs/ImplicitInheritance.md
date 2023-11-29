@@ -13,6 +13,7 @@ events:
     actor: Tobias Diez
 related: 500, 533
 shortname: Implicit Inheritance
+image: /img/rfc_tracker.png
 ---
 
 ## At a glance
