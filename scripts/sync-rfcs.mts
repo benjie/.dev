@@ -829,13 +829,16 @@ ${allActivity
 
 function rfcLink(
   frontmatter: { identifier: string; shortname: string; stage: string | null },
-  long = false,
+  length: "supershort" | "normal" | "expanded" = "normal",
 ) {
-  return `[${formatIdentifier(frontmatter.identifier)}](/rfcs/${
-    frontmatter.identifier
-  } "${lossilyEscapeMd(frontmatter.shortname).replace(/"/g, "“")} / RFC${
-    frontmatter.stage ?? "?"
-  }")${long ? ` (${lossilyEscapeMd(frontmatter.shortname)})` : ``}`;
+  return `[${formatIdentifier(
+    frontmatter.identifier,
+    length === "supershort",
+  )}](/rfcs/${frontmatter.identifier} "${lossilyEscapeMd(
+    frontmatter.shortname,
+  ).replace(/"/g, "“")} / RFC${frontmatter.stage ?? "?"}")${
+    length === "expanded" ? ` (${lossilyEscapeMd(frontmatter.shortname)})` : ``
+  }`;
 }
 
 function stageWeight(stage: string | undefined): number {
@@ -895,7 +898,16 @@ function githubUsernameMarkdown(champion: string | undefined): string {
   return `[@${champion}](https://github.com/${champion})`;
 }
 
-function formatIdentifier(identifier: string): string {
+function formatIdentifier(identifier: string, truncate = false): string {
+  const raw = _formatIdentifier(identifier);
+  const TRUNCATE_SIZE = 15;
+  if (truncate && raw.length > TRUNCATE_SIZE) {
+    return `${raw.substring(0, TRUNCATE_SIZE - 2)}…`;
+  } else {
+    return raw;
+  }
+}
+function _formatIdentifier(identifier: string): string {
   if (String(parseInt(identifier, 10)) === identifier) {
     return `#${identifier}`;
   } else if (
@@ -1010,7 +1022,10 @@ ${printTable(things)}
 
 function printTable(things: RFCFile[]) {
   const printRow = (thing: RFCFile) => {
-    return `| ${rfcLink(thing.frontmatter)} | ${githubUsernameMarkdown(
+    return `| ${rfcLink(
+      thing.frontmatter,
+      "supershort",
+    )} | ${githubUsernameMarkdown(
       thing.frontmatter.champion,
     )} | ${lossilyEscapeMd(thing.frontmatter.title)} | ${formatTimelineEvent(
       thing.frontmatter.events[0],
@@ -1038,7 +1053,7 @@ function printEachRelated(ctx: Ctx, related: string): string[] {
     .map((identifier) => {
       const target = rfcs[identifier];
       if (!target) return null;
-      return rfcLink(target.frontmatter, true);
+      return rfcLink(target.frontmatter, "expanded");
     })
     .filter(Boolean) as string[];
 }
