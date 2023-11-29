@@ -772,7 +772,9 @@ export default sidebars;
     `${ROOT}/rfcs/index.md`,
     `\
 ---
-title: "GraphQL RFCs"
+title: "GraphQL RFC Tracker"
+description: "Tracks the various GraphQL RFCs, their major events and status."
+keywords: [graphql, rfc, rfcs, tracker, history, active, merged, spec, specification, wg, benjie]
 ---
 
 # GraphQL RFCs
@@ -806,7 +808,8 @@ ${printTables(everything)}
     `${ROOT}/rfcs/activity.md`,
     `\
 ---
-title: "Activity"
+title: "GraphQL RFC Tracker: Activity"
+description: "Activity log of all tracked GraphQL RFCs"
 ---
 
 # Activity overview
