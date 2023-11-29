@@ -247,7 +247,8 @@ ${
 ${frontmatter.events
   .map(
     (event) =>
-      `- ` + formatTimelineEvent(event, frontmatter).replace(/\n/g, "\n  "),
+      `- ` +
+      formatTimelineEvent(event, frontmatter, true).replace(/\n/g, "\n  "),
   )
   .join("\n")}
 `;
@@ -818,6 +819,7 @@ ${allActivity
       `- ${rfcLink(frontmatter)}: ${formatTimelineEvent(
         event,
         frontmatter,
+        true,
       ).replace(/\n/g, "\n  ")}`,
   )
   .join("\n")}
@@ -915,7 +917,11 @@ function commitAuthorMarkdown(commit: {
     : commit.authorName ?? "unknown";
 }
 
-function formatTimelineEvent(event: Event, frontmatter: Frontmatter): string {
+function formatTimelineEvent(
+  event: Event,
+  frontmatter: Frontmatter,
+  multiline: boolean,
+): string {
   switch (event.type) {
     case "prCreated":
       return `**[Spec PR](${event.href}) created** on ${formatDate(
@@ -927,6 +933,11 @@ function formatTimelineEvent(event: Event, frontmatter: Frontmatter): string {
         return `**Commit pushed**: [${lossilyEscapeMd(commit.headline)}](${
           commit.href
         }) on ${formatDate(event.date)} by ${commitAuthorMarkdown(commit)}`;
+      } else if (!multiline) {
+        const lastCommit = event.commits[event.commits.length - 1];
+        return `**${event.commits.length} commits pushed**: [(latest)](${
+          lastCommit.href
+        }) on ${formatDate(event.date)} by ${commitAuthorMarkdown(lastCommit)}`;
       } else {
         return `**${event.commits.length} commits pushed** on ${formatDate(
           event.date,
@@ -1001,17 +1012,16 @@ function printTable(things: RFCFile[]) {
   const printRow = (thing: RFCFile) => {
     return `| ${rfcLink(thing.frontmatter)} | ${githubUsernameMarkdown(
       thing.frontmatter.champion,
-    )} | ${thing.frontmatter.title} | ${
-      thing.frontmatter.prUrl ? `[Yes](${thing.frontmatter.prUrl})` : `No?`
-    } | ${formatTimelineEvent(
+    )} | ${lossilyEscapeMd(thing.frontmatter.title)} | ${formatTimelineEvent(
       thing.frontmatter.events[0],
       thing.frontmatter,
+      false,
     )} |`;
   };
   return `
 <!-- prettier-ignore -->
-| RFC | Champion | Title | Spec&nbsp;PR | Latest |
-| --- | --- | --- | --- | --- |
+| RFC | Champion | Title | Latest |
+| --- | --- | --- | --- |
 ${things.map(printRow).join("\n")}
 `;
 }
@@ -1296,7 +1306,8 @@ function lossilyEscapeMd(md: string): string {
   return md
     .replace(/[`\\]/g, "")
     .replace(/[{<[]/g, "\\$&")
-    .replace(/[^-a-zA-Z0-9:_/\\?!.,;{}<>[\]()'"\s@…#]+/g, "_");
+    .replace(/&/g, "&amp;")
+    .replace(/[^-a-zA-Z0-9:_/\\?!.,;{}<>[\]()'"\s@…#&+]+/g, "_");
 }
 
 function addEvent(frontmatter: Frontmatter, event: Event) {
