@@ -1031,11 +1031,13 @@ function printTable(things: RFCFile[]) {
       "supershort",
     )} | ${githubUsernameMarkdown(
       thing.frontmatter.champion,
-    )} | ${lossilyEscapeMd(thing.frontmatter.title)} | ${formatTimelineEvent(
+    )} | [${lossilyEscapeMd(thing.frontmatter.title)}](/rfcs/${
+      thing.frontmatter.identifier
+    }) | ${formatTimelineEvent(
       thing.frontmatter.events[0],
       thing.frontmatter,
       false,
-    )} |`;
+    )} [_(more)_](/rfcs/${thing.frontmatter.identifier}#timeline) |`;
   };
   return `
 <!-- prettier-ignore -->
