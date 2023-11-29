@@ -17,7 +17,7 @@ shortname: Fragment Modularity
 - **Stage**: [RFC0: Strawman](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-0-strawman)
 - **Champion**: -
 - **PR**: -
-- **Related**: [#865](/rfcs/865) (Fragment Arguments (parameterized fragments) for GraphQL), [#879](/rfcs/879) (__fulfilled meta field), [#895](/rfcs/895) (Client Controlled Nullability), [ClientControlledNullability](/rfcs/ClientControlledNullability) (Client Controlled Nullability), [wg857](/rfcs/wg857) (Fragment Modularity)
+- **Related**: [#865](/rfcs/865) (Fragment Arguments (parameterized fragments) for GraphQL), [#879](/rfcs/879) (__fulfilled meta field), [#895](/rfcs/895) (Client Controlled Nullability), [ClientControlledNullability](/rfcs/ClientControlledNullability) (Client Controlled Nullability), [wg#857](/rfcs/wg857) (Fragment Modularity)
 
 <!-- BEGIN_CUSTOM_TEXT -->
 

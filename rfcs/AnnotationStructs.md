@@ -21,7 +21,7 @@ shortname: Annotation Structs
 - **Stage**: [RFC0: Strawman](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-0-strawman)
 - **Champion**: -
 - **PR**: -
-- **Related**: [wg1096](/rfcs/wg1096) ("Metadata Directives" Proposal)
+- **Related**: [wg#1096](/rfcs/wg1096) ("Metadata Directives" Proposal)
 
 <!-- BEGIN_CUSTOM_TEXT -->
 

@@ -876,7 +876,7 @@ function formatTimelineEvent(event: Event, frontmatter: Frontmatter): string {
     case "commitsPushed":
       if (event.commits.length === 1) {
         const commit = event.commits[0];
-        return `**Commit pushed**: ['${lossilyEscapeMd(commit.headline)}'](${
+        return `**Commit pushed**: [${lossilyEscapeMd(commit.headline)}](${
           commit.href
         }) on ${formatDate(event.date)} by ${commitAuthorMarkdown(commit)}`;
       } else {

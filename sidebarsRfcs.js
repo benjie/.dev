@@ -60,13 +60,13 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "599",
-          label: "599: Clarify that lexing is greedy [RFC3]",
+          id: "598",
+          label: "598: Avoid parse ambiguity on types & extensions [RFC3]",
         },
         {
           type: "doc",
-          id: "598",
-          label: "598: Avoid parse ambiguity on types & extensions [RFC3]",
+          id: "599",
+          label: "599: Clarify that lexing is greedy [RFC3]",
         },
         {
           type: "doc",
@@ -133,13 +133,13 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "794",
-          label: "794: Schema Coordinates [RFC2]",
+          id: "793",
+          label: "793*: Default value coercion rules [RFC2]",
         },
         {
           type: "doc",
-          id: "793",
-          label: "793*: Default value coercion rules [RFC2]",
+          id: "794",
+          label: "794: Schema Coordinates [RFC2]",
         },
         {
           type: "doc",
@@ -244,11 +244,6 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          id: "1065",
-          label: "1065*: SemanticNonNull type (null only on error) [RFC0]",
-        },
-        {
-          type: "doc",
           id: "1063",
           label: "1063*: Type system ordering of: object interfaces, directive arguments, input object fields, enum values [RFC0]",
         },
@@ -259,13 +254,8 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "1058",
-          label: "1058*: List coercion algorithm [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "1057",
-          label: "1057*: Fix coercion table for list [RFC0]",
+          id: "1053",
+          label: "1053*: Implementations may not deprecate a field that the interface hasn't deprecated [RFC0]",
         },
         {
           type: "doc",
@@ -274,13 +264,13 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "1053",
-          label: "1053*: Implementations may not deprecate a field that the interface hasn't deprecated [RFC0]",
+          id: "1057",
+          label: "1057*: Fix coercion table for list [RFC0]",
         },
         {
           type: "doc",
-          id: "1052",
-          label: "1052: deduplicated incremental delivery [RFC0]",
+          id: "1058",
+          label: "1058*: List coercion algorithm [RFC0]",
         },
         {
           type: "doc",
@@ -291,6 +281,11 @@ const sidebars = {
           type: "doc",
           id: "1050",
           label: "1050*: Directive proposal for opting out of null bubbling [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "1065",
+          label: "1065*: SemanticNonNull type (null only on error) [RFC0]",
         },
         {
           type: "doc",
@@ -316,21 +311,6 @@ const sidebars = {
           type: "doc",
           id: "FeatureDiscovery",
           label: "FeatureDiscovery: Feature Discovery [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "1034",
-          label: "1034: incremental delivery with deduplication + concurrent execution [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "1026",
-          label: "1026: incremental delivery with deduplication + concurrent execution [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "1023",
-          label: "1023: incremental delivery without branching [RFC0]",
         },
         {
           type: "doc",
@@ -409,11 +389,6 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "948",
-          label: "948*: OneOf Objects [RFC0]",
-        },
-        {
-          type: "doc",
           id: "wg944",
           label: "wg944: New Intersection Type [RFC0]",
         },
@@ -464,8 +439,33 @@ const sidebars = {
         },
         {
           type: "doc",
+          id: "948",
+          label: "948*: OneOf Objects [RFC0]",
+        },
+        {
+          type: "doc",
           id: "823",
           label: "823*: operation expressions [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "1023",
+          label: "1023: incremental delivery without branching [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "1026",
+          label: "1026: incremental delivery with deduplication + concurrent execution [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "1034",
+          label: "1034: incremental delivery with deduplication + concurrent execution [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "1052",
+          label: "1052: deduplicated incremental delivery [RFC0]",
         },
         {
           type: "doc",
@@ -534,13 +534,13 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "521",
-          label: "521: Scalar serialize as built-in scalar type [RFC0]",
+          id: "471",
+          label: "471: Limit uniqueness to `@skip`, `@include` and `@deprecated` directives [RFC0]",
         },
         {
           type: "doc",
-          id: "471",
-          label: "471: Limit uniqueness to `@skip`, `@include` and `@deprecated` directives [RFC0]",
+          id: "325",
+          label: "325: Add \"Any\" scalar type [RFC0]",
         },
         {
           type: "doc",
@@ -549,8 +549,8 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "325",
-          label: "325: Add \"Any\" scalar type [RFC0]",
+          id: "521",
+          label: "521: Scalar serialize as built-in scalar type [RFC0]",
         },
         {
           type: "doc",

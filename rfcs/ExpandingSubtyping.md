@@ -17,7 +17,7 @@ shortname: Expanding Subtyping (for output types)
 - **Stage**: [RFC0: Strawman](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-0-strawman)
 - **Champion**: -
 - **PR**: -
-- **Related**: [#939](/rfcs/939) (allow unions to declare implementation of interfaces), [#950](/rfcs/950) (allow unions to include interfaces and unions), [wg944](/rfcs/wg944) (New Intersection Type)
+- **Related**: [#939](/rfcs/939) (allow unions to declare implementation of interfaces), [#950](/rfcs/950) (allow unions to include interfaces and unions), [wg#944](/rfcs/wg944) (New Intersection Type)
 
 <!-- BEGIN_CUSTOM_TEXT -->
 
