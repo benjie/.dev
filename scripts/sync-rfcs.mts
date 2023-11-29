@@ -2,6 +2,7 @@
 import { GraphQLClient } from "graphql-request";
 import { getSdk, SpecPrCommitFragment } from "./sdk.mjs";
 import * as fs from "node:fs/promises";
+import * as path from "node:path";
 import { createHash } from "node:crypto";
 import * as yaml from "yaml";
 import { SidebarsConfig } from "@docusaurus/plugin-content-docs";
@@ -11,7 +12,7 @@ import { $, cd } from "zx";
 import { glob } from "glob";
 
 const __dirname = new URL(".", import.meta.url).pathname;
-const ROOT = __dirname + "/..";
+const ROOT = path.resolve(__dirname, "..");
 
 const CACHE_ENABLED = true;
 const SECOND = 1000;
@@ -206,7 +207,9 @@ async function writeRfcs(ctx: Ctx) {
 
   for (const rfc of Object.values(ctx.rfcs)) {
     const { frontmatter, body, identifier, filePath, verbatim } = rfc;
-    frontmatter.related = [...relatedByIdentifier[identifier]].join(", ");
+    frontmatter.related = [...relatedByIdentifier[identifier]]
+      .sort()
+      .join(", ");
     if (frontmatter.related.length === 0) {
       delete frontmatter.related;
     }
@@ -555,7 +558,7 @@ async function updateRfc(ctx: Ctx, details: Omit<Frontmatter, "shortname">) {
   const filePath = `${ROOT}/rfcs/${identifier}.md`;
   if (!ctx.rfcs[identifier]) {
     ctx.rfcs[identifier] = {
-      frontmatter: { ...details, shortname: details.title },
+      frontmatter: { ...details, events: [], shortname: details.title },
       body: "",
       identifier,
       filePath,
@@ -573,14 +576,7 @@ async function updateRfc(ctx: Ctx, details: Omit<Frontmatter, "shortname">) {
     if (key === "events") {
       if (details.events == null) continue;
       for (const event of details.events) {
-        const existingMatchingEventIndex = frontmatter.events.findIndex(
-          (e) => e.type === event.type && e.date === event.date,
-        );
-        if (existingMatchingEventIndex >= 0) {
-          frontmatter.events[existingMatchingEventIndex] = event;
-        } else {
-          frontmatter.events.push(event);
-        }
+        addEvent(frontmatter, event);
       }
     } else if (key === "related") {
       if (details.related == null) continue;
@@ -1080,7 +1076,6 @@ function sanitizeMarkdown(
     }
   }
   if (active) {
-    //console.dir({ active, backticks });
     throw new Error(
       `Mismatched backticks in '${identifier}.md'? Active: '${active}'`,
     );
@@ -1148,7 +1143,6 @@ function sanitizeMarkdown(
         }
       }
       if (active) {
-        console.dir({ line, backticks });
         throw new Error(
           `Mismatched backticks in '${identifier}.md'? (This could be because there's a newline inside backticks. We don't support that yet.)`,
         );
@@ -1260,7 +1254,7 @@ function doMentions(
     const identifier = match[1];
     const rfc = ctx.rfcs[identifier];
     if (rfc) {
-      rfc.frontmatter.events.push({
+      addEvent(rfc.frontmatter, {
         type: eventType,
         href,
         date: eventDate,
@@ -1303,6 +1297,17 @@ function lossilyEscapeMd(md: string): string {
     .replace(/[`\\]/g, "")
     .replace(/[{<[]/g, "\\$&")
     .replace(/[^-a-zA-Z0-9:_/\\?!.,;{}<>[\]()'"\s@…#]+/g, "_");
+}
+
+function addEvent(frontmatter: Frontmatter, event: Event) {
+  const existingMatchingEventIndex = frontmatter.events.findIndex(
+    (e) => e.type === event.type && e.date === event.date,
+  );
+  if (existingMatchingEventIndex >= 0) {
+    frontmatter.events[existingMatchingEventIndex] = event;
+  } else {
+    frontmatter.events.push(event);
+  }
 }
 
 main().catch((e) => {
