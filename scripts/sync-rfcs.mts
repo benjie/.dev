@@ -327,7 +327,7 @@ async function syncRfcPRs(ctx: Ctx) {
 
         events.push({
           type: "commitsPushed",
-          date: `${date}T00:00:00Z`,
+          date,
           href,
           actor:
             lastCommit.author?.user?.login ?? lastCommit.author?.name ?? null,
@@ -921,6 +921,7 @@ ${event.commits
 
 // Format date as YYYY-MM-DD
 function formatDate(date: string): string {
+  if (date.length <= 10) return date;
   const d = new Date(date);
   const pad = (n: number): string => String(n).padStart(2, "0");
   return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
@@ -1202,7 +1203,7 @@ function doMentions(
   content: string,
   eventType: "wgNotes" | "wgAgenda",
 ) {
-  const [fileDate, eventDate] = getDateFromNoteOrAgendaFile(filePath);
+  const eventDate = getDateFromNoteOrAgendaFile(filePath);
   const path = filePath.substring(ROOT.length + "/temp/wg/".length);
   const href = `https://github.com/graphql/graphql-wg/blob/main/${path}`;
   for (const match of content.matchAll(
@@ -1221,30 +1222,30 @@ function doMentions(
   }
 }
 
-function getDateFromNoteOrAgendaFile(file: string): [string, string] {
+function getDateFromNoteOrAgendaFile(file: string): string {
   const numbers = file
     .substring(ROOT.length)
     .replace(/[^0-9-]+/g, "-")
     .replace(/-+/g, "-");
   const matches = numbers.match(/([0-9]{4}-[0-9]{2}-[0-9]{2})(?![0-9])/);
   if (matches) {
-    return [matches[1], matches[1]];
+    return matches[1];
   }
   const matches2 = numbers.match(/([0-9]{4})-([0-9]{2})(?![0-9])/);
   if (matches2) {
     const [, yyyy, mm] = matches2;
-    const date = new Date(
-      parseInt(yyyy, 10),
-      parseInt(mm, 10) - 1,
-      1,
-      12,
-      0,
-      0,
-      0,
-    );
-    date.setMonth(date.getMonth() + 1);
-    date.setDate(date.getDate() - 1);
-    return [`${yyyy}-${mm}`, date.toISOString().substring(0, 10)];
+    //const date = new Date(
+    //  parseInt(yyyy, 10),
+    //  parseInt(mm, 10) - 1,
+    //  1,
+    //  12,
+    //  0,
+    //  0,
+    //  0,
+    //);
+    //date.setMonth(date.getMonth() + 1);
+    //date.setDate(date.getDate() - 1);
+    return `${yyyy}-${mm}`;
   }
   throw new Error(`Couldn't extract date from ${file}`);
 }
