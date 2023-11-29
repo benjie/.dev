@@ -1,6 +1,6 @@
 // RFCs come from GitHub Spec PRs, Issues, and from the GraphQL-WG RFCs folder.
 import { GraphQLClient } from "graphql-request";
-import { getSdk } from "./sdk.mjs";
+import { getSdk, SpecPrCommitFragment } from "./sdk.mjs";
 import * as fs from "node:fs/promises";
 import { createHash } from "node:crypto";
 import * as yaml from "yaml";
@@ -227,7 +227,7 @@ async function writeRfcs(ctx: Ctx) {
 
 - **Identifier**: ${formatIdentifier(frontmatter.identifier)}
 - **Stage**: ${stageMarkdown(frontmatter.stage)}
-- **Champion**: ${championMarkdown(frontmatter.champion)}
+- **Champion**: ${githubUsernameMarkdown(frontmatter.champion)}
 - **PR**: ${formatPr(frontmatter)}
 ${related.length > 0 ? `- **Related**: ${related.join(", ")}\n` : ``}\
 `;
@@ -295,6 +295,50 @@ async function syncRfcPRs(ctx: Ctx) {
         break;
       }
 
+      const events: Event[] = [];
+      events.push({
+        type: "prCreated",
+        date: node.createdAt,
+        href: `https://github.com/graphql/graphql-spec/pull/${node.number}`,
+        actor: node.author?.login ?? null,
+      });
+
+      // Group commits by date
+      const commitsByDate = Object.create(null) as Record<
+        string,
+        SpecPrCommitFragment[]
+      >;
+
+      for (const commitEdge of node.commits.edges ?? []) {
+        const date = commitEdge?.node?.commit?.authoredDate;
+        if (!date) continue;
+        const truncatedDate = date.substring(0, 10);
+        commitsByDate[truncatedDate] ??= [];
+        commitsByDate[truncatedDate].push(commitEdge.node!.commit);
+      }
+
+      for (const [date, commits] of Object.entries(commitsByDate)) {
+        const href = commits[0].commitUrl;
+
+        const lastCommit = commits[commits.length - 1];
+
+        events.push({
+          type: "commitsPushed",
+          date: `${date}T00:00:00Z`,
+          href,
+          actor:
+            lastCommit.author?.user?.login ?? lastCommit.author?.name ?? null,
+          commits: commits.map((commit) => {
+            return {
+              href: commit.commitUrl,
+              headline: commit.messageHeadline,
+              ghUser: commit.author?.user?.login ?? null,
+              authorName: commit.author?.name ?? null,
+            };
+          }),
+        });
+      }
+
       const identifier = `${node.number}`;
       await updateRfc(ctx, {
         identifier,
@@ -306,14 +350,7 @@ async function syncRfcPRs(ctx: Ctx) {
 
         prUrl: `https://github.com/graphql/graphql-spec/pull/${node.number}`,
 
-        events: [
-          {
-            type: "prCreated",
-            date: node.createdAt,
-            href: `https://github.com/graphql/graphql-spec/pull/${node.number}`,
-            actor: node.author?.login ?? null,
-          },
-        ],
+        events,
         related: getRelated(node.body, ""),
       });
 
@@ -467,6 +504,15 @@ interface EventBase {
 interface PrCreatedEvent extends EventBase {
   type: "prCreated";
 }
+interface CommitsPushedEvent extends EventBase {
+  type: "commitsPushed";
+  commits: Array<{
+    href: string;
+    headline: string;
+    ghUser: string | null;
+    authorName: string | null;
+  }>;
+}
 interface DocCreatedEvent extends EventBase {
   type: "docCreated";
 }
@@ -489,7 +535,8 @@ type Event =
   | DocUpdatedEvent
   | WgAgendaEvent
   | WgNotesEvent
-  | WgDiscussionCreatedEvent;
+  | WgDiscussionCreatedEvent
+  | CommitsPushedEvent;
 
 async function updateRfc(ctx: Ctx, details: Frontmatter) {
   const { identifier } = details;
@@ -788,7 +835,7 @@ function stageMarkdown(
   }
 }
 
-function championMarkdown(champion: string | undefined): string {
+function githubUsernameMarkdown(champion: string | undefined): string {
   if (!champion) return "-";
   return `[@${champion}](https://github.com/${champion})`;
 }
@@ -807,6 +854,21 @@ function formatTimelineEvent(event: Event, frontmatter: Frontmatter): string {
       return `**[Spec PR](${event.href}) created** on ${formatDate(
         event.date,
       )} by ${event.actor ?? "unknown"}`;
+    case "commitsPushed":
+      if (event.commits.length === 1) {
+        const commit = event.commits[0];
+        return `**Commit pushed**: ['${commit.headline}'](${
+          commit.href
+        }) on ${formatDate(event.date)} by ${
+          commit.ghUser
+            ? githubUsernameMarkdown(commit.ghUser)
+            : commit.authorName ?? "unknown"
+        }`;
+      } else {
+        return `**${event.commits.length} commits pushed** [(latest commit)](${
+          event.href
+        }) on ${formatDate(event.date)} by ${event.actor ?? "unknown"}`;
+      }
     case "docCreated":
       return `**[RFC document created](${event.href})** on ${formatDate(
         event.date,
@@ -867,7 +929,7 @@ function printTable(things: RFCFile[]) {
   const printRow = (thing: RFCFile) => {
     return `| [${formatIdentifier(thing.frontmatter.identifier)}](/rfcs/${
       thing.frontmatter.identifier
-    }) | ${championMarkdown(thing.frontmatter.champion)} | ${
+    }) | ${githubUsernameMarkdown(thing.frontmatter.champion)} | ${
       thing.frontmatter.title
     } | ${
       thing.frontmatter.prUrl ? `[Yes](${thing.frontmatter.prUrl})` : `No?`
@@ -1115,7 +1177,7 @@ function doMentions(
   ctx: Ctx,
   filePath: string,
   content: string,
-  eventType: Event["type"],
+  eventType: "wgNotes" | "wgAgenda",
 ) {
   const [fileDate, eventDate] = getDateFromNoteOrAgendaFile(filePath);
   const path = filePath.substring(ROOT.length + "/temp/wg/".length);

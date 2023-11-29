@@ -40,9 +40,30 @@ query GetSpecPRs($after: String) {
               }
             }
             body
+            commits(last: 100) {
+              edges {
+                node {
+                  commit {
+                    ...SpecPRCommit
+                  }
+                }
+              }
+            }
           }
         }
       }
     }
+  }
+}
+
+fragment SpecPRCommit on Commit {
+  commitUrl
+  messageHeadline
+  authoredDate
+  author {
+    user {
+      login
+    }
+    name
   }
 }
