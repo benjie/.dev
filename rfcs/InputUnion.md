@@ -197,7 +197,11 @@ shortname: GraphQL Input Union
 - **Stage**: [RFC0: Strawman](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-0-strawman)
 - **Champion**: -
 - **PR**: -
-- **Related**: [#395](/rfcs/395) (inputUnion type), [#586](/rfcs/586) (Input Objects accepting exactly @oneField), [#733](/rfcs/733) (Tagged type), [Struct](/rfcs/Struct) (Polymorphic-capable composite symmetric input/output type (`struct`))
+- **Related**:
+  - [#395](/rfcs/395 "inputUnion type / RFC1") (inputUnion type)
+  - [#586](/rfcs/586 "Input Objects accepting exactly @oneField / RFC0") (Input Objects accepting exactly @oneField)
+  - [#733](/rfcs/733 "Tagged type / RFC1") (Tagged type)
+  - [Struct](/rfcs/Struct "Polymorphic-capable composite symmetric input/output type (struct) / RFC0") (Polymorphic-capable composite symmetric input/output type (struct))
 
 <!-- BEGIN_CUSTOM_TEXT -->
 

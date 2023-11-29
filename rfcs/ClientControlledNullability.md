@@ -29,7 +29,10 @@ shortname: Client Controlled Nullability
 - **Stage**: [RFC0: Strawman](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-0-strawman)
 - **Champion**: -
 - **PR**: -
-- **Related**: [#895](/rfcs/895) (Client Controlled Nullability), [FragmentModularity](/rfcs/FragmentModularity) (Fragment Modularity), [wg#1394](/rfcs/wg1394) (True Nullability Schema)
+- **Related**:
+  - [#895](/rfcs/895 "Client Controlled Nullability / RFC1") (Client Controlled Nullability)
+  - [FragmentModularity](/rfcs/FragmentModularity "Fragment Modularity / RFC0") (Fragment Modularity)
+  - [wg#1394](/rfcs/wg1394 "True Nullability Schema / RFC0") (True Nullability Schema)
 
 <!-- BEGIN_CUSTOM_TEXT -->
 

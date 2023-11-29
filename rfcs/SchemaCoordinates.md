@@ -17,7 +17,8 @@ shortname: Schema Coordinates
 - **Stage**: [RFC0: Strawman](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-0-strawman)
 - **Champion**: -
 - **PR**: -
-- **Related**: [#733](/rfcs/733) (Tagged type)
+- **Related**:
+  - [#733](/rfcs/733 "Tagged type / RFC1") (Tagged type)
 
 <!-- BEGIN_CUSTOM_TEXT -->
 

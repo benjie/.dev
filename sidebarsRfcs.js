@@ -8,6 +8,10 @@ const sidebars = {
       id: "index",
     },
     {
+      type: "doc",
+      id: "activity",
+    },
+    {
       type: "category",
       label: "Stage 3: Accepted",
       collapsed: true,

@@ -21,7 +21,9 @@ shortname: Feature Discovery
 - **Stage**: [RFC0: Strawman](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-0-strawman)
 - **Champion**: -
 - **PR**: -
-- **Related**: [#865](/rfcs/865) (Fragment Arguments (parameterized fragments) for GraphQL), [#895](/rfcs/895) (Client Controlled Nullability)
+- **Related**:
+  - [#865](/rfcs/865 "Fragment Arguments (parameterized fragments) for GraphQL / RFC1") (Fragment Arguments (parameterized fragments) for GraphQL)
+  - [#895](/rfcs/895 "Client Controlled Nullability / RFC1") (Client Controlled Nullability)
 
 <!-- BEGIN_CUSTOM_TEXT -->
 

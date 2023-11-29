@@ -74,7 +74,7 @@ interface Frontmatter {
   /** Append only */
   events: Event[];
   /** Human controlled */
-  shortname?: string;
+  shortname: string;
   stage: "0" | "1" | "2" | "3" | "X" | null;
   champion?: string;
   //createdAt?: string;
@@ -176,6 +176,7 @@ async function loadRfcs(ctx: Ctx) {
     if (file.startsWith(".")) continue;
     if (!file.endsWith(".md")) continue;
     if (file === "index.md") continue;
+    if (file === "activity.md") continue;
     const identifier = file.substring(0, file.length - 3);
     const filePath = `${ROOT}/rfcs/${file}`;
     const { frontmatter, body, verbatim } = await readMd(filePath);
@@ -229,7 +230,12 @@ async function writeRfcs(ctx: Ctx) {
 - **Stage**: ${stageMarkdown(frontmatter.stage)}
 - **Champion**: ${githubUsernameMarkdown(frontmatter.champion)}
 - **PR**: ${formatPr(frontmatter)}
-${related.length > 0 ? `- **Related**: ${related.join(", ")}\n` : ``}\
+${
+  related.length > 0
+    ? `- **Related**:\n${related.map((r) => `  - ${r}`).join("\n")}
+`
+    : ``
+}\
 `;
 
     const foot = `\
@@ -541,7 +547,7 @@ type Event =
   | WgDiscussionCreatedEvent
   | CommitsPushedEvent;
 
-async function updateRfc(ctx: Ctx, details: Frontmatter) {
+async function updateRfc(ctx: Ctx, details: Omit<Frontmatter, "shortname">) {
   const { identifier } = details;
   if (!identifier.match(/^[a-zA-Z0-9_]+$/)) {
     throw new Error(`Invalid RFC identifier: ${identifier}`);
@@ -549,7 +555,7 @@ async function updateRfc(ctx: Ctx, details: Frontmatter) {
   const filePath = `${ROOT}/rfcs/${identifier}.md`;
   if (!ctx.rfcs[identifier]) {
     ctx.rfcs[identifier] = {
-      frontmatter: details,
+      frontmatter: { ...details, shortname: details.title },
       body: "",
       identifier,
       filePath,
@@ -708,6 +714,10 @@ async function generateIndexAndMeta(ctx: Ctx) {
         type: "doc",
         id: "index",
       },
+      {
+        type: "doc",
+        id: "activity",
+      },
       RFC3,
       RFC2,
       RFC1,
@@ -766,7 +776,6 @@ export default sidebars;
     `\
 ---
 title: "GraphQL RFCs"
-sidebar_position: 3
 ---
 
 # GraphQL RFCs
@@ -786,6 +795,49 @@ channel) and ask for him to run an update!
 ${printTables(everything)}
 `,
   );
+
+  const allActivity = Object.values(ctx.rfcs)
+    .flatMap((rfc) =>
+      rfc.frontmatter.events.map((event) => ({
+        event,
+        frontmatter: rfc.frontmatter,
+      })),
+    )
+    .sort((a, z) => Date.parse(z.event.date) - Date.parse(a.event.date));
+
+  await fs.writeFile(
+    `${ROOT}/rfcs/activity.md`,
+    `\
+---
+title: "Activity"
+---
+
+# Activity overview
+
+The below is an aggregate overview of the latest activity across all RFCs. Note that it's _roughly_ in cronological order, but some dates are less accurate than others (e.g. commit timestamps are to the second, whereas working groups are generally to the month...).
+
+${allActivity
+  .map(
+    ({ event, frontmatter }) =>
+      `- ${rfcLink(frontmatter)}: ${formatTimelineEvent(
+        event,
+        frontmatter,
+      ).replace(/\n/g, "\n  ")}`,
+  )
+  .join("\n")}
+`,
+  );
+}
+
+function rfcLink(
+  frontmatter: { identifier: string; shortname: string; stage: string | null },
+  long = false,
+) {
+  return `[${formatIdentifier(frontmatter.identifier)}](/rfcs/${
+    frontmatter.identifier
+  } "${lossilyEscapeMd(frontmatter.shortname).replace(/"/g, "“")} / RFC${
+    frontmatter.stage ?? "?"
+  }")${long ? ` (${lossilyEscapeMd(frontmatter.shortname)})` : ``}`;
 }
 
 function stageWeight(stage: string | undefined): number {
@@ -951,11 +1003,9 @@ ${printTable(things)}
 
 function printTable(things: RFCFile[]) {
   const printRow = (thing: RFCFile) => {
-    return `| [${formatIdentifier(thing.frontmatter.identifier)}](/rfcs/${
-      thing.frontmatter.identifier
-    }) | ${githubUsernameMarkdown(thing.frontmatter.champion)} | ${
-      thing.frontmatter.title
-    } | ${
+    return `| ${rfcLink(thing.frontmatter)} | ${githubUsernameMarkdown(
+      thing.frontmatter.champion,
+    )} | ${thing.frontmatter.title} | ${
       thing.frontmatter.prUrl ? `[Yes](${thing.frontmatter.prUrl})` : `No?`
     } | ${formatTimelineEvent(
       thing.frontmatter.events[0],
@@ -982,9 +1032,7 @@ function printEachRelated(ctx: Ctx, related: string): string[] {
     .map((identifier) => {
       const target = rfcs[identifier];
       if (!target) return null;
-      return `[${formatIdentifier(identifier)}](/rfcs/${identifier}) (${
-        target.frontmatter.shortname
-      })`;
+      return rfcLink(target.frontmatter, true);
     })
     .filter(Boolean) as string[];
 }

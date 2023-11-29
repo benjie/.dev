@@ -41,7 +41,9 @@ shortname: Polymorphic-capable composite symmetric input/output type (`struct`)
 - **Stage**: [RFC0: Strawman](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-0-strawman)
 - **Champion**: -
 - **PR**: -
-- **Related**: [InputUnion](/rfcs/InputUnion) (GraphQL Input Union), [wg#1071](/rfcs/wg1071) (Struct type)
+- **Related**:
+  - [InputUnion](/rfcs/InputUnion "GraphQL Input Union / RFC0") (GraphQL Input Union)
+  - [wg#1071](/rfcs/wg1071 "Struct type / RFC0") (Struct type)
 
 <!-- BEGIN_CUSTOM_TEXT -->
 
