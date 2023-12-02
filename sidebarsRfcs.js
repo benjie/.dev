@@ -304,6 +304,11 @@ const sidebars = {
         },
         {
           type: "doc",
+          id: "1049",
+          label: "1049: Introduce SourceSchemaDocument and FullSchemaDocument [RFC0]",
+        },
+        {
+          type: "doc",
           id: "1052",
           label: "1052: deduplicated incremental delivery [RFC0]",
         },
