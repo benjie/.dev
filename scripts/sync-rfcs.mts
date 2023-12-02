@@ -10,6 +10,7 @@ import { SidebarItemConfig } from "@docusaurus/plugin-content-docs/lib/sidebars/
 import JSON5 from "json5";
 import { $, cd } from "zx";
 import { glob } from "glob";
+import { MDX, mdx } from "./mdx.mjs";
 
 const __dirname = new URL(".", import.meta.url).pathname;
 const ROOT = path.resolve(__dirname, "..");
@@ -225,11 +226,11 @@ async function writeRfcs(ctx: Ctx) {
     frontmatter.events.sort((a, z) => Date.parse(z.date) - Date.parse(a.date));
     frontmatter.image = RFC_TRACKER_IMAGE;
 
-    const related = frontmatter.related
+    const related: MDX[] = frontmatter.related
       ? printEachRelated(ctx, frontmatter.related)
       : [];
 
-    const head = `\
+    const head = mdx`\
 ## At a glance
 
 - **Identifier**: ${formatIdentifier(frontmatter.identifier)}
@@ -238,45 +239,51 @@ async function writeRfcs(ctx: Ctx) {
 - **PR**: ${formatPr(frontmatter)}
 ${
   related.length > 0
-    ? `- **Related**:\n${related.map((r) => `  - ${r}`).join("\n")}
+    ? mdx`- **Related**:\n${mdx.join(
+        related.map((r) => mdx`  - ${r}`),
+        "\n",
+      )}
 `
-    : ``
+    : mdx``
 }\
 `;
 
-    const foot = `\
+    const foot = mdx`\
 ## Timeline
 
-${frontmatter.events
-  .map(
+${mdx.join(
+  frontmatter.events.map(
     (event) =>
-      `- ` +
-      formatTimelineEvent(event, frontmatter, true).replace(/\n/g, "\n  "),
-  )
-  .join("\n")}
+      mdx`- ${mdx.indent(formatTimelineEvent(event, frontmatter, true))}`,
+  ),
+  "\n",
+)}
 `;
 
     await fs.writeFile(
       filePath,
-      `\
+      mdx.compile(
+        mdx`\
 ---
-${yaml.stringify(frontmatter).trim()}
+${mdx.trim(mdx.trusted(yaml.stringify(frontmatter)))}
 ---
 
-${head.trim()}
+${mdx.trim(head)}
 
 <!-- BEGIN_CUSTOM_TEXT -->
 
-${body.trim()}
+${mdx.trim(mdx.trusted(body))}
 
 <!-- END_CUSTOM_TEXT -->
 
-${foot.trim()}
+${mdx.trim(foot)}
 
 <!-- VERBATIM -->
 
-${verbatim.trim()}
+${mdx.trim(mdx.trusted(verbatim))}
 `,
+        identifier,
+      ),
     );
   }
 }
@@ -373,12 +380,20 @@ async function syncRfcPRs(ctx: Ctx) {
       ctx.rfcs[identifier].verbatim = ALLOW_EMBED.includes(
         node.author?.login.toLowerCase(),
       )
-        ? `\
+        ? mdx.compile(
+            mdx`\
 ---
 
-${sanitizeMarkdown(node.body, identifier)}
-`
-        : `---\n\n(Embedding not enabled for ${node.author?.login})`;
+${mdx.sanitize(node.body)}
+`,
+            identifier,
+          )
+        : mdx.compile(
+            mdx`---\n\n(Embedding not enabled for ${mdx.escape(
+              node.author?.login ?? "(unknown)",
+            )})`,
+            identifier,
+          );
 
       if (!firstIssueLike) {
         firstIssueLike = { number: node.number, updatedAt: node.updatedAt };
@@ -444,12 +459,20 @@ async function syncRfcDiscussions(ctx: Ctx) {
       ctx.rfcs[identifier].verbatim = ALLOW_EMBED.includes(
         node.author?.login.toLowerCase(),
       )
-        ? `\
+        ? mdx.compile(
+            mdx`\
 ---
 
-${sanitizeMarkdown(node.body, identifier)}
-`
-        : `---\n\n(Embedding not enabled for ${node.author?.login})`;
+${mdx.sanitize(node.body)}
+`,
+            identifier,
+          )
+        : mdx.compile(
+            mdx`---\n\n(Embedding not enabled for ${mdx.escape(
+              node.author?.login ?? "unknown",
+            )})`,
+            identifier,
+          );
 
       if (!firstDiscussion) {
         firstDiscussion = { number: node.number, updatedAt: node.updatedAt };
@@ -501,11 +524,14 @@ async function syncRfcDocs(ctx: Ctx) {
         related: getRelated(content, "wg"),
       });
 
-      ctx.rfcs[identifier].verbatim = `\
+      ctx.rfcs[identifier].verbatim = mdx.compile(
+        mdx`\
 ---
 
-${sanitizeMarkdown(content, identifier)}
-`;
+${mdx.sanitize(content)}
+`,
+        identifier,
+      );
     }),
   );
 }
@@ -774,12 +800,13 @@ export default sidebars;
 
   await fs.writeFile(
     `${ROOT}/rfcs/index.md`,
-    `\
+    mdx.compile(
+      mdx`\
 ---
 title: "GraphQL RFC Tracker"
 description: "Tracks the various GraphQL RFCs, their major events and status."
 keywords: [graphql, rfc, rfcs, tracker, history, active, merged, spec, specification, wg, benjie]
-image: ${RFC_TRACKER_IMAGE}
+image: ${mdx.trusted(RFC_TRACKER_IMAGE)}
 ---
 
 # GraphQL RFC Tracker
@@ -798,6 +825,8 @@ channel) and ask for him to run an update!
 
 ${printTables(everything)}
 `,
+      "index.md",
+    ),
   );
 
   const allActivity = Object.values(ctx.rfcs)
@@ -811,42 +840,44 @@ ${printTables(everything)}
 
   await fs.writeFile(
     `${ROOT}/rfcs/activity.md`,
-    `\
+    mdx.compile(
+      mdx`\
 ---
 title: "GraphQL RFC Tracker: Activity"
 description: "Activity log of all tracked GraphQL RFCs"
-image: ${RFC_TRACKER_IMAGE}
+image: ${mdx.trusted(RFC_TRACKER_IMAGE)}
 ---
 
 # Activity overview
 
 The below is an aggregate overview of the latest activity across all RFCs. Note that it's _roughly_ in cronological order, but some dates are less accurate than others (e.g. commit timestamps are to the second, whereas working groups are generally to the month...).
 
-${allActivity
-  .map(
+${mdx.join(
+  allActivity.map(
     ({ event, frontmatter }) =>
-      `- ${rfcLink(frontmatter)}: ${formatTimelineEvent(
-        event,
-        frontmatter,
-        true,
-      ).replace(/\n/g, "\n  ")}`,
-  )
-  .join("\n")}
+      mdx`- ${rfcLink(frontmatter)}: ${mdx.indent(
+        formatTimelineEvent(event, frontmatter, true),
+      )}`,
+  ),
+  "\n",
+)}
 `,
+      "activity",
+    ),
   );
 }
 
 function rfcLink(
   frontmatter: { identifier: string; shortname: string; stage: string | null },
   length: "supershort" | "normal" | "expanded" = "normal",
-) {
-  return `[${formatIdentifier(
+): MDX {
+  return mdx`[${formatIdentifier(
     frontmatter.identifier,
     length === "supershort",
-  )}](/rfcs/${frontmatter.identifier} "${lossilyEscapeMd(
+  )}](${mdx.url(`/rfcs/${frontmatter.identifier}`)} "${mdx.linkDescription(
     frontmatter.shortname,
-  ).replace(/"/g, "“")} / RFC${frontmatter.stage ?? "?"}")${
-    length === "expanded" ? ` (${lossilyEscapeMd(frontmatter.shortname)})` : ``
+  )} / RFC${mdx.escape(frontmatter.stage ?? "?")}")${
+    length === "expanded" ? mdx` (${mdx.escape(frontmatter.shortname)})` : mdx``
   }`;
 }
 
@@ -873,47 +904,49 @@ function tidyTitle(title: string): string {
 
 function stageMarkdown(
   stage: string | undefined,
-  { prefix: rawPrefix, short }: { prefix?: string; short?: boolean } = {},
-): string {
-  const prefix = rawPrefix ?? (short ? "" : "RFC");
+  { prefix: rawPrefix, short }: { prefix?: MDX; short?: boolean } = {},
+): MDX {
+  const prefix = rawPrefix ?? (short ? mdx`` : mdx`RFC`);
   switch (stage) {
     case "0":
       return short
-        ? `${prefix}0/Strawman`
-        : `[${prefix}0: Strawman](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-0-strawman)`;
+        ? mdx`${prefix}0/Strawman`
+        : mdx`[${prefix}0: Strawman](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-0-strawman)`;
     case "1":
       return short
-        ? `${prefix}1/Proposal`
-        : `[${prefix}1: Proposal](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-1-proposal)`;
+        ? mdx`${prefix}1/Proposal`
+        : mdx`[${prefix}1: Proposal](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-1-proposal)`;
     case "2":
       return short
-        ? `${prefix}2/Draft`
-        : `[${prefix}2: Draft](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-2-draft)`;
+        ? mdx`${prefix}2/Draft`
+        : mdx`[${prefix}2: Draft](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-2-draft)`;
     case "3":
       return short
-        ? `${prefix}3/Accepted`
-        : `[${prefix}3: Accepted](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-3-accepted)`;
+        ? mdx`${prefix}3/Accepted`
+        : mdx`[${prefix}3: Accepted](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-3-accepted)`;
     case "X":
       return short
-        ? `${prefix}X/Rejected`
-        : `[${prefix}X: Rejected](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-x-rejected)`;
+        ? mdx`${prefix}X/Rejected`
+        : mdx`[${prefix}X: Rejected](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-x-rejected)`;
     default:
-      return "Unknown";
+      return mdx`Unknown`;
   }
 }
 
-function githubUsernameMarkdown(champion: string | undefined): string {
-  if (!champion) return "-";
-  return `[@${champion}](https://github.com/${champion})`;
+function githubUsernameMarkdown(champion: string | undefined): MDX {
+  if (!champion) return mdx`-`;
+  return mdx`[@${mdx.escape(champion)}](${mdx.url(
+    `https://github.com/${champion}`,
+  )})`;
 }
 
-function formatIdentifier(identifier: string, truncate = false): string {
+function formatIdentifier(identifier: string, truncate = false): MDX {
   const raw = _formatIdentifier(identifier);
   const TRUNCATE_SIZE = 15;
   if (truncate && raw.length > TRUNCATE_SIZE) {
-    return `${raw.substring(0, TRUNCATE_SIZE - 2)}…`;
+    return mdx`${mdx.escape(raw.substring(0, TRUNCATE_SIZE - 2))}…`;
   } else {
-    return raw;
+    return mdx.escape(raw);
   }
 }
 function _formatIdentifier(identifier: string): string {
@@ -932,66 +965,79 @@ function _formatIdentifier(identifier: string): string {
 function commitAuthorMarkdown(commit: {
   ghUser: string | null;
   authorName: string | null;
-}) {
+}): MDX {
   return commit.ghUser
     ? githubUsernameMarkdown(commit.ghUser)
-    : commit.authorName ?? "unknown";
+    : mdx.escape(commit.authorName ?? "unknown");
 }
 
 function formatTimelineEvent(
   event: Event,
   frontmatter: Frontmatter,
   multiline: boolean,
-): string {
+): MDX {
   switch (event.type) {
     case "prCreated":
-      return `**[Spec PR](${event.href}) created** on ${formatDate(
+      return mdx`**[Spec PR](${mdx.url(event.href)}) created** on ${formatDate(
         event.date,
-      )} by ${event.actor ?? "unknown"}`;
+      )} by ${mdx.escape(event.actor ?? "unknown")}`;
     case "commitsPushed":
       if (event.commits.length === 1) {
         const commit = event.commits[0];
-        return `**Commit pushed**: [${lossilyEscapeMd(commit.headline)}](${
-          commit.href
-        }) on ${formatDate(event.date)} by ${commitAuthorMarkdown(commit)}`;
+        return mdx`**Commit pushed**: [${mdx.escape(
+          commit.headline,
+        )}](${mdx.url(commit.href)}) on ${formatDate(
+          event.date,
+        )} by ${commitAuthorMarkdown(commit)}`;
       } else if (!multiline) {
         const lastCommit = event.commits[event.commits.length - 1];
-        return `**${event.commits.length} commits pushed**: [(latest)](${
-          lastCommit.href
-        }) on ${formatDate(event.date)} by ${commitAuthorMarkdown(lastCommit)}`;
+        return mdx`**${mdx.trusted(
+          String(event.commits.length),
+        )} commits pushed**: [(latest)](${mdx.url(
+          lastCommit.href,
+        )}) on ${formatDate(event.date)} by ${commitAuthorMarkdown(
+          lastCommit,
+        )}`;
       } else {
-        return `**${event.commits.length} commits pushed** on ${formatDate(
-          event.date,
-        )}:
-${event.commits
-  .map(
+        return mdx`**${mdx.trusted(
+          String(event.commits.length),
+        )} commits pushed** on ${formatDate(event.date)}:
+${mdx.join(
+  event.commits.map(
     (commit) =>
-      `- [${lossilyEscapeMd(commit.headline)}](${
-        commit.href
-      }) by ${commitAuthorMarkdown(commit)}`,
-  )
-  .join("\n")}`;
+      mdx`- [${mdx.escape(commit.headline)}](${mdx.url(
+        commit.href,
+      )}) by ${commitAuthorMarkdown(commit)}`,
+  ),
+  "\n",
+)}`;
       }
     case "docCreated":
-      return `**[RFC document created](${event.href})** on ${formatDate(
-        event.date,
-      )} by ${event.actor ?? "unknown"}`;
+      return mdx`**[RFC document created](${mdx.url(
+        event.href,
+      )})** on ${formatDate(event.date)} by ${mdx.escape(
+        event.actor ?? "unknown",
+      )}`;
     case "docUpdated":
-      return `**[RFC document updated](${event.href})** on ${formatDate(
-        event.date,
-      )} by ${event.actor ?? "unknown"}`;
+      return mdx`**[RFC document updated](${mdx.url(
+        event.href,
+      )})** on ${formatDate(event.date)} by ${mdx.escape(
+        event.actor ?? "unknown",
+      )}`;
     case "wgAgenda":
-      return `**Added to [${formatDate(event.date)} WG agenda](${
-        event.href
-      })**`;
+      return mdx`**Added to [${formatDate(event.date)} WG agenda](${mdx.url(
+        event.href,
+      )})**`;
     case "wgNotes":
-      return `**Mentioned in [${formatDate(event.date)} WG notes](${
-        event.href
-      })**`;
+      return mdx`**Mentioned in [${formatDate(event.date)} WG notes](${mdx.url(
+        event.href,
+      )})**`;
     case "wgDiscussionCreated":
-      return `**[WG discussion](${event.href}) created** on ${formatDate(
-        event.date,
-      )} by ${event.actor ?? "unknown"}`;
+      return mdx`**[WG discussion](${mdx.url(
+        event.href,
+      )}) created** on ${formatDate(event.date)} by ${mdx.escape(
+        event.actor ?? "unknown",
+      )}`;
     default: {
       const never: never = event;
       throw new Error(`Unexpected event ${JSON.stringify(never)}`);
@@ -1000,11 +1046,13 @@ ${event.commits
 }
 
 // Format date as YYYY-MM-DD
-function formatDate(date: string): string {
-  if (date.length <= 10) return date;
+function formatDate(date: string): MDX {
+  if (date.length <= 10) return mdx.escape(date);
   const d = new Date(date);
   const pad = (n: number): string => String(n).padStart(2, "0");
-  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+  return mdx`${mdx.trusted(String(d.getFullYear()))}-${mdx.trusted(
+    pad(d.getMonth() + 1),
+  )}-${mdx.trusted(pad(d.getDate()))}`;
 }
 
 function printTables(everything: RFCFile[]) {
@@ -1014,50 +1062,54 @@ function printTables(everything: RFCFile[]) {
     thingsByStage[stage] ??= [];
     thingsByStage[stage].push(thing);
   }
-  const output: string[] = [];
+  const output: MDX[] = [];
   for (const stage of ["2", "1", "0", "3", "X", "?"]) {
     const things = thingsByStage[stage];
     if (things?.length) {
-      output.push(`\
-## ${stageMarkdown(stage, { prefix: "Stage " })}
+      output.push(mdx`\
+## ${stageMarkdown(stage, { prefix: mdx`Stage ` })}
 
 ${printTable(things)}
 
 `);
     }
   }
-  return output.join("\n\n");
+  return mdx.join(output, "\n\n");
 }
 
-function printTable(things: RFCFile[]) {
-  const printRow = (thing: RFCFile) => {
-    return `| ${rfcLink(
+function printTable(things: RFCFile[]): MDX {
+  const printRow = (thing: RFCFile): MDX => {
+    return mdx`| ${rfcLink(
       thing.frontmatter,
       "supershort",
-    )} | ${githubUsernameMarkdown(
-      thing.frontmatter.champion,
-    )} | [${lossilyEscapeMd(thing.frontmatter.title)}](/rfcs/${
-      thing.frontmatter.identifier
-    }) | ${formatTimelineEvent(
+    )} | ${githubUsernameMarkdown(thing.frontmatter.champion)} | [${mdx.escape(
+      thing.frontmatter.title,
+    )}](${mdx.url(
+      `/rfcs/${thing.frontmatter.identifier}`,
+    )}) | ${formatTimelineEvent(
       thing.frontmatter.events[0],
       thing.frontmatter,
       false,
-    )} [_(more)_](/rfcs/${thing.frontmatter.identifier}#timeline) |`;
+    )} [_(more)_](${mdx.url(
+      `/rfcs/${thing.frontmatter.identifier}#timeline`,
+    )}) |`;
   };
-  return `
+  return mdx`
 <!-- prettier-ignore -->
 | RFC | Champion | Title | Latest |
 | --- | --- | --- | --- |
-${things.map(printRow).join("\n")}
+${mdx.join(things.map(printRow), "\n")}
 `;
 }
 function formatPr(frontmatter: Frontmatter) {
   return frontmatter.prUrl
-    ? `[${frontmatter.title ?? frontmatter.prUrl}](${frontmatter.prUrl})`
-    : "-";
+    ? mdx`[${mdx.escape(frontmatter.title ?? frontmatter.prUrl)}](${mdx.url(
+        frontmatter.prUrl,
+      )})`
+    : mdx`-`;
 }
 
-function printEachRelated(ctx: Ctx, related: string): string[] {
+function printEachRelated(ctx: Ctx, related: string): MDX[] {
   const { rfcs } = ctx;
   const identifiers = [...parseRelated(related)];
   return identifiers
@@ -1066,159 +1118,8 @@ function printEachRelated(ctx: Ctx, related: string): string[] {
       if (!target) return null;
       return rfcLink(target.frontmatter, "expanded");
     })
-    .filter(Boolean) as string[];
+    .filter(Boolean) as MDX[];
 }
-
-function sanitizeMarkdown(
-  md: string | null | undefined,
-  identifier: string,
-): string {
-  if (md == null) return "";
-  let current = 0;
-  let escapedLine = "";
-  let active: string | null = null;
-  const backticks = [...md.matchAll(/`+/g)];
-  for (const backtickMatch of backticks) {
-    const position = backtickMatch.index!;
-    const ticks = backtickMatch[0];
-    if (active) {
-      if (ticks === active) {
-        // End of backticks
-        active = null;
-        escapedLine += md
-          .substring(current, position)
-          .replace(/\r\n/g, "\n")
-          .replace(/\r/g, "\n");
-        escapedLine += ticks;
-        current = position + ticks.length;
-      } else {
-        if (ticks.length < 3 && active.length >= 3) {
-          // Fully ignore
-        } else if (ticks.length === 1 && active.length === 2) {
-          // Fully ignore
-        } else {
-          console.log(
-            `${identifier}: Skipping '${ticks}' !== '${active}' at ${position}`,
-          );
-        }
-        // Ignore
-      }
-    } else {
-      // Start of backticks
-      active = ticks;
-      escapedLine += escapeMdInner(md.substring(current, position));
-      escapedLine += ticks;
-      current = position + ticks.length;
-    }
-  }
-  if (active) {
-    throw new Error(
-      `Mismatched backticks in '${identifier}.md'? Active: '${active}'`,
-    );
-  } else {
-    escapedLine += escapeMdInner(md.substring(current, md.length));
-  }
-  if (Math.random() < 2) return escapedLine;
-  const lines = md.split("\n");
-  let inCodeBlock: string | null = null;
-  const escapedLines: string[] = [];
-  for (const line of lines) {
-    const match = line.match(/^(```+)/);
-    if (match) {
-      if (inCodeBlock) {
-        if (inCodeBlock === match[1]) {
-          inCodeBlock = null;
-          escapedLines.push(line);
-          continue;
-        }
-      } else {
-        inCodeBlock = match[1];
-        escapedLines.push(line);
-        continue;
-      }
-    }
-    if (inCodeBlock) {
-      escapedLines.push(line);
-    } else {
-      const backticks = [...line.matchAll(/`+/g)];
-      /*
-      // Strip out the backticks that don't match
-      for (let i = 0; i < backticks.length; i++) {
-        if (!active) {
-          active = backticks[i][0];
-        } else {
-          if (backticks[i][0] !== active) {
-            backticks.splice(i, 1);
-            i--;
-          }
-        }
-      }
-      */
-      let current = 0;
-      let escapedLine = "";
-      let active: string | null = null;
-      for (const backtickMatch of backticks) {
-        const position = backtickMatch.index!;
-        const ticks = backtickMatch[0];
-        if (active) {
-          if (backtickMatch[0] === active) {
-            // End of backticks
-            active = null;
-            escapedLine += line.substring(current, position);
-            escapedLine += ticks;
-            current = position + ticks.length;
-          } else {
-            // Ignore
-          }
-        } else {
-          // Start of backticks
-          active = ticks;
-          escapedLine += escapeMdInner(line.substring(current, position));
-          escapedLine += ticks;
-          current = position + ticks.length;
-        }
-      }
-      if (active) {
-        throw new Error(
-          `Mismatched backticks in '${identifier}.md'? (This could be because there's a newline inside backticks. We don't support that yet.)`,
-        );
-      }
-      escapedLines.push(escapedLine);
-    }
-  }
-  return escapedLines.join("\n");
-}
-
-const escapeUrl = (url: string) => {
-  if (url.startsWith("https://") || url.startsWith("http://")) {
-    return url;
-  } else {
-    // Make it relative
-    return `https://github.com/graphql/graphql-wg/raw/main/rfcs/${url}`;
-  }
-};
-
-const escapeMdInner = (s: string) =>
-  s
-    .replace(/\r\n/g, "\n")
-    .replace(/\r/g, "\n")
-    .replace(
-      /\[([^\]]+)\]\(<(https?:\/\/[^>]*)>\)/g,
-      (_, t, l) => `${t} (${l})`,
-    )
-    .replace(/<(https?:\/\/[^>]*)>/g, (_, t) => `\`${t}\``)
-    .replace(/[{<]/g, "\\$&")
-    .replace(/\\<(\/?(?:details|summary|hr))\/?>/g, "<$1>")
-    .replace(/\\<!-- prettier-ignore -->/g, "<!-- prettier-ignore -->")
-    .replace(/<hr>/gi, (_, t) => `<hr/>`)
-    .replace(
-      /(import|require|eval|Function|export|class|const|var|let)(?![a-zA-Z])/g,
-      "$&\u200b",
-    )
-    .replace(
-      /!\[([^\]]*)\]\(([^)]*)\)/g,
-      (_, alt, href) => `![${alt}](${escapeUrl(href)})`,
-    );
 
 function getRelated(markdown: string, prefix: string): string | undefined {
   const related = new Set<string>();
@@ -1326,14 +1227,6 @@ function getDateFromNoteOrAgendaFile(file: string): string {
     return `${yyyy}-${mm}`;
   }
   throw new Error(`Couldn't extract date from ${file}`);
-}
-
-function lossilyEscapeMd(md: string): string {
-  return md
-    .replace(/[`\\]/g, "")
-    .replace(/[{<[]/g, "\\$&")
-    .replace(/&/g, "&amp;")
-    .replace(/[^-a-zA-Z0-9:_/\\?!.,;{}<>[\]()'"\s@…#&+]+/g, "_");
 }
 
 function addEvent(frontmatter: Frontmatter, event: Event) {
