@@ -172,7 +172,7 @@ function compile(
           break;
         }
         case "sanitize": {
-          string += sanitizeMarkdown(item.rawString);
+          string += sanitizeMd(item.rawString);
           break;
         }
         case "url": {
@@ -269,7 +269,7 @@ const escapeMdInner = (s: string) =>
       (_, alt, href) => `![${alt}](${escapeUrl(href)})`,
     );
 
-function sanitizeMarkdown(md: string | null | undefined): string {
+function sanitizeMd(md: string | null | undefined): string {
   if (md == null) return "";
   let current = 0;
   let escapedLine = "";
@@ -311,75 +311,7 @@ function sanitizeMarkdown(md: string | null | undefined): string {
   } else {
     escapedLine += escapeMdInner(md.substring(current, md.length));
   }
-  if (Math.random() < 2) return escapedLine;
-  const lines = md.split("\n");
-  let inCodeBlock: string | null = null;
-  const escapedLines: string[] = [];
-  for (const line of lines) {
-    const match = line.match(/^(```+)/);
-    if (match) {
-      if (inCodeBlock) {
-        if (inCodeBlock === match[1]) {
-          inCodeBlock = null;
-          escapedLines.push(line);
-          continue;
-        }
-      } else {
-        inCodeBlock = match[1];
-        escapedLines.push(line);
-        continue;
-      }
-    }
-    if (inCodeBlock) {
-      escapedLines.push(line);
-    } else {
-      const backticks = [...line.matchAll(/`+/g)];
-      /*
-      // Strip out the backticks that don't match
-      for (let i = 0; i < backticks.length; i++) {
-        if (!active) {
-          active = backticks[i][0];
-        } else {
-          if (backticks[i][0] !== active) {
-            backticks.splice(i, 1);
-            i--;
-          }
-        }
-      }
-      */
-      let current = 0;
-      let escapedLine = "";
-      let active: string | null = null;
-      for (const backtickMatch of backticks) {
-        const position = backtickMatch.index!;
-        const ticks = backtickMatch[0];
-        if (active) {
-          if (backtickMatch[0] === active) {
-            // End of backticks
-            active = null;
-            escapedLine += line.substring(current, position);
-            escapedLine += ticks;
-            current = position + ticks.length;
-          } else {
-            // Ignore
-          }
-        } else {
-          // Start of backticks
-          active = ticks;
-          escapedLine += escapeMdInner(line.substring(current, position));
-          escapedLine += ticks;
-          current = position + ticks.length;
-        }
-      }
-      if (active) {
-        throw new Error(
-          `Mismatched backticks? (This could be because there's a newline inside backticks. We don't support that yet.)`,
-        );
-      }
-      escapedLines.push(escapedLine);
-    }
-  }
-  return escapedLines.join("\n");
+  return "> " + escapedLine.trim().replace(/\n/g, "\n> ");
 }
 
 export interface MDXUtils {
