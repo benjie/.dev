@@ -269,41 +269,56 @@ const escapeMdInner = (s: string) =>
       (_, alt, href) => `![${alt}](${escapeUrl(href)})`,
     );
 
-function sanitizeMd(md: string | null | undefined): string {
-  if (md == null) return "";
+function sanitizeMd(rawMd: string | null | undefined): string {
+  if (rawMd == null) return "";
+  const md = rawMd.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
   let current = 0;
   let escapedLine = "";
   let active: string | null = null;
-  const backticks = [...md.matchAll(/`+/g)];
-  for (const backtickMatch of backticks) {
-    const position = backtickMatch.index!;
-    const ticks = backtickMatch[0];
-    if (active) {
-      if (ticks === active) {
-        // End of backticks
-        active = null;
-        escapedLine += md
-          .substring(current, position)
-          .replace(/\r\n/g, "\n")
-          .replace(/\r/g, "\n");
-        escapedLine += ticks;
-        current = position + ticks.length;
-      } else {
-        if (ticks.length < 3 && active.length >= 3) {
-          // Fully ignore
-        } else if (ticks.length === 1 && active.length === 2) {
-          // Fully ignore
+  const backticksAndNewlines = [...md.matchAll(/(?:`+|\n)/g)];
+  for (const match of backticksAndNewlines) {
+    const position = match.index!;
+    const matchText = match[0];
+    if (matchText[0] === "`") {
+      const ticks = matchText;
+      if (active) {
+        if (ticks === active) {
+          // End of backticks
+          escapedLine += md.substring(current, position);
+          escapedLine += ticks;
+          current = position + matchText.length;
+          active = null;
         } else {
-          console.log(`Skipping '${ticks}' !== '${active}' at ${position}`);
+          if (ticks.length < active.length) {
+            // Fully ignore
+          } else {
+            console.log(`Skipping '${ticks}' !== '${active}' at ${position}`);
+          }
+          // Ignore
         }
-        // Ignore
+      } else {
+        // Start of backticks
+        escapedLine += escapeMdInner(md.substring(current, position));
+        escapedLine += ticks;
+        current = position + matchText.length;
+        active = ticks;
       }
     } else {
-      // Start of backticks
-      active = ticks;
-      escapedLine += escapeMdInner(md.substring(current, position));
-      escapedLine += ticks;
-      current = position + ticks.length;
+      // newline
+      if (active) {
+        if (active.length >= 3) {
+          // No action necessary
+        } else {
+          // Single or double backticks, must not include newline. Treat this as the end of the backticks.
+          escapedLine += md.substring(current, position);
+          escapedLine += active;
+          escapedLine += "\n";
+          current = position + matchText.length;
+          active = null;
+        }
+      } else {
+        // No action necessary
+      }
     }
   }
   if (active) {
