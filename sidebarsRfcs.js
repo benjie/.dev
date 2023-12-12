@@ -138,6 +138,11 @@ const sidebars = {
         },
         {
           type: "doc",
+          id: "860",
+          label: "860*: Prevent @skip and @include on root subscription selection set [RFC2]",
+        },
+        {
+          type: "doc",
           id: "825",
           label: "825*: OneOf Input Objects [RFC2]",
         },
@@ -166,8 +171,23 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          id: "860",
-          label: "860*: Prevent @skip and @include on root subscription selection set [RFC1]",
+          id: "1053",
+          label: "1053*: Implementations may not deprecate a field that the interface hasn't deprecated [RFC1]",
+        },
+        {
+          type: "doc",
+          id: "1056",
+          label: "1056*: Fix CoerceArgumentValues() hasValue [RFC1]",
+        },
+        {
+          type: "doc",
+          id: "1058",
+          label: "1058*: List coercion algorithm [RFC1]",
+        },
+        {
+          type: "doc",
+          id: "1059",
+          label: "1059*: Introduce Strict and Legacy All Variable Usages Are Allowed [RFC1]",
         },
         {
           type: "doc",
@@ -254,28 +274,13 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "1053",
-          label: "1053*: Implementations may not deprecate a field that the interface hasn't deprecated [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "1056",
-          label: "1056*: Fix CoerceArgumentValues() hasValue [RFC0]",
+          id: "1052",
+          label: "1052: deduplicated incremental delivery [RFC0]",
         },
         {
           type: "doc",
           id: "1057",
           label: "1057*: Fix coercion table for list [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "1058",
-          label: "1058*: List coercion algorithm [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "1059",
-          label: "1059*: Introduce Strict and Legacy All Variable Usages Are Allowed [RFC0]",
         },
         {
           type: "doc",
@@ -306,11 +311,6 @@ const sidebars = {
           type: "doc",
           id: "1049",
           label: "1049: Introduce SourceSchemaDocument and FullSchemaDocument [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "1052",
-          label: "1052: deduplicated incremental delivery [RFC0]",
         },
         {
           type: "doc",
