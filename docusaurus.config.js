@@ -96,6 +96,7 @@ const config = {
       prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
+        additionalLanguages: ["graphql", "json", "json5", "diff"],
       },
       metadata: [
         // const {

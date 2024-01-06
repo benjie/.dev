@@ -7,6 +7,7 @@ author: Benjie
 breadcrumb: false
 sidebar_position: 5
 draft: true
+toc_max_heading_level: 6
 ---
 
 import { Tldr } from "@site/src/components/Tldr";
@@ -269,7 +270,11 @@ Essentially because we know the globally unique identifier for the entities,
 and we know that the value of a node in the graph is independent of the path
 through which it was fetched, we can break a response up into its constituent
 entities, store these and the references between them, and then reconstitute
-the query response from this normalized store. For example, imagine our initial
+the query response from this normalized store.
+
+#### First query
+
+For example, imagine our initial
 profile fetch was:
 
 ```graphql
@@ -328,7 +333,7 @@ The response to this query would be something like:
               "name": "Friend2"
             },
             "body": "Sing your heart out!"
-          },
+          }
         ]
       },
       {
@@ -368,27 +373,45 @@ author by their unique `id`.
 
 :::
 
-Our very first entity is the request itself; we can identify the request using
-its operation type, operation name, and the values of the variables. For our
-example above, we might use an identifier such as:
-`query.ProfileFetch|{id:'U9DB7'}`.
+Our very first entity is the root Query object itself; we can identify this
+as simply `Query`:
 
-The response has one root key, `user`, and we can see from the data inside of
-`user` that it is an entity (it has an `id`, which is its cache identifier), so
-we can replace it with a reference. But it's also critical to notice that the
-`user` field accepts arguments, and since the arguments can change the
-result of 
-
-There are many ways of building a
-normalized store, but ours will leverage the fact that a response key in
-GraphQL can never contain a `$` symbol to use an object with a `$ref` key to
-indicate a reference.
-
-```json5 {2-4}
+```json5
 {
-  "query.ProfileFetch|{id:'U9DB7'}": {
-    "user": { "$ref": "U9DB7" }
+  "Query": {
+    /* ... */
   }
+}
+```
+
+There's only one field in this, but critically that field
+accepted arguments which would likely change the result of the field, so
+we must factor the arguments into the identity of the field; thus rather
+than `user` we might use `user(id:'U9DB7')`:
+
+```json5 {4}
+{
+  "Query": {
+    "user(id:'U9DB7')": {
+      /* ... */
+    }
+  }
+}
+```
+
+We can see from the data inside of this `user` field that it is an entity (it
+has an `id`, the entity identifier), so we can replace it with a reference.
+There are many ways of building a normalized store, but ours will leverage the
+fact that a response key in GraphQL can never contain a `$` symbol and thus use
+an object with a `$ref` key to indicate a reference.
+
+```json5 {4,7}
+{
+  "Query": {
+    "user(id:'U9DB7')": {
+      "$ref": "U9DB7"
+    }
+  },
   "U9DB7": { /* ... */ }
 }
 ```
@@ -402,21 +425,22 @@ instance for references as examples of things that cannot be constructed from
 JSON.
 
 Another thing: since `id` is an arbitrary string the schema designer _could_
-set the `id` of a `User` record to `query.ProfileFetch|{id:'U9DB7'}` which
-would cause issues with the design here. This is easy to solve by either
-prepending all identifiers (except the operation identifiers you build
-yourself) with a specific symbol e.g. `@` or `$`, or by storing the top level
-GraphQL requests into their own store.
+set the `id` of a `User` record to `Query` which would cause issues with the
+design here. This is easy to solve by either prepending all identifiers (except
+the root operation type identifiers you choose yourself) with a specific symbol
+e.g. `@` or `$`.
 
 :::
 
 We can now write the value of the `user` with id `U9DB7` into our normalized store,
 stopping when we reach another entity and extracting that:
 
-```json {9}
+```json {7-15}
 {
-  "query.ProfileFetch|{id:'U9DB7'}": {
-    "user": { "$ref": "U9DB7" }
+  "Query": {
+    "user(id:'U9DB7')": {
+      "$ref": "U9DB7"
+    }
   },
   "U9DB7": {
     "id": "U9DB7",
@@ -432,16 +456,14 @@ stopping when we reach another entity and extracting that:
 }
 ```
 
-Note in particular the highlit line, since the `posts` field accepts
-
-Continuing like this
-
-The resulting normalized cache you'll notice is much flatter than the response data:
+Continuing like this, our completed normalized store will end up something like:
 
 ```json
 {
-  "query.ProfileFetch|{id:'U9DB7'}": {
-    "user": { "$ref": "U9DB7" }
+  "Query": {
+    "user(id:'U9DB7')": {
+      "$ref": "U9DB7"
+    }
   },
   "U9DB7": {
     "id": "U9DB7",
@@ -492,4 +514,191 @@ The resulting normalized cache you'll notice is much flatter than the response d
 }
 ```
 
+When you come to render this data in your application, you can regenerate the
+query response from the normalized cache by walking through the GraphQL
+document and extracting the specified entity for each field/arguments combo
+referenced.
+
+#### Second query
+
+Now when we issue the request to load more comments, we might issue a request such as:
+
+```graphql
+query LoadMoreComments($postId: ID!, $offset: Int!) {
+  post(id: $postId) {
+    id
+    comments(first: 2, offset: $offset) {
+      id
+      author { id name }
+      body
+    }
+  }
+}
+```
+
+using variables `{"postId": "P3Q41", "offset": 2}` and receive a response like:
+
+```json {8-9}
+{
+  "post": {
+    "id": "P3Q41",
+    "comments": [
+      {
+        "id": "C4NR1",
+        "author": {
+          "id": "U9DB7",
+          "name": "Becky",
+        },
+        "body": "Pumpkin Spiced Latte FTW!"
+      },
+      {
+        "id": "C4NR6",
+        "author": {
+          "id": "U7BZ3",
+          "name": "Friend2"
+        },
+        "body": "I prefer the Cinnamon one."
+      }
+    ]
+  }
+}
+```
+
+Note that the `name` has changed for the entity `U9DB7` (previously: Rebecca).
+
+The normalized result for this query is:
+
+```json
+{
+  "Query": {
+    "post(id:'P3Q41')": {
+      "$ref": "P3Q41"
+    }
+  },
+  "P3Q41": {
+    "id": "P3Q41",
+    "comments(first:2,offset:2)": [
+      { "$ref": "C4NR1" },
+      { "$ref": "C4NR6" },
+    ]
+  },
+  "C4NR1": {
+    "id": "C4NR1",
+    "author": { "$ref": "U9DB7" },
+    "body": "Pumpkin Spiced Latte FTW!"
+  },
+  "C4NR6": {
+    "id": "C4NR6",
+    "author": { "$ref": "U7BZ3" },
+    "body": "I prefer the Cinnamon one."
+  },
+  "U9DB7": {
+    "id": "U9DB7",
+    "name": "Becky",
+  },
+  "U7BZ3": {
+    "id": "U7BZ3",
+    "name": "Friend2"
+  }
+}
+```
+
+As we merge this into our main normalized store, we overwrite stale keys,
+resulting in:
+
+
+```diff {12-13}
+ {
+   "Query": {
+     "user(id:'U9DB7')": {
+       "$ref": "U9DB7"
++    },
++    "post(id:'P3Q41')": {
++      "$ref": "P3Q41"
+     }
+   },
+   "U9DB7": {
+     "id": "U9DB7",
+-    "name": "Rebecca",
++    "name": "Becky",
+     "tagline": "Gotta get down on Friday",
+     "posts(first:2)": [
+       { "$ref": "P3Q41" },
+       { "$ref": "P3Q43" },
+     ]
+   },
+   "P3Q41": {
+     "id": "P3Q41",
+     "author": { "$ref": "U9DB7" }
+     "body": "Heading to the studio now, just gotta grab a quick Starbucks first...",
+     "likeCount": 30,
+     "commentCount": 12,
++    "comments(first:2,offset:2)": [
++      { "$ref": "C4NR1" },
++      { "$ref": "C4NR6" },
++    ],
+     "comments(first:2)": [
+       { "$ref": "C2PL1" },
+       { "$ref": "C3YZ3" }
+     ]
+   },
+   "C2PL1": {
+     "id": "C2PL1",
+     "author": { "$ref": "U6EA1" },
+     "body": "Get their Pumpkin Spiced Latte!"
+   },
+   "C3YZ3": {
+     "id": "C3YZ3",
+     "author": { "$ref": "U7BZ3" },
+     "body": "Sing your heart out!"
+   },
++  "C4NR1": {
++    "id": "C4NR1",
++    "author": { "$ref": "U9DB7" },
++    "body": "Pumpkin Spiced Latte FTW!"
++  },
++  "C4NR6": {
++    "id": "C4NR6",
++    "author": { "$ref": "U7BZ3" },
++    "body": "I prefer the Cinnamon one."
++  },
+   "U6EA1": {
+     "id": "U6EA1",
+     "name": "Friend1"
+   },
+   "U7BZ3": {
+     "id": "U7BZ3",
+     "name": "Friend2"
+   },
+   "P3Q43": {
+     "id": "P3Q43",
+     "author": { "$ref": "U9DB7" }
+     "body": "The new album is coming along nicely!",
+     "likeCount": 42,
+     "commentCount": 0,
+     "comments(first:2)": []
+   }
+ }
+```
+
+Now when the first query re-renders, it will re-read the normalized data from
+the store and pick up Becky's new name, and render it everywhere, as we saw
+above.
+
+This is even more critical when performing mutations, where it's highly likely
+that data the user is already viewing will be changed. We can even push it
+further and add optimistic updates to our applications: we guess what the
+server is going to say, write our guess to the normalized store, and instantly
+re-render showing the user the new data everywhere in a consistent fashion.
+Assuming everything went right, this is really nice for the user; but if
+something goes wrong then we need to roll back this change and inform the user
+of the error... so use it only in situations where the happy path is the likely
+path!
+
+Subscriptions also benefit from normalized caches; in fact you don't even need
+to render your subscription results anywhere - if you subscribe to something
+that you have fetched via a query, then when it changes the normalized store
+will be updated, and the application will automatically re-render with the new
+values. GraphQL real-time features can be fantastic when backed with a
+normalized store!
 
