@@ -17,10 +17,11 @@ import { Pullquote } from "@site/src/components/Pullquote";
 <Tldr>
 
 GraphQL's execution model does not give you a native way to reference ancestors
-in field resolvers (only the parent is provided), and that's for good reason:
-to do so would break normalized caching. GraphQL mimics [traversing a
-graph](#graph-traversal) and the value of a node in the graph is
-independent of the path you took to get to it.
+in field resolvers (only the entity itself is provided), and that's for good
+reason: GraphQL mimics [traversing a graph](./traversal.mdx). The value of a
+node in the graph is independent of the path you took to get to it; breaking
+this rule would break technology that relies on it, for example [normalized
+stores](./normalized.mdx). 
 
 </Tldr>
 
@@ -35,20 +36,21 @@ type Query {
 }
 
 type Event {
-  id: String
+  id: ID!
   name: String
   speakers: [Speaker]
   talks: [Talk]
 }
 
 type Speaker {
-  id: String
+  id: ID!
   name: String
   events: [Event]
   talks: [Talk]
 }
 
 type Talk {
+  id: ID!
   name: String
   speaker: Speaker
   event: Event
@@ -61,10 +63,13 @@ Now consider this query:
 ```graphql
 query {
   events {
+    id
     name
     speakers {
+      id
       name
       talks {
+        id
         name
       }
     }
@@ -73,9 +78,169 @@ query {
 ```
 
 The issue author would like to make it such that `>events>speakers>talks`
-(using [operation
+([operation
 expressions](https://github.com/graphql/graphql-wg/blob/main/rfcs/OperationExpressions.md)
-format) returns the list of talks that the speaker has in the current event. At
-first glance, this might seem like a reasonable ask... But as we think about
-the rules in the GraphQL spec and how clients have come to rely on these rules,
-we'll discover why this isn't so.
+format) returns the list of talks that the speaker has in the current event.
+
+At first glance, this might seem like a reasonable ask... But if we think back
+to what we learned about [graph traversal](./traversal.mdx) we may see why this
+isn't a supported behavior of GraphQL. In particular, [normalized
+stores](./normalized.mdx) rely on the execution behavior outlined in the
+GraphQL specification, and to change this fundamental behaviour could cause
+applications using normalized stores to produce subtle issues and a lot of
+confusion and frustration.
+
+## Breaks normalized stores
+
+Imagine we implement the described change, we might get a result from the
+request above such as:
+
+```json5 {7-15,23-32}
+{
+  "events": [
+    {
+      "id": "EGQLC",
+      "name": "GraphQLConf",
+      "speakers": [
+        {
+          "id": "UB3NJ",
+          "name": "Benjie",
+          "talks": [
+            {
+              "id": "TGFST",
+              "name": "The Future of Efficiency Is Here: Schema Planning"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "EVRGU",
+      "name": "VR Gamers",
+      "speakers": [
+        {
+          "id": "UB3NJ",
+          "name": "Benjie",
+          "talks": [
+            {
+              "id": "TPOPC",
+              "name": "Mastering Climbing in Population:One"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+(I've omitted all other speakers and all other events for brevity.)
+
+When we [turn this into a normalized store](./normalized.mdx), both events
+reference the speaker `UB3NJ`, who has a field `talks` that accepts no
+arguments; so when we merge these, the latter will overwrite the former, and
+the resulting store will end up being something like:
+
+```json5
+{
+  "Query": {
+    "events": [
+      { "$ref": "EGQLC" },
+      { "$ref": "EVRGU" },
+    ]
+  }
+  "EGQLC": {
+    "id": "EGQLC",
+    "name": "GraphQLConf",
+    "speakers": [
+      { "$ref": "UB3NJ" },
+    ]
+  },
+  "EVRGU": {
+    "id": "EVRGU",
+    "name": "VR Gamers",
+    "speakers": [
+      { "$ref": "UB3NJ" },
+    ]
+  },
+  "UB3NJ": {
+    "id": "UB3NJ",
+    "name": "Benjie",
+  },
+  "UB3NJ": {
+    "id": "UB3NJ",
+    "name": "Benjie",
+    /* This gets overwritten:
+    "talks": [
+      {
+        "id": "TGFST",
+        "name": "The Future of Efficiency Is Here: Schema Planning"
+      }
+    ] */
+    "talks": [
+      {
+        "id": "TPOPC",
+        "name": "Mastering Climbing in Population:One"
+      }
+    ]
+  }
+}
+```
+
+When we reconstitute this back into data to render but we'll
+end up with Benjie's talks for "VR Gamers" event being used for GraphQLConf...
+A subtle issue when testing the software (very hard to notice) but super
+obvious to the attendees of GraphQLConf who wonder how relevant "Mastering
+Climbing in Population:One" is to GraphQL.
+
+## Solution: rewrite the query
+
+One solution to this problem is to write your query in such a way that each
+field can execute in a context-free way and still give you the data you need:
+
+```graphql
+query {
+  events {
+    id
+    name
+    talks {
+      id
+      name
+      speakers {  
+        id
+        name
+      }
+    }
+  }
+}
+```
+
+## Solution: add another field
+
+Another solution is to perform the grouping on the server side and expose this
+via the schema:
+
+```graphql
+extend type Event {
+  speakersAndTalks: [SpeakerAndTalks]
+}
+type SpeakerAndTalks {
+  speaker: Speaker
+  talks: [Talk]
+}
+```
+
+which you could query like this:
+
+```graphql
+query {
+  events {
+    id
+    name
+    speakersAndTalks {
+      speaker { id name }
+      talks { id name }
+    }
+  }
+}
+```
