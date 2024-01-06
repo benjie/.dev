@@ -1,0 +1,54 @@
+.socialProfilePage {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 20px;
+  padding: 20px;
+  background-color: #f2f2f2;
+}
+.socialProfilePage h1 {
+  color: #333;
+}
+.socialProfilePage p {
+  color: #555;
+}
+.socialProfilePage .post {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  padding: 20px;
+  transition: transform 0.3s ease-in-out;
+}
+.socialProfilePage .post:hover {
+  transform: scale(1.03);
+}
+.socialProfilePage .post p {
+  margin-bottom: 10px;
+}
+.socialProfilePage .post p.likes-comments {
+  color: #777;
+  font-size: 14px;
+}
+.socialProfilePage .author {
+  font-weight: bold;
+  color: #3498db;
+}
+.socialProfilePage .comments {
+  margin-top: 10px;
+  margin-left: 20px;
+  padding: 10px;
+  padding-bottom: 1px;
+  background-color: #eeeeee;
+  border-radius: 7px;
+}
+.socialProfilePage .comment {
+  color: #555;
+  margin-bottom: 5px;
+}
+.socialProfilePage .friend {
+  font-weight: bold;
+  color: #e74c3c;
+}
+.socialProfilePage .more {
+  color: blue;
+}
