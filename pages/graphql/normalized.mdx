@@ -15,6 +15,19 @@ import "./normalized.css";
 
 # Normalized Stores
 
+<Tldr>
+
+Normalized stores are used in many GraphQL clients (for example Relay, Apollo
+Client, URQL) to ensure that data is always rendered consistently across the
+application. They work by storing just one copy of each entity using its unique
+identity, and then referencing this copy everywhere it's needed
+(normalization). This allows changes to an entity detected in one place (a
+query, mutation or subscription) to be retroactively applied to all previous
+results automatically by virtue of updating the single copy of the entity and
+then re-rendering.
+
+</Tldr>
+
 It's extremely common in a web application for a change made in one place to
 need to be reflected in other places in order to maintain consistency for the
 viewer. For example, imagine you're viewing the posts on the profile page for
