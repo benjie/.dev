@@ -1,0 +1,89 @@
+---
+type: page
+title: 'Graph Traversal'
+description: "The origin of the 'graph' in 'GraphQL', and why it's important"
+tag: graphql
+author: Benjie
+breadcrumb: false
+sidebar_position: 4
+draft: true
+---
+
+import { Tldr } from "@site/src/components/Tldr";
+import { Pullquote } from "@site/src/components/Pullquote";
+
+# Graph Traversal
+
+<Tldr>
+
+The 'Graph' in 'GraphQL' relates to traversing the graph of your data model.
+The value of a node in a graph is independent of the path through which it was
+fetched.
+
+</Tldr>
+
+The 'Graph' in 'GraphQL' comes from, originally, Facebook thinking of their
+data in terms of a graph:
+
+<figure>
+
+![A graph showing a "user" and a "page" related as "user likes page", along with other relationships from the page, and to and from the user.](/img/graphql/ancestors/graph.png)
+
+<figcaption>
+
+&copy; Meta Platforms Inc; from the article [Under the Hood: Building out the
+infrastructure for Graph
+Search](https://engineering.fb.com/2013/03/06/core-infra/under-the-hood-building-out-the-infrastructure-for-graph-search/),
+retrieved 2024-01-06T10:27:00Z.<br /><small>Used under the "Fair Use" doctrine (Copyright
+Act, Section 107).</small>
+
+</figcaption>
+
+</figure>
+
+## Graph overview
+
+In a graph you have "nodes" which are your entities (users, pages, posts,
+photos, etc), and "edges" which are the relationships between these entities
+(likes, tagged, photo, friend, etc). Both "nodes" and "edges" may contain data,
+for example you might have that Bob is friends with Alice _since_ last
+February.
+
+When traversing a graph, you start at a node (or set of nodes) and then follow
+the edges to discover new nodes. Let's imagine your name is 'Current Viewer'
+and this is a portion of your graph:
+
+```mermaid
+%%{init: {'themeVariables': { 'edgeLabelBackground': 'white'}}}%%
+flowchart TD
+  Viewer{{"Current Viewer"}}:::start -- "likes" --> Discworld(["Discworld"])
+  Viewer -- "friend" --> Alice["Aveline<br/>Gearhart"]
+  Viewer -- "friend" ---> Bob["Lil'<br>Bobby"]
+  Alice -- "friend" -->  Bob
+  Alice -- "friend" --> Carl["Carlos<br>Gonzales"]
+  Alice -- "likes" --> SteamPunk
+  Viewer -- "likes" --> SteamPunk(["Steam Punk"])
+  Bob -- "likes" --> SQLI(["SQL Injection"])
+  Bob -- "likes" --> Conferences(["Conferences"])
+  Bob -. "friend" .-> Blank2["&nbsp;"]:::blank
+  Carl -. "friend" .-> Blank2["&nbsp;"]:::blank
+  Carl -. "friend" .-> Blank3["&nbsp;"]:::blank
+  Carl -. "likes" .-> Blank4(["&nbsp;"]):::blank
+
+  classDef start fill:#ffffff,stroke-width:4,stroke:black,font-weight:bold
+  classDef page fill:#eeccee
+  classDef blank fill:transparent,stroke-dasharray:5 5,width:6rem
+  class Discworld,Conferences,SteamPunk,SQLI,Blank4 page
+
+  linkStyle 2 color:blue,stroke:blue,stroke-width:4
+  linkStyle 1,3 color:#DC3220,stroke:#DC3220,stroke-width:4
+```
+
+To get to Lil' Bobby you could traverse `friend` directly (blue), or you could
+traverse `friend>friend` to go via Aveline Gearhart (red). Note that
+independent of which path you take to get to Lil' Bobby, their likes are always
+the same: SQL Injection and Conferences.
+
+This property turns out to be really important if you want to ensure the web
+page is always rendered consistently even when only doing small data fetches.
+
