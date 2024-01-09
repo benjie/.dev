@@ -1,6 +1,6 @@
 ---
 type: page
-title: 'Normalized Stores'
+title: "Normalized Stores"
 description: "Rendering consistent data across your application"
 tag: graphql
 author: Benjie
@@ -18,13 +18,12 @@ import "./normalized.css";
 <Tldr>
 
 Normalized stores are used in many GraphQL clients (for example Relay, Apollo
-Client, URQL) to ensure that data is always rendered consistently across the
+Client, urql) to ensure that data is always rendered consistently across the
 application. They work by storing just one copy of each entity using its unique
-identity, and then referencing this copy everywhere it's needed
-(normalization). This allows changes to an entity detected in one place (a
-query, mutation or subscription) to be retroactively applied to all previous
-results automatically by virtue of updating the single copy of the entity and
-then re-rendering.
+identity, and then referencing this copy everywhere it's needed (normalization).
+This allows changes to an entity detected in one place (a query, mutation or
+subscription) to be retroactively applied to all previous results automatically
+by virtue of updating the single copy of the entity and then re-rendering.
 
 </Tldr>
 
@@ -34,6 +33,7 @@ viewer. For example, imagine you're viewing the posts on the profile page for
 your friend Rebecca:
 
 <!-- Thanks ChatGPT for building most of this for me -->
+
 <div class="socialProfilePage">
 <h1>Rebecca</h1>
 <h3>Gotta get down on Friday!</h3>
@@ -53,6 +53,7 @@ your friend Rebecca:
     </div>
 
  <!-- Post 1 -->
+
     <div class="post">
         <p class="author">Rebecca</p>
         <p>The new album is coming along nicely!</p>
@@ -63,8 +64,8 @@ your friend Rebecca:
 
 After you load the page, but before you click "Show more", Rebecca decides to
 change her name to "Becky". You click "Show more" and new comments render,
-including one from Becky. Seemingly magically, the entire page updates to
-render "Becky" everywhere:
+including one from Becky. Seemingly magically, the entire page updates to render
+"Becky" everywhere:
 
 <div class="socialProfilePage">
 <h1>Becky</h1>
@@ -99,11 +100,10 @@ the combined magics of object identification and normalized stores.
 
 ## Object identification
 
-One of the common patterns you'll see in GraphQL schemas is the [GraphQL Global
-Object Identification
-Specification](https://relay.dev/graphql/objectidentification.htm). This
-specification gives a standard way of identifying your entities (users, posts,
-comments, etc) via an `id: ID!` field. Each entity that supports this may
+One of the common patterns you'll see in GraphQL schemas is the
+[GraphQL Global Object Identification Specification](https://relay.dev/graphql/objectidentification.htm).
+This specification gives a standard way of identifying your entities (users,
+posts, comments, etc) via an `id: ID!` field. Each entity that supports this may
 declare so by its type implementing the `Node` interface. With this, we can
 uniquely reference any entity of any type using a single, stable, unique
 identifier. This pattern is used by the Relay GraphQL client among others.
@@ -111,50 +111,48 @@ identifier. This pattern is used by the Relay GraphQL client among others.
 This isn't the only way of identifying entities though; for example Apollo
 Client lets you identify an entity via a combination of attributes using the
 [`dataIdFromObject()`](https://www.apollographql.com/docs/react/caching/cache-configuration/#dataidfromobject)
-callback (there are other options in newer versions of Apollo Client also).
-This defaults to combining the `__typename` and `id` field of the object into a
+callback (there are other options in newer versions of Apollo Client also). This
+defaults to combining the `__typename` and `id` field of the object into a
 unique identifier, which works assuming your entities have an `id` field, and
 that you always fetch both the `id` and the `__typename`. Apollo Client will
-automatically ask for `__typename` even if you forget, but it's up to you to
-ask for `id`.
+automatically ask for `__typename` even if you forget, but it's up to you to ask
+for `id`.
 
 :::note
 
-Some other GraphQL clients, such as URQL, also support normalized caching.
+Some other GraphQL clients, such as urql, also support normalized caching.
 Please see your GraphQL client's documentation for how to enable such a feature
 if it exists.
 
 :::
 
-When we fetch the profile for Rebecca we might find that the entity
-representing her is the User with ID `U9DB7`. Later, when we fetch the
-comments, we see the commenter 'Becky' has this same ID, and so we can
-determine that Rebecca must have changed her name to Becky. But going through
-and manually updating this everywhere that we've already fetched would be a lot
-of work; what we need is a normalized store...
+When we fetch the profile for Rebecca we might find that the entity representing
+her is the User with ID `U9DB7`. Later, when we fetch the comments, we see the
+commenter 'Becky' has this same ID, and so we can determine that Rebecca must
+have changed her name to Becky. But going through and manually updating this
+everywhere that we've already fetched would be a lot of work; what we need is a
+normalized store...
 
 ## Normalized storage
 
 A normalized store stores the entire information fetched across all of your
-GraphQL requests (queries, mutations, subscriptions) in a format that means
-that when an entity is updated in one place, it's automatically updated
-everywhere.
+GraphQL requests (queries, mutations, subscriptions) in a format that means that
+when an entity is updated in one place, it's automatically updated everywhere.
 
-Different normalized stores work in different ways, so I'm only going to give
-an extremely rough approximation here. And to keep things simple, I'm going
-to assume the store is configured (and the schema is written) such that `id`
-is always a globally unique identifier.
+Different normalized stores work in different ways, so I'm only going to give an
+extremely rough approximation here. In order to keep things simple, I'm going to
+assume the store is configured (and the schema is written) such that `id` is
+always a globally unique identifier.
 
-Essentially because we know the globally unique identifier for the entities,
-and we know that the value of a node in the graph is independent of the path
-through which it was fetched, we can break a response up into its constituent
-entities, store these and the references between them, and then reconstitute
-the query response from this normalized store.
+As we know the globally unique identifier for each entity, and we know that the
+value of a node in the graph is independent of the path through which it was
+fetched, we can break a response up into its constituent entities, store these
+entities and the references between them into a "normalized store", and then
+later reconstitute the query response from the store when needed.
 
 ### Example 1: Profile Fetch
 
-For example, imagine our initial
-profile fetch was:
+For example, imagine our initial profile fetch was:
 
 ```graphql
 query ProfileFetch($id: ID!) {
@@ -233,8 +231,8 @@ The response to this query would be something like:
 
 :::note
 
-I've highlighted redundant data about the same entity (Rebecca)
-referenced in multiple positions.
+I've highlighted redundant data about the same entity (Rebecca) referenced in
+multiple positions.
 
 :::
 
@@ -252,29 +250,29 @@ author by their unique `id`.
 
 :::
 
-Our very first entity is the root Query object itself; we can identify this
-as simply `Query`:
+Our very first entity is the root Query object itself; we can identify this as
+simply `Query`:
 
 ```json5
 {
-  "Query": {
+  Query: {
     /* ... */
-  }
+  },
 }
 ```
 
-There's only one field in this, but critically that field
-accepted arguments which would likely change the result of the field, so
-we must factor the arguments into the identity of the field; thus rather
-than `user` we might use `user(id:'U9DB7')`:
+There's only one field in this, but critically that field accepted arguments
+which would likely change the result of the field, so we must factor the
+arguments into the identity of the field; thus rather than `user` we might use
+`user(id:'U9DB7')`:
 
 ```json5 {4}
 {
-  "Query": {
+  Query: {
     "user(id:'U9DB7')": {
       /* ... */
-    }
-  }
+    },
+  },
 }
 ```
 
@@ -303,16 +301,16 @@ are writing your normalized store in JS then you could use a Symbol or a class
 instance for references as examples of things that cannot be constructed from
 JSON.
 
-Another thing: since `id` is an arbitrary string the schema designer _could_
-set the `id` of a `User` record to `Query` which would cause issues with the
-design here. This is easy to solve by either prepending all identifiers (except
-the root operation type identifiers you choose yourself) with a specific symbol
-e.g. `@` or `$`.
+Another thing: since `id` is an arbitrary string the schema designer _could_ set
+the `id` of a `User` record to `Query` which would cause issues with the design
+here. This is easy to solve by either prepending all identifiers (except the
+root operation type identifiers you choose yourself) with a specific symbol e.g.
+`@` or `$`.
 
 :::
 
-We can now write the value of the `user` with id `U9DB7` into our normalized store,
-stopping when we reach another entity and extracting that:
+We can now write the value of the `user` with id `U9DB7` into our normalized
+store, stopping when we reach another entity and extracting that:
 
 ```json {7-15}
 {
@@ -394,13 +392,13 @@ Continuing like this, our completed normalized store will end up something like:
 ```
 
 When you come to render this data in your application, you can regenerate the
-query response from the normalized cache by walking through the GraphQL
-document and extracting the specified entity for each field/arguments combo
-referenced.
+query response from the normalized cache by walking through the GraphQL document
+and extracting the specified entity for each field/arguments combo referenced.
 
 ### Example 2: Fetching more comments
 
-Now when we issue the request to load more comments, we might issue a request such as:
+Now when we issue the request to load more comments, we might issue a request
+such as:
 
 ```graphql
 query LoadMoreComments($postId: ID!, $offset: Int!) {
@@ -570,8 +568,8 @@ above.
 
 This is even more critical when performing mutations, where it's highly likely
 that data the user is already viewing will be changed. We can even push it
-further and add optimistic updates to our applications: we guess what the
-server is going to say, write our guess to the normalized store, and instantly
+further and add optimistic updates to our applications: we guess what the server
+is going to say, write our guess to the normalized store, and instantly
 re-render showing the user the new data everywhere in a consistent fashion.
 Assuming everything went right, this is really nice for the user; but if
 something goes wrong then we need to roll back this change and inform the user
