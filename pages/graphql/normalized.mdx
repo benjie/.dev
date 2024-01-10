@@ -162,13 +162,19 @@ query ProfileFetch($id: ID!) {
     tagline
     posts(first: 2) {
       id
-      author { id name }
+      author {
+        id
+        name
+      }
       body
       likeCount
       commentCount
       comments(first: 2) {
         id
-        author { id name }
+        author {
+          id
+          name
+        }
         body
       }
     }
@@ -187,10 +193,10 @@ The response to this query would be something like:
     "posts": [
       {
         "id": "P3Q41",
-        "author": { 
+        "author": {
           "id": "U9DB7",
-          "name": "Rebecca",
-        }
+          "name": "Rebecca"
+        },
         "body": "Heading to the studio now, just gotta grab a quick Starbucks first...",
         "likeCount": 30,
         "commentCount": 12,
@@ -215,10 +221,10 @@ The response to this query would be something like:
       },
       {
         "id": "P3Q43",
-        "author": { 
+        "author": {
           "id": "U9DB7",
-          "name": "Rebecca",
-        }
+          "name": "Rebecca"
+        },
         "body": "The new album is coming along nicely!",
         "likeCount": 42,
         "commentCount": 0,
@@ -253,11 +259,11 @@ author by their unique `id`.
 Our very first entity is the root Query object itself; we can identify this as
 simply `Query`:
 
-```json5
+```jsonc
 {
-  Query: {
+  "Query": {
     /* ... */
-  },
+  }
 }
 ```
 
@@ -266,13 +272,13 @@ which would likely change the result of the field, so we must factor the
 arguments into the identity of the field; thus rather than `user` we might use
 `user(id:'U9DB7')`:
 
-```json5 {4}
+```jsonc {4}
 {
-  Query: {
+  "Query": {
     "user(id:'U9DB7')": {
       /* ... */
-    },
-  },
+    }
+  }
 }
 ```
 
@@ -282,14 +288,16 @@ There are many ways of building a normalized store, but ours will leverage the
 fact that a response key in GraphQL can never contain a `$` symbol and thus use
 an object with a `$ref` key to indicate a reference.
 
-```json5 {4,7}
+```jsonc {4,7-9}
 {
   "Query": {
     "user(id:'U9DB7')": {
       "$ref": "U9DB7"
     }
   },
-  "U9DB7": { /* ... */ }
+  "U9DB7": {
+    /* ... */
+  }
 }
 ```
 
@@ -312,7 +320,7 @@ root operation type identifiers you choose yourself) with a specific symbol e.g.
 We can now write the value of the `user` with id `U9DB7` into our normalized
 store, stopping when we reach another entity and extracting that:
 
-```json {7-15}
+```jsonc {7-12}
 {
   "Query": {
     "user(id:'U9DB7')": {
@@ -323,13 +331,14 @@ store, stopping when we reach another entity and extracting that:
     "id": "U9DB7",
     "name": "Rebecca",
     "tagline": "Gotta get down on Friday",
-    "posts(first:2)": [
-      { "$ref": "P3Q41" },
-      { "$ref": "P3Q43" },
-    ]
+    "posts(first:2)": [{ "$ref": "P3Q41" }, { "$ref": "P3Q43" }]
   },
-  "P3Q41": { /* ... */ },
-  "P3Q43": { /* ... */ }
+  "P3Q41": {
+    /* ... */
+  },
+  "P3Q43": {
+    /* ... */
+  }
 }
 ```
 
@@ -406,7 +415,10 @@ query LoadMoreComments($postId: ID!, $offset: Int!) {
     id
     comments(first: 2, offset: $offset) {
       id
-      author { id name }
+      author {
+        id
+        name
+      }
       body
     }
   }
@@ -424,7 +436,7 @@ using variables `{"postId": "P3Q41", "offset": 2}` and receive a response like:
         "id": "C4NR1",
         "author": {
           "id": "U9DB7",
-          "name": "Becky",
+          "name": "Becky"
         },
         "body": "Pumpkin Spiced Latte FTW!"
       },
@@ -454,10 +466,7 @@ The normalized result for this query would be something like:
   },
   "P3Q41": {
     "id": "P3Q41",
-    "comments(first:2,offset:2)": [
-      { "$ref": "C4NR1" },
-      { "$ref": "C4NR6" },
-    ]
+    "comments(first:2,offset:2)": [{ "$ref": "C4NR1" }, { "$ref": "C4NR6" }]
   },
   "C4NR1": {
     "id": "C4NR1",
@@ -471,7 +480,7 @@ The normalized result for this query would be something like:
   },
   "U9DB7": {
     "id": "U9DB7",
-    "name": "Becky",
+    "name": "Becky"
   },
   "U7BZ3": {
     "id": "U7BZ3",
@@ -484,7 +493,6 @@ The normalized result for this query would be something like:
 
 As we merge this into our main normalized store, we overwrite stale keys,
 resulting in:
-
 
 ```diff {12-13}
  {
@@ -512,10 +520,7 @@ resulting in:
      "body": "Heading to the studio now, just gotta grab a quick Starbucks first...",
      "likeCount": 30,
      "commentCount": 12,
-+    "comments(first:2,offset:2)": [
-+      { "$ref": "C4NR1" },
-+      { "$ref": "C4NR6" },
-+    ],
++    "comments(first:2,offset:2)": [ { "$ref": "C4NR1" }, { "$ref": "C4NR6" } ],
      "comments(first:2)": [
        { "$ref": "C2PL1" },
        { "$ref": "C3YZ3" }
@@ -584,4 +589,3 @@ that you have fetched via a query, then when it changes the normalized store
 will be updated, and the application will automatically re-render with the new
 values. GraphQL real-time features can be fantastic when backed with a
 normalized store!
-
