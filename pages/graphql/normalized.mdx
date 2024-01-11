@@ -406,8 +406,7 @@ and extracting the specified entity for each field/arguments combo referenced.
 
 ### Example 2: Fetching more comments
 
-Now when we issue the request to load more comments, we might issue a request
-such as:
+To fetch more comments, you can issue a request such as:
 
 ```graphql
 query LoadMoreComments($postId: ID!, $offset: Int!) {
@@ -455,7 +454,7 @@ using variables `{"postId": "P3Q41", "offset": 2}` and receive a response like:
 
 Note that the `name` has changed for the entity `U9DB7` (previously: Rebecca).
 
-The normalized result for this query would be something like:
+The normalized result for this query is something like:
 
 ```json
 {
@@ -491,8 +490,8 @@ The normalized result for this query would be something like:
 
 ### Merging normalized stores
 
-As we merge this into our main normalized store, we overwrite stale keys,
-resulting in:
+As you merge the above store into the main normalized store, you will overwrite
+stale keys, resulting in:
 
 ```diff {12-13}
  {
@@ -567,25 +566,26 @@ resulting in:
 
 Now when the first query re-renders, it will re-read the normalized data from
 the store and pick up Becky's new name, and render it everywhere, as we saw
-above.
+above in [the introduction](/graphql/normalized).
 
 ## Mutations
 
-This is even more critical when performing mutations, where it's highly likely
-that data the user is already viewing will be changed. We can even push it
-further and add optimistic updates to our applications: we guess what the server
-is going to say, write our guess to the normalized store, and instantly
-re-render showing the user the new data everywhere in a consistent fashion.
-Assuming everything went right, this is really nice for the user; but if
-something goes wrong then we need to roll back this change and inform the user
-of the error... so use it only in situations where the happy path is the likely
-path!
+Using and merging normalized caches becomes critical when performing mutations
+as it's highly likely the data the user is already viewing will be changed.
+
+Adding optimistic updates to the application is another technique which can be
+used to enhance this effect: the application can guess what the server is going
+to say, write the guess to the normalized store, and instantly re-render showing
+the user the new data everywhere in a consistent fashion. Assuming everything
+went right, this is really nice for the user; but if something goes wrong then
+you need to roll back this change and inform the user of the error... so use it
+only in situations where the happy path is the likely path!
 
 ## Subscriptions
 
 Subscriptions also benefit from normalized caches; in fact you don't even need
-to render your subscription results anywhere - if you subscribe to something
-that you have fetched via a query, then when it changes the normalized store
-will be updated, and the application will automatically re-render with the new
-values. GraphQL real-time features can be fantastic when backed with a
+to render your subscription results anywhere &mdash; if you subscribe to
+something that you have fetched via a query, then when it changes the normalized
+store will be updated, and the application will automatically re-render with the
+new values. GraphQL real-time features can be fantastic when backed with a
 normalized store!
