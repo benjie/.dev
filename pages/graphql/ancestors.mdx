@@ -1,6 +1,6 @@
 ---
 type: page
-title: 'Referencing Ancestors'
+title: "Referencing Ancestors"
 description: "Filtering by or comparing against ancestor objects in a field."
 tag: graphql
 author: Benjie
@@ -20,15 +20,16 @@ GraphQL's execution model does not give you a native way to reference ancestors
 in field resolvers (only the entity itself is provided), and that's for good
 reason: GraphQL mimics [traversing a graph](./traversal.mdx). The value of a
 node in the graph is independent of the path you took to get to it; breaking
-this rule would break technology that relies on it, for example [normalized
-stores](./normalized.mdx). 
+this rule would break technology that relies on it, for example
+[normalized stores](./normalized.mdx).
 
 </Tldr>
 
 One of the common requests that I see in GraphQL is users wanting a way to query
-an ancestor object from a descendant object. Let's take a look at the example in
+an ancestor object from a descendant object. Throughout this article, I'm going
+to use the example given in
 [GraphQL spec issue #144](https://github.com/graphql/graphql-spec/issues/144#issue-133595212);
-here's the schema:
+here's the schema under discussion:
 
 ```graphql
 type Query {
@@ -59,7 +60,6 @@ type Talk {
 
 Now consider this query:
 
-
 ```graphql
 query {
   events {
@@ -78,24 +78,23 @@ query {
 ```
 
 The issue author would like to make it such that `>events>speakers>talks`
-([operation
-expressions](https://github.com/graphql/graphql-wg/blob/main/rfcs/OperationExpressions.md)
+([operation expressions](https://github.com/graphql/graphql-wg/blob/main/rfcs/OperationExpressions.md)
 format) returns the list of talks that the speaker has in the current event.
 
-At first glance, this might seem like a reasonable ask... But if we think back
-to what we learned about [graph traversal](./traversal.mdx) we may see why this
-isn't a supported behavior of GraphQL. In particular, [normalized
-stores](./normalized.mdx) rely on the execution behavior outlined in the
-GraphQL specification, and to change this fundamental behaviour could cause
-applications using normalized stores to produce subtle issues and a lot of
+At first glance, this might seem like a reasonable proposition... However, when
+considering the need for [graph traversal](./traversal.mdx) it becomes apparent
+why this isn't a supported behaviour of GraphQL. In particular,
+[normalized stores](./normalized.mdx) rely on the execution behaviour outlined
+in the GraphQL specification, and to change this fundamental behaviour could
+cause applications using normalized stores to produce subtle issues and a lot of
 confusion and frustration.
 
 ## Breaks normalized stores
 
-Imagine we implement the described change, we might get a result from the
-request above such as:
+If you implement the described change, you might get a result from the request
+above such as:
 
-```json5 {7-15,23-32}
+```json {7-15,23-32}
 {
   "events": [
     {
@@ -136,9 +135,9 @@ request above such as:
 
 (I've omitted all other speakers and all other events for brevity.)
 
-When we [turn this into a normalized store](./normalized.mdx), both events
+When you [turn this into a normalized store](./normalized.mdx), both events
 reference the speaker `UB3NJ`, who has a field `talks` that accepts no
-arguments; so when we merge these, the latter will overwrite the former, and
+arguments; so when you merge these, the latter will overwrite the former, and
 the resulting store will end up being something like:
 
 ```json5
@@ -187,11 +186,11 @@ the resulting store will end up being something like:
 }
 ```
 
-When we reconstitute this back into data to render but we'll
-end up with Benjie's talks for "VR Gamers" event being used for GraphQLConf...
-A subtle issue when testing the software (very hard to notice) but super
-obvious to the attendees of GraphQLConf who wonder how relevant "Mastering
-Climbing in Population:One" is to GraphQL.
+When you reconstitute this back into data to render you'll end up with Benjie's
+talk for the "VR Gamers" event being used for GraphQLConf... A subtle issue when
+testing the software (very hard to notice) but super obvious to the attendees of
+GraphQLConf who wonder how relevant "Mastering Climbing in Population:One" is to
+GraphQL!
 
 ## Solution: rewrite the query
 
@@ -206,7 +205,7 @@ query {
     talks {
       id
       name
-      speakers {  
+      speakers {
         id
         name
       }
@@ -238,8 +237,14 @@ query {
     id
     name
     speakersAndTalks {
-      speaker { id name }
-      talks { id name }
+      speaker {
+        id
+        name
+      }
+      talks {
+        id
+        name
+      }
     }
   }
 }
