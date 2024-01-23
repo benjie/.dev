@@ -20,6 +20,21 @@ const sidebars = {
       items: [
         {
           type: "doc",
+          id: "525",
+          label: "525: Allow deprecation of input values [RFC2]",
+        },
+        {
+          type: "doc",
+          id: "823",
+          label: "823*: operation expressions [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "667",
+          label: "667: [RFC Sketch] Defer and Stream Directives [RFC0]",
+        },
+        {
+          type: "doc",
           id: "987",
           label: "987*: Fix ambiguity around when schema definition may be omitted [RFC3]",
         },
@@ -67,11 +82,6 @@ const sidebars = {
           type: "doc",
           id: "472",
           label: "472: Repeatable directives [RFC3]",
-        },
-        {
-          type: "doc",
-          id: "445",
-          label: "445: Disallow non-breakable chains of circular references in Input Objects [RFC3]",
         },
         {
           type: "doc",
@@ -156,11 +166,6 @@ const sidebars = {
           id: "794",
           label: "794: Schema Coordinates [RFC2]",
         },
-        {
-          type: "doc",
-          id: "525",
-          label: "525: Allow deprecation of input values [RFC2]",
-        },
       ],
     },
     {
@@ -201,11 +206,6 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "865",
-          label: "865: Fragment Arguments (parameterized fragments) for GraphQL [RFC1]",
-        },
-        {
-          type: "doc",
           id: "950",
           label: "950: allow unions to include interfaces and unions [RFC1]",
         },
@@ -221,11 +221,6 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "895",
-          label: "895: Client Controlled Nullability [RFC1]",
-        },
-        {
-          type: "doc",
           id: "907",
           label: "907: Add support for directives on directives [RFC1]",
         },
@@ -233,16 +228,6 @@ const sidebars = {
           type: "doc",
           id: "892",
           label: "892: Add descriptions to executable definitions [RFC1]",
-        },
-        {
-          type: "doc",
-          id: "883",
-          label: "883: Relax SameResponseShape algorithm to be compatible with covariant fields [RFC1]",
-        },
-        {
-          type: "doc",
-          id: "877",
-          label: "877: Forbid duplicating argument names [RFC1]",
         },
         {
           type: "doc",
@@ -254,11 +239,6 @@ const sidebars = {
           id: "509",
           label: "509: Allow singular variables in list locations [RFC1]",
         },
-        {
-          type: "doc",
-          id: "395",
-          label: "395: inputUnion type [RFC1]",
-        },
       ],
     },
     {
@@ -269,13 +249,18 @@ const sidebars = {
       items: [
         {
           type: "doc",
+          id: "1052",
+          label: "1052: deduplicated incremental delivery [RFC0]",
+        },
+        {
+          type: "doc",
           id: "1063",
           label: "1063*: Type system ordering of: object interfaces, directive arguments, input object fields, enum values [RFC0]",
         },
         {
           type: "doc",
-          id: "1052",
-          label: "1052: deduplicated incremental delivery [RFC0]",
+          id: "1065",
+          label: "1065*: SemanticNonNull type (null only on error) [RFC0]",
         },
         {
           type: "doc",
@@ -304,11 +289,6 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "1065",
-          label: "1065*: SemanticNonNull type (null only on error) [RFC0]",
-        },
-        {
-          type: "doc",
           id: "1049",
           label: "1049: Introduce SourceSchemaDocument and FullSchemaDocument [RFC0]",
         },
@@ -321,16 +301,6 @@ const sidebars = {
           type: "doc",
           id: "1050",
           label: "1050*: Directive proposal for opting out of null bubbling [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "1048",
-          label: "1048*: Null-Only-On-Error / Semantically-Non-Null type (asterisk) [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "1034",
-          label: "1034: incremental delivery with deduplication + concurrent execution [RFC0]",
         },
         {
           type: "doc",
@@ -351,21 +321,6 @@ const sidebars = {
           type: "doc",
           id: "999",
           label: "999: introduce ExecuteGroupedFieldSet, CollectRootFields and CollectSubfields [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "1026",
-          label: "1026: incremental delivery with deduplication + concurrent execution [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "1018",
-          label: "1018*: Alternative proposal for `@stream`/`@defer` [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "1023",
-          label: "1023: incremental delivery without branching [RFC0]",
         },
         {
           type: "doc",
@@ -464,11 +419,6 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "888",
-          label: "888: Map type [RFC0]",
-        },
-        {
-          type: "doc",
           id: "ImplicitInheritance",
           label: "ImplicitInheritance: Implicit Inheritance [RFC0]",
         },
@@ -489,18 +439,8 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "823",
-          label: "823*: operation expressions [RFC0]",
-        },
-        {
-          type: "doc",
           id: "SchemaCoordinates",
           label: "SchemaCoordinates: Schema Coordinates [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "806",
-          label: "806*: __typename should be valid at subscription root [RFC0]",
         },
         {
           type: "doc",
@@ -524,18 +464,8 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "667",
-          label: "667: [RFC Sketch] Defer and Stream Directives [RFC0]",
-        },
-        {
-          type: "doc",
           id: "631",
           label: "631: Make root query operation type optional [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "586",
-          label: "586*: Input Objects accepting exactly @oneField [RFC0]",
         },
         {
           type: "doc",
@@ -554,16 +484,6 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "471",
-          label: "471: Limit uniqueness to `@skip`, `@include` and `@deprecated` directives [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "326",
-          label: "326: Scalar serialize as built-in scalar type [RFC0]",
-        },
-        {
-          type: "doc",
           id: "325",
           label: "325: Add \"Any\" scalar type [RFC0]",
         },
@@ -575,6 +495,81 @@ const sidebars = {
       collapsed: true,
       collapsible: true,
       items: [
+        {
+          type: "doc",
+          id: "865",
+          label: "865: Fragment Arguments (parameterized fragments) for GraphQL [RFC1]",
+        },
+        {
+          type: "doc",
+          id: "895",
+          label: "895: Client Controlled Nullability [RFC1]",
+        },
+        {
+          type: "doc",
+          id: "883",
+          label: "883: Relax SameResponseShape algorithm to be compatible with covariant fields [RFC1]",
+        },
+        {
+          type: "doc",
+          id: "877",
+          label: "877: Forbid duplicating argument names [RFC1]",
+        },
+        {
+          type: "doc",
+          id: "395",
+          label: "395: inputUnion type [RFC1]",
+        },
+        {
+          type: "doc",
+          id: "1048",
+          label: "1048*: Null-Only-On-Error / Semantically-Non-Null type (asterisk) [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "1034",
+          label: "1034: incremental delivery with deduplication + concurrent execution [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "1026",
+          label: "1026: incremental delivery with deduplication + concurrent execution [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "1018",
+          label: "1018*: Alternative proposal for `@stream`/`@defer` [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "1023",
+          label: "1023: incremental delivery without branching [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "888",
+          label: "888: Map type [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "806",
+          label: "806*: __typename should be valid at subscription root [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "586",
+          label: "586*: Input Objects accepting exactly @oneField [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "471",
+          label: "471: Limit uniqueness to `@skip`, `@include` and `@deprecated` directives [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "326",
+          label: "326: Scalar serialize as built-in scalar type [RFC0]",
+        },
         {
           type: "doc",
           id: "319",
@@ -599,6 +594,11 @@ const sidebars = {
           type: "doc",
           id: "232",
           label: "232: __id field for unique identifiers [RFCX]",
+        },
+        {
+          type: "doc",
+          id: "445",
+          label: "445: Disallow non-breakable chains of circular references in Input Objects [RFC3]",
         },
       ],
     },

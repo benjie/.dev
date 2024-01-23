@@ -199,8 +199,8 @@ image: /img/rfc_tracker.png
 - **Champion**: -
 - **PR**: -
 - **Related**:
-  - [#395](/rfcs/395 "inputUnion type / RFC1") (inputUnion type)
-  - [#586](/rfcs/586 "Input Objects accepting exactly @oneField / RFC0") (Input Objects accepting exactly @oneField)
+  - [#395](/rfcs/395 "inputUnion type / RFCX") (inputUnion type)
+  - [#586](/rfcs/586 "Input Objects accepting exactly @oneField / RFCX") (Input Objects accepting exactly @oneField)
   - [#733](/rfcs/733 "Tagged type / RFC1") (Tagged type)
   - [Struct](/rfcs/Struct "Polymorphic-capable composite symmetric input/output type (&#x60;struct&#x60;) / RFC0") (Polymorphic-capable composite symmetric input/output type (&#x60;struct&#x60;))
 
