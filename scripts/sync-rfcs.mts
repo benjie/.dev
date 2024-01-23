@@ -79,6 +79,9 @@ interface Frontmatter {
   /** Human controlled */
   shortname: string;
   stage: "0" | "1" | "2" | "3" | "X" | null;
+  closedAt?: string;
+  mergedAt?: string;
+  mergedBy?: string;
   champion?: string;
   //createdAt?: string;
   //updatedAt?: string;
@@ -234,7 +237,7 @@ async function writeRfcs(ctx: Ctx) {
 ## At a glance
 
 - **Identifier**: ${formatIdentifier(frontmatter.identifier)}
-- **Stage**: ${stageMarkdown(frontmatter.stage)}
+- **Stage**: ${frontmatterStageMarkdown(frontmatter)}
 - **Champion**: ${githubUsernameMarkdown(frontmatter.champion)}
 - **PR**: ${formatPr(frontmatter)}
 ${
@@ -365,6 +368,9 @@ async function syncRfcPRs(ctx: Ctx) {
       const identifier = `${node.number}`;
       await updateRfc(ctx, {
         identifier,
+        closedAt: node.closedAt,
+        mergedAt: node.mergedAt,
+        mergedBy: node.mergedBy?.login,
         title: tidyTitle(node.title),
         stage: labelsToStage(
           node.labels?.edges?.map((e) => e?.node?.name) ?? [],
@@ -681,6 +687,10 @@ async function generateIndexAndMeta(ctx: Ctx) {
     const r =
       (a.frontmatter.superceded ? 1 : 0) - (z.frontmatter.superceded ? 1 : 0);
     if (r !== 0) return r;
+    const c =
+      (a.frontmatter.closedAt && !a.frontmatter.mergedAt ? 1 : 0) -
+      (z.frontmatter.closedAt && !z.frontmatter.mergedAt ? 1 : 0);
+    if (c !== 0) return c;
     const s =
       stageWeight(z.frontmatter.stage) - stageWeight(a.frontmatter.stage);
     if (s !== 0) return s;
@@ -750,25 +760,29 @@ async function generateIndexAndMeta(ctx: Ctx) {
       RFC1,
       RFC0,
       RFCX,
+      RFCUnknown,
     ],
   } satisfies SidebarsConfig;
   for (const thing of everything) {
     const {
       identifier,
-      frontmatter: { stage, shortname, champion },
+      frontmatter: { stage, shortname, champion, closedAt, mergedAt },
     } = thing;
-    const RFCCategory =
-      stage === "0"
-        ? RFC0
-        : stage === "1"
-          ? RFC1
-          : stage === "2"
-            ? RFC2
-            : stage === "3"
-              ? RFC3
-              : stage === "X"
-                ? RFCX
-                : RFCUnknown;
+    const RFCCategory = mergedAt
+      ? RFC3
+      : closedAt
+        ? RFCX
+        : stage === "0"
+          ? RFC0
+          : stage === "1"
+            ? RFC1
+            : stage === "2"
+              ? RFC2
+              : stage === "3"
+                ? RFC3
+                : stage === "X"
+                  ? RFCX
+                  : RFCUnknown;
     RFCCategory.items.push({
       type: "doc",
       id: identifier,
@@ -777,6 +791,11 @@ async function generateIndexAndMeta(ctx: Ctx) {
       }: ${shortname} [RFC${stage}]`,
     });
   }
+
+  // Remove empty sidebars
+  sidebars.rfcsSidebar = sidebars.rfcsSidebar.filter(
+    (s) => s.type !== "category" || s.items.length > 0,
+  );
 
   if (RFCUnknown.items.length > 0) {
     sidebars.rfcsSidebar.push(RFCUnknown);
@@ -870,7 +889,13 @@ ${mdx.join(
 }
 
 function rfcLink(
-  frontmatter: { identifier: string; shortname: string; stage: string | null },
+  frontmatter: {
+    identifier: string;
+    shortname: string;
+    stage: string | null;
+    closedAt?: string;
+    mergedAt?: string;
+  },
   length: "supershort" | "normal" | "expanded" = "normal",
 ): MDX {
   return mdx`[${formatIdentifier(
@@ -878,7 +903,13 @@ function rfcLink(
     length === "supershort",
   )}](${mdx.url(`/rfcs/${frontmatter.identifier}`)} "${mdx.linkDescription(
     frontmatter.shortname,
-  )} / RFC${mdx.escape(frontmatter.stage ?? "?")}")${
+  )} / RFC${mdx.escape(
+    frontmatter.mergedAt
+      ? "3"
+      : frontmatter.closedAt
+        ? "X"
+        : frontmatter.stage ?? "?",
+  )}")${
     length === "expanded" ? mdx` (${mdx.escape(frontmatter.shortname)})` : mdx``
   }`;
 }
@@ -904,9 +935,28 @@ function tidyTitle(title: string): string {
     .trim();
 }
 
+interface StageMarkdownOptions {
+  prefix?: MDX;
+  short?: boolean;
+}
+function frontmatterStageMarkdown(
+  frontmatter: Frontmatter,
+  options: StageMarkdownOptions = {},
+) {
+  if (frontmatter.closedAt && !frontmatter.mergedAt) {
+    const { prefix: rawPrefix, short } = options;
+    const prefix = rawPrefix ?? (short ? mdx`` : mdx`RFC`);
+    return short
+      ? mdx`${prefix}X/Closed`
+      : mdx`[${prefix}X: Closed](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-x-rejected) ${mdx.escape(
+          frontmatter.closedAt,
+        )}`;
+  }
+  return stageMarkdown(frontmatter.stage, options);
+}
 function stageMarkdown(
-  stage: string | undefined,
-  { prefix: rawPrefix, short }: { prefix?: MDX; short?: boolean } = {},
+  stage: string | null,
+  { prefix: rawPrefix, short }: StageMarkdownOptions = {},
 ): MDX {
   const prefix = rawPrefix ?? (short ? mdx`` : mdx`RFC`);
   switch (stage) {
@@ -1060,7 +1110,11 @@ function formatDate(date: string): MDX {
 function printTables(everything: RFCFile[]) {
   const thingsByStage = {};
   for (const thing of everything) {
-    const stage = thing.frontmatter.stage ?? "?";
+    const stage = thing.frontmatter.mergedAt
+      ? "3"
+      : thing.frontmatter.closedAt
+        ? "X"
+        : thing.frontmatter.stage ?? "?";
     thingsByStage[stage] ??= [];
     thingsByStage[stage].push(thing);
   }

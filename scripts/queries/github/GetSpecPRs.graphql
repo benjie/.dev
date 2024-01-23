@@ -17,6 +17,11 @@ query GetSpecPRs($after: String) {
           cursor
           node {
             id
+            closedAt
+            mergedAt
+            mergedBy {
+              login
+            }
             number
             title
             createdAt
