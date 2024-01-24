@@ -27,7 +27,7 @@ this rule would break technology that relies on it, for example
 
 One of the common requests that I see in GraphQL is users wanting a way to query
 an ancestor object from a descendant object. Throughout this article, I'm going
-to use the example given in
+to use an example based on the one given in
 [GraphQL spec issue #144](https://github.com/graphql/graphql-spec/issues/144#issue-133595212);
 here's the schema under discussion:
 
@@ -58,7 +58,7 @@ type Talk {
 }
 ```
 
-Now consider this query:
+Consider this query:
 
 ```graphql
 query {
@@ -77,22 +77,23 @@ query {
 }
 ```
 
-The issue author would like to make it such that `>events>speakers>talks`
-([operation expressions](https://github.com/graphql/graphql-wg/blob/main/rfcs/OperationExpressions.md)
-format) returns the list of talks that the speaker has in the current event.
+The issue author would like to make it such that `>events>speakers>talks` (using
+[operation expressions](https://github.com/graphql/graphql-wg/blob/main/rfcs/OperationExpressions.md)
+syntax) returns the list of talks that the speaker has in the ancestor event.
 
 At first glance, this might seem like a reasonable proposition... However, when
-considering the need for [graph traversal](./traversal.mdx) it becomes apparent
-why this isn't a supported behaviour of GraphQL. In particular,
-[normalized stores](./normalized.mdx) rely on the execution behaviour outlined
-in the GraphQL specification, and to change this fundamental behaviour could
-cause applications using normalized stores to produce subtle issues and a lot of
-confusion and frustration.
+considering [graph traversal](./traversal.mdx) it becomes apparent why this
+would be problematic &mdash; the value of a `Speaker`'s `talks` field should be
+independent of the path through which it was accessed. In particular,
+[normalized stores](./normalized.mdx) rely on the graph traversal execution
+behaviour outlined in the GraphQL specification; to change this fundamental
+behaviour could cause applications using normalized stores to produce subtle
+issues resulting in a lot of confusion and frustration.
 
 ## Breaks normalized stores
 
-If you implement the described change, you might get a result from the request
-above such as:
+Let's see why normalized stores would be broken by this. If you implement the
+described change, you might get a result from the request above such as:
 
 ```json {7-15,23-32}
 {
