@@ -456,7 +456,7 @@ Note that the `name` has changed for the entity `U9DB7` (previously: Rebecca).
 
 The normalized result for this query is something like:
 
-```json
+```json {21-24}
 {
   "Query": {
     "post(id:'P3Q41')": {
@@ -493,7 +493,7 @@ The normalized result for this query is something like:
 As you merge the above store into the main normalized store, you will overwrite
 stale keys, resulting in:
 
-```diff {12-13}
+```diff {10,12-13}
  {
    "Query": {
      "user(id:'U9DB7')": {
