@@ -42,15 +42,16 @@ retrieved 2024-01-06T10:27:00Z.<br /><small>Used under the "Fair Use" doctrine
 
 ## Graph overview
 
-A graph diagram for a Facebook profile contains both "nodes" and "edges"; the
-nodes are the entities (users, pages, posts, photos, etc), and the edges are the
+In a mathematical graph, there are "nodes" and "edges". The nodes are generally
+the entities (users, pages, posts, photos, etc), and the edges are the
 relationships between those entities (likes, tagged, photo, friend, etc). Both
-nodes and edges may contain data, for example, the edges show that Bob is
-friends with Alice, and can _also_ indicate the duration of that friendship.
+nodes and edges may contain data, for example, an edge might show that Bob is a
+friend of Alice, and it can contain additional information such as the duration
+of that friendship.
 
-When traversing a graph, you start at a node (or set of nodes) and then follow
-the edges to discover new nodes. Let's imagine your name is 'Current Viewer' and
-this is a portion of your graph:
+When traversing a mathematical graph, you can start at a node (or set of nodes)
+and then follow the edges to discover new nodes. Let's imagine your name is
+'Current Viewer' and this is a portion of your social graph:
 
 ```mermaid
 %%{init: {'themeVariables': { 'edgeLabelBackground': 'white'}}}%%
@@ -78,10 +79,12 @@ flowchart TD
   linkStyle 1,3 color:#DC3220,stroke:#DC3220,stroke-width:4
 ```
 
-To get to Lil' Bobby you could traverse `friend` directly (blue), or you could
-traverse `friend>friend` to go via Aveline Gearhart (red). Note that independent
-of which path you take to get to Lil' Bobby, their likes are always the same:
-SQL Injection and Conferences.
+To get to Lil' Bobby you could traverse `friend` directly (**<span
+style={{color:"blue"}}>blue</span>**), or you could traverse `friend>friend` to
+go via Aveline Gearhart (**<span style={{color:"#DC3220"}}>red</span>**). Note
+that independent of which path you take to get to Lil' Bobby, their likes are
+always the same: SQL Injection and Conferences.
 
 This property turns out to be really important if you want to ensure the web
-page is always rendered consistently even when only doing small data fetches.
+page is always rendered consistently even when only doing small data fetches by
+using a storage technique we call [normalized stores](/graphql/normalized).
