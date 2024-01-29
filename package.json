@@ -4,7 +4,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "lint:fix": "prettier --ignore .eslintignore --write .",
+    "lint:fix": "prettier --ignore-path .eslintignore --write .",
     "postinstall": "patch-package",
     "docusaurus": "docusaurus",
     "start": "concurrently --kill-others --names 'WEB','GEN' 'docusaurus start' 'graphql-codegen --watch'",

@@ -1,4 +1,13 @@
 /node_modules
+/build
+/.docusaurus
+/.cache-loader
+/scripts/sdk.mts
+/state.json
+/temp
 /static
+
 /rfcs
 /sidebarsRfcs.js
+
+/_LOCAL
