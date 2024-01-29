@@ -176,6 +176,11 @@ const sidebars = {
       items: [
         {
           type: "doc",
+          id: "1010",
+          label: "1010: Fragment Arguments: Spec Implementation [RFC1]",
+        },
+        {
+          type: "doc",
           id: "1053",
           label: "1053*: Implementations may not deprecate a field that the interface hasn't deprecated [RFC1]",
         },
@@ -198,11 +203,6 @@ const sidebars = {
           type: "doc",
           id: "997",
           label: "997: Expand @deprecated to Objects [RFC1]",
-        },
-        {
-          type: "doc",
-          id: "1010",
-          label: "1010: Fragment Arguments: Spec Implementation [RFC1]",
         },
         {
           type: "doc",

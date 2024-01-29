@@ -17,7 +17,7 @@ be helpful for people to keep track of the various RFCs.
 Ping `@benjie` on the [GraphQL Discord](https://discord.graphql.org) (`#wg`
 channel) and ask for him to run an update!
 
-Last updated: 2024-01-23T17:07:51.805Z
+Last updated: 2024-01-29T11:58:37.293Z
 
 :::
 
@@ -42,12 +42,12 @@ Last updated: 2024-01-23T17:07:51.805Z
 <!-- prettier-ignore -->
 | RFC | Champion | Title | Latest |
 | --- | --- | --- | --- |
+| [#1010](/rfcs/1010 "Fragment Arguments: Spec Implementation / RFC1") | [@mjmahone](https://github.com/mjmahone) | [Fragment Arguments: Spec Implementation](/rfcs/1010) | **Added to [2024-02-01 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2024/02-Feb/01-wg-primary.md)** [_(more)_](/rfcs/1010#timeline) |
 | [#1053](/rfcs/1053 "Implementations may not deprecate a field that the interface hasn't deprecated / RFC1") | [@benjie](https://github.com/benjie) | [Implementations may not deprecate a field that the interface hasn't deprecated](/rfcs/1053) | **Added to [2023-12-07 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2023/12-Dec/07-wg-primary.md)** [_(more)_](/rfcs/1053#timeline) |
 | [#1056](/rfcs/1056 "Fix CoerceArgumentValues() hasValue / RFC1") | [@benjie](https://github.com/benjie) | [Fix CoerceArgumentValues() hasValue](/rfcs/1056) | **Added to [2023-12-07 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2023/12-Dec/07-wg-primary.md)** [_(more)_](/rfcs/1056#timeline) |
 | [#1058](/rfcs/1058 "List coercion algorithm / RFC1") | [@benjie](https://github.com/benjie) | [List coercion algorithm](/rfcs/1058) | **Added to [2023-12-07 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2023/12-Dec/07-wg-primary.md)** [_(more)_](/rfcs/1058#timeline) |
 | [#1059](/rfcs/1059 "Introduce Strict and Legacy All Variable Usages Are Allowed / RFC1") | [@benjie](https://github.com/benjie) | [Introduce Strict and Legacy All Variable Usages Are Allowed](/rfcs/1059) | **Added to [2023-12-07 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2023/12-Dec/07-wg-primary.md)** [_(more)_](/rfcs/1059#timeline) |
 | [#997](/rfcs/997 "Expand @deprecated to Objects / RFC1") | [@fotoetienne](https://github.com/fotoetienne) | [Expand @deprecated to Objects](/rfcs/997) | **Added to [2023-06-01 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2023/06-Jun/01-wg-primary.md)** [_(more)_](/rfcs/997#timeline) |
-| [#1010](/rfcs/1010 "Fragment Arguments: Spec Implementation / RFC1") | [@mjmahone](https://github.com/mjmahone) | [Fragment Arguments: Spec Implementation](/rfcs/1010) | **[Spec PR](https://github.com/graphql/graphql-spec/pull/1010) created** on 2023-01-19 by mjmahone [_(more)_](/rfcs/1010#timeline) |
 | [#950](/rfcs/950 "allow unions to include interfaces and unions / RFC1") | [@yaacovCR](https://github.com/yaacovCR) | [allow unions to include interfaces and unions](/rfcs/950) | **Added to [2022-08-04 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2022/2022-08-04.md)** [_(more)_](/rfcs/950#timeline) |
 | [#955](/rfcs/955 "Add validation rule that operation types exist / RFC1") | [@benjaminjkraft](https://github.com/benjaminjkraft) | [Add validation rule that operation types exist](/rfcs/955) | **2 commits pushed**: [(latest)](https://github.com/graphql/graphql-spec/commit/04197ab0054fa6c8f7fa160bdfffc698dde4dfaf) on 2022-06-13 by [@benjaminjkraft](https://github.com/benjaminjkraft) [_(more)_](/rfcs/955#timeline) |
 | [#939](/rfcs/939 "allow unions to declare implementation of interfaces / RFC1") | [@yaacovCR](https://github.com/yaacovCR) | [allow unions to declare implementation of interfaces](/rfcs/939) | **Added to [2022-06-02 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2022/2022-06-02.md)** [_(more)_](/rfcs/939#timeline) |
@@ -65,7 +65,7 @@ Last updated: 2024-01-23T17:07:51.805Z
 <!-- prettier-ignore -->
 | RFC | Champion | Title | Latest |
 | --- | --- | --- | --- |
-| [#1052](/rfcs/1052 "deduplicated incremental delivery / RFC0") | [@yaacovCR](https://github.com/yaacovCR) | [deduplicated incremental delivery](/rfcs/1052) | **4 commits pushed**: [(latest)](https://github.com/graphql/graphql-spec/commit/f43b57f5d3f862a315dfddff2c1e3a57f90c03ef) on 2024-01-19 by [@yaacovCR](https://github.com/yaacovCR) [_(more)_](/rfcs/1052#timeline) |
+| [#1052](/rfcs/1052 "deduplicated incremental delivery / RFC0") | [@yaacovCR](https://github.com/yaacovCR) | [deduplicated incremental delivery](/rfcs/1052) | **2 commits pushed**: [(latest)](https://github.com/graphql/graphql-spec/commit/a2896167e12e8e0c08a8ca389c5b9e006252dfcc) on 2024-01-28 by [@yaacovCR](https://github.com/yaacovCR) [_(more)_](/rfcs/1052#timeline) |
 | [#1063](/rfcs/1063 "Type system ordering of: object interfaces, directive arguments, input object fields, enum values / RFC0") | [@benjie](https://github.com/benjie) | [Type system ordering of: object interfaces, directive arguments, input object fields, enum values](/rfcs/1063) | **Added to [2024-01-04 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2024/01-Jan/04-wg-primary.md)** [_(more)_](/rfcs/1063#timeline) |
 | [#1065](/rfcs/1065 "SemanticNonNull type (null only on error) / RFC0") | [@benjie](https://github.com/benjie) | [SemanticNonNull type (null only on error)](/rfcs/1065) | **Commit pushed**: [Add IsValidImplementationFieldType updates](https://github.com/graphql/graphql-spec/commit/bd038f24720b0bf9dc7d9e2eb3edf4f4498a4759) on 2024-01-03 by [@benjie](https://github.com/benjie) [_(more)_](/rfcs/1065#timeline) |
 | [#1057](/rfcs/1057 "Fix coercion table for list / RFC0") | [@benjie](https://github.com/benjie) | [Fix coercion table for list](/rfcs/1057) | **Added to [2023-12-07 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2023/12-Dec/07-wg-primary.md)** [_(more)_](/rfcs/1057#timeline) |

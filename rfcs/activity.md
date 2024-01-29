@@ -8,6 +8,21 @@ image: /img/rfc_tracker.png
 
 The below is an aggregate overview of the latest activity across all RFCs. Note that it's _roughly_ in cronological order, but some dates are less accurate than others (e.g. commit timestamps are to the second, whereas working groups are generally to the month...).
 
+- [#1010](/rfcs/1010 "Fragment Arguments: Spec Implementation / RFC1"): **Added to [2024-02-01 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2024/02-Feb/01-wg-primary.md)**
+- [#1052](/rfcs/1052 "deduplicated incremental delivery / RFC0"): **2 commits pushed** on 2024-01-28:
+  - [refine ReleaseFragment](https://github.com/graphql/graphql-spec/commit/451119051f63baf65a7662baec91f02a5a56729d) by [@yaacovCR](https://github.com/yaacovCR)
+  - [complete renaming](https://github.com/graphql/graphql-spec/commit/a2896167e12e8e0c08a8ca389c5b9e006252dfcc) by [@yaacovCR](https://github.com/yaacovCR)
+- [#1052](/rfcs/1052 "deduplicated incremental delivery / RFC0"): **Commit pushed**: [typo](https://github.com/graphql/graphql-spec/commit/d7906cfcf9b7e0c216de18046135449702068edc) on 2024-01-27 by [@yaacovCR](https://github.com/yaacovCR)
+- [#1052](/rfcs/1052 "deduplicated incremental delivery / RFC0"): **9 commits pushed** on 2024-01-26:
+  - [use some initialization magic](https://github.com/graphql/graphql-spec/commit/986853f14b22eb6bd280f1a26d2cfa9b8777ea11) by [@yaacovCR](https://github.com/yaacovCR)
+  - [Remove GetNonEmptyParent](https://github.com/graphql/graphql-spec/commit/77c78467d8859896302e3355ac69cdbcd0c357fa) by [@yaacovCR](https://github.com/yaacovCR)
+  - [this should never be previously defined, as each future is returned e…](https://github.com/graphql/graphql-spec/commit/69c9f5f000524e9b84a0e7d0f6160a20edcca4c2) by [@yaacovCR](https://github.com/yaacovCR)
+  - [fix mistake when setting count](https://github.com/graphql/graphql-spec/commit/0cf445e4aec801e8d93b5b0c12364746daf2064a) by [@yaacovCR](https://github.com/yaacovCR)
+  - [rename &#x7b;defers&#x7d; to &#x7b;deferredFragments&#x7d;](https://github.com/graphql/graphql-spec/commit/fa670305d04661877f64488bcb0e5045a72a77d2) by [@yaacovCR](https://github.com/yaacovCR)
+  - [a child defer state is always defined unless removed here](https://github.com/graphql/graphql-spec/commit/7c0fccf5aa0477594a595e75c1c5daa5d7b70705) by [@yaacovCR](https://github.com/yaacovCR)
+  - [get rid of count and sent](https://github.com/graphql/graphql-spec/commit/19fbef68e8cbe725413d962bccb1f07d2ea668c2) by [@yaacovCR](https://github.com/yaacovCR)
+  - [Rename GetSinglyDeferredFutures to FilterNestedFutures](https://github.com/graphql/graphql-spec/commit/3a14539897d5c00ba87a9da93c73cb77d6aef862) by [@yaacovCR](https://github.com/yaacovCR)
+  - [add some more magic](https://github.com/graphql/graphql-spec/commit/0d91637af512d51490f8f9ef1b79e9ce8781ae7d) by [@yaacovCR](https://github.com/yaacovCR)
 - [#1052](/rfcs/1052 "deduplicated incremental delivery / RFC0"): **4 commits pushed** on 2024-01-19:
   - [change to have an incremental update stream mapped to an incremental …](https://github.com/graphql/graphql-spec/commit/ae882e80057c2bb4b627d138848cfee9429a72e5) by [@yaacovCR](https://github.com/yaacovCR)
   - [small fix with regard to update packaging](https://github.com/graphql/graphql-spec/commit/19a4757ad172b1ef0b9f0e3777e25b169a9c4247) by [@yaacovCR](https://github.com/yaacovCR)
