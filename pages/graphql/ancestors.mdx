@@ -140,31 +140,21 @@ reference the speaker `UB3NJ`, who has a field `talks` that accepts no
 arguments; so when you merge these, the latter will overwrite the former, and
 the resulting store will end up being something like:
 
-```json5
+<!-- prettier-ignore -->
+```json5 {18-30}
 {
   "Query": {
-    "events": [
-      { "$ref": "EGQLC" },
-      { "$ref": "EVRGU" },
-    ]
+    "events": [ { "$ref": "EGQLC" }, { "$ref": "EVRGU" } ]
   }
   "EGQLC": {
     "id": "EGQLC",
     "name": "GraphQLConf",
-    "speakers": [
-      { "$ref": "UB3NJ" },
-    ]
+    "speakers": [ { "$ref": "UB3NJ" } ]
   },
   "EVRGU": {
     "id": "EVRGU",
     "name": "VR Gamers",
-    "speakers": [
-      { "$ref": "UB3NJ" },
-    ]
-  },
-  "UB3NJ": {
-    "id": "UB3NJ",
-    "name": "Benjie",
+    "speakers": [ { "$ref": "UB3NJ" } ]
   },
   "UB3NJ": {
     "id": "UB3NJ",
