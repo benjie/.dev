@@ -1,6 +1,6 @@
 ---
 type: page
-title: 'Naming Conventions'
+title: "Naming Conventions"
 description: "Benjie's researched opinion on GraphQL naming"
 tag: graphql
 author: Benjie
@@ -18,25 +18,24 @@ and I'll be happy to add more detail!_
 
 <Pullquote>
 
-CapitalCase/PascalCase was a reserved space for types &mdash; if I see
-something in PascalCase I default to assuming it's a type in the schema, if I
-see something camelCase I assume it's something other than that. Obviously,
-the convention for field names and argument names and variable names is all
-camel case. Fragment names are a little bit in an in&ndash;between space there.
-Made sense to me to treat them more similarly to a field than more similarly
-to a type.
+CapitalCase/PascalCase was a reserved space for types &mdash; if I see something
+in PascalCase I default to assuming it's a type in the schema, if I see
+something camelCase I assume it's something other than that. Obviously, the
+convention for field names and argument names and variable names is all camel
+case. Fragment names are a little bit in an in&ndash;between space there. Made
+sense to me to treat them more similarly to a field than more similarly to a
+type.
 
 &mdash; _Lee Byron, editor of the GraphQL Specification_
 
 </Pullquote>
 
-
 This document aims to outline a standard naming conventions for the various
 entities that make up a GraphQL schema or executable document, and explain why
-the conventions were chosen (and reasons you might consider an alternative). 
+the conventions were chosen (and reasons you might consider an alternative).
 
 In general, this guide defers to the conventions used in the GraphQL
-Specification (the "Spec"). 
+Specification (the "Spec").
 
 _Important note: it does not matter what the name used in your underlying
 business logic or data storage is, GraphQL is the names that you present to the
@@ -48,7 +47,8 @@ For a quick summary, use the table of contents.
 <Tldr>
 
 - `UpperCamelCase` for type names.
-- `camelCase` for field names, argument names, directive names, operation names, variable names, and aliases.
+- `camelCase` for field names, argument names, directive names, operation names,
+  variable names, and aliases.
 - `CONSTANT_CASE` for enum values.
 - Name fragments however you want... but if in doubt, use `camelCase`.
 
@@ -78,12 +78,11 @@ The naming conventions for all 6 kinds of "type" in GraphQL tend to be aligned.
 
 #### `Query`, `Mutation`, `Subscription`
 
-["Root operation
-types"](https://spec.graphql.org/draft/#sec-Root-Operation-Types) are special
-types that are used as the type of the `query`, `mutation` and `subscription`
-operations. You should name these `Query`, `Mutation` and `Subscription`
-respectively so you don't need to declare the supported operations/types via
-the `schema` keyword.
+["Root operation types"](https://spec.graphql.org/draft/#sec-Root-Operation-Types)
+are special types that are used as the type of the `query`, `mutation` and
+`subscription` operations. You should name these `Query`, `Mutation` and
+`Subscription` respectively so you don't need to declare the supported
+operations/types via the `schema` keyword.
 
 #### UpperCamelCase
 
@@ -92,9 +91,9 @@ throughout the Spec. Seems uncontroversial.
 
 #### Singular
 
-If you have a type that represents a person, the type should be called
-something like `Person`. It should not be called `People`. There are no plural
-type names in the Spec.
+If you have a type that represents a person, the type should be called something
+like `Person`. It should not be called `People`. There are no plural type names
+in the Spec.
 
 #### Prefix: none
 
@@ -124,8 +123,12 @@ suffix, for example `PointInput`, `PointPatch` or similar.
 
 Common suffixes used for input objects are:
 
-- `Input` - generally used for the input version of an output type (e.g. for a "create" or "upsert" mutation)
-- `Patch` or `Update` (Benjie prefers "Patch") - generally used when applying an update to an output type, typically all of the fields are nullable so that you can choose to only update the fields you specify (e.g. for an "update" mutation)
+- `Input` - generally used for the input version of an output type (e.g. for a
+  "create" or "upsert" mutation)
+- `Patch` or `Update` (Benjie prefers "Patch") - generally used when applying an
+  update to an output type, typically all of the fields are nullable so that you
+  can choose to only update the fields you specify (e.g. for an "update"
+  mutation)
 - `Filter` - generally used to specify how to filter a collection
 - `Order` - generally used for ordering (sorting) a collection
 
@@ -184,8 +187,8 @@ the operation name in this is `getDogName`. Operation names are optional.
 
 #### camelCase
 
-The Spec uses a mixture of `camelCase` and `UpperCamelCase` for operation
-names, but there are significantly more examples using `camelCase` than
+The Spec uses a mixture of `camelCase` and `UpperCamelCase` for operation names,
+but there are significantly more examples using `camelCase` than
 `UpperCamelCase`, so that's what we recommend.
 
 Reason: the Spec
@@ -206,27 +209,27 @@ fragment userFragment on User {
 
 This one is a little controversial.
 
-In the April 20th 2023 Spec WG [I asked
-Lee](https://youtu.be/Dk7zQA0bUVc?t=539) why camelCase was generally used in
-the spec for naming fragments. Lee said:
+In the April 20th 2023 Spec WG [I asked Lee](https://youtu.be/Dk7zQA0bUVc?t=539)
+why camelCase was generally used in the spec for naming fragments. Lee said:
 
 > CapitalCase/PascalCase was a reserved space for types &mdash; if I see
 > something in PascalCase I default to assuming it's a type in the schema, if I
 > see something camelCase I assume it's something other than that. Obviously,
 > the convention for field names and argument names and variable names is all
-> camel case. Fragment names are a little bit in an in&ndash;between space there.
-> Made sense to me to treat them more similarly to a field than more similarly
-> to a type.
+> camel case. Fragment names are a little bit in an in&ndash;between space
+> there. Made sense to me to treat them more similarly to a field than more
+> similarly to a type.
 >
 > -- https://youtu.be/Dk7zQA0bUVc?t=539
 
 There's actually a mixture of naming for fragments in the spec, some use
 UpperCamelCase but the majority use camelCase.
 
-It's worth noting that Relay requires that fragment names start with the name of the
-file in which they're defined.
+It's worth noting that Relay requires that fragment names start with the name of
+the file in which they're defined.
 
-You should use whatever your team wants to use; but if in doubt then the spec leans towards camelCase.
+You should use whatever your team wants to use; but if in doubt then the spec
+leans towards camelCase.
 
 Reason: the Spec.
 
@@ -235,8 +238,8 @@ Reason: the Spec.
 #### camelCase
 
 Aliases are just different names for fields, generally they should use the same
-naming convention as fields unless you have a good reason (e.g. you're trying
-to match some external data format).
+naming convention as fields unless you have a good reason (e.g. you're trying to
+match some external data format).
 
 #### Short
 
@@ -254,8 +257,8 @@ aliases that are too long, may trigger a server's security protections.
 
 ### Example schema
 
-The Spec contains [this example
-schema](https://spec.graphql.org/draft/#example-8b4ff):
+The Spec contains
+[this example schema](https://spec.graphql.org/draft/#example-8b4ff):
 
 ```graphql
 type Query {
