@@ -3,11 +3,15 @@ identifier: SchemaCoordinates
 stage: "0"
 title: Schema Coordinates
 events:
+  - type: docUpdated
+    date: 2024-02-08T09:24:51+00:00
+    href: https://github.com/graphql/graphql-wg/blob/6d02705dea034fb65ebc6799632adb7bd550d0aa/rfcs/SchemaCoordinates.md
+    actor: Benjie
   - type: docCreated
     date: 2021-01-07T11:18:22-08:00
     href: https://github.com/graphql/graphql-wg/blob/257673b7ede31f1856b53ae833a43fc5034ac99b/rfcs/SchemaCoordinates.md
     actor: Mark Larah
-related: 733, 735, 746
+related: 733, 735, 746, 794
 shortname: Schema Coordinates
 image: /img/rfc_tracker.png
 ---
@@ -20,6 +24,7 @@ image: /img/rfc_tracker.png
 - **PR**: -
 - **Related**:
   - [#733](/rfcs/733 "Tagged type / RFC1") (Tagged type)
+  - [#794](/rfcs/794 "Schema Coordinates / RFC2") (Schema Coordinates)
 
 <!-- BEGIN_CUSTOM_TEXT -->
 
@@ -29,6 +34,7 @@ image: /img/rfc_tracker.png
 
 ## Timeline
 
+- **[RFC document updated](https://github.com/graphql/graphql-wg/blob/6d02705dea034fb65ebc6799632adb7bd550d0aa/rfcs/SchemaCoordinates.md)** on 2024-02-08 by Benjie
 - **[RFC document created](https://github.com/graphql/graphql-wg/blob/257673b7ede31f1856b53ae833a43fc5034ac99b/rfcs/SchemaCoordinates.md)** on 2021-01-07 by Mark Larah
 
 <!-- VERBATIM -->
@@ -38,6 +44,8 @@ image: /img/rfc_tracker.png
 > # RFC: Schema Coordinates
 > 
 > **Proposed by:** [Mark Larah](https://twitter.com/mark_larah) - Yelp
+> 
+> **Spec pull request**: https://github.com/graphql/graphql-spec/pull/794
 > 
 > This RFC proposes formalizing "Schema Coordinates" - a human readable syntax to
 > uniquely identify a type, field, field argument, enum value, directive or

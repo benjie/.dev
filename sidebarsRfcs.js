@@ -35,6 +35,11 @@ const sidebars = {
         },
         {
           type: "doc",
+          id: "1073",
+          label: "1073: Be strict about error paths format [RFC3]",
+        },
+        {
+          type: "doc",
           id: "987",
           label: "987*: Fix ambiguity around when schema definition may be omitted [RFC3]",
         },
@@ -143,6 +148,26 @@ const sidebars = {
       items: [
         {
           type: "doc",
+          id: "1063",
+          label: "1063*: Type system ordering of: object interfaces, directive arguments, input object fields, enum values [RFC2]",
+        },
+        {
+          type: "doc",
+          id: "1091",
+          label: "1091*: Define Data Collections used in the spec [RFC2]",
+        },
+        {
+          type: "doc",
+          id: "1092",
+          label: "1092*: Recommend that order of unordered collections is maintained where possible [RFC2]",
+        },
+        {
+          type: "doc",
+          id: "825",
+          label: "825*: OneOf Input Objects [RFC2]",
+        },
+        {
+          type: "doc",
           id: "793",
           label: "793*: Default value coercion rules [RFC2]",
         },
@@ -150,11 +175,6 @@ const sidebars = {
           type: "doc",
           id: "860",
           label: "860*: Prevent @skip and @include on root subscription selection set [RFC2]",
-        },
-        {
-          type: "doc",
-          id: "825",
-          label: "825*: OneOf Input Objects [RFC2]",
         },
         {
           type: "doc",
@@ -176,8 +196,13 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          id: "1010",
-          label: "1010: Fragment Arguments: Spec Implementation [RFC1]",
+          id: "1081",
+          label: "1081: Fragment arguments/variables (syntax/validation/execution) [RFC1]",
+        },
+        {
+          type: "doc",
+          id: "976",
+          label: "976*: Add 'extensions' to request [RFC1]",
         },
         {
           type: "doc",
@@ -249,13 +274,13 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          id: "1052",
-          label: "1052: deduplicated incremental delivery [RFC0]",
+          id: "1098",
+          label: "1098: Add 5.2.4 Operation Type Exists [RFC0]",
         },
         {
           type: "doc",
-          id: "1063",
-          label: "1063*: Type system ordering of: object interfaces, directive arguments, input object fields, enum values [RFC0]",
+          id: "SchemaCoordinates",
+          label: "SchemaCoordinates: Schema Coordinates [RFC0]",
         },
         {
           type: "doc",
@@ -439,11 +464,6 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "SchemaCoordinates",
-          label: "SchemaCoordinates: Schema Coordinates [RFC0]",
-        },
-        {
-          type: "doc",
           id: "Subscriptions",
           label: "Subscriptions: NOTE: this document is kept for historic purposes; GraphQL Subscriptions have been specified and released as part of the official [June 2018 GraphQL Specification](https://spec.graphql.org/June2018/). [RFC0]",
         },
@@ -497,6 +517,11 @@ const sidebars = {
       items: [
         {
           type: "doc",
+          id: "1010",
+          label: "1010: Fragment Arguments: Spec Implementation [RFC1]",
+        },
+        {
+          type: "doc",
           id: "865",
           label: "865: Fragment Arguments (parameterized fragments) for GraphQL [RFC1]",
         },
@@ -519,6 +544,11 @@ const sidebars = {
           type: "doc",
           id: "395",
           label: "395: inputUnion type [RFC1]",
+        },
+        {
+          type: "doc",
+          id: "1052",
+          label: "1052: deduplicated incremental delivery [RFC0]",
         },
         {
           type: "doc",
