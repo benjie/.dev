@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en-GB" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-graphql/trusted-documents" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.1.0">
+<title data-rh="true">Trusted Documents | benjie.dev</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://benjie.dev/img/avatar.jpg"><meta data-rh="true" name="twitter:image" content="https://benjie.dev/img/avatar.jpg"><meta data-rh="true" property="og:url" content="https://benjie.dev/graphql/trusted-documents"><meta data-rh="true" property="og:locale" content="en_GB"><meta data-rh="true" name="docusaurus_locale" content="en-GB"><meta data-rh="true" name="docsearch:language" content="en-GB"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="twitter:title" content="Trusted Documents | benjie.dev"><meta data-rh="true" property="og:title" content="Trusted Documents | benjie.dev"><meta data-rh="true" name="description" content="An attempt to standardize the &quot;persisted queries&quot; approach to securing a GraphQL API via an allowlist, without having a name that&#x27;s easily confusible with automatic persisted queries."><meta data-rh="true" property="og:description" content="An attempt to standardize the &quot;persisted queries&quot; approach to securing a GraphQL API via an allowlist, without having a name that&#x27;s easily confusible with automatic persisted queries."><link data-rh="true" rel="icon" href="/favicon.ico"><link data-rh="true" rel="canonical" href="https://benjie.dev/graphql/trusted-documents"><link data-rh="true" rel="alternate" href="https://benjie.dev/graphql/trusted-documents" hreflang="en-GB"><link data-rh="true" rel="alternate" href="https://benjie.dev/graphql/trusted-documents" hreflang="x-default"><script src="https://assets.calendly.com/assets/external/widget.js"></script><link rel="stylesheet" href="/assets/css/styles.c47278a5.css">
+<script src="/assets/js/runtime~main.947cbaff.js" defer="defer"></script>
+<script src="/assets/js/main.14c16511.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/avatar.jpg" alt="benjie" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/avatar.jpg" alt="benjie" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">benjie.dev</b></a><a class="navbar__item navbar__link" href="/rfcs/">RFCs</a></div><div class="navbar__items navbar__items--right"><a class="navbar__item navbar__link" href="/book">📞 Book a call</a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/">about:benjie</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--active" href="/graphql/">GraphQL</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/graphql/trusted-documents">Trusted Documents</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/graphql/naming">Naming Conventions</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/graphql/nested-mutations">Nested Mutations</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/graphql/traversal">Graph Traversal</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/graphql/normalized">Normalized Stores</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/graphql/ancestors">Referencing Ancestors</a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link">linux</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/linux/bluetooth-dual-boot">Using a bluetooth device in dual boot</a></li></ul></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item"><a class="breadcrumbs__link" itemprop="item" href="/graphql/"><span itemprop="name">GraphQL</span></a><meta itemprop="position" content="1"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">Trusted Documents</span><meta itemprop="position" content="2"></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><h1>GraphQL Trusted Documents</h1>
+<aside class="tldr_fcon"><div class="inner_JkE_"><p><strong>Use trusted documents</strong> if your GraphQL API is only for your own apps (most
+GraphQL APIs!) for a <strong>massively decreased attack-surface</strong>, increased
+performance, and decreased bandwidth usage.</p><p>At app build time, extract the GraphQL documents (queries, etc) and make them
+available to the server. At run time, send <code>documentId</code> instead of the whole
+document; only accept requests with a <code>documentId</code>.</p></div></aside>
+<p><a href="https://graphql.org/conf/" target="_blank" rel="noopener noreferrer">GraphQLConf 2023</a> was an absolute delight! I finally
+met many of the people that I&#x27;ve worked with at the GraphQL Working Group over
+the past few years, and they&#x27;re even nicer in person! And the attendees were
+delightful; it was really interesting hearing about how they use GraphQL.</p>
+<p>My biggest takeaway from the first day of the conference was that almost
+everyone should be protecting their GraphQL endpoints with an allowlist, but
+almost no-one is!</p>
+<aside class="pullquote_fEhA"><blockquote><p><strong>almost everyone should</strong> be protecting their GraphQL endpoints with an
+allowlist, but <strong>almost no-one is</strong>!</p></blockquote></aside>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="who-should-be-using-a-graphql-allowlist">Who should be using a GraphQL allowlist?<a href="#who-should-be-using-a-graphql-allowlist" class="hash-link" aria-label="Direct link to Who should be using a GraphQL allowlist?" title="Direct link to Who should be using a GraphQL allowlist?">​</a></h2>
+<p>Anyone who</p>
+<ol>
+<li>exposes their GraphQL endpoint to the internet, and</li>
+<li>doesn&#x27;t intend their GraphQL API to be consumed by third parties.</li>
+</ol>
+<p>This is anyone who is using GraphQL to power their own websites, mobile apps and
+desktop apps but isn&#x27;t deliberately exposing their API for others to use. Those
+of you who this applies to (and that is the vast majority of GraphQL users!)
+should be using an allowlist so that only GraphQL operations that your own
+developers write can be executed against your GraphQL schema.</p>
+<p>Adopting a GraphQL allowlist significantly decreases the attack surface of your
+GraphQL API since only operations that your developers have written can be
+executed. This technique has been used within Facebook since before GraphQL was
+open sourced, it&#x27;s very much a best practice if you meet the criteria above!</p>
+<aside class="pullquote_fEhA"><blockquote><p>a GraphQL allowlist <strong>significantly decreases the attack surface</strong> of your API</p></blockquote></aside>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="why-isnt-everyone-using-graphql-allowlists-already">Why isn&#x27;t everyone using GraphQL allowlists already?<a href="#why-isnt-everyone-using-graphql-allowlists-already" class="hash-link" aria-label="Direct link to Why isn&#x27;t everyone using GraphQL allowlists already?" title="Direct link to Why isn&#x27;t everyone using GraphQL allowlists already?">​</a></h2>
+<p>Many haven&#x27;t heard of the technique. Of those who have, many knew that they
+should be doing it, but failed to find resources on the &quot;how,&quot; or expected it to
+be a lot of work. Another issue was people confusing the allowlist technique
+known as &quot;persisted queries&quot; (aka &quot;stored operations&quot;, &quot;persisted documents&quot;,
+and various other names) for the bandwidth-saving technique &quot;automatic persisted
+queries (APQ)&quot;.</p>
+<p>Worst of all, some people felt they were already protecting their endpoints by
+disabling query introspection, when in reality there are so many ways for an
+attacker to work around that: extracting hints from error messages, sniffing
+network traffic, and fuzzing field names to name just a few. At best, disabling
+introspection gives you
+<a href="https://en.wikipedia.org/wiki/Security_through_obscurity" target="_blank" rel="noopener noreferrer">security through obscurity</a>.</p>
+<aside class="pullquote_fEhA"><blockquote><p>if you&#x27;re <strong>disabling introspection</strong> then you&#x27;re <strong>doing it wrong</strong></p></blockquote></aside>
+<p>In my opinion, if you&#x27;re disabling introspection then you&#x27;re doing it wrong; you
+should instead be using an operation allowlist such as &quot;trusted documents&quot; to
+prevent untrusted operations from running against your API.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="what-is-a-trusted-document">What is a &quot;trusted document&quot;?<a href="#what-is-a-trusted-document" class="hash-link" aria-label="Direct link to What is a &quot;trusted document&quot;?" title="Direct link to What is a &quot;trusted document&quot;?">​</a></h2>
+<p>In GraphQL, an <em>executable document</em> is a text string that consists of one or
+more query, mutation or subscription operations and their associated fragments
+using the GraphQL language. People commonly refer to them as &quot;queries&quot;, but that
+term is a little ambiguous —
+<a href="https://spec.graphql.org/draft/#ExecutableDocument" target="_blank" rel="noopener noreferrer">&quot;executable document&quot;</a> is
+the precise term.</p>
+<p>A <em>trusted document</em> is an executable document, identified via a unique
+identifier (typically a hash), that you&#x27;ve told the server to trust. In most
+cases, a trusted document would be written by the developers of your web, mobile
+and/or desktop apps.</p>
+<aside class="pullquote_fEhA"><blockquote><p>a <strong>trusted document</strong> is a GraphQL document the server can trust, typically
+because it was <strong>written by your developers</strong></p></blockquote></aside>
+<p>Yes, a &quot;trusted document&quot; is an instance of what we&#x27;ve traditionally called a
+&quot;persisted query&quot; (or persisted document/stored operation/etc); but specifically
+it is one the server can trust (typically because it was written by your
+developers) and thus can be used to form an allowlist.</p>
+<p>I hope that the entire GraphQL ecosystem can move towards using the term
+&quot;trusted document&quot; when referring to this concept. It&#x27;s much more obvious what
+the term &quot;trusted document&quot; implies, and it clearly differentiates this use from
+&quot;automatic persisted queries&quot; (a bandwidth optimization), and &quot;registered
+documents&quot; (an untrusted allowlist, requiring greater run-time scrutiny).</p>
+<p>Very much related, I recently wrote up
+<a href="https://github.com/graphql/graphql-over-http/pull/264/files?short_path=9be5577#diff-9be5577e05ae2112d2b8f95584b162d0dec01453bf6c85df58bf5db4f2c9727a" target="_blank" rel="noopener noreferrer">a specification for Persisted Documents</a>
+which can be used to implement trusted documents (or automatic persisted
+queries).</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="how-do-i-add-trusted-documents-to-my-stack">How do I add trusted documents to my stack?<a href="#how-do-i-add-trusted-documents-to-my-stack" class="hash-link" aria-label="Direct link to How do I add trusted documents to my stack?" title="Direct link to How do I add trusted documents to my stack?">​</a></h2>
+<p>If you already use code generation with your GraphQL clients (e.g. for type
+safety) then it&#x27;s relatively easy. When you build your application:</p>
+<ol>
+<li>Have the code generator write out the document(s) that your client is using,</li>
+<li>Generate a hash for each of these documents using SHA256, and</li>
+<li>Have your server store into a trusted key-value store the GraphQL document as
+the value and the SHA256 hash as the key.</li>
+</ol>
+<p>When the client issues a request to the GraphQL endpoint, it should replace the
+<code>query</code> parameter with a <code>documentId</code> parameter which is <code>sha256:</code> followed by
+the SHA256 hash of your document.</p>
+<p>When the server receives a request, it should look for this <code>documentId</code>. If
+there is no <code>documentId</code> in the request, it should raise an exception* and stop
+processing the request. Otherwise, it should look up the GraphQL document for
+this <code>documentId</code> in the key-value store, and continue executing the request as
+if this were the <code>query</code> the client submitted all along.</p>
+<p>* <em>If you&#x27;re doing this for existing GraphQL APIs then you may wish to capture
+the hashes of all documents in use for the next month or so, and explicitly
+allow these through to avoid breaking existing clients.</em></p>
+<aside class="pullquote_fEhA"><blockquote><p><strong>clients send hash to server, server finds associated document</strong> and continues
+as normal</p></blockquote></aside>
+<p>That&#x27;s really all there is to it. Choosing what to use as a key-value store is
+entirely up to you; but here&#x27;s a couple of ideas:</p>
+<ul>
+<li>If you have a monorepo for your server and client(s), you could store the
+operations as <code>.trusted_documents/&lt;hash&gt;.graphql</code> into the git repository;
+this will even help you know when and why the given document was generated.</li>
+<li>Otherwise, maybe from CI, your client build process should issue the queries
+that are needed (and their hashes) to an authenticated endpoint on the server.
+The server should then store these wherever it finds convenient: a database, a
+persistent key-value store service (e.g. Redis), or maybe an external service
+like DynoDB or S3.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="do-trusted-documents-have-more-benefits">Do trusted documents have more benefits?<a href="#do-trusted-documents-have-more-benefits" class="hash-link" aria-label="Direct link to Do trusted documents have more benefits?" title="Direct link to Do trusted documents have more benefits?">​</a></h2>
+<p>Besides security, you mean? Well, as it happens, yes!</p>
+<aside class="pullquote_fEhA"><blockquote><p><strong>security</strong>, <strong>bandwidth</strong>, <strong>caching</strong>, and <strong>schema evolution</strong></p></blockquote></aside>
+<p>Trusted documents can help reduce network bandwidth because you don&#x27;t need to
+send the (rather long, at times) GraphQL documents from the client to the server
+each time — just a short hash instead.</p>
+<p>If you set your server up such that it accepts GraphQL queries (but NOT
+mutations!) via GET requests, you can easily make your queries HTTP cacheable:
+use a dedicated URL for each trusted document/operationName combo (e.g.
+<code>https://example.com/graphql/&lt;hash&gt;/&lt;operationName&gt;</code>) and set the relevant
+caching headers (don&#x27;t forget to use <code>Vary</code> if you have your client send
+variables via headers!) and voila! You could even combine this with a content
+delivery network to get caching on the edge; though this is quite coarse
+whole-response caching. (For a more powerful take on GraphQL caching at the
+edge, check out <a href="https://github.com/sponsors/benjie" target="_blank" rel="noopener noreferrer">my sponsor</a> Stellate&#x27;s
+<a href="https://stellate.co/blog/partial-query-caching" target="_blank" rel="noopener noreferrer">partial query caching</a> — it
+looks fantastic!)</p>
+<p>One huge benefit of trusted documents that&#x27;s not talked about enough is that
+they give you a great insight into exactly which fields are used, and by which
+clients. Want to remove a field from your GraphQL API, but you&#x27;re not sure it&#x27;s
+safe to do so? Simply remove it and then validate all of your trusted documents
+against the new GraphQL API — if the validations pass then you know it&#x27;s safe to
+remove.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="are-trusted-documents-a-silver-bullet">Are trusted documents a silver bullet?<a href="#are-trusted-documents-a-silver-bullet" class="hash-link" aria-label="Direct link to Are trusted documents a silver bullet?" title="Direct link to Are trusted documents a silver bullet?">​</a></h2>
+<p>It might seem at first that with persisted operations there&#x27;s no need for the
+server to:</p>
+<ul>
+<li>disable introspection</li>
+<li>apply depth limits</li>
+<li>apply pagination limits</li>
+<li>perform query cost analysis</li>
+</ul>
+<p>And you&#x27;re right; those needs are significantly diminished! But you still need
+to be careful about the queries you write. Though an attacker can no longer
+issue arbitrary queries against your GraphQL API, they can still take the
+queries you already have and issue them with their own carefully crafted inputs.</p>
+<aside class="pullquote_fEhA"><blockquote><p>you still need to <strong>be careful</strong> about the queries you write</p></blockquote></aside>
+<p>Each of the above concerns still exists, but now it applies to just the trusted
+documents that your developers are writing, rather than runtime checks against
+arbitrary operations your server is receiving. You should check your documents
+before you persist them to ensure that they meet your requirements for safety;
+this is a one-time cost at document persistence time rather than a cost incurred
+for every request.</p>
+<p>You should also train your developers on the writing of &quot;safe&quot; operations.
+Imagine you trusted a document such as:</p>
+<div class="language-graphql codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-graphql codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">query</span><span class="token plain"> </span><span class="token definition-query function" style="color:#d73a49">TopUsers</span><span class="token punctuation" style="color:#393A34">(</span><span class="token variable" style="color:#36acaa">$limit</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token scalar">Int</span><span class="token operator" style="color:#393A34">!</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">10</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property-query">topUsers</span><span class="token punctuation" style="color:#393A34">(</span><span class="token attr-name" style="color:#00a4db">first</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token variable" style="color:#36acaa">$limit</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token property" style="color:#36acaa">id</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token property" style="color:#36acaa">name</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token property" style="color:#36acaa">avatar</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>An attacker could issue this query with a <code>$limit</code> of <code>2147483647</code> and now your
+server is on the hook to return up to 2 billion results. Teaching your
+developers to hardcode pagination limits into the query itself is one solution
+to this, another is to maintain limits in the server and throw out requests that
+clearly exceed sensible bounds.</p>
+<p>Similarly if you have large input object trees (for example &quot;filter&quot; objects)
+then it&#x27;s best to specify as much as you can into the query itself, and make the
+variables only for the &quot;leaves&quot; - this way an attacker can&#x27;t make a punishingly
+complex filter for your server to execute.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="share-the-news-of-trusted-documents-today">Share the news of trusted documents today!<a href="#share-the-news-of-trusted-documents-today" class="hash-link" aria-label="Direct link to Share the news of trusted documents today!" title="Direct link to Share the news of trusted documents today!">​</a></h2>
+<p>&quot;Persisted queries&quot; has been an imprecise technique that is widely adopted; on
+the client side Relay
+<a href="https://relay.dev/docs/guides/persisted-queries/" target="_blank" rel="noopener noreferrer">has a specification for their Persisted Queries</a>,
+and Apollo also
+<a href="https://www.apollographql.com/docs/kotlin/advanced/persisted-queries/" target="_blank" rel="noopener noreferrer">has their own</a>.
+The Guild (another of the companies
+<a href="https://github.com/sponsors/benjie" target="_blank" rel="noopener noreferrer">sponsoring my open source work</a>) also
+<a href="https://the-guild.dev/graphql/yoga-server/docs/features/persisted-operations" target="_blank" rel="noopener noreferrer">specifies persisted operations for GraphQL Yoga</a>
+and Valu Digital have
+<a href="https://github.com/valu-digital/graphql-codegen-persisted-query-ids" target="_blank" rel="noopener noreferrer">a plugin for GraphQL Code Generator</a>
+to generate the persisted query IDs for you.</p>
+<p>With the introduction of a vendor agnostic GraphQL Foundation-hosted
+specification for persisted documents as part of the GraphQL-over-HTTP project,
+I aim to work with the maintainers of these projects to maximize compatibility
+and ease adoption of trusted documents across the entire ecosystem.</p>
+<aside class="pullquote_fEhA"><blockquote><p>aim to <strong>maximize compatibility</strong> and <strong>ease adoption</strong> of trusted documents
+across the entire ecosystem</p></blockquote></aside>
+<p><em>I&#x27;m a community-funded open source developer; if you would like to support the
+work I&#x27;m doing please consider
+<a href="https://github.com/sponsors/benjie" target="_blank" rel="noopener noreferrer">becoming a sponsor</a> for as little or as
+much as you can afford each month. I couldn&#x27;t do what I do without the support
+of my sponsors. Thank you!</em></p></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/graphql/"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">GraphQL</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/graphql/naming"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Naming Conventions</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#who-should-be-using-a-graphql-allowlist" class="table-of-contents__link toc-highlight">Who should be using a GraphQL allowlist?</a></li><li><a href="#why-isnt-everyone-using-graphql-allowlists-already" class="table-of-contents__link toc-highlight">Why isn&#39;t everyone using GraphQL allowlists already?</a></li><li><a href="#what-is-a-trusted-document" class="table-of-contents__link toc-highlight">What is a &quot;trusted document&quot;?</a></li><li><a href="#how-do-i-add-trusted-documents-to-my-stack" class="table-of-contents__link toc-highlight">How do I add trusted documents to my stack?</a></li><li><a href="#do-trusted-documents-have-more-benefits" class="table-of-contents__link toc-highlight">Do trusted documents have more benefits?</a></li><li><a href="#are-trusted-documents-a-silver-bullet" class="table-of-contents__link toc-highlight">Are trusted documents a silver bullet?</a></li><li><a href="#share-the-news-of-trusted-documents-today" class="table-of-contents__link toc-highlight">Share the news of trusted documents today!</a></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2024 Benjie Gillam; all rights reserved. RFC pages pull content from public GitHub issues/PRs/files/etc; this content remains owned its various authors.</div></div></div></footer></div>
+</body>
+</html>
