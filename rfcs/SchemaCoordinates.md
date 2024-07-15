@@ -23,7 +23,7 @@ image: /img/rfc_tracker.png
 - **Champion**: -
 - **PR**: -
 - **Related**:
-  - [#733](/rfcs/733 "Tagged type / RFC1") (Tagged type)
+  - [#733](/rfcs/733 "Tagged type / RFCX") (Tagged type)
   - [#794](/rfcs/794 "Schema Coordinates / RFC2") (Schema Coordinates)
 
 <!-- BEGIN_CUSTOM_TEXT -->

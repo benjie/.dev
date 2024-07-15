@@ -148,23 +148,23 @@ const sidebars = {
       items: [
         {
           type: "doc",
+          id: "825",
+          label: "825*: OneOf Input Objects [RFC2]",
+        },
+        {
+          type: "doc",
+          id: "1102",
+          label: "1102*: Define Data Collections used in the spec [RFC2]",
+        },
+        {
+          type: "doc",
           id: "1063",
           label: "1063*: Type system ordering of: object interfaces, directive arguments, input object fields, enum values [RFC2]",
         },
         {
           type: "doc",
-          id: "1091",
-          label: "1091*: Define Data Collections used in the spec [RFC2]",
-        },
-        {
-          type: "doc",
           id: "1092",
           label: "1092*: Recommend that order of unordered collections is maintained where possible [RFC2]",
-        },
-        {
-          type: "doc",
-          id: "825",
-          label: "825*: OneOf Input Objects [RFC2]",
         },
         {
           type: "doc",
@@ -196,13 +196,13 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          id: "1081",
-          label: "1081: Fragment arguments/variables (syntax/validation/execution) [RFC1]",
+          id: "976",
+          label: "976*: Add 'extensions' to request [RFC1]",
         },
         {
           type: "doc",
-          id: "976",
-          label: "976*: Add 'extensions' to request [RFC1]",
+          id: "1081",
+          label: "1081: Fragment arguments/variables (syntax/validation/execution) [RFC1]",
         },
         {
           type: "doc",
@@ -253,11 +253,6 @@ const sidebars = {
           type: "doc",
           id: "892",
           label: "892: Add descriptions to executable definitions [RFC1]",
-        },
-        {
-          type: "doc",
-          id: "733",
-          label: "733*: Tagged type [RFC1]",
         },
         {
           type: "doc",
@@ -517,6 +512,11 @@ const sidebars = {
       items: [
         {
           type: "doc",
+          id: "1091",
+          label: "1091*: Define Data Collections used in the spec [RFC2]",
+        },
+        {
+          type: "doc",
           id: "1010",
           label: "1010: Fragment Arguments: Spec Implementation [RFC1]",
         },
@@ -539,6 +539,11 @@ const sidebars = {
           type: "doc",
           id: "877",
           label: "877: Forbid duplicating argument names [RFC1]",
+        },
+        {
+          type: "doc",
+          id: "733",
+          label: "733*: Tagged type [RFC1]",
         },
         {
           type: "doc",
