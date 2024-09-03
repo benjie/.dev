@@ -1,10 +1,13 @@
 ---
 type: page
 title: Trusted Documents
-description:
-  An attempt to standardize the "persisted queries" approach to securing a
-  GraphQL API via an allowlist, without having a name that's easily confusible
-  with automatic persisted queries.
+description: A standard way to prevent malicious GraphQL documents being issued
+  to a GraphQL endpoint by only allowing documents that you trust (written by
+  your developers, passing your CI checks, etc).
+
+  At client build time, make the documents available to the server and receive
+  an identifier for each; at run time issue this identifier to the server and
+  have it look up the associated document.
 tag: graphql
 author: Benjie
 breadcrumb: false
@@ -22,9 +25,10 @@ import { Tldr } from "@site/src/components/Tldr";
 GraphQL APIs!) for a **massively decreased attack-surface**, increased
 performance, and decreased bandwidth usage.
 
-At app build time, extract the GraphQL documents (queries, etc) and make them
-available to the server. At run time, send `documentId` instead of the whole
-document; only accept requests with a `documentId`.
+At app build time, extract the GraphQL documents (queries, mutations,
+subscriptions) and make them available to the server. At run time, send
+`documentId` instead of the whole document; only accept requests with a
+`documentId`.
 
 </Tldr>
 
@@ -48,8 +52,10 @@ allowlist, but **almost no-one is**!
 
 Anyone who
 
-1. exposes their GraphQL endpoint to the internet, and
-2. doesn't intend their GraphQL API to be consumed by third parties.
+1. exposes their GraphQL endpoint to the internet or a wide area network (WAN),
+   and
+2. doesn't intend third parties to be able to issue arbitrary queries to their
+   GraphQL API.
 
 This is anyone who is using GraphQL to power their own websites, mobile apps and
 desktop apps but isn't deliberately exposing their API for others to use. Those
@@ -104,9 +110,17 @@ term is a little ambiguous —
 the precise term.
 
 A _trusted document_ is an executable document, identified via a unique
-identifier (typically a hash), that you've told the server to trust. In most
-cases, a trusted document would be written by the developers of your web, mobile
-and/or desktop apps.
+identifier (typically a hash), that you **trust** &mdash; in most cases because
+it was written as part of your regular software development cycle:
+
+- they were written by your developers, who you trust;
+- they have passed through your CI checks, which you trust;
+- they have been approved via your code review process, which you trust;
+- they have been stored into a secure location, which you trust.
+
+Since these documents are trusted, if you only allow your server to execute
+trusted documents then you no longer need to concern yourself with malicious
+documents.
 
 <Pullquote>
 
@@ -118,7 +132,8 @@ because it was **written by your developers**
 Yes, a "trusted document" is an instance of what we've traditionally called a
 "persisted query" (or persisted document/stored operation/etc); but specifically
 it is one the server can trust (typically because it was written by your
-developers) and thus can be used to form an allowlist.
+developers) and thus can be used to form an allowlist that prevents the server
+from executing malicious documents.
 
 I hope that the entire GraphQL ecosystem can move towards using the term
 "trusted document" when referring to this concept. It's much more obvious what
@@ -134,7 +149,8 @@ queries).
 ## How do I add trusted documents to my stack?
 
 If you already use code generation with your GraphQL clients (e.g. for type
-safety) then it's relatively easy. When you build your application:
+safety) then it's relatively easy. When you build your application (after you've
+ensured that all the GraphQL documents it contains are trusted):
 
 1. Have the code generator write out the document(s) that your client is using,
 2. Generate a hash for each of these documents using SHA256, and
@@ -173,6 +189,76 @@ entirely up to you; but here's a couple of ideas:
   The server should then store these wherever it finds convenient: a database, a
   persistent key-value store service (e.g. Redis), or maybe an external service
   like DynoDB or S3.
+
+## Does my client support trusted documents?
+
+Almost all clients that use [static documents](./static-documents.mdx) support
+trusted documents, typically via a tweak to their networking layer where instead
+of sending the `query` parameter containing the document, you instead send a
+`documentId` parameter with the relevant identifier. Most clients refer to the
+broader concept of "persisted queries", the trust is something that you bring
+with you.
+
+- [Apollo Client](https://github.com/valu-digital/graphql-codegen-persisted-query-ids#integrating-with-apollo-client)
+- [Relay](https://relay.dev/docs/guides/persisted-queries/)
+- [URQL](https://www.npmjs.com/package/@urql/exchange-persisted)
+- [gql.tada](https://gql-tada.0no.co/guides/persisted-documents)
+- [graphql-request](https://github.com/jasonkuhrt/graffle/issues/269) (or
+  anything else that uses a replaceable `fetch()` implementation)
+
+## Does my server support trusted documents?
+
+Many servers support trusted documents with a little additional configuration -
+sometimes it's referred to as "persisted queries" or "persisted documents".
+Beware: "_automatic_ persisted queries" are not a security feature, so be sure
+to disable this feature.
+
+<Pullquote>
+
+Beware: **automatic** persisted queries are **not** a security feature
+
+</Pullquote>
+
+If your server does not support trusted documents/persisted queries (or if it
+charges for support) then you can add support yourself with a small intermediary
+server or middleware:
+
+1. Receive `{ documentId, variables, operationName, extensions }`
+2. Look up the document associated with `documentId` - throw an error if not
+   found
+3. Forward the request on to your GraphQL server, substituting the `documentId`
+   with the `query` text you just found.
+
+Here's an example in a Node.js Express middleware; implementation of
+`loadDocumentByIdentifier` is left as an exercise for the reader (but I
+recommend you use an LRU cache or similar):
+
+```ts
+app.post("/graphql", async (req, res, next) => {
+  try {
+    // Extract `documentId` from the request; throw if not found
+    const documentId = req.body?.documentId;
+    if (typeof documentId !== "string") {
+      throw new Error("This server only allows trusted documents.");
+    }
+
+    // Fetch the given document by this identifier
+    const document = await loadDocumentByIdentifier(documentId);
+    if (!document) {
+      throw new Error("That document identifier couldn't be found.");
+    }
+
+    // Substitute `documentId` for `query` in the request body
+    delete req.body.documentId;
+    req.body.query = document;
+
+    // Process the request as normal
+    return next();
+  } catch (e) {
+    next(e);
+  }
+});
+```
 
 ## Do trusted documents have more benefits?
 
@@ -218,13 +304,13 @@ server to:
 - perform query cost analysis
 
 And you're right; those needs are significantly diminished! But you still need
-to be careful about the queries you write. Though an attacker can no longer
-issue arbitrary queries against your GraphQL API, they can still take the
-queries you already have and issue them with their own carefully crafted inputs.
+to be careful about the documents you write. Though an attacker can no longer
+issue arbitrary documents against your GraphQL API, they can still take the
+documents you already have and issue them with their own carefully crafted inputs.
 
 <Pullquote>
 
-you still need to **be careful** about the queries you write
+you still need to **be careful** about the documents you write
 
 </Pullquote>
 
