@@ -1,0 +1,191 @@
+---
+type: page
+title: GraphQL Security
+description: Techniques to protect your GraphQL API.
+tag: graphql
+author: Benjie
+breadcrumb: false
+sidebar_position: 10
+---
+
+import { Pullquote } from "@site/src/components/Pullquote";
+import { Tldr } from "@site/src/components/Tldr";
+
+# Protecting your GraphQL API
+
+GraphQL itself is not tied to any particular transport - in fact, it's fairly
+common to consume GraphQL directly via a local function call within your
+applications memory space without requiring any network hops. When a GraphQL
+schema is networked, one of the most common ways of consuming the API is to do
+so over HTTP as specified by the
+[GraphQL-over-HTTP specification](https://graphql.github.io/graphql-over-http/draft/).
+
+The security practices you invoke for protecting your GraphQL API will differ
+depending on how you expose it and how you intend it to be consumed; this page
+aims to outline some of the techniques and concerns you should consider when
+protecting your API from malicious traffic.
+
+This page is not exhaustive, and it does not cover the standard best practices
+that would apply to any exposed API whether it's GraphQL, REST, gRPC, SOAP, an
+ORM, or anything else &mdash; instead it focusses only on GraphQL-specific
+topics.
+
+## Rejecting malicious documents
+
+Though GraphQL's query language acts as a well defined security boundary between
+the client and your business logic, the language itself can enable asymmetric
+attacks — without much effort, malicious actors can issue requests for the
+server to perform large amounts of work. This can be leveraged to perform denial
+of service attacks.
+
+Protecting your servers against malicious queries is therefore one of the key
+concerns of GraphQL security.
+
+### Solution: trusted documents
+
+The simplest way to protect against malicious documents is to only allow
+approved documents via a document allow list. Of course this technique is only
+suitable where you can know the required documents ahead of time, which
+fortunately should be the case for the vast majority of applications (web apps,
+mobile apps, desktop apps and so on), though clearly would not be the case for
+public APIs (e.g. the [GitHub GraphQL API](https://docs.github.com/en/graphql))
+that are intended to receive arbitrary third party queries.
+
+There's a whole page dedicated to this powerful and highly recommended security
+technique:
+
+[**Use Trusted Documents**](./trusted-documents.mdx)
+
+### Solution: custom validation rules
+
+The GraphQL specification details standard validation rules, but most servers
+will allow you to add your own custom validation rules above and beyond these.
+
+Normally validation applies only to documents and does not factor in variables,
+so we'll concentrate on these document validation rules for now. In the
+"malicious requests" section we'll talk about validation rules that also factor
+in variable values.
+
+#### Depth limit
+
+A depth limit is a basic protection that throws out documents that attempt to
+query "too deep" into your schema. GraphQL execution operates on a
+layer-by-layer basis, and this rule limits the number of layers involved.
+
+What limits you apply are dependent on your schema and your clients needs but
+it's common to see legitimate GraphQL queries that are 12 or more levels deep -
+for example the standard GraphQL introspection query used by GraphiQL is 14
+levels deep. It's generally best to start with a low limit and increase it if
+you need to, and to use a separate limit for introspection:
+
+```yaml
+maxDepth: 12
+maxIntrospectionDepth: 14
+```
+
+#### List depth limit
+
+Though fairly deep legitimate GraphQL queries are common it's rare to see
+clients legitimately query lists in GraphQL more than 2 levels deep because past
+that pagination becomes a real struggle! Lists can also cause an exponential
+growth in the complexity of the request - rather than just adding another layer,
+they add a layer that must be executed N times, once for each returned item.
+Therefore it's vital to prevent malicious documents from querying lists any
+deeper than you specifically need. Start low, and increase it if you need to.
+
+Again, introspection has slightly different needs here (we want to exhaustively
+know everything about the schema, which involves querying
+`__schema>types>fields>args` - three levels of lists), but because it's entirely
+synchronous we can use a larger limit:
+
+```yaml
+maxListDepth: 4
+maxIntrospectionListDepth: 3
+```
+
+#### Self-referential limits
+
+GraphQL schemas tend to contain loads of cycles, and attackers can abuse these
+to request the server perform excessively large amounts of work. In general it's
+best to prevent the same field being requested inside of its own selection sets
+(directly or transitively):
+
+```yaml
+maxSelfReferentialDepth: 1
+maxIntrospectionSelfReferentialDepth: 1
+```
+
+Though there are likely examples where self-referential queries are reasonable,
+for example in the graphql.js introspection query
+[`ofType` is queried 9 levels deep](https://github.com/graphql/graphql-js/blob/9a91e338101b94fb1cc5669dd00e1ba15e0f21b3/src/utilities/getIntrospectionQuery.ts#L140-L179),
+and you can easily thing of other examples such as "friends of friends" in a
+social networking API, or following the maternal line in a genealogy API
+(`person { mother { mother { mother { mother { name } } } } }`). Thus it's
+important to ensure that these exceptions can be specifically allowed:
+
+```yaml
+"__Type.ofType": 9
+"User.friends": 2
+"Person.mother": 8
+"Person.father": 8
+```
+
+Here's what I'd recommend for introspection overrides:
+
+```yaml
+"__Type.ofType": 9
+"__Type.fields": 1
+"__Type.inputFields": 1
+"__Type.interfaces": 1
+"__Type.possibleTypes": 1
+"__Field.args": 1
+"__Field.type": 1
+```
+
+### More resources
+
+Protecting against malicious queries:
+
+- [gqlcheck](https://npmjs.com/package/gqlcheck) (which the above configuration options relate to)
+- [graphql-eslint](https://the-guild.dev/graphql/eslint/docs)
+- [Securing your GraphQL API - Yoga](https://the-guild.dev/graphql/envelop/v3/guides/securing-your-graphql-api)
+
+## Rejecting malicious requests
+
+Requests incorporate not just the document but also variables and the
+`operationName` specifying which operation to execute.
+
+### Pagination limits
+
+### Solution: query cost analysis
+
+### Protecting `multipart/form-data`
+
+GraphQL bombs:
+https://escape.tech/blog/forging-graphql-bombs-the-2022-version-of-zip-bombs/
+
+## Protecting validation
+
+### Validation errors
+
+### Validation timeout
+
+## Protecting runtime
+
+### Timeouts
+
+### Cancellation token
+
+### Rate limiting
+
+- At the business logic level!
+
+### Runtime errors
+
+Error masking:
+https://the-guild.dev/graphql/yoga-server/docs/features/error-masking
+
+## General resources
+
+OWASP security cheatsheet:
+https://cheatsheetseries.owasp.org/cheatsheets/GraphQL_Cheat_Sheet.html
