@@ -203,8 +203,8 @@ with you.
 - [Relay](https://relay.dev/docs/guides/persisted-queries/)
 - [URQL](https://www.npmjs.com/package/@urql/exchange-persisted)
 - [gql.tada](https://gql-tada.0no.co/guides/persisted-documents)
-- [graphql-request](https://github.com/jasonkuhrt/graffle/issues/269) (or
-  anything else that uses a replaceable `fetch()` implementation)
+- [clients that support replacing fetch()](https://github.com/jasonkuhrt/graffle/issues/269)
+  (e.g. `graphql-request`/`graffle`)
 
 ## Does my server support trusted documents?
 
@@ -306,7 +306,8 @@ server to:
 And you're right; those needs are significantly diminished! But you still need
 to be careful about the documents you write. Though an attacker can no longer
 issue arbitrary documents against your GraphQL API, they can still take the
-documents you already have and issue them with their own carefully crafted inputs.
+documents you already have and issue them with their own carefully crafted
+inputs.
 
 <Pullquote>
 
