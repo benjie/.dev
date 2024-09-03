@@ -40,12 +40,12 @@ query += " } }"
 
 This technique has a lot of drawbacks:
 
-- Potentially infinite documents issued to server.
-- Server must validate each new document.
-- Hard to analyze/lint with common tooling (e.g.
+- Potentially infinite documents issued to server, which must validate each new
+  document at runtime.
+- Cannot easily analyze/lint with common tooling (e.g.
   [`graphql-eslint`](https://the-guild.dev/graphql/eslint/docs) or
   [`gqlcheck`](https://github.com/graphile/gqlcheck)).
-- Cannot easily validate; needs thorough testing.
+- Hard to spot syntax/AST mistakes; needs thorough testing.
 - Vulnerable to GraphQL injection.
 
 ## ✅ Static documents
@@ -74,11 +74,13 @@ variables = { userId, showAvatar }
 
 This has a lot of advantages:
 
-- Syntax highlighting and auto-complete directly in your editor (when supported).
+- Syntax highlighting and auto-complete directly in your editor (when
+  supported).
 - Easy to copy/paste into GraphiQL or similar IDE for debugging.
 - Easy to use with standard GraphQL tooling such as linting.
 - Not vulnerable to GraphQL injection.
-- Validate each document once, no need to re-check when the variable values change.
+- Validate each document once, no need to re-check when the variable values
+  change.
 - Supports ["trusted documents"](./trusted-documents.mdx) security feature.
 - Can check validity at build time - remove need for runtime validation.
 - Easy to track which fields are in use.
