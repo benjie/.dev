@@ -67,6 +67,14 @@
     "node": ">=18.0"
   },
   "prettier": {
-    "proseWrap": "always"
+    "proseWrap": "always",
+    "overrides": [
+      {
+        "files": "static-documents.mdx",
+        "options": {
+          "semi": false
+        }
+      }
+    ]
   }
 }

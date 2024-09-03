@@ -1,0 +1,91 @@
+---
+type: page
+title: Static Documents
+description:
+  Best practices dictate that you should not generate GraphQL documents
+  dynamically, instead they should be hardcoded into your applications and
+  variables should be supplied to specify dynamic parameters.
+tag: graphql
+author: Benjie
+breadcrumb: false
+sidebar_position: 20
+---
+
+import { Pullquote } from "@site/src/components/Pullquote"
+import { Tldr } from "@site/src/components/Tldr"
+
+# Static vs Dynamic Documents
+
+<Tldr>
+
+**Do not generate GraphQL documents dynamically**, instead write reusable
+documents and supply variables at runtime to safely specify dynamic parameters.
+
+</Tldr>
+
+## 🚫 Dynamic documents
+
+Typically, dynamic documents are generated at runtime through string
+concatenation or AST manipulation. For example:
+
+```js
+query = "query GetUser { user(id: "
+query += userId
+query += ") { name"
+if (showAvatar) {
+  query += " avatarUrl"
+}
+query += " } }"
+```
+
+This technique has a lot of drawbacks:
+
+- Potentially infinite documents issued to server.
+- Server must validate each new document.
+- Hard to analyze/lint with common tooling (e.g.
+  [`graphql-eslint`](https://the-guild.dev/graphql/eslint/docs) or
+  [`gqlcheck`](https://github.com/graphile/gqlcheck)).
+- Cannot easily validate; needs thorough testing.
+- Vulnerable to GraphQL injection.
+
+## ✅ Static documents
+
+With static documents you write reusable documents such as:
+
+```js
+query = `
+  query GetUser(
+    $userId: Int!
+    $showAvatar: Boolean! = false
+  ) {
+    user(id: $userId) {
+      name
+      avatarUrl @include(if: $showAvatar)
+    }
+  }
+`
+```
+
+And then you supply variables at run-time to populate the placeholders:
+
+```js
+variables = { userId, showAvatar }
+```
+
+This has a lot of advantages:
+
+- Syntax highlighting and auto-complete directly in your editor (when supported).
+- Easy to copy/paste into GraphiQL or similar IDE for debugging.
+- Easy to use with standard GraphQL tooling such as linting.
+- Not vulnerable to GraphQL injection.
+- Validate each document once, no need to re-check when the variable values change.
+- Supports ["trusted documents"](./trusted-documents.mdx) security feature.
+- Can check validity at build time - remove need for runtime validation.
+- Easy to track which fields are in use.
+- Server can optimize known queries.
+
+You should always use static documents unless there's a very good reason not to.
+
+## Other terms
+
+**Ad-hoc documents** are those written on the fly, generally by a human.
