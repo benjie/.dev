@@ -13,24 +13,28 @@ import { Tldr } from "@site/src/components/Tldr";
 
 # Protecting your GraphQL API
 
-GraphQL itself is not tied to any particular transport - in fact, it's fairly
-common to consume GraphQL directly via a local function call within your
-applications memory space without requiring any network hops. When a GraphQL
-schema is networked, one of the most common ways of consuming the API is to do
-so over HTTP as specified by the
+The security practices you invoke for protecting your GraphQL API will differ
+depending on how you expose it and how you intend it to be consumed. GraphQL is
+not tied to any particular transport, in fact it does not need a transport at
+all &mdash; it's fairly common to consume GraphQL directly via a local function
+call within your application's memory space. That said, the majority of GraphQL
+schemas are exposed over a network, most commonly over HTTP as specified by the
 [GraphQL-over-HTTP specification](https://graphql.github.io/graphql-over-http/draft/).
 
-The security practices you invoke for protecting your GraphQL API will differ
-depending on how you expose it and how you intend it to be consumed; this page
-aims to outline some of the techniques and concerns you should consider when
-protecting your API from malicious traffic.
-
-This page is not exhaustive, and it does not cover the standard best practices
-that would apply to any exposed API whether it's GraphQL, REST, gRPC, SOAP, an
-ORM, or anything else &mdash; instead it focusses only on GraphQL-specific
-topics.
+This page aims to outline some of the techniques and concerns you should
+consider when protecting your GraphQL-over-HTTP API from malicious traffic. It
+is not exhaustive, and it does not cover the standard best practices that would
+apply to any HTTP API whether it's GraphQL, REST, gRPC, SOAP, or anything else
+&mdash; instead it focusses only on GraphQL-specific topics.
 
 ## Rejecting malicious documents
+
+<Pullquote>
+
+**Protecting** your servers **against malicious queries** is one of the key
+concerns of GraphQL security
+
+</Pullquote>
 
 Though GraphQL's query language acts as a well defined security boundary between
 the client and your business logic, the language itself can enable asymmetric
@@ -38,33 +42,45 @@ attacks — without much effort, malicious actors can issue requests for the
 server to perform large amounts of work. This can be leveraged to perform denial
 of service attacks.
 
-Protecting your servers against malicious queries is therefore one of the key
+Therefore, protecting your servers against malicious queries is one of the key
 concerns of GraphQL security.
 
-### Solution: trusted documents
+### Trusted documents
 
 The simplest way to protect against malicious documents is to only allow
-approved documents via a document allow list. Of course this technique is only
-suitable where you can know the required documents ahead of time, which
-fortunately should be the case for the vast majority of applications (web apps,
-mobile apps, desktop apps and so on), though clearly would not be the case for
-public APIs (e.g. the [GitHub GraphQL API](https://docs.github.com/en/graphql))
-that are intended to receive arbitrary third party queries.
+pre-approved documents that you are sure are not malicious. This technique is
+only suitable where you can know the required documents ahead of time, but this
+is fortunately the case for the vast majority of APIs since they are only
+designed to power the organization's own applications (web apps, mobile apps,
+desktop apps and so on). Public APIs intended to receive arbitrary third party
+queries, for example the
+[GitHub GraphQL API](https://docs.github.com/en/graphql), can sadly not use this
+technique for all requests &mdash; though it can still be used for first-party
+applications, third-party requests will require additional checks.
 
-There's a whole page dedicated to this powerful and highly recommended security
-technique:
+<Pullquote>
 
-[**Use Trusted Documents**](./trusted-documents.mdx)
+**If you can use trusted documents, you should!**
 
-### Solution: custom validation rules
+</Pullquote>
+
+If you can [**use trusted documents**](/graphql/trusted-documents), you should!
+They are a powerful technique that protects your GraphQL API against a certain
+class of known and unknown threats. We've written about this highly recommended
+security technique in detail in the
+[GraphQL Trusted Documents page](/graphql/trusted-documents) page.
+
+[![Trusted Documents: if you can, you should!](/img/graphql/trusted-documents/if_you_can_you_should.png)](/graphql/trusted-documents)
+
+### Custom validation rules
 
 The GraphQL specification details standard validation rules, but most servers
 will allow you to add your own custom validation rules above and beyond these.
 
 Normally validation applies only to documents and does not factor in variables,
-so we'll concentrate on these document validation rules for now. In the
-"malicious requests" section we'll talk about validation rules that also factor
-in variable values.
+so we'll concentrate on these document-only validation rules for now. In the
+"malicious requests" section below we'll talk about validation rules that also
+factor in variable values.
 
 #### Depth limit
 
@@ -83,45 +99,107 @@ maxDepth: 12
 maxIntrospectionDepth: 14
 ```
 
+It's not uncommon to need to increase `maxDepth` into the twenties, so simple
+depth limiting is a fairly limited protection in itself but at least rules out
+the very worst offenders.
+
+<Pullquote>
+
+Simple **depth limiting** is a fairly **limited protection**
+
+</Pullquote>
+
 #### List depth limit
 
-Though fairly deep legitimate GraphQL queries are common it's rare to see
-clients legitimately query lists in GraphQL more than 2 levels deep because past
-that pagination becomes a real struggle! Lists can also cause an exponential
-growth in the complexity of the request - rather than just adding another layer,
-they add a layer that must be executed N times, once for each returned item.
-Therefore it's vital to prevent malicious documents from querying lists any
-deeper than you specifically need. Start low, and increase it if you need to.
+Though it's fairly common to have legitimate GraphQL queries that are quite
+deep, it's rare to see clients legitimately query lists in GraphQL more than 2
+levels deep because past that pagination becomes a real struggle! Lists are also
+much more dangerous since they can cause an exponential growth in the complexity
+of the request - rather than just adding another layer as would be the case with
+an object field, they add a layer that must be executed N times, once for each
+returned item in the list.
 
-Again, introspection has slightly different needs here (we want to exhaustively
-know everything about the schema, which involves querying
+<Pullquote>
+
+**list depth limiting** is a **vital mitigation** against **exponential**
+workloads from bad actors exploiting **cycles** in your graph
+
+</Pullquote>
+
+Consider a GraphQL API representing a film database; and imagine that each film
+within it has an average cast size of 100, each actor has on average 2 children,
+each of these children act in on average 20 films (it's all about who you
+know!), and each film has on average 100 crew. A simple query like this that is
+only 5 levels deep could already be requesting in the order of 40 million
+records (many of which will be repeated records), with minimal effort from the
+client. Even if the server can fetch this highly-redundant data efficiently,
+serializing it to send over the wire is still a significant amount of effort
+(and memory usage)!
+
+```graphql
+{
+  allFilms(first: 100) {
+    # 100 films
+    cast {
+      # 100 * 100 cast
+      children {
+        # 100 * 100 * 2 children
+        films {
+          # 100 * 100 * 2 * 20 films
+          crew {
+            # 100 * 100 * 2 * 20 * 100 crew = 40,000,000 nodes!
+            name
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+Therefore list depth limiting is a vital mitigation, preventing bad actors from
+exploiting cycles in your graph to have your server perform exponentially
+growing workloads. Prevent all documents from querying lists any deeper than you
+specifically need; start with a low limit on list nesting, and increase it if
+you need to.
+
+Introspection has slightly different needs here (we want to exhaustively know
+everything about the schema, which involves querying
 `__schema>types>fields>args` - three levels of lists), but because it's entirely
 synchronous we can use a larger limit:
 
 ```yaml
-maxListDepth: 4
+maxListDepth: 2
 maxIntrospectionListDepth: 3
 ```
 
 #### Self-referential limits
 
-GraphQL schemas tend to contain loads of cycles, and attackers can abuse these
-to request the server perform excessively large amounts of work. In general it's
-best to prevent the same field being requested inside of its own selection sets
-(directly or transitively):
+<Pullquote>
+
+attackers can abuse the **cycles** in your graph
+
+</Pullquote>
+
+GraphQL schemas tend to contain loads of cycles, and attackers can abuse the
+cycles in your graph to request the server perform excessively large amounts of
+work. It's best to start with a base line of not allowing the same field to be
+requested inside of its own selection sets (directly or transitively):
 
 ```yaml
 maxSelfReferentialDepth: 1
 maxIntrospectionSelfReferentialDepth: 1
 ```
 
-Though there are likely examples where self-referential queries are reasonable,
-for example in the graphql.js introspection query
-[`ofType` is queried 9 levels deep](https://github.com/graphql/graphql-js/blob/9a91e338101b94fb1cc5669dd00e1ba15e0f21b3/src/utilities/getIntrospectionQuery.ts#L140-L179),
-and you can easily thing of other examples such as "friends of friends" in a
-social networking API, or following the maternal line in a genealogy API
+However, it's vital to note that there will be fields where self-references are
+reasonable. For example in the graphql.js introspection query
+[`ofType` is queried 9 levels deep](https://github.com/graphql/graphql-js/blob/9a91e338101b94fb1cc5669dd00e1ba15e0f21b3/src/utilities/getIntrospectionQuery.ts#L140-L179).
+Other examples of legitimate self-referential queries include "friends of
+friends" in a social networking API, or following the maternal or paternal line
+backwards in a genealogy API
 (`person { mother { mother { mother { mother { name } } } } }`). Thus it's
-important to ensure that these exceptions can be specifically allowed:
+important when creating self-referential limits to ensure that these exceptions
+can be specifically allowed:
 
 ```yaml
 "__Type.ofType": 9
@@ -130,7 +208,7 @@ important to ensure that these exceptions can be specifically allowed:
 "Person.father": 8
 ```
 
-Here's what I'd recommend for introspection overrides:
+For introspection overrides, I recommend the following:
 
 ```yaml
 "__Type.ofType": 9
@@ -142,48 +220,356 @@ Here's what I'd recommend for introspection overrides:
 "__Field.type": 1
 ```
 
+### Alias limits
+
+Sometimes its reasonable for a client to execute a field more than once, with
+different parameters - for example to generate an avatar in two different sizes.
+And generally, because GraphQL is a client-focussed language, we want to allow
+clients to rename fields for their own convenience. For these reasons, GraphQL
+allows aliasing of fields.
+
+However, this useful feature introduces another attack vector; for example an
+attacker might use aliases to request a server generate an avatar in every
+possible size in order to tie up the servers resources resulting in a denial of
+service.
+
+Limiting the number of aliases a particular field can have is one solution;
+though you will need overrides to allow for the fields where multiple aliases
+would be reasonable.
+
+It's important to note that every alias a field has causes its resolver and the
+resolvers on all descendents of that field to be called, potentially multiplying
+up the server's workload. Usage of techniques such as DataLoader somewhat
+mitigate this, but it may be best to not allow multiple aliases by default, and
+then liberally add exceptions where sensible.
+
+Some people choose to disable aliases entirely, but I would not recommend this:
+GraphQL is a client-focussed technology and clients often want to rename things
+to make them easier to work with. Some GraphQL clients even rely on the ability
+to alias fields, so disabling aliases would also prevent these clients from
+operating.
+
 ### More resources
 
-Protecting against malicious queries:
+The above options relate to [gqlcheck](https://npmjs.com/package/gqlcheck) which
+can quickly analyze all your GraphQL documents in parallel with efficient AST
+traversal, and is pluggable so that additional checks can be easily added. This
+project started out with the intent of analysing static documents (e.g. during
+your CI process for checking your trusted documents are relatively safe) but
+we'll likely add a way of leveraging its rules for runtime validation at some
+point - if this interests you, please file an issue!
 
-- [gqlcheck](https://npmjs.com/package/gqlcheck) (which the above configuration options relate to)
-- [graphql-eslint](https://the-guild.dev/graphql/eslint/docs)
-- [Securing your GraphQL API - Yoga](https://the-guild.dev/graphql/envelop/v3/guides/securing-your-graphql-api)
+Another system I recommend that you run in CI to help your developers write safe
+queries is [graphql-eslint](https://the-guild.dev/graphql/eslint/docs); and
+whilst we're talking about projects from The Guild you should also check out
+Yoga's excellent
+[Securing your GraphQL API](https://the-guild.dev/graphql/envelop/v3/guides/securing-your-graphql-api)
+article.
 
 ## Rejecting malicious requests
 
-Requests incorporate not just the document but also variables and the
-`operationName` specifying which operation to execute.
+A _GraphQL request_ is composed of the _document_ we discussed above, along with
+any runtime values for _variables_ and an indication of which _operation name_
+to execute if the document defines more than one operation.
+
+Whether or not you use [Trusted Documents](/graphql/trusted-documents),
+attackers can attempt to supply malicious variable values as an attack vector,
+so it's important to consider how these may be abused.
 
 ### Pagination limits
 
-### Solution: query cost analysis
+<Pullquote>
 
-### Protecting `multipart/form-data`
+**every** collection resolver should enforce **pagination limits**
 
-GraphQL bombs:
-https://escape.tech/blog/forging-graphql-bombs-the-2022-version-of-zip-bombs/
+</Pullquote>
+
+I'm sure you wouldn't want someone to request 10 billion records from one of
+your collections &mdash; every collection resolver should **enforce pagination
+limits** (either directly, or in the business logic it calls) to prevent
+attackers having an easy time. What value to limit to depends on the complexity
+of the field in question including the shape of the data it returns, but common
+limits include 10, 25, 100 and 500. Beware that large limits multiply by the
+number of levels of lists you allow to query, so with a `maxListDepth` of `3`, a
+limit of `500` for each list could still yield `500^3 = 125,000,000` records!
+Default to using a low pagination limit (e.g. 25) and only increase it when
+necessary.
+
+<Pullquote>
+
+variable-aware **validation rules** [...] can throw out requests that exceed
+your limits before they even start to execute
+
+</Pullquote>
+
+Limits like these in resolvers require the operation to actually execute for the
+limit to take effect; by leveraging **variable-aware validation rules** we can
+enforce consistent pagination limits for every request and throw out requests
+that exceed your limits before they even start to execute. We can even calculate
+the maximum number of nodes that would be returned by a request and reject it if
+it's too high (e.g.
+`allFilms(first: 25) { cast(first: 10) { children(first: 10) { ...` may be
+allowed since it would return at most 2500 nodes; whereas
+`allFilms(first: 500) { cast(first: 500) { children(first: 500) { ...` may be
+forbidden since 125 million is likely unreasonable).
+
+### Query cost analysis
+
+Trusted documents prevent attackers from sending our servers expensive queries,
+but if you can't use them
+([if you can, you should!](/graphql/trusted-documents)) then query
+cost/complexity analysis is another technique to add to your arsenal. By applies
+heuristics during AST traversal, a maximal cost of a request can be estimated,
+and request that exceed a given cost limit can be rejected prior to execution.
+It's even possible to factor this calculated cost into your rate limits, so a
+user may only perform a small number of large complex queries, but could perform
+a larger number of simpler smaller queries.
+
+Figuring out the cost of a document is itself an expensive process that can be
+attacked, so if you use this technique think about how the technique itself can
+be abused.
+
+IBM have written a well-researched
+[GraphQL Cost Directives Specification](https://ibm.github.io/graphql-specs/)
+you can follow, and there are a number of existing solutions out there that are
+just a search away.
+
+### Beware: GraphQL bombs
+
+If your GraphQL API accepts file uploads (I'd strongly advise against that,
+GraphQL is not really designed for file uploads!) then be sure to protect
+yourself from
+[GraphQL bombs](https://escape.tech/blog/forging-graphql-bombs-the-2022-version-of-zip-bombs/) -
+where a moderately sized uploaded file can be referenced many times within a
+document to invoke large memory usage on the server, potentially leading to
+denial of service.
+
+To protect against this, either don't allow `multipart/form-data` requests to
+your GraphQL API and use a different technology for file uploads, or:
+
+1. Limit the size of file uploads
+2. When designing your schema, only allow file uploads to be referenced in root
+   positions (never inside of lists!)
+3. Prevent the same file upload variable from being referenced multiple times in
+   the same document (via a custom validation rule)
+4. Don't allow any kind of GraphQL request or variable batching to be used with
+   file uploads
+
+### `multipart/form-data` and `application/x-www-form-urlencoded`
+
+When using `multipart/form-data`, `application/x-www-form-urlencoded`, and other
+"simple" content-types, browsers bypass CORS preflight requests. This allows
+attackers to attempt CSRF requests - if one of your logged-in users visits a
+malicious website, that site can make a request to your API using their cookies,
+with potentially disastrous results (privilege escalation, account deletion,
+etc).
+
+To protect against this, simply do not allow these "simple" content types and
+stick to the standard `application/json` as detailed in the
+[GraphQL-over-HTTP specification](https://graphql.github.io/graphql-over-http/draft/).
+Alternatively, ensure that requests contain a custom header (e.g.
+`GraphQL-Require-Preflight` or `X-CSRF-Token`), which forces browsers to perform
+preflight requests allowing you to prevent this style of attack.
 
 ## Protecting validation
 
-### Validation errors
+A lot of our solutions above related to validation; but validation itself is a
+potential attack vector.
+
+### Limit validation errors
+
+Consider the query `{a a a a a a a a … a a a a a a a a}` with as many `a` as
+your server allows. This might seem harmless enough, but assuming that your
+schema does not have a `Query.a` field, each `a` here will generate a separate
+validation error, requiring the server to send a much much larger response body
+than the query body would suggest:
+
+<!-- prettier-ignore -->
+```json
+{
+    "errors": [
+        {
+            "message": "Cannot query field \"a\" on type \"Root\".",
+            "locations": [
+                {
+                    "line": 1,
+                    "column": 2
+                }
+            ]
+        },
+        {
+            "message": "Cannot query field \"a\" on type \"Root\".",
+            "locations": [
+                {
+                    "line": 1,
+                    "column": 4
+                }
+            ]
+        },
+        {
+            "message": "Cannot query field \"a\" on type \"Root\".",
+            "locations": [
+                {
+                    "line": 1,
+                    "column": 6
+                }
+            ]
+        },
+        …
+```
+
+A 100KB query containing ~50k `a` characters producing errors like the above
+would have the server send a 11MB payload - over 100x the size of the input.
+
+Even worse, many GraphQL implementations have a "did you mean" helper on
+validation errors to aid developers by hinting at the field names they may have
+intended, but this search for matching field names uses additional compute and
+can make the payload even larger.
+
+It's best to limit the number of validation errors that can be produced in
+production, and if this limit is exceeded then abort validation and return a
+reasonable error:
+
+```json
+{
+  "errors": [
+    {
+      "message": "Too many validation errors, error limit reached. Validation aborted."
+    }
+  ]
+}
+```
+
+### Size and token limits
+
+Even getting as far as counting errors in validation can consume a lot of
+resources. Before the GraphQL server even starts the validation process it needs
+to parse the document, and we can apply a limit to the number of tokens that the
+document can contain and abort parsing if this limit is exceeded. It's up to you
+to determine a sensible number of tokens for your applications, but consider
+starting around 1000 and raising the limit if legitimate queries are bumping up
+against it.
+
+Parsing itself involves some amount of effort - another protection we should
+consider is limiting the size of GraphQL documents that we will even attempt to
+parse. This would be the limit of the GraphQL document size in bytes, a
+reasonable starting point might be 10kB, and then increase it as need be. A
+slightly larger limit should be applied to the request body (which would include
+any variables) - assuming you're not handling file uploads or large bodies of
+text, 100kB can often be suitable for simple CRUD APIs.
 
 ### Validation timeout
 
+Some parts of validation are more expensive than others, for example field
+collection can involve a lot of AST traversal, leading to a lot of CPU usage. If
+possible, it may make sense to apply a timeout to validation itself and reject
+requests that take too long (and consider rate limiting that user quite
+heavily!). However, "noisy neighbor" issues may mean that these kinds of very
+low time limits (milliseconds) may be exceeded sporadically so some amount of
+leeway is reasonable.
+
 ## Protecting runtime
+
+We've done what we can above to avoid malicious requests from being executed in
+the first place; but it's likely some will still fly in under the radar,
+purporting to be legitimate requests. Here are some things to consider to
+protect the runtime of your GraphQL API.
 
 ### Timeouts
 
+One of the most common ways of protecting an API of any kind is with a timeout;
+if execution passes a certain threshold (e.g. 10 seconds) then it should be
+aborted and an error returned. (We should also rate limit this user to prevent
+this slow query from impacting the stability of our API.) However, keep in mind
+that these limits may need to be extended for incremental delivery requests
+(those involving `@stream` and/or `@defer` directives) and maybe suspended
+entirely for subscription requests (whether over websockets, server-sent events,
+or otherwise).
+
+In addition to per-request timeouts, the underlying business logic should
+perform its own timeouts to avoid resources being tied up for too long, and you
+should also consider
+[the circuit-breaker pattern](https://martinfowler.com/bliki/CircuitBreaker.html?ref=wellarchitected)
+in your business logic so that if a part of your infrastructure fails, the
+related parts of GraphQL requests can exit early whilst allowing the rest of the
+request to still return useful data.
+
 ### Cancellation token
+
+Telling the user that their request took too long so you're returning an error
+is not enough, we need to actually stop any asynchronous work that's taking
+place. For some languages this is part-and-parcel of a timeout, but for others
+asynchronous work must be manually handled by passing around a "cancellation
+token" of some kind - each asynchronous operation should subscribe to this
+token, and should abort as soon as it triggers.
 
 ### Rate limiting
 
-- At the business logic level!
+<Pullquote>
+
+it's vital to **rate limit** within the **business-logic**
+
+</Pullquote>
+
+HTTP-level rate limiting is a common protection for any API type, but in GraphQL
+there are many ways to circumvent this. If the GraphQL service supports it, an
+attacker could use
+[operation batching](https://github.com/graphql/graphql-over-http/issues/5):
+
+<!-- prettier-ignore -->
+```json
+[{"query":"mutation{login(username:\"admin\",pin:\"0000\")}"}
+,{"query":"mutation{login(username:\"admin\",pin:\"0001\")}"}
+,{"query":"mutation{login(username:\"admin\",pin:\"0002\")}"}
+…
+```
+
+or
+[variable batching](https://github.com/graphql/composite-schemas-spec/issues/25):
+
+<!-- prettier-ignore -->
+```json
+{"query":"mutation($p:String!){login(username:\"admin\",pin:$p)}",
+ "variables":
+  [{"p":"0000"}
+  ,{"p":"0001"}
+  ,{"p":"0002"}
+  …
+```
+
+They could also use aliases within the GraphQL document:
+
+<!-- prettier-ignore -->
+```graphql
+mutation ($u: String! = "admin") {
+  m0:login(username:$u,pin:"0000")
+  m1:login(username:$u,pin:"0001")
+  m2:login(username:$u,pin:"0002")
+  …
+```
+
+Combining these techniques could allow an attacker to perform an operation
+orders of magnitude more often than the HTTP-level rate limit would imply.
+
+Therefore it's vital to ensure that vulnerable fields are rate limited at the
+resolver or business-logic level, in addition to any HTTP-level rate limits.
+Further, HTTP-level rate limits should also factor in the size of any batches
+contained therein.
 
 ### Runtime errors
 
-Error masking:
-https://the-guild.dev/graphql/yoga-server/docs/features/error-masking
+We've discussed validation errors above; runtime errors have their own concerns.
+GraphQL is designed to support partial success - even in the face of errors, we
+want to render what we can for the user - but unexpected errors can often
+contain privileged information. This information is useful for developers, but
+also very useful to attackers. We should therefore prevent unsafe errors being
+surfaced to end users in production, instead masking the error and writing the
+details to a server log that only trusted parties can see. Some errors (for
+example, data validation errors) may be safe to send through, but all other
+errors should be masked by default.
+
+Read more about error masking in
+[The Guild's Yoga documentation](https://the-guild.dev/graphql/yoga-server/docs/features/error-masking).
 
 ## General resources
 
