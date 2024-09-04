@@ -8,6 +8,7 @@ description: A standard way to prevent malicious GraphQL documents being issued
   At client build time, make the documents available to the server and receive
   an identifier for each; at run time issue this identifier to the server and
   have it look up the associated document.
+image: https://benjie.dev/img/graphql/trusted-documents/business_card.png
 tag: graphql
 author: Benjie
 breadcrumb: false
@@ -189,6 +190,8 @@ entirely up to you; but here's a couple of ideas:
   The server should then store these wherever it finds convenient: a database, a
   persistent key-value store service (e.g. Redis), or maybe an external service
   like DynoDB or S3.
+
+![Trusted documents: if you can, you should!](/img/graphql/trusted-documents/business_card.png)
 
 ## Does my client support trusted documents?
 
