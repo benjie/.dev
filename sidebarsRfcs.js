@@ -178,11 +178,6 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "742",
-          label: "742: Spec edits for @defer/@stream [RFC2]",
-        },
-        {
-          type: "doc",
           id: "794",
           label: "794: Schema Coordinates [RFC2]",
         },
@@ -196,13 +191,18 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          id: "976",
-          label: "976*: Add 'extensions' to request [RFC1]",
+          id: "1098",
+          label: "1098: Add 5.2.4 Operation Type Exists [RFC1]",
         },
         {
           type: "doc",
           id: "1081",
           label: "1081: Fragment arguments/variables (syntax/validation/execution) [RFC1]",
+        },
+        {
+          type: "doc",
+          id: "976",
+          label: "976*: Add 'extensions' to request [RFC1]",
         },
         {
           type: "doc",
@@ -269,8 +269,13 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          id: "1098",
-          label: "1098: Add 5.2.4 Operation Type Exists [RFC0]",
+          id: "1057",
+          label: "1057*: Fix coercion table for list [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "DeferStream",
+          label: "DeferStream: GraphQL Defer and Stream Directives [RFC0]",
         },
         {
           type: "doc",
@@ -281,11 +286,6 @@ const sidebars = {
           type: "doc",
           id: "1065",
           label: "1065*: SemanticNonNull type (null only on error) [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "1057",
-          label: "1057*: Fix coercion table for list [RFC0]",
         },
         {
           type: "doc",
@@ -336,11 +336,6 @@ const sidebars = {
           type: "doc",
           id: "FullSchemas",
           label: "FullSchemas: Full Schemas [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "999",
-          label: "999: introduce ExecuteGroupedFieldSet, CollectRootFields and CollectSubfields [RFC0]",
         },
         {
           type: "doc",
@@ -416,11 +411,6 @@ const sidebars = {
           type: "doc",
           id: "wg944",
           label: "wg944: New Intersection Type [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "DeferStream",
-          label: "DeferStream: GraphQL Defer and Stream Directives [RFC0]",
         },
         {
           type: "doc",
@@ -517,6 +507,11 @@ const sidebars = {
         },
         {
           type: "doc",
+          id: "742",
+          label: "742: Spec edits for @defer/@stream [RFC2]",
+        },
+        {
+          type: "doc",
           id: "1010",
           label: "1010: Fragment Arguments: Spec Implementation [RFC1]",
         },
@@ -564,6 +559,11 @@ const sidebars = {
           type: "doc",
           id: "1034",
           label: "1034: incremental delivery with deduplication + concurrent execution [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "999",
+          label: "999: introduce ExecuteGroupedFieldSet, CollectRootFields and CollectSubfields [RFC0]",
         },
         {
           type: "doc",
