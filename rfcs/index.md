@@ -17,7 +17,7 @@ be helpful for people to keep track of the various RFCs.
 Ping `@benjie` on the [GraphQL Discord](https://discord.graphql.org) (`#wg`
 channel) and ask for him to run an update!
 
-Last updated: 2024-10-14T14:10:29.974Z
+Last updated: 2024-10-15T17:02:02.841Z
 
 :::
 
@@ -46,6 +46,7 @@ Last updated: 2024-10-14T14:10:29.974Z
 | --- | --- | --- | --- |
 | [#1098](/rfcs/1098 "Add 5.2.4 Operation Type Exists / RFC1") | [@Shane32](https://github.com/Shane32) | [Add 5.2.4 Operation Type Exists](/rfcs/1098) | **2 commits pushed**: [(latest)](https://github.com/graphql/graphql-spec/commit/b9f1f3305e395bb522b85e412d0772476803f857) on 2024-10-04 by [@Shane32](https://github.com/Shane32) [_(more)_](/rfcs/1098#timeline) |
 | [#1081](/rfcs/1081 "Fragment arguments/variables (syntax/validation/execution) / RFC1") | [@JoviDeCroock](https://github.com/JoviDeCroock) | [Fragment arguments/variables (syntax/validation/execution)](/rfcs/1081) | **Added to [2024-10-03 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2024/10-Oct/03-wg-primary.md)** [_(more)_](/rfcs/1081#timeline) |
+| [#1110](/rfcs/1110 "Incremental Delivery spec draft / RFC1") | [@robrichard](https://github.com/robrichard) | [Incremental Delivery spec draft](/rfcs/1110) | **Added to [2024-10-03 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2024/10-Oct/03-wg-primary.md)** [_(more)_](/rfcs/1110#timeline) |
 | [#976](/rfcs/976 "Add 'extensions' to request / RFC1") | [@benjie](https://github.com/benjie) | [Add 'extensions' to request](/rfcs/976) | **Added to [2024-07-18 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2024/07-Jul/18-wg-primary.md)** [_(more)_](/rfcs/976#timeline) |
 | [#1053](/rfcs/1053 "Implementations may not deprecate a field that the interface hasn't deprecated / RFC1") | [@benjie](https://github.com/benjie) | [Implementations may not deprecate a field that the interface hasn't deprecated](/rfcs/1053) | **Added to [2023-12-07 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2023/12-Dec/07-wg-primary.md)** [_(more)_](/rfcs/1053#timeline) |
 | [#1056](/rfcs/1056 "Fix CoerceArgumentValues() hasValue / RFC1") | [@benjie](https://github.com/benjie) | [Fix CoerceArgumentValues() hasValue](/rfcs/1056) | **Added to [2023-12-07 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2023/12-Dec/07-wg-primary.md)** [_(more)_](/rfcs/1056#timeline) |

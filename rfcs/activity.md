@@ -15,23 +15,68 @@ The below is an aggregate overview of the latest activity across all RFCs. Note 
 - [#1057](/rfcs/1057 "Fix coercion table for list / RFC0"): **Added to [2024-10-03 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2024/10-Oct/03-wg-primary.md)**
 - [#1081](/rfcs/1081 "Fragment arguments/variables (syntax/validation/execution) / RFC1"): **Added to [2024-10-03 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2024/10-Oct/03-wg-primary.md)**
 - [#1098](/rfcs/1098 "Add 5.2.4 Operation Type Exists / RFC1"): **Added to [2024-10-03 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2024/10-Oct/03-wg-primary.md)**
+- [#1110](/rfcs/1110 "Incremental Delivery spec draft / RFC1"): **Added to [2024-10-03 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2024/10-Oct/03-wg-primary.md)**
 - [#825](/rfcs/825 "OneOf Input Objects / RFC2"): **Mentioned in [2024-10 WG notes](https://github.com/graphql/graphql-wg/blob/main/notes/2024/2024-10.md)**
 - [#1057](/rfcs/1057 "Fix coercion table for list / RFC0"): **Mentioned in [2024-10 WG notes](https://github.com/graphql/graphql-wg/blob/main/notes/2024/2024-10.md)**
 - [#1081](/rfcs/1081 "Fragment arguments/variables (syntax/validation/execution) / RFC1"): **Mentioned in [2024-10 WG notes](https://github.com/graphql/graphql-wg/blob/main/notes/2024/2024-10.md)**
 - [#1098](/rfcs/1098 "Add 5.2.4 Operation Type Exists / RFC1"): **Mentioned in [2024-10 WG notes](https://github.com/graphql/graphql-wg/blob/main/notes/2024/2024-10.md)**
+- [#1110](/rfcs/1110 "Incremental Delivery spec draft / RFC1"): **Mentioned in [2024-10 WG notes](https://github.com/graphql/graphql-wg/blob/main/notes/2024/2024-10.md)**
 - [DeferStream](/rfcs/DeferStream "GraphQL Defer and Stream Directives / RFC0"): **[RFC document updated](https://github.com/graphql/graphql-wg/blob/f22ea7748c6ebdf88fdbf770a8d9e41984ebd429/rfcs/DeferStream.md)** on 2024-09-19 by Rob Richard
+- [#1110](/rfcs/1110 "Incremental Delivery spec draft / RFC1"): **[Spec PR](https://github.com/graphql/graphql-spec/pull/1110) created** on 2024-09-18 by robrichard
+- [#1110](/rfcs/1110 "Incremental Delivery spec draft / RFC1"): **2 commits pushed** on 2024-09-18:
+  - [Add Response Section for defer/stream (#4)](https://github.com/graphql/graphql-spec/commit/99107f02b9ef34bd091c2a3398338d697d773b5d) by [@robrichard](https://github.com/robrichard)
+  - [Add directives and validation sections (#5)](https://github.com/graphql/graphql-spec/commit/3ef628c033a390563f8256514441b63b6f78c92a) by [@robrichard](https://github.com/robrichard)
+- [#1110](/rfcs/1110 "Incremental Delivery spec draft / RFC1"): **7 commits pushed** on 2024-09-06:
+  - [adjust heading](https://github.com/graphql/graphql-spec/commit/6c9d9ee6417303415b6ec4ae17192e54c56c4785) by [@yaacovCR](https://github.com/yaacovCR)
+  - [Initialize graph](https://github.com/graphql/graphql-spec/commit/29598b1f3c7d0d395649b8d4470233b22ba08904) by [@yaacovCR](https://github.com/yaacovCR)
+  - [adjust YieldSubsequentResults algorithm per review](https://github.com/graphql/graphql-spec/commit/4bb4fdee8b59e18e8bb1ac2c0263dda50fa4b9f2) by [@yaacovCR](https://github.com/yaacovCR)
+  - [reuse GetIncrementalResult() for the error case](https://github.com/graphql/graphql-spec/commit/f2aec2ad6d3f0a876f2068c1a728b46c8e19a582) by [@yaacovCR](https://github.com/yaacovCR)
+  - [add descriptions and fix bug within GetNewRootNodes, it needs the old…](https://github.com/graphql/graphql-spec/commit/6862323378d98e0ae38f6d6aaf99215c7bad660e) by [@yaacovCR](https://github.com/yaacovCR)
+  - [finish addressing review comments](https://github.com/graphql/graphql-spec/commit/8dad2e87434b7623cae4459fb4c683fe42901da6) by [@yaacovCR](https://github.com/yaacovCR)
+  - [add missing word](https://github.com/graphql/graphql-spec/commit/fb94bc6ee7255407f8325ab5920b4f41ef8add93) by [@yaacovCR](https://github.com/yaacovCR)
+- [#1110](/rfcs/1110 "Incremental Delivery spec draft / RFC1"): **Commit pushed**: [add subheadings](https://github.com/graphql/graphql-spec/commit/e1e50c9dfaeeaa01433e91c8b2d6b9ad59da8c27) on 2024-09-05 by [@yaacovCR](https://github.com/yaacovCR)
 - [#1081](/rfcs/1081 "Fragment arguments/variables (syntax/validation/execution) / RFC1"): **Commit pushed**: [update validation](https://github.com/graphql/graphql-spec/commit/641e3d964068c91ba06a1776f9db3bed34c60aaf) on 2024-09-04 by [@JoviDeCroock](https://github.com/JoviDeCroock)
+- [#1110](/rfcs/1110 "Incremental Delivery spec draft / RFC1"): **3 commits pushed** on 2024-08-26:
+  - [Correct argument name](https://github.com/graphql/graphql-spec/commit/4bd72b4057a4052723f21c8a6490839e1386d940) by [@yaacovCR](https://github.com/yaacovCR)
+  - [clarify errors from ExecuteExecutionPlan](https://github.com/graphql/graphql-spec/commit/7c0088e45c0849b66df9d9f021935d75b97d784d) by [@yaacovCR](https://github.com/yaacovCR)
+  - [add initial versions of explanations for the algorithms in the "Execu…](https://github.com/graphql/graphql-spec/commit/6cc43d130c25170566eacdbc7416bd0dc8956450) by [@yaacovCR](https://github.com/yaacovCR)
 - [#1081](/rfcs/1081 "Fragment arguments/variables (syntax/validation/execution) / RFC1"): **Commit pushed**: [Merge branch 'main' into fragment-args-2024-amendments](https://github.com/graphql/graphql-spec/commit/b07931f727e4a787deb140678831cff76755ec00) on 2024-08-08 by [@JoviDeCroock](https://github.com/JoviDeCroock)
 - [#1081](/rfcs/1081 "Fragment arguments/variables (syntax/validation/execution) / RFC1"): **Mentioned in [2024-08 WG notes](https://github.com/graphql/graphql-wg/blob/main/notes/2024/2024-08.md)**
+- [#1110](/rfcs/1110 "Incremental Delivery spec draft / RFC1"): **3 commits pushed** on 2024-07-25:
+  - [add missing arguments](https://github.com/graphql/graphql-spec/commit/9ad6065ffe9a2c31ef16758cee59f2eb7052ac3e) by [@yaacovCR](https://github.com/yaacovCR)
+  - [add missing return value](https://github.com/graphql/graphql-spec/commit/895428c165f8551f1723f09c8ad85027488a9c2b) by [@yaacovCR](https://github.com/yaacovCR)
+  - [fix some renaming around CollectExecutionGroups and ExecuteExecutionG…](https://github.com/graphql/graphql-spec/commit/255ef415bc5b51b99522a1ebc6bd22d615777b9e) by [@yaacovCR](https://github.com/yaacovCR)
+- [#1110](/rfcs/1110 "Incremental Delivery spec draft / RFC1"): **Commit pushed**: [path &#x3d;&#x3e; label](https://github.com/graphql/graphql-spec/commit/375804cdf1403bb9fc3a287266452399790d87f3) on 2024-07-24 by [@yaacovCR](https://github.com/yaacovCR)
+- [#1110](/rfcs/1110 "Incremental Delivery spec draft / RFC1"): **Commit pushed**: [rename FieldPlan to ExecutionPlan](https://github.com/graphql/graphql-spec/commit/215d4f3316ad727e292dece46a967436fc425da2) on 2024-07-20 by [@yaacovCR](https://github.com/yaacovCR)
 - [#825](/rfcs/825 "OneOf Input Objects / RFC2"): **Commit pushed**: [Merge branch 'main' into oneof-v2](https://github.com/graphql/graphql-spec/commit/a810aefbc90f8e8111a60b86181c3d27dfca42de) on 2024-07-19 by [@benjie](https://github.com/benjie)
 - [#825](/rfcs/825 "OneOf Input Objects / RFC2"): **Added to [2024-07-18 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2024/07-Jul/18-wg-primary.md)**
 - [#976](/rfcs/976 "Add 'extensions' to request / RFC1"): **Added to [2024-07-18 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2024/07-Jul/18-wg-primary.md)**
 - [#1102](/rfcs/1102 "Define Data Collections used in the spec / RFC2"): **Added to [2024-07-18 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2024/07-Jul/18-wg-primary.md)**
+- [#1110](/rfcs/1110 "Incremental Delivery spec draft / RFC1"): **5 commits pushed** on 2024-07-18:
+  - [properly initialize deferUsages with their parents](https://github.com/graphql/graphql-spec/commit/14b107f319ed9a561ee1a401da00762a80e9c46d) by [@yaacovCR](https://github.com/yaacovCR)
+  - [move Field Collection back to where it was](https://github.com/graphql/graphql-spec/commit/1645856e2370a123e3c8b09226e2d4d0848eacae) by [@yaacovCR](https://github.com/yaacovCR)
+  - [f](https://github.com/graphql/graphql-spec/commit/76c2a987676eabf497eb7dd3ffbf49174069c1a8) by [@yaacovCR](https://github.com/yaacovCR)
+  - [use fieldDetailsList consistently](https://github.com/graphql/graphql-spec/commit/81a935346b861e580d69ec775b717e73f5e8eb8d) by [@yaacovCR](https://github.com/yaacovCR)
+  - [add info re: data structures](https://github.com/graphql/graphql-spec/commit/74bfb431a0c90e4b368f5b631ea788211aca66eb) by [@yaacovCR](https://github.com/yaacovCR)
+- [#1110](/rfcs/1110 "Incremental Delivery spec draft / RFC1"): **3 commits pushed** on 2024-07-17:
+  - [bring BuildFieldPlan in line with implementation](https://github.com/graphql/graphql-spec/commit/f3b6a3f84100db71e6fa93f9d0ea8eb7792531f1) by [@yaacovCR](https://github.com/yaacovCR)
+  - [rename "deferred grouped field set record" to "execution group"](https://github.com/graphql/graphql-spec/commit/319456653cfb18a2c2069b93cd0961a9f9020c48) by [@yaacovCR](https://github.com/yaacovCR)
+  - [rename ExecuteExecutionGroup to CollectExecutionGroup](https://github.com/graphql/graphql-spec/commit/ab8ccc3865fac4a7916601df8acca1d0d93d7d9e) by [@yaacovCR](https://github.com/yaacovCR)
 - [#1102](/rfcs/1102 "Define Data Collections used in the spec / RFC2"): **[Spec PR](https://github.com/graphql/graphql-spec/pull/1102) created** on 2024-07-01 by benjie
 - [#825](/rfcs/825 "OneOf Input Objects / RFC2"): **Mentioned in [2024-07 WG notes](https://github.com/graphql/graphql-wg/blob/main/notes/2024/2024-07.md)**
 - [#976](/rfcs/976 "Add 'extensions' to request / RFC1"): **Mentioned in [2024-07 WG notes](https://github.com/graphql/graphql-wg/blob/main/notes/2024/2024-07.md)**
 - [#1063](/rfcs/1063 "Type system ordering of: object interfaces, directive arguments, input object fields, enum values / RFC2"): **Commit pushed**: [Clarify wording](https://github.com/graphql/graphql-spec/commit/da69309e7ad69c37aa62397345fb967a98990af0) on 2024-07-01 by [@benjie](https://github.com/benjie)
 - [#1102](/rfcs/1102 "Define Data Collections used in the spec / RFC2"): **Mentioned in [2024-07 WG notes](https://github.com/graphql/graphql-wg/blob/main/notes/2024/2024-07.md)**
+- [#1110](/rfcs/1110 "Incremental Delivery spec draft / RFC1"): **5 commits pushed** on 2024-06-19:
+  - [fix timing](https://github.com/graphql/graphql-spec/commit/a94d7c0cfb1ecd04207237e3f02901a7ce03f487) by [@yaacovCR](https://github.com/yaacovCR)
+  - [reuse function](https://github.com/graphql/graphql-spec/commit/acc720b702661a71c957943cf5573cd8a4f25637) by [@yaacovCR](https://github.com/yaacovCR)
+  - [fix](https://github.com/graphql/graphql-spec/commit/6d3fccb32c457060bbf83af3c9bae6551fe43bac) by [@yaacovCR](https://github.com/yaacovCR)
+  - [rename BuildGraph to GraphFromRecords](https://github.com/graphql/graphql-spec/commit/9237ed2f028f915da0ea3b44226c7baa066e10cb) by [@yaacovCR](https://github.com/yaacovCR)
+  - [reword recursive abort case](https://github.com/graphql/graphql-spec/commit/76b73855496c9c1cd0a4b42e3cbcb062a6cfb4e4) by [@yaacovCR](https://github.com/yaacovCR)
+- [#1110](/rfcs/1110 "Incremental Delivery spec draft / RFC1"): **2 commits pushed** on 2024-06-18:
+  - [add a word or two about which child nodes are being promoted](https://github.com/graphql/graphql-spec/commit/d4934b31baf0445243b6859134fda6182bece7b0) by [@yaacovCR](https://github.com/yaacovCR)
+  - [be more graphy](https://github.com/graphql/graphql-spec/commit/fd3987ce71b0563ce40251beb5abd3c96eff5bef) by [@yaacovCR](https://github.com/yaacovCR)
+- [#1110](/rfcs/1110 "Incremental Delivery spec draft / RFC1"): **Commit pushed**: [refactor a few lines out of YieldSubsequentResults](https://github.com/graphql/graphql-spec/commit/e09dcf2f64ccfc918d2cd079c374c85f7b48dff9) on 2024-06-13 by [@yaacovCR](https://github.com/yaacovCR)
 - [#1063](/rfcs/1063 "Type system ordering of: object interfaces, directive arguments, input object fields, enum values / RFC2"): **3 commits pushed** on 2024-06-12:
   - [Interface fields do not need to be implemented in order.](https://github.com/graphql/graphql-spec/commit/7170d82a653034eb459db168f03686a6682d8470) by [@benjie](https://github.com/benjie)
   - [Interfaces an object implements are ordered](https://github.com/graphql/graphql-spec/commit/602d3195723bc53973d96b1ac883f5ab92171efe) by [@benjie](https://github.com/benjie)
@@ -112,6 +157,9 @@ The below is an aggregate overview of the latest activity across all RFCs. Note 
 - [#1081](/rfcs/1081 "Fragment arguments/variables (syntax/validation/execution) / RFC1"): **Commit pushed**: [Update spec/Section 2 -- Language.md](https://github.com/graphql/graphql-spec/commit/562edd83f9f7d381a663ce77ffec4639603d03ae) on 2024-02-27 by [@JoviDeCroock](https://github.com/JoviDeCroock)
 - [#1081](/rfcs/1081 "Fragment arguments/variables (syntax/validation/execution) / RFC1"): **[Spec PR](https://github.com/graphql/graphql-spec/pull/1081) created** on 2024-02-16 by JoviDeCroock
 - [#1081](/rfcs/1081 "Fragment arguments/variables (syntax/validation/execution) / RFC1"): **Commit pushed**: [corrections](https://github.com/graphql/graphql-spec/commit/210a814d412beccb81aefef2b21b330fdfe362eb) on 2024-02-16 by [@JoviDeCroock](https://github.com/JoviDeCroock)
+- [#1110](/rfcs/1110 "Incremental Delivery spec draft / RFC1"): **2 commits pushed** on 2024-02-15:
+  - [moves Field Collection section earlier](https://github.com/graphql/graphql-spec/commit/a620dc1f9ecec6ad7fb5c44b083fe8614bed4025) by [@yaacovCR](https://github.com/yaacovCR)
+  - [Introduce &#x60;@defer&#x60; directive](https://github.com/graphql/graphql-spec/commit/4e6df5c222249da6d4dd57c3e87d06780f5984df) by [@yaacovCR](https://github.com/yaacovCR)
 - [#1081](/rfcs/1081 "Fragment arguments/variables (syntax/validation/execution) / RFC1"): **Commit pushed**: [wording](https://github.com/graphql/graphql-spec/commit/548163a53f9a561f8873917f2e11904a2605fe09) on 2024-02-12 by [@JoviDeCroock](https://github.com/JoviDeCroock)
 - [SchemaCoordinates](/rfcs/SchemaCoordinates "Schema Coordinates / RFC0"): **[RFC document updated](https://github.com/graphql/graphql-wg/blob/6d02705dea034fb65ebc6799632adb7bd550d0aa/rfcs/SchemaCoordinates.md)** on 2024-02-08 by Benjie
 - [#1081](/rfcs/1081 "Fragment arguments/variables (syntax/validation/execution) / RFC1"): **2 commits pushed** on 2024-02-07:
@@ -261,6 +309,7 @@ The below is an aggregate overview of the latest activity across all RFCs. Note 
 - [FullSchemas](/rfcs/FullSchemas "Full Schemas / RFC0"): **[RFC document created](https://github.com/graphql/graphql-wg/blob/297b11eabb3de0fff2457401ea147ecdb8228e24/rfcs/FullSchemas.md)** on 2023-08-26 by Martin Bonnin
 - [Struct](/rfcs/Struct "Polymorphic-capable composite symmetric input/output type (&#x60;struct&#x60;) / RFC0"): **[RFC document updated](https://github.com/graphql/graphql-wg/blob/c599436ddf5737dcee28d46e77eec567921c0ac1/rfcs/Struct.md)** on 2023-08-24 by Tushar Mathur
 - [#1052](/rfcs/1052 "deduplicated incremental delivery / RFCX"): **Commit pushed**: [Correct reference to MergeSelectionSets](https://github.com/graphql/graphql-spec/commit/4d62b8b580f079e54cee1ef027a952547c8e6e13) on 2023-08-21 by [@benjie](https://github.com/benjie)
+- [#1110](/rfcs/1110 "Incremental Delivery spec draft / RFC1"): **Commit pushed**: [Correct reference to MergeSelectionSets](https://github.com/graphql/graphql-spec/commit/018dac8025e2e7f0aab5f1fc02c0db15f96524e4) on 2023-08-21 by [@benjie](https://github.com/benjie)
 - [FeatureDiscovery](/rfcs/FeatureDiscovery "Feature Discovery / RFC0"): **[RFC document created](https://github.com/graphql/graphql-wg/blob/ced6f6f0566fcf06f775c2fb312ddbfbc47b9bf8/rfcs/FeatureDiscovery.md)** on 2023-08-19 by Young Min Kim
 - [ClientControlledNullability](/rfcs/ClientControlledNullability "Client Controlled Nullability / RFC0"): **[RFC document updated](https://github.com/graphql/graphql-wg/blob/64c7f2e88b018de61763c780294d887b3c593b1e/rfcs/ClientControlledNullability.md)** on 2023-08-03 by Calvin Cestari
 - [#1034](/rfcs/1034 "incremental delivery with deduplication + concurrent execution / RFCX"): **[Spec PR](https://github.com/graphql/graphql-spec/pull/1034) created** on 2023-07-12 by yaacovCR
@@ -281,6 +330,9 @@ The below is an aggregate overview of the latest activity across all RFCs. Note 
 - [#1052](/rfcs/1052 "deduplicated incremental delivery / RFCX"): **2 commits pushed** on 2023-04-28:
   - [Extract common logic from ExecuteQuery, ExecuteMutation and ExecuteSu…](https://github.com/graphql/graphql-spec/commit/d12884e4d365314297b9e446b23d9e846d23e804) by [@benjie](https://github.com/benjie)
   - [Change ExecuteSelectionSet to ExecuteGroupedFieldSet](https://github.com/graphql/graphql-spec/commit/72d5447a8e2deef0e16f71329276f8372c43c126) by [@benjie](https://github.com/benjie)
+- [#1110](/rfcs/1110 "Incremental Delivery spec draft / RFC1"): **2 commits pushed** on 2023-04-28:
+  - [Extract common logic from ExecuteQuery, ExecuteMutation and ExecuteSu…](https://github.com/graphql/graphql-spec/commit/1b4e808f6f4a4554951ddc7c64b81ec14424bbb5) by [@benjie](https://github.com/benjie)
+  - [Change ExecuteSelectionSet to ExecuteGroupedFieldSet](https://github.com/graphql/graphql-spec/commit/c4eda2d262a5374c6724fe48f75b9182b71fa149) by [@benjie](https://github.com/benjie)
 - [#999](/rfcs/999 "introduce ExecuteGroupedFieldSet, CollectRootFields and CollectSubfields / RFCX"): **Commit pushed**: [Update spec/Section 6 -- Execution.md](https://github.com/graphql/graphql-spec/commit/6f1ad74b13ef821fbb610aef3957595138adfbb2) on 2023-04-27 by [@yaacovCR](https://github.com/yaacovCR)
 - [#999](/rfcs/999 "introduce ExecuteGroupedFieldSet, CollectRootFields and CollectSubfields / RFCX"): **Added to [2023-04-06 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2023/04-Apr/06-wg-primary.md)**
 - [#1018](/rfcs/1018 "Alternative proposal for &#x60;@stream&#x60;/&#x60;@defer&#x60; / RFCX"): **Added to [2023-04-06 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2023/04-Apr/06-wg-primary.md)**

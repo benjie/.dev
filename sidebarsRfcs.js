@@ -201,6 +201,11 @@ const sidebars = {
         },
         {
           type: "doc",
+          id: "1110",
+          label: "1110: Incremental Delivery spec draft [RFC1]",
+        },
+        {
+          type: "doc",
           id: "976",
           label: "976*: Add 'extensions' to request [RFC1]",
         },
