@@ -191,18 +191,23 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          id: "1098",
-          label: "1098: Add 5.2.4 Operation Type Exists [RFC1]",
-        },
-        {
-          type: "doc",
-          id: "1081",
-          label: "1081: Fragment arguments/variables (syntax/validation/execution) [RFC1]",
+          id: "997",
+          label: "997: Expand @deprecated to Objects [RFC1]",
         },
         {
           type: "doc",
           id: "1110",
           label: "1110: Incremental Delivery spec draft [RFC1]",
+        },
+        {
+          type: "doc",
+          id: "955",
+          label: "955: Add validation rule that operation types exist [RFC1]",
+        },
+        {
+          type: "doc",
+          id: "1081",
+          label: "1081: Fragment arguments/variables (syntax/validation/execution) [RFC1]",
         },
         {
           type: "doc",
@@ -231,18 +236,8 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "997",
-          label: "997: Expand @deprecated to Objects [RFC1]",
-        },
-        {
-          type: "doc",
           id: "950",
           label: "950: allow unions to include interfaces and unions [RFC1]",
-        },
-        {
-          type: "doc",
-          id: "955",
-          label: "955: Add validation rule that operation types exist [RFC1]",
         },
         {
           type: "doc",
@@ -272,6 +267,11 @@ const sidebars = {
       collapsed: true,
       collapsible: true,
       items: [
+        {
+          type: "doc",
+          id: "1040",
+          label: "1040: Make the reason argument in `@deprecated` non-nullable [RFC0]",
+        },
         {
           type: "doc",
           id: "1057",
@@ -399,11 +399,6 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "960",
-          label: "960: Allow recursion within ResolveAbstractType [RFC0]",
-        },
-        {
-          type: "doc",
           id: "673",
           label: "673: Servers must preserve lexical ordering between SDL and introspection [RFC0]",
         },
@@ -517,6 +512,11 @@ const sidebars = {
         },
         {
           type: "doc",
+          id: "1098",
+          label: "1098: Add 5.2.4 Operation Type Exists [RFC1]",
+        },
+        {
+          type: "doc",
           id: "1010",
           label: "1010: Fragment Arguments: Spec Implementation [RFC1]",
         },
@@ -584,6 +584,11 @@ const sidebars = {
           type: "doc",
           id: "1023",
           label: "1023: incremental delivery without branching [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "960",
+          label: "960: Allow recursion within ResolveAbstractType [RFC0]",
         },
         {
           type: "doc",
