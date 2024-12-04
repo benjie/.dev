@@ -191,28 +191,18 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          id: "997",
-          label: "997: Expand @deprecated to Objects [RFC1]",
-        },
-        {
-          type: "doc",
-          id: "1110",
-          label: "1110: Incremental Delivery spec draft [RFC1]",
-        },
-        {
-          type: "doc",
           id: "955",
           label: "955: Add validation rule that operation types exist [RFC1]",
         },
         {
           type: "doc",
-          id: "1081",
-          label: "1081: Fragment arguments/variables (syntax/validation/execution) [RFC1]",
+          id: "976",
+          label: "976*: Add 'extensions' to request [RFC1]",
         },
         {
           type: "doc",
-          id: "976",
-          label: "976*: Add 'extensions' to request [RFC1]",
+          id: "1040",
+          label: "1040: Make the reason argument in `@deprecated` non-nullable [RFC1]",
         },
         {
           type: "doc",
@@ -228,6 +218,21 @@ const sidebars = {
           type: "doc",
           id: "1058",
           label: "1058*: List coercion algorithm [RFC1]",
+        },
+        {
+          type: "doc",
+          id: "997",
+          label: "997: Expand @deprecated to Objects [RFC1]",
+        },
+        {
+          type: "doc",
+          id: "1110",
+          label: "1110: Incremental Delivery spec draft [RFC1]",
+        },
+        {
+          type: "doc",
+          id: "1081",
+          label: "1081: Fragment arguments/variables (syntax/validation/execution) [RFC1]",
         },
         {
           type: "doc",
@@ -269,8 +274,13 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          id: "1040",
-          label: "1040: Make the reason argument in `@deprecated` non-nullable [RFC0]",
+          id: "1127",
+          label: "1127*: When `sourceStream` errors, yield a `{ errors: [...] }` response [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "1114",
+          label: "1114: add __directive meta field parallel to __type [RFC0]",
         },
         {
           type: "doc",
@@ -549,6 +559,11 @@ const sidebars = {
           type: "doc",
           id: "395",
           label: "395: inputUnion type [RFC1]",
+        },
+        {
+          type: "doc",
+          id: "1126",
+          label: "1126*: GraphQL Subscriptions should handle errors in the source stream [RFC0]",
         },
         {
           type: "doc",
