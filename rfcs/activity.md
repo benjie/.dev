@@ -8,16 +8,30 @@ image: /img/rfc_tracker.png
 
 The below is an aggregate overview of the latest activity across all RFCs. Note that it's _roughly_ in cronological order, but some dates are less accurate than others (e.g. commit timestamps are to the second, whereas working groups are generally to the month...).
 
-- [#955](/rfcs/955 "Add validation rule that operation types exist / RFC1"): **Added to [2024-12-05 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2024/12-Dec/05-wg-primary.md)**
+- [#794](/rfcs/794 "Schema Coordinates / RFC2"): **4 commits pushed** on 2024-12-10:
+  - [whitespace fix](https://github.com/graphql/graphql-spec/commit/b2e42e88dce5073cdc955f465f27ba62a0c2c342) by [@magicmark](https://github.com/magicmark)
+  - [add note about union members](https://github.com/graphql/graphql-spec/commit/4ce2d48933e304799a84063b13317b3afd2b16a3) by [@magicmark](https://github.com/magicmark)
+  - [prettier](https://github.com/graphql/graphql-spec/commit/2d60b336531c1c98c5c31f96051711499b2bec3d) by [@magicmark](https://github.com/magicmark)
+  - [formatting](https://github.com/graphql/graphql-spec/commit/d61cdc3153d94912a6b2e11c643f9b24667965b1) by [@magicmark](https://github.com/magicmark)
+- [#1053](/rfcs/1053 "Implementations may not deprecate a field that the interface hasn't deprecated / RFC2"): **Commit pushed**: [Avoid negative, don't refer to directive](https://github.com/graphql/graphql-spec/commit/9a5f88b80e22d7dd1342ead49dc75d11585e6194) on 2024-12-06 by [@benjie](https://github.com/benjie)
+- [#955](/rfcs/955 "Add validation rule that operation types exist / RFC2"): **Added to [2024-12-05 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2024/12-Dec/05-wg-primary.md)**
 - [#976](/rfcs/976 "Add 'extensions' to request / RFC1"): **Added to [2024-12-05 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2024/12-Dec/05-wg-primary.md)**
-- [#1040](/rfcs/1040 "Make the reason argument in &#x60;@deprecated&#x60; non-nullable / RFC1"): **Added to [2024-12-05 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2024/12-Dec/05-wg-primary.md)**
-- [#1053](/rfcs/1053 "Implementations may not deprecate a field that the interface hasn't deprecated / RFC1"): **Added to [2024-12-05 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2024/12-Dec/05-wg-primary.md)**
+- [#1040](/rfcs/1040 "Make the reason argument in &#x60;@deprecated&#x60; non-nullable / RFC3"): **Added to [2024-12-05 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2024/12-Dec/05-wg-primary.md)**
+- [#1053](/rfcs/1053 "Implementations may not deprecate a field that the interface hasn't deprecated / RFC2"): **Added to [2024-12-05 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2024/12-Dec/05-wg-primary.md)**
 - [#1056](/rfcs/1056 "Fix CoerceArgumentValues() hasValue / RFC1"): **Added to [2024-12-05 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2024/12-Dec/05-wg-primary.md)**
 - [#1058](/rfcs/1058 "List coercion algorithm / RFC1"): **Added to [2024-12-05 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2024/12-Dec/05-wg-primary.md)**
+- [#1127](/rfcs/1127 "When &#x60;sourceStream&#x60; errors, yield a &#x60;&#x7b; errors: &#x5b;...&#x5d; &#x7d;&#x60; response / RFC0"): **Commit pushed**: [Merge branch 'main' into streams-editorial-suggestions](https://github.com/graphql/graphql-spec/commit/19519699d9f32afac4bc61395e239431137feb33) on 2024-12-05 by [@benjie](https://github.com/benjie)
 - [#1127](/rfcs/1127 "When &#x60;sourceStream&#x60; errors, yield a &#x60;&#x7b; errors: &#x5b;...&#x5d; &#x7d;&#x60; response / RFC0"): **Added to [2024-12-05 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2024/12-Dec/05-wg-primary.md)**
+- [#955](/rfcs/955 "Add validation rule that operation types exist / RFC2"): **Mentioned in [2024-12 WG notes](https://github.com/graphql/graphql-wg/blob/main/notes/2024/2024-12.md)**
+- [#976](/rfcs/976 "Add 'extensions' to request / RFC1"): **Mentioned in [2024-12 WG notes](https://github.com/graphql/graphql-wg/blob/main/notes/2024/2024-12.md)**
+- [#1040](/rfcs/1040 "Make the reason argument in &#x60;@deprecated&#x60; non-nullable / RFC3"): **Mentioned in [2024-12 WG notes](https://github.com/graphql/graphql-wg/blob/main/notes/2024/2024-12.md)**
+- [#1053](/rfcs/1053 "Implementations may not deprecate a field that the interface hasn't deprecated / RFC2"): **Mentioned in [2024-12 WG notes](https://github.com/graphql/graphql-wg/blob/main/notes/2024/2024-12.md)**
+- [#1056](/rfcs/1056 "Fix CoerceArgumentValues() hasValue / RFC1"): **Mentioned in [2024-12 WG notes](https://github.com/graphql/graphql-wg/blob/main/notes/2024/2024-12.md)**
+- [#1058](/rfcs/1058 "List coercion algorithm / RFC1"): **Mentioned in [2024-12 WG notes](https://github.com/graphql/graphql-wg/blob/main/notes/2024/2024-12.md)**
+- [#1127](/rfcs/1127 "When &#x60;sourceStream&#x60; errors, yield a &#x60;&#x7b; errors: &#x5b;...&#x5d; &#x7d;&#x60; response / RFC0"): **Mentioned in [2024-12 WG notes](https://github.com/graphql/graphql-wg/blob/main/notes/2024/2024-12.md)**
 - [#1056](/rfcs/1056 "Fix CoerceArgumentValues() hasValue / RFC1"): **Commit pushed**: [Add a period](https://github.com/graphql/graphql-spec/commit/47e49041ebcadf43392100ee2c9a8b6ed4ac51e4) on 2024-11-28 by [@benjie](https://github.com/benjie)
 - [#1058](/rfcs/1058 "List coercion algorithm / RFC1"): **Commit pushed**: [Fix bug in null handling](https://github.com/graphql/graphql-spec/commit/fba35d54523692c5b112c8fc3c773f50ef402b43) on 2024-11-28 by [@benjie](https://github.com/benjie)
-- [#1040](/rfcs/1040 "Make the reason argument in &#x60;@deprecated&#x60; non-nullable / RFC1"): **2 commits pushed** on 2024-11-22:
+- [#1040](/rfcs/1040 "Make the reason argument in &#x60;@deprecated&#x60; non-nullable / RFC3"): **2 commits pushed** on 2024-11-22:
   - [update language for deprecationReason](https://github.com/graphql/graphql-spec/commit/fb386932c89b4fd58856badbc449332e61f6925c) by [@martinbonnin](https://github.com/martinbonnin)
   - [add missing bang](https://github.com/graphql/graphql-spec/commit/665bf71a004441c4e18a269aa604d6dcc215049b) by [@martinbonnin](https://github.com/martinbonnin)
 - [#1127](/rfcs/1127 "When &#x60;sourceStream&#x60; errors, yield a &#x60;&#x7b; errors: &#x5b;...&#x5d; &#x7d;&#x60; response / RFC0"): **[Spec PR](https://github.com/graphql/graphql-spec/pull/1127) created** on 2024-11-21 by benjie
@@ -28,7 +42,7 @@ The below is an aggregate overview of the latest activity across all RFCs. Note 
   - [Don't use a new algorithm, no need to DRY](https://github.com/graphql/graphql-spec/commit/5257c92869451ae79134ecd8e3f3b13a6005b652) by [@benjie](https://github.com/benjie)
   - [Internal errors should be passed up the chain](https://github.com/graphql/graphql-spec/commit/f49aab72ea487dd47fc1e1f72dcf939b3d0b221e) by [@benjie](https://github.com/benjie)
 - [#997](/rfcs/997 "Expand @deprecated to Objects / RFC1"): **Added to [2024-11-07 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2024/11-Nov/07-wg-primary.md)**
-- [#1040](/rfcs/1040 "Make the reason argument in &#x60;@deprecated&#x60; non-nullable / RFC1"): **Added to [2024-11-07 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2024/11-Nov/07-wg-primary.md)**
+- [#1040](/rfcs/1040 "Make the reason argument in &#x60;@deprecated&#x60; non-nullable / RFC3"): **Added to [2024-11-07 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2024/11-Nov/07-wg-primary.md)**
 - [#1110](/rfcs/1110 "Incremental Delivery spec draft / RFC1"): **Added to [2024-11-07 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2024/11-Nov/07-wg-primary.md)**
 - [#1114](/rfcs/1114 "add __directive meta field parallel to __type / RFC0"): **Added to [2024-11-07 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2024/11-Nov/07-wg-primary.md)**
 - [#1110](/rfcs/1110 "Incremental Delivery spec draft / RFC1"): **Commit pushed**: [Add examples to Response section](https://github.com/graphql/graphql-spec/commit/f7e912426c42c34e663bdb849583beaffdc32ef3) on 2024-11-01 by [@robrichard](https://github.com/robrichard)
@@ -38,7 +52,7 @@ The below is an aggregate overview of the latest activity across all RFCs. Note 
   - [Add more examples](https://github.com/graphql/graphql-spec/commit/c4d0b50193d628bc2e662edbaa16aebbf3ed0e0d) by [@benjie](https://github.com/benjie)
   - [Remove new validation rule in favour of updates to existing rules](https://github.com/graphql/graphql-spec/commit/340594e36cecf263d94d8f35bab9d8aef1d0afb2) by [@benjie](https://github.com/benjie)
   - [Null literal is separate](https://github.com/graphql/graphql-spec/commit/dbccf8424a8d78992c016a79b35c824808c02143) by [@benjie](https://github.com/benjie)
-- [#955](/rfcs/955 "Add validation rule that operation types exist / RFC1"): **9 commits pushed** on 2024-10-17:
+- [#955](/rfcs/955 "Add validation rule that operation types exist / RFC2"): **9 commits pushed** on 2024-10-17:
   - [Undo changes to Section 3](https://github.com/graphql/graphql-spec/commit/d5677894b8262963d2a1377332767ca5c3e43331) by [@benjie](https://github.com/benjie)
   - [Merge branch 'main' into operation-type-validation](https://github.com/graphql/graphql-spec/commit/1482766ccc59c6cadfa029e822fbc62ca92f3df3) by [@benjie](https://github.com/benjie)
   - [Editorial](https://github.com/graphql/graphql-spec/commit/55d4fd4244130db1b874a4902a3c89b65b7b922c) by [@benjie](https://github.com/benjie)
@@ -48,7 +62,7 @@ The below is an aggregate overview of the latest activity across all RFCs. Note 
   - [More editorial](https://github.com/graphql/graphql-spec/commit/7a8975acb488fa5e857f0b36e7e8ed35401605ae) by [@benjie](https://github.com/benjie)
   - [Update spec/Section 5 -- Validation.md](https://github.com/graphql/graphql-spec/commit/06f237f6393df2076b38b4043376e589b37c1971) by [@benjie](https://github.com/benjie)
   - [Update spec/Section 5 -- Validation.md](https://github.com/graphql/graphql-spec/commit/b209bd8bae70b5adb3c111cdaf6cf37e9e091a23) by [@benjie](https://github.com/benjie)
-- [#955](/rfcs/955 "Add validation rule that operation types exist / RFC1"): **2 commits pushed** on 2024-10-04:
+- [#955](/rfcs/955 "Add validation rule that operation types exist / RFC2"): **2 commits pushed** on 2024-10-04:
   - [Merge branch 'main' into Shane32-patch-1](https://github.com/graphql/graphql-spec/commit/f8fd141388e3703b6ebd795aa5f4c7d61b784a64) by [@Shane32](https://github.com/Shane32)
   - [Reformat](https://github.com/graphql/graphql-spec/commit/b9f1f3305e395bb522b85e412d0772476803f857) by [@Shane32](https://github.com/Shane32)
 - [#1098](/rfcs/1098 "Add 5.2.4 Operation Type Exists / RFCX"): **2 commits pushed** on 2024-10-04:
@@ -132,6 +146,7 @@ The below is an aggregate overview of the latest activity across all RFCs. Note 
   - [Interfaces an object implements are ordered](https://github.com/graphql/graphql-spec/commit/602d3195723bc53973d96b1ac883f5ab92171efe) by [@benjie](https://github.com/benjie)
   - [Unions are ordered.](https://github.com/graphql/graphql-spec/commit/ce8c732d814f4fe609ddd7d52736d505e6067b1d) by [@benjie](https://github.com/benjie)
 - [#1081](/rfcs/1081 "Fragment arguments/variables (syntax/validation/execution) / RFC1"): **Commit pushed**: [Merge branch 'main' into fragment-args-2024-amendments](https://github.com/graphql/graphql-spec/commit/5927fa9b0a21edfaadf07f6f8e2e05a73bc1cf8c) on 2024-06-11 by [@JoviDeCroock](https://github.com/JoviDeCroock)
+- [#1127](/rfcs/1127 "When &#x60;sourceStream&#x60; errors, yield a &#x60;&#x7b; errors: &#x5b;...&#x5d; &#x7d;&#x60; response / RFC0"): **Commit pushed**: [feedback and use definition syntax](https://github.com/graphql/graphql-spec/commit/75f10e0a9ea07920b6a6ceb6ec0009aa5be974c7) on 2024-06-11 by [@leebyron](https://github.com/leebyron)
 - [#1081](/rfcs/1081 "Fragment arguments/variables (syntax/validation/execution) / RFC1"): **Commit pushed**: [formatting](https://github.com/graphql/graphql-spec/commit/4edb48144332b4c35a47a240af5943d56739a259) on 2024-06-09 by [@JoviDeCroock](https://github.com/JoviDeCroock)
 - [#1081](/rfcs/1081 "Fragment arguments/variables (syntax/validation/execution) / RFC1"): **2 commits pushed** on 2024-06-08:
   - [wording](https://github.com/graphql/graphql-spec/commit/b0ac79907d5e8edfdc5cd8c9cb9c55f0de1a81e1) by [@JoviDeCroock](https://github.com/JoviDeCroock)
@@ -141,14 +156,15 @@ The below is an aggregate overview of the latest activity across all RFCs. Note 
 - [#1081](/rfcs/1081 "Fragment arguments/variables (syntax/validation/execution) / RFC1"): **Added to [2024-06-06 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2024/06-Jun/06-wg-primary.md)**
 - [#1091](/rfcs/1091 "Define Data Collections used in the spec / RFCX"): **Added to [2024-06-06 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2024/06-Jun/06-wg-primary.md)**
 - [#1092](/rfcs/1092 "Recommend that order of unordered collections is maintained where possible / RFC2"): **Added to [2024-06-06 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2024/06-Jun/06-wg-primary.md)**
+- [#1127](/rfcs/1127 "When &#x60;sourceStream&#x60; errors, yield a &#x60;&#x7b; errors: &#x5b;...&#x5d; &#x7d;&#x60; response / RFC0"): **Commit pushed**: [Editorial changes for Event Streams](https://github.com/graphql/graphql-spec/commit/5bb1e07a6058a54af437d3814e6b705f573f552e) on 2024-06-06 by [@leebyron](https://github.com/leebyron)
 - [#825](/rfcs/825 "OneOf Input Objects / RFC2"): **Commit pushed**: [Update spec/Section 3 -- Type System.md](https://github.com/graphql/graphql-spec/commit/d88d62a5befdedf9d48780c1d7da9c514c04b6fe) on 2024-06-05 by [@benjie](https://github.com/benjie)
 - [#825](/rfcs/825 "OneOf Input Objects / RFC2"): **Commit pushed**: [Indicate &#x60;@oneOf&#x60; is a built-in directive](https://github.com/graphql/graphql-spec/commit/87d0b2295028522033b3f54f3392ef2f7f294e50) on 2024-06-04 by [@benjie](https://github.com/benjie)
-- [#955](/rfcs/955 "Add validation rule that operation types exist / RFC1"): **Commit pushed**: [Apply suggestions from code review](https://github.com/graphql/graphql-spec/commit/6f187fa90f14ce86f6d6bafd6e9fa95ba5dab069) on 2024-06-04 by [@Shane32](https://github.com/Shane32)
+- [#955](/rfcs/955 "Add validation rule that operation types exist / RFC2"): **Commit pushed**: [Apply suggestions from code review](https://github.com/graphql/graphql-spec/commit/6f187fa90f14ce86f6d6bafd6e9fa95ba5dab069) on 2024-06-04 by [@Shane32](https://github.com/Shane32)
 - [#1081](/rfcs/1081 "Fragment arguments/variables (syntax/validation/execution) / RFC1"): **Commit pushed**: [Update spec/Section 5 -- Validation.md](https://github.com/graphql/graphql-spec/commit/0361664c0f34348ef0b597abedf1e87a8f82ad94) on 2024-06-04 by [@JoviDeCroock](https://github.com/JoviDeCroock)
 - [#1098](/rfcs/1098 "Add 5.2.4 Operation Type Exists / RFCX"): **Commit pushed**: [Apply suggestions from code review](https://github.com/graphql/graphql-spec/commit/6f187fa90f14ce86f6d6bafd6e9fa95ba5dab069) on 2024-06-04 by [@Shane32](https://github.com/Shane32)
 - [#1081](/rfcs/1081 "Fragment arguments/variables (syntax/validation/execution) / RFC1"): **Mentioned in [2024-06 WG notes](https://github.com/graphql/graphql-wg/blob/main/notes/2024/2024-06.md)**
 - [#1098](/rfcs/1098 "Add 5.2.4 Operation Type Exists / RFCX"): **[Spec PR](https://github.com/graphql/graphql-spec/pull/1098) created** on 2024-05-27 by Shane32
-- [#955](/rfcs/955 "Add validation rule that operation types exist / RFC1"): **4 commits pushed** on 2024-05-27:
+- [#955](/rfcs/955 "Add validation rule that operation types exist / RFC2"): **4 commits pushed** on 2024-05-27:
   - [Add 5.2.4 Operation Type Configuration](https://github.com/graphql/graphql-spec/commit/b7bf1073b7eed28de3030469ded7b04bd4443500) by [@Shane32](https://github.com/Shane32)
   - [Update spec/Section 5 -- Validation.md](https://github.com/graphql/graphql-spec/commit/94e2bdab93b4c582f80bcf93f6b13bf956470a54) by [@Shane32](https://github.com/Shane32)
   - [Update spec/Section 5 -- Validation.md](https://github.com/graphql/graphql-spec/commit/ef77474343c137562d5578f36dd38ff7427fd9dd) by [@Shane32](https://github.com/Shane32)
@@ -282,7 +298,7 @@ The below is an aggregate overview of the latest activity across all RFCs. Note 
 - [#793](/rfcs/793 "Default value coercion rules / RFC2"): **Added to [2023-12-07 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2023/12-Dec/07-wg-primary.md)**
 - [#860](/rfcs/860 "Prevent @skip and @include on root subscription selection set / RFC2"): **Added to [2023-12-07 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2023/12-Dec/07-wg-primary.md)**
 - [#1052](/rfcs/1052 "deduplicated incremental delivery / RFCX"): **Commit pushed**: [enhance(ResolveFieldValue): add async collection language](https://github.com/graphql/graphql-spec/commit/f5e26e3a07d8387bd7a531568c1ab5918fe46374) on 2023-12-07 by [@yaacovCR](https://github.com/yaacovCR)
-- [#1053](/rfcs/1053 "Implementations may not deprecate a field that the interface hasn't deprecated / RFC1"): **Added to [2023-12-07 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2023/12-Dec/07-wg-primary.md)**
+- [#1053](/rfcs/1053 "Implementations may not deprecate a field that the interface hasn't deprecated / RFC2"): **Added to [2023-12-07 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2023/12-Dec/07-wg-primary.md)**
 - [#1056](/rfcs/1056 "Fix CoerceArgumentValues() hasValue / RFC1"): **Added to [2023-12-07 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2023/12-Dec/07-wg-primary.md)**
 - [#1057](/rfcs/1057 "Fix coercion table for list / RFC0"): **Added to [2023-12-07 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2023/12-Dec/07-wg-primary.md)**
 - [#1058](/rfcs/1058 "List coercion algorithm / RFC1"): **Added to [2023-12-07 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2023/12-Dec/07-wg-primary.md)**
@@ -292,7 +308,7 @@ The below is an aggregate overview of the latest activity across all RFCs. Note 
   - [Introduce @defer.](https://github.com/graphql/graphql-spec/commit/3677a0969ade211b4f81b773a01008e4966c7b3d) by [@robrichard](https://github.com/robrichard)
 - [#793](/rfcs/793 "Default value coercion rules / RFC2"): **Mentioned in [2023-12 WG notes](https://github.com/graphql/graphql-wg/blob/main/notes/2023/2023-12.md)**
 - [#860](/rfcs/860 "Prevent @skip and @include on root subscription selection set / RFC2"): **Mentioned in [2023-12 WG notes](https://github.com/graphql/graphql-wg/blob/main/notes/2023/2023-12.md)**
-- [#1053](/rfcs/1053 "Implementations may not deprecate a field that the interface hasn't deprecated / RFC1"): **Mentioned in [2023-12 WG notes](https://github.com/graphql/graphql-wg/blob/main/notes/2023/2023-12.md)**
+- [#1053](/rfcs/1053 "Implementations may not deprecate a field that the interface hasn't deprecated / RFC2"): **Mentioned in [2023-12 WG notes](https://github.com/graphql/graphql-wg/blob/main/notes/2023/2023-12.md)**
 - [#1056](/rfcs/1056 "Fix CoerceArgumentValues() hasValue / RFC1"): **Mentioned in [2023-12 WG notes](https://github.com/graphql/graphql-wg/blob/main/notes/2023/2023-12.md)**
 - [#1057](/rfcs/1057 "Fix coercion table for list / RFC0"): **Mentioned in [2023-12 WG notes](https://github.com/graphql/graphql-wg/blob/main/notes/2023/2023-12.md)**
 - [#1058](/rfcs/1058 "List coercion algorithm / RFC1"): **Mentioned in [2023-12 WG notes](https://github.com/graphql/graphql-wg/blob/main/notes/2023/2023-12.md)**
@@ -321,9 +337,9 @@ The below is an aggregate overview of the latest activity across all RFCs. Note 
 - [#1058](/rfcs/1058 "List coercion algorithm / RFC1"): **[Spec PR](https://github.com/graphql/graphql-spec/pull/1058) created** on 2023-11-09 by benjie
 - [#1057](/rfcs/1057 "Fix coercion table for list / RFC0"): **[Spec PR](https://github.com/graphql/graphql-spec/pull/1057) created** on 2023-11-09 by benjie
 - [#1056](/rfcs/1056 "Fix CoerceArgumentValues() hasValue / RFC1"): **[Spec PR](https://github.com/graphql/graphql-spec/pull/1056) created** on 2023-11-09 by benjie
-- [#1053](/rfcs/1053 "Implementations may not deprecate a field that the interface hasn't deprecated / RFC1"): **[Spec PR](https://github.com/graphql/graphql-spec/pull/1053) created** on 2023-11-09 by benjie
+- [#1053](/rfcs/1053 "Implementations may not deprecate a field that the interface hasn't deprecated / RFC2"): **[Spec PR](https://github.com/graphql/graphql-spec/pull/1053) created** on 2023-11-09 by benjie
 - [#1052](/rfcs/1052 "deduplicated incremental delivery / RFCX"): **Commit pushed**: [deduplicate delivery of grouped field sets contained by parent/child …](https://github.com/graphql/graphql-spec/commit/d9af65d50c1384dae0e9cddbf727008cc0ce97e7) on 2023-11-09 by [@yaacovCR](https://github.com/yaacovCR)
-- [#1053](/rfcs/1053 "Implementations may not deprecate a field that the interface hasn't deprecated / RFC1"): **Commit pushed**: [Implementations may not deprecate a field that the interface hasn't d…](https://github.com/graphql/graphql-spec/commit/aade51b37c8a71a6b6e862f6f6dda1be12c7d639) on 2023-11-09 by [@benjie](https://github.com/benjie)
+- [#1053](/rfcs/1053 "Implementations may not deprecate a field that the interface hasn't deprecated / RFC2"): **Commit pushed**: [Implementations may not deprecate a field that the interface hasn't d…](https://github.com/graphql/graphql-spec/commit/aade51b37c8a71a6b6e862f6f6dda1be12c7d639) on 2023-11-09 by [@benjie](https://github.com/benjie)
 - [#1056](/rfcs/1056 "Fix CoerceArgumentValues() hasValue / RFC1"): **Commit pushed**: [Fix CoerceArgumentValues() hasValue](https://github.com/graphql/graphql-spec/commit/6f7541f2934a1ed15d76bb8d9364d9791f83b66b) on 2023-11-09 by [@benjie](https://github.com/benjie)
 - [#1057](/rfcs/1057 "Fix coercion table for list / RFC0"): **Commit pushed**: [Fix coercion table for list](https://github.com/graphql/graphql-spec/commit/7e13d5c2cb8a38229d602a7a7e37d81fbbb84c00) on 2023-11-09 by [@benjie](https://github.com/benjie)
 - [#1058](/rfcs/1058 "List coercion algorithm / RFC1"): **4 commits pushed** on 2023-11-09:
@@ -363,8 +379,8 @@ The below is an aggregate overview of the latest activity across all RFCs. Note 
 - [#976](/rfcs/976 "Add 'extensions' to request / RFC1"): **Commit pushed**: [Add explicit definition for BlockString (#1042)](https://github.com/graphql/graphql-spec/commit/3adfcca73644234fbbbb062a5cec9e7703419a9f) on 2023-09-08 by [@benjie](https://github.com/benjie)
 - [FullSchemas](/rfcs/FullSchemas "Full Schemas / RFC0"): **[RFC document created](https://github.com/graphql/graphql-wg/blob/297b11eabb3de0fff2457401ea147ecdb8228e24/rfcs/FullSchemas.md)** on 2023-08-26 by Martin Bonnin
 - [Struct](/rfcs/Struct "Polymorphic-capable composite symmetric input/output type (&#x60;struct&#x60;) / RFC0"): **[RFC document updated](https://github.com/graphql/graphql-wg/blob/c599436ddf5737dcee28d46e77eec567921c0ac1/rfcs/Struct.md)** on 2023-08-24 by Tushar Mathur
-- [#1040](/rfcs/1040 "Make the reason argument in &#x60;@deprecated&#x60; non-nullable / RFC1"): **[Spec PR](https://github.com/graphql/graphql-spec/pull/1040) created** on 2023-08-23 by martinbonnin
-- [#1040](/rfcs/1040 "Make the reason argument in &#x60;@deprecated&#x60; non-nullable / RFC1"): **Commit pushed**: [Make the reason argument in &#x60;@deprecated&#x60; non-nullable](https://github.com/graphql/graphql-spec/commit/b0dfb671306fa847ed9c327ac693e3ae50e56765) on 2023-08-23 by [@martinbonnin](https://github.com/martinbonnin)
+- [#1040](/rfcs/1040 "Make the reason argument in &#x60;@deprecated&#x60; non-nullable / RFC3"): **[Spec PR](https://github.com/graphql/graphql-spec/pull/1040) created** on 2023-08-23 by martinbonnin
+- [#1040](/rfcs/1040 "Make the reason argument in &#x60;@deprecated&#x60; non-nullable / RFC3"): **Commit pushed**: [Make the reason argument in &#x60;@deprecated&#x60; non-nullable](https://github.com/graphql/graphql-spec/commit/b0dfb671306fa847ed9c327ac693e3ae50e56765) on 2023-08-23 by [@martinbonnin](https://github.com/martinbonnin)
 - [#1052](/rfcs/1052 "deduplicated incremental delivery / RFCX"): **Commit pushed**: [Correct reference to MergeSelectionSets](https://github.com/graphql/graphql-spec/commit/4d62b8b580f079e54cee1ef027a952547c8e6e13) on 2023-08-21 by [@benjie](https://github.com/benjie)
 - [#1110](/rfcs/1110 "Incremental Delivery spec draft / RFC1"): **Commit pushed**: [Correct reference to MergeSelectionSets](https://github.com/graphql/graphql-spec/commit/69de3fd80a02b8afb33bec90d0d501f3de59c194) on 2023-08-21 by [@benjie](https://github.com/benjie)
 - [FeatureDiscovery](/rfcs/FeatureDiscovery "Feature Discovery / RFC0"): **[RFC document created](https://github.com/graphql/graphql-wg/blob/ced6f6f0566fcf06f775c2fb312ddbfbc47b9bf8/rfcs/FeatureDiscovery.md)** on 2023-08-19 by Young Min Kim
@@ -751,7 +767,7 @@ The below is an aggregate overview of the latest activity across all RFCs. Note 
   - [Merge branch 'main' into patch-2](https://github.com/graphql/graphql-spec/commit/ea0e7aa093ffaabb0a1434da46700fd26b69288d) by [@spawnia](https://github.com/spawnia)
   - [fix merge conflict resolution](https://github.com/graphql/graphql-spec/commit/6e3d2d3fbc2d99fb505e7e268ca779763452ceb4) by [@spawnia](https://github.com/spawnia)
 - [CompositeSchemas](/rfcs/CompositeSchemas "GraphQL Composite Schemas / RFC0"): **[RFC document updated](https://github.com/graphql/graphql-wg/blob/460f3e79c186fc85cada7fe87fda80d8d0c0ef73/rfcs/CompositeSchemas.md)** on 2022-06-14 by agata-wit
-- [#955](/rfcs/955 "Add validation rule that operation types exist / RFC1"): **2 commits pushed** on 2022-06-13:
+- [#955](/rfcs/955 "Add validation rule that operation types exist / RFC2"): **2 commits pushed** on 2022-06-13:
   - [typofix](https://github.com/graphql/graphql-spec/commit/011a9a580e978337734e19c91de3b9e9d823b707) by [@benjaminjkraft](https://github.com/benjaminjkraft)
   - [indentation](https://github.com/graphql/graphql-spec/commit/04197ab0054fa6c8f7fa160bdfffc698dde4dfaf) by [@benjaminjkraft](https://github.com/benjaminjkraft)
 - [#960](/rfcs/960 "Allow recursion within ResolveAbstractType / RFCX"): **[Spec PR](https://github.com/graphql/graphql-spec/pull/960) created** on 2022-06-10 by yaacovCR
@@ -795,9 +811,9 @@ The below is an aggregate overview of the latest activity across all RFCs. Note 
 - [#948](/rfcs/948 "OneOf Objects / RFC0"): **Mentioned in [2022-06-02 WG notes](https://github.com/graphql/graphql-wg/blob/main/notes/2022/2022-06-02.md)**
 - [#950](/rfcs/950 "allow unions to include interfaces and unions / RFC1"): **Added to [2022-06-02 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2022/2022-06-02.md)**
 - [#950](/rfcs/950 "allow unions to include interfaces and unions / RFC1"): **Mentioned in [2022-06-02 WG notes](https://github.com/graphql/graphql-wg/blob/main/notes/2022/2022-06-02.md)**
-- [#955](/rfcs/955 "Add validation rule that operation types exist / RFC1"): **Added to [2022-06-02 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2022/2022-06-02.md)**
-- [#955](/rfcs/955 "Add validation rule that operation types exist / RFC1"): **[Spec PR](https://github.com/graphql/graphql-spec/pull/955) created** on 2022-06-01 by benjaminjkraft
-- [#955](/rfcs/955 "Add validation rule that operation types exist / RFC1"): **2 commits pushed** on 2022-06-01:
+- [#955](/rfcs/955 "Add validation rule that operation types exist / RFC2"): **Added to [2022-06-02 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2022/2022-06-02.md)**
+- [#955](/rfcs/955 "Add validation rule that operation types exist / RFC2"): **[Spec PR](https://github.com/graphql/graphql-spec/pull/955) created** on 2022-06-01 by benjaminjkraft
+- [#955](/rfcs/955 "Add validation rule that operation types exist / RFC2"): **2 commits pushed** on 2022-06-01:
   - [Add validation rule that operation types exist](https://github.com/graphql/graphql-spec/commit/be984cb10737c27dfff42844e48e2fbc7ee5254a) by [@benjaminjkraft](https://github.com/benjaminjkraft)
   - [prettier](https://github.com/graphql/graphql-spec/commit/6b668ce61177a43a9a484e9a64ab8adfb3e756a8) by [@benjaminjkraft](https://github.com/benjaminjkraft)
 - [#950](/rfcs/950 "allow unions to include interfaces and unions / RFC1"): **Commit pushed**: [add rule requiring explicit listing of member types of child unions](https://github.com/graphql/graphql-spec/commit/2a4d3ed1ccce99ec6a1aa9e954107b9652b0bb01) on 2022-05-29 by [@yaacovCR](https://github.com/yaacovCR)
@@ -1069,26 +1085,26 @@ The below is an aggregate overview of the latest activity across all RFCs. Note 
 - [#793](/rfcs/793 "Default value coercion rules / RFC2"): **Commit pushed**: [Clarify the default value cycle detection logic](https://github.com/graphql/graphql-spec/commit/084b2d55e961d3259cbd191bfb7a8e9ad1c22b05) on 2021-05-03 by [@benjie](https://github.com/benjie)
 - [#860](/rfcs/860 "Prevent @skip and @include on root subscription selection set / RFC2"): **[Spec PR](https://github.com/graphql/graphql-spec/pull/860) created** on 2021-04-25 by benjie
 - [#860](/rfcs/860 "Prevent @skip and @include on root subscription selection set / RFC2"): **Commit pushed**: [Prevent @skip and @include on root subscription selection set](https://github.com/graphql/graphql-spec/commit/5e742bbdc525f146399ad1f88566f270d440086d) on 2021-04-25 by [@benjie](https://github.com/benjie)
-- [#794](/rfcs/794 "Schema Coordinates / RFC2"): **Commit pushed**: [Minor algo variable name refinements](https://github.com/graphql/graphql-spec/commit/e6f7939630af7b33c6779eb5847ac3602c20da6a) on 2021-04-22 by [@leebyron](https://github.com/leebyron)
+- [#794](/rfcs/794 "Schema Coordinates / RFC2"): **Commit pushed**: [Minor algo variable name refinements](https://github.com/graphql/graphql-spec/commit/93bd2c6c6a86c2a9744eb7f8748655de4f3b9b41) on 2021-04-22 by [@leebyron](https://github.com/leebyron)
 - [#805](/rfcs/805 "Allow deprecation of input values (field args, directive args, input fields) / RFC3"): **3 commits pushed** on 2021-04-22:
   - [prose](https://github.com/graphql/graphql-spec/commit/6ad62e8feb843e1d2ef3a88936cf84e988feab02) by [@leebyron](https://github.com/leebyron)
   - [Apply suggestions from code review](https://github.com/graphql/graphql-spec/commit/cce1219f90b26070e82f081c2e0df38148a0ce36) by [@leebyron](https://github.com/leebyron)
   - [Code review](https://github.com/graphql/graphql-spec/commit/23f175cf96d84cc7fde05c8791a1081ec904d5d7) by [@leebyron](https://github.com/leebyron)
 - [#794](/rfcs/794 "Schema Coordinates / RFC2"): **7 commits pushed** on 2021-04-16:
-  - [update numbers](https://github.com/graphql/graphql-spec/commit/1f5668b86f72ff4e38724e1cff43f7e33f2fa7e4) by [@leebyron](https://github.com/leebyron)
-  - [clarify element](https://github.com/graphql/graphql-spec/commit/7a017fe0a34ab9bbf865ad48dd6cfdfb95f55e6d) by [@leebyron](https://github.com/leebyron)
-  - [Update Punctuator grammar](https://github.com/graphql/graphql-spec/commit/9673f8c8ed1086d5e8ff197718f761e92a54a7e6) by [@leebyron](https://github.com/leebyron)
-  - [specify schema element](https://github.com/graphql/graphql-spec/commit/a7055935d8a94e34d0e2ae166cdd0db70638d447) by [@leebyron](https://github.com/leebyron)
-  - [fix example](https://github.com/graphql/graphql-spec/commit/2992dc7998ae633f6ba2ab397eac33c4f94bc31a) by [@leebyron](https://github.com/leebyron)
-  - [clarify metafields](https://github.com/graphql/graphql-spec/commit/1fcbbe5f6ceb8bb816811c5f2fb2133a2a32f68f) by [@leebyron](https://github.com/leebyron)
-  - [Better Punctator](https://github.com/graphql/graphql-spec/commit/4666032dcb39268338eafbd48d8a31ca7a725baf) by [@leebyron](https://github.com/leebyron)
+  - [update numbers](https://github.com/graphql/graphql-spec/commit/75c48ba25f4a665ec390829bcbd4c861dd063ce9) by [@leebyron](https://github.com/leebyron)
+  - [clarify element](https://github.com/graphql/graphql-spec/commit/148d073afa7de9a0e766f6f1cd9fb87e8e43cd9f) by [@leebyron](https://github.com/leebyron)
+  - [Update Punctuator grammar](https://github.com/graphql/graphql-spec/commit/c43f4aacabc51ec18b5053546c5d2101157fcc0a) by [@leebyron](https://github.com/leebyron)
+  - [specify schema element](https://github.com/graphql/graphql-spec/commit/bb896cf2fbc01e80266db158985fa0cb7a291d46) by [@leebyron](https://github.com/leebyron)
+  - [fix example](https://github.com/graphql/graphql-spec/commit/e5a20921765755ba76069f9cfd19cbf016cd94ab) by [@leebyron](https://github.com/leebyron)
+  - [clarify metafields](https://github.com/graphql/graphql-spec/commit/b65eb313af7a844d243473743881412cad049014) by [@leebyron](https://github.com/leebyron)
+  - [Better Punctator](https://github.com/graphql/graphql-spec/commit/c16a28bc544d3892246b4fadbce0ee9382dc2e33) by [@leebyron](https://github.com/leebyron)
 - [#776](/rfcs/776 "__typename is not valid at subscription root / RFC3"): **Commit pushed**: [Update Section 5 -- Validation.md](https://github.com/graphql/graphql-spec/commit/51d12920820bcc55d4f5d97df9eb820701eaafca) on 2021-04-15 by [@leebyron](https://github.com/leebyron)
-- [#794](/rfcs/794 "Schema Coordinates / RFC2"): **Commit pushed**: [standalone](https://github.com/graphql/graphql-spec/commit/82edbebb489527ccb579a51fd6d517eb7e2e4436) on 2021-04-15 by [@leebyron](https://github.com/leebyron)
-- [#794](/rfcs/794 "Schema Coordinates / RFC2"): **Commit pushed**: [Simplify examples](https://github.com/graphql/graphql-spec/commit/9eb52da22a7f2a699a1c37187ef44f7ef0517265) on 2021-04-14 by [@leebyron](https://github.com/leebyron)
+- [#794](/rfcs/794 "Schema Coordinates / RFC2"): **Commit pushed**: [standalone](https://github.com/graphql/graphql-spec/commit/87a38e2addb7bda9b5c93ee3a1c0dbd2f53a3dd3) on 2021-04-15 by [@leebyron](https://github.com/leebyron)
+- [#794](/rfcs/794 "Schema Coordinates / RFC2"): **Commit pushed**: [Simplify examples](https://github.com/graphql/graphql-spec/commit/85801629d9c2b7a2c6983f74f6afefc268efbdca) on 2021-04-14 by [@leebyron](https://github.com/leebyron)
 - [#849](/rfcs/849 "Allow full unicode range / RFC3"): **[Spec PR](https://github.com/graphql/graphql-spec/pull/849) created** on 2021-04-13 by leebyron
 - [#794](/rfcs/794 "Schema Coordinates / RFC2"): **2 commits pushed** on 2021-04-13:
-  - [Editorial on grammar and semantics](https://github.com/graphql/graphql-spec/commit/0e1aa3dc1d5a603c02034cb30671a73d4cd92c43) by [@leebyron](https://github.com/leebyron)
-  - [Move section](https://github.com/graphql/graphql-spec/commit/b1ab1b06fbfa2cc2715314f484db23d07418681f) by [@leebyron](https://github.com/leebyron)
+  - [Editorial on grammar and semantics](https://github.com/graphql/graphql-spec/commit/568d26f4ed13c9d01b585a2fb97f6223fe1d89d8) by [@leebyron](https://github.com/leebyron)
+  - [Move section](https://github.com/graphql/graphql-spec/commit/b8f3f4709cf48356ab3ab12b81be8781baba6121) by [@leebyron](https://github.com/leebyron)
 - [#849](/rfcs/849 "Allow full unicode range / RFC3"): **Commit pushed**: [RFC: Allow full unicode range](https://github.com/graphql/graphql-spec/commit/5e5c3cd312bfe943c3508571d2e32db4b50444ae) on 2021-04-13 by [@leebyron](https://github.com/leebyron)
 - [#649](/rfcs/649 "Custom Scalar Specification URLs / RFC3"): **2 commits pushed** on 2021-04-09:
   - [address review](https://github.com/graphql/graphql-spec/commit/f2bf007a994cd155f250507891880995f10c79ca) by [@leebyron](https://github.com/leebyron)
@@ -1200,12 +1216,12 @@ The below is an aggregate overview of the latest activity across all RFCs. Note 
 - [#776](/rfcs/776 "__typename is not valid at subscription root / RFC3"): **Mentioned in [2021-01-07 WG notes](https://github.com/graphql/graphql-wg/blob/main/notes/2021/2021-01-07.md)**
 - [#793](/rfcs/793 "Default value coercion rules / RFC2"): **Added to [2021-01-07 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2021/2021-01-07.md)**
 - [#793](/rfcs/793 "Default value coercion rules / RFC2"): **Mentioned in [2021-01-07 WG notes](https://github.com/graphql/graphql-wg/blob/main/notes/2021/2021-01-07.md)**
-- [#794](/rfcs/794 "Schema Coordinates / RFC2"): **Commit pushed**: [Update Section 3 -- Type System.md](https://github.com/graphql/graphql-spec/commit/2d06a797710eccaa5cd31aac90e64fc820cf7da1) on 2021-01-07 by [@magicmark](https://github.com/magicmark)
+- [#794](/rfcs/794 "Schema Coordinates / RFC2"): **Commit pushed**: [Update Section 3 -- Type System.md](https://github.com/graphql/graphql-spec/commit/8be29ca0253d0453633b48429884320d6d8cf131) on 2021-01-07 by [@magicmark](https://github.com/magicmark)
 - [#794](/rfcs/794 "Schema Coordinates / RFC2"): **Added to [2021-01-07 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2021/2021-01-07.md)**
 - [#794](/rfcs/794 "Schema Coordinates / RFC2"): **Mentioned in [2021-01-07 WG notes](https://github.com/graphql/graphql-wg/blob/main/notes/2021/2021-01-07.md)**
 - [#803](/rfcs/803 "Replace 'query error' with 'request error' / RFC3"): **Added to [2021-01-07 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2021/2021-01-07.md)**
 - [#803](/rfcs/803 "Replace 'query error' with 'request error' / RFC3"): **Mentioned in [2021-01-07 WG notes](https://github.com/graphql/graphql-wg/blob/main/notes/2021/2021-01-07.md)**
-- [#794](/rfcs/794 "Schema Coordinates / RFC2"): **Commit pushed**: [- Add PR feedback](https://github.com/graphql/graphql-spec/commit/641a15bf988662076b1aaa6ccc7e581234af8db2) on 2021-01-04 by [@magicmark](https://github.com/magicmark)
+- [#794](/rfcs/794 "Schema Coordinates / RFC2"): **Commit pushed**: [- Add PR feedback](https://github.com/graphql/graphql-spec/commit/49059778dedf8d2f278c50d5885a7edb9e679852) on 2021-01-04 by [@magicmark](https://github.com/magicmark)
 - [#806](/rfcs/806 "__typename should be valid at subscription root / RFCX"): **[Spec PR](https://github.com/graphql/graphql-spec/pull/806) created** on 2020-12-05 by benjie
 - [#806](/rfcs/806 "__typename should be valid at subscription root / RFCX"): **Commit pushed**: [Ignore introspection fields when creating source event stream](https://github.com/graphql/graphql-spec/commit/f5cd0c6db6713dfca9e549e067505544ec855e80) on 2020-12-05 by [@benjie](https://github.com/benjie)
 - [#805](/rfcs/805 "Allow deprecation of input values (field args, directive args, input fields) / RFC3"): **[Spec PR](https://github.com/graphql/graphql-spec/pull/805) created** on 2020-12-03 by IvanGoncharov
@@ -1216,19 +1232,19 @@ The below is an aggregate overview of the latest activity across all RFCs. Note 
 - [#793](/rfcs/793 "Default value coercion rules / RFC2"): **Mentioned in [2020-12-03 WG notes](https://github.com/graphql/graphql-wg/blob/main/notes/2020/2020-12-03.md)**
 - [#805](/rfcs/805 "Allow deprecation of input values (field args, directive args, input fields) / RFC3"): **Commit pushed**: [Allow deprecation of input values (#525)](https://github.com/graphql/graphql-spec/commit/0e1f9b8f812de2ebee3cd95395f3c76fd86f3266) on 2020-12-03 by [@smitt04](https://github.com/smitt04)
 - [#803](/rfcs/803 "Replace 'query error' with 'request error' / RFC3"): **[Spec PR](https://github.com/graphql/graphql-spec/pull/803) created** on 2020-11-28 by benjie
-- [#794](/rfcs/794 "Schema Coordinates / RFC2"): **Commit pushed**: [enumName -&#x3e; enumValueName](https://github.com/graphql/graphql-spec/commit/5b1898186b93658fab2143642b0adb0a667896b6) on 2020-11-28 by [@magicmark](https://github.com/magicmark)
+- [#794](/rfcs/794 "Schema Coordinates / RFC2"): **Commit pushed**: [enumName -&#x3e; enumValueName](https://github.com/graphql/graphql-spec/commit/6456c5f432225b446d685911272c7ea490d72ab6) on 2020-11-28 by [@magicmark](https://github.com/magicmark)
 - [#803](/rfcs/803 "Replace 'query error' with 'request error' / RFC3"): **Commit pushed**: [Replace 'query error' with 'request error'](https://github.com/graphql/graphql-spec/commit/6943d30a4e90fb472dd691ac8f93ff3b70df563a) on 2020-11-28 by [@benjie](https://github.com/benjie)
 - [#776](/rfcs/776 "__typename is not valid at subscription root / RFC3"): **4 commits pushed** on 2020-11-25:
   - [Update spec edits based on Lee's comments](https://github.com/graphql/graphql-spec/commit/967e3ed499e00591aeff26215124f18f6335a0bd) by [@benjie](https://github.com/benjie)
   - [Simplify](https://github.com/graphql/graphql-spec/commit/7993225a7fe9ec2cdacc40d34e36339c62965850) by [@benjie](https://github.com/benjie)
   - [Clarify](https://github.com/graphql/graphql-spec/commit/440b035161191fa51d297245c753b95a9174039e) by [@benjie](https://github.com/benjie)
   - [Typo](https://github.com/graphql/graphql-spec/commit/0cf4857a27bb0cf2774b12c27d8f0a67cec20d5a) by [@benjie](https://github.com/benjie)
-- [#794](/rfcs/794 "Schema Coordinates / RFC2"): **Commit pushed**: [Apply suggestions from code review](https://github.com/graphql/graphql-spec/commit/c56e2dd89f40e80ca1ffd4601a01e9b8ad74d770) on 2020-11-23 by [@magicmark](https://github.com/magicmark)
-- [#794](/rfcs/794 "Schema Coordinates / RFC2"): **Commit pushed**: [Tweak example table wording](https://github.com/graphql/graphql-spec/commit/ac5318f9a9f04d0f8dd03d3758d5ca2654f7f7d7) on 2020-11-22 by [@magicmark](https://github.com/magicmark)
-- [#794](/rfcs/794 "Schema Coordinates / RFC2"): **Commit pushed**: [implement PR suggestions](https://github.com/graphql/graphql-spec/commit/bb3098c8d51fb0a9e467171c3796689194846afa) on 2020-11-21 by [@magicmark](https://github.com/magicmark)
+- [#794](/rfcs/794 "Schema Coordinates / RFC2"): **Commit pushed**: [Apply suggestions from code review](https://github.com/graphql/graphql-spec/commit/17002d489121b8a59a0ba8fb5576f27005aebe66) on 2020-11-23 by [@magicmark](https://github.com/magicmark)
+- [#794](/rfcs/794 "Schema Coordinates / RFC2"): **Commit pushed**: [Tweak example table wording](https://github.com/graphql/graphql-spec/commit/f994f99c714a5d7975872b8ee158d1e9b3be4e7e) on 2020-11-22 by [@magicmark](https://github.com/magicmark)
+- [#794](/rfcs/794 "Schema Coordinates / RFC2"): **Commit pushed**: [implement PR suggestions](https://github.com/graphql/graphql-spec/commit/eabdaff30598e3dab34dc48ecaba0dacf583798c) on 2020-11-21 by [@magicmark](https://github.com/magicmark)
 - [InputUnion](/rfcs/InputUnion "GraphQL Input Union / RFC0"): **[RFC document updated](https://github.com/graphql/graphql-wg/blob/fe76b61dfb8ece0de95fcf24bf2a65a4c74d8bac/rfcs/InputUnion.md)** on 2020-11-18 by Evan Huus
 - [#794](/rfcs/794 "Schema Coordinates / RFC2"): **[Spec PR](https://github.com/graphql/graphql-spec/pull/794) created** on 2020-11-18 by magicmark
-- [#794](/rfcs/794 "Schema Coordinates / RFC2"): **Commit pushed**: [Update schema coordinates spec edit](https://github.com/graphql/graphql-spec/commit/99474adb76e4dbcc6a0b58590e8f9d7fe0569585) on 2020-11-18 by [@magicmark](https://github.com/magicmark)
+- [#794](/rfcs/794 "Schema Coordinates / RFC2"): **Commit pushed**: [Update schema coordinates spec edit](https://github.com/graphql/graphql-spec/commit/45fb46cebd9035c98677dd0cb3f22e8891130ce7) on 2020-11-18 by [@magicmark](https://github.com/magicmark)
 - [#793](/rfcs/793 "Default value coercion rules / RFC2"): **[Spec PR](https://github.com/graphql/graphql-spec/pull/793) created** on 2020-11-13 by benjie
 - [#793](/rfcs/793 "Default value coercion rules / RFC2"): **Commit pushed**: [Default value coercion rules](https://github.com/graphql/graphql-spec/commit/8939e209624e81523702c59af1842efa42d1f9d6) on 2020-11-13 by [@benjie](https://github.com/benjie)
 - [InputUnion](/rfcs/InputUnion "GraphQL Input Union / RFC0"): **[RFC document updated](https://github.com/graphql/graphql-wg/blob/9ac6a4d8fceb2d65b4ac0e2468e7fc5e5fd4110e/rfcs/InputUnion.md)** on 2020-11-04 by Benjie Gillam
@@ -1237,7 +1253,7 @@ The below is an aggregate overview of the latest activity across all RFCs. Note 
 - [#776](/rfcs/776 "__typename is not valid at subscription root / RFC3"): **Added to [2020-10-01 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2020/2020-10-01.md)**
 - [#776](/rfcs/776 "__typename is not valid at subscription root / RFC3"): **Mentioned in [2020-10-01 WG notes](https://github.com/graphql/graphql-wg/blob/main/notes/2020/2020-10-01.md)**
 - [InputUnion](/rfcs/InputUnion "GraphQL Input Union / RFC0"): **[RFC document updated](https://github.com/graphql/graphql-wg/blob/d167baa69421602a4ace5fd1c24421f04b3a9fd6/rfcs/InputUnion.md)** on 2020-09-30 by Dan Freeman
-- [#794](/rfcs/794 "Schema Coordinates / RFC2"): **Commit pushed**: [Add Schema Coordinates RFC](https://github.com/graphql/graphql-spec/commit/cb24f17c61b1015b22267d939e33dc21808bb3a9) on 2020-09-17 by [@magicmark](https://github.com/magicmark)
+- [#794](/rfcs/794 "Schema Coordinates / RFC2"): **Commit pushed**: [Add Schema Coordinates RFC](https://github.com/graphql/graphql-spec/commit/38616cc645ce8ec739a82a059c54c1c129cb3383) on 2020-09-17 by [@magicmark](https://github.com/magicmark)
 - [#776](/rfcs/776 "__typename is not valid at subscription root / RFC3"): **[Spec PR](https://github.com/graphql/graphql-spec/pull/776) created** on 2020-09-14 by benjie
 - [#776](/rfcs/776 "__typename is not valid at subscription root / RFC3"): **Commit pushed**: [__typename is not valid at subscription root](https://github.com/graphql/graphql-spec/commit/1acee8a143ff41936fac4575bc0843d948046bd9) on 2020-09-14 by [@benjie](https://github.com/benjie)
 - [#525](/rfcs/525 "Allow deprecation of input values / RFC3"): **Added to [2020-09-03 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2020/2020-09-03.md)**

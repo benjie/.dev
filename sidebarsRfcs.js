@@ -35,6 +35,11 @@ const sidebars = {
         },
         {
           type: "doc",
+          id: "1040",
+          label: "1040: Make the reason argument in `@deprecated` non-nullable [RFC3]",
+        },
+        {
+          type: "doc",
           id: "1073",
           label: "1073: Be strict about error paths format [RFC3]",
         },
@@ -148,6 +153,21 @@ const sidebars = {
       items: [
         {
           type: "doc",
+          id: "794",
+          label: "794: Schema Coordinates [RFC2]",
+        },
+        {
+          type: "doc",
+          id: "1053",
+          label: "1053*: Implementations may not deprecate a field that the interface hasn't deprecated [RFC2]",
+        },
+        {
+          type: "doc",
+          id: "955",
+          label: "955: Add validation rule that operation types exist [RFC2]",
+        },
+        {
+          type: "doc",
           id: "825",
           label: "825*: OneOf Input Objects [RFC2]",
         },
@@ -176,11 +196,6 @@ const sidebars = {
           id: "860",
           label: "860*: Prevent @skip and @include on root subscription selection set [RFC2]",
         },
-        {
-          type: "doc",
-          id: "794",
-          label: "794: Schema Coordinates [RFC2]",
-        },
       ],
     },
     {
@@ -191,23 +206,8 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          id: "955",
-          label: "955: Add validation rule that operation types exist [RFC1]",
-        },
-        {
-          type: "doc",
           id: "976",
           label: "976*: Add 'extensions' to request [RFC1]",
-        },
-        {
-          type: "doc",
-          id: "1040",
-          label: "1040: Make the reason argument in `@deprecated` non-nullable [RFC1]",
-        },
-        {
-          type: "doc",
-          id: "1053",
-          label: "1053*: Implementations may not deprecate a field that the interface hasn't deprecated [RFC1]",
         },
         {
           type: "doc",
