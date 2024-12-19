@@ -153,13 +153,18 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          id: "794",
-          label: "794: Schema Coordinates [RFC2]",
+          id: "976",
+          label: "976*: Add 'extensions' to request [RFC2]",
         },
         {
           type: "doc",
           id: "1053",
           label: "1053*: Implementations may not deprecate a field that the interface hasn't deprecated [RFC2]",
+        },
+        {
+          type: "doc",
+          id: "794",
+          label: "794: Schema Coordinates [RFC2]",
         },
         {
           type: "doc",
@@ -204,11 +209,6 @@ const sidebars = {
       collapsed: false,
       collapsible: true,
       items: [
-        {
-          type: "doc",
-          id: "976",
-          label: "976*: Add 'extensions' to request [RFC1]",
-        },
         {
           type: "doc",
           id: "1056",
