@@ -17,7 +17,7 @@ be helpful for people to keep track of the various RFCs.
 Ping `@benjie` on the [GraphQL Discord](https://discord.graphql.org) (`#wg`
 channel) and ask for him to run an update!
 
-Last updated: 2024-12-19T11:59:57.410Z
+Last updated: 2025-01-08T16:51:19.914Z
 
 :::
 
@@ -29,7 +29,7 @@ Last updated: 2024-12-19T11:59:57.410Z
 | --- | --- | --- | --- |
 | [#976](/rfcs/976 "Add 'extensions' to request / RFC2") | [@benjie](https://github.com/benjie) | [Add 'extensions' to request](/rfcs/976) | **Added to [2025-01-09 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/01-Jan/09-wg-primary.md)** [_(more)_](/rfcs/976#timeline) |
 | [#1053](/rfcs/1053 "Implementations may not deprecate a field that the interface hasn't deprecated / RFC2") | [@benjie](https://github.com/benjie) | [Implementations may not deprecate a field that the interface hasn't deprecated](/rfcs/1053) | **Added to [2025-01-09 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/01-Jan/09-wg-primary.md)** [_(more)_](/rfcs/1053#timeline) |
-| [#794](/rfcs/794 "Schema Coordinates / RFC2") | [@magicmark](https://github.com/magicmark) | [Schema Coordinates](/rfcs/794) | **4 commits pushed**: [(latest)](https://github.com/graphql/graphql-spec/commit/d61cdc3153d94912a6b2e11c643f9b24667965b1) on 2024-12-10 by [@magicmark](https://github.com/magicmark) [_(more)_](/rfcs/794#timeline) |
+| [#794](/rfcs/794 "Schema Coordinates / RFC2") | [@magicmark](https://github.com/magicmark) | [Schema Coordinates](/rfcs/794) | **2 commits pushed**: [(latest)](https://github.com/graphql/graphql-spec/commit/07b3bbdac29f23445be4084431d9aff7bebbf57b) on 2025-01-02 by [@magicmark](https://github.com/magicmark) [_(more)_](/rfcs/794#timeline) |
 | [#955](/rfcs/955 "Add validation rule that operation types exist / RFC2") | [@benjaminjkraft](https://github.com/benjaminjkraft) | [Add validation rule that operation types exist](/rfcs/955) | **Added to [2024-12-05 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2024/12-Dec/05-wg-primary.md)** [_(more)_](/rfcs/955#timeline) |
 | [#825](/rfcs/825 "OneOf Input Objects / RFC2") | [@benjie](https://github.com/benjie) | [OneOf Input Objects](/rfcs/825) | **5 commits pushed**: [(latest)](https://github.com/graphql/graphql-spec/commit/dbccf8424a8d78992c016a79b35c824808c02143) on 2024-10-17 by [@benjie](https://github.com/benjie) [_(more)_](/rfcs/825#timeline) |
 | [#1102](/rfcs/1102 "Define Data Collections used in the spec / RFC2") | [@benjie](https://github.com/benjie) | [Define Data Collections used in the spec](/rfcs/1102) | **Added to [2024-07-18 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2024/07-Jul/18-wg-primary.md)** [_(more)_](/rfcs/1102#timeline) |

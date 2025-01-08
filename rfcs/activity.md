@@ -13,6 +13,9 @@ The below is an aggregate overview of the latest activity across all RFCs. Note 
 - [#1056](/rfcs/1056 "Fix CoerceArgumentValues() hasValue / RFC1"): **Added to [2025-01-09 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/01-Jan/09-wg-primary.md)**
 - [#1058](/rfcs/1058 "List coercion algorithm / RFC1"): **Added to [2025-01-09 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/01-Jan/09-wg-primary.md)**
 - [#1127](/rfcs/1127 "When &#x60;sourceStream&#x60; errors, yield a &#x60;&#x7b; errors: &#x5b;...&#x5d; &#x7d;&#x60; response / RFC0"): **Added to [2025-01-09 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/01-Jan/09-wg-primary.md)**
+- [#794](/rfcs/794 "Schema Coordinates / RFC2"): **2 commits pushed** on 2025-01-02:
+  - [Update spec/Section 3 -- Type System.md](https://github.com/graphql/graphql-spec/commit/caed065f874559a9bb87bc38c7365605fcd4682c) by [@magicmark](https://github.com/magicmark)
+  - [Update spec/Section 3 -- Type System.md](https://github.com/graphql/graphql-spec/commit/07b3bbdac29f23445be4084431d9aff7bebbf57b) by [@magicmark](https://github.com/magicmark)
 - [#976](/rfcs/976 "Add 'extensions' to request / RFC2"): **3 commits pushed** on 2024-12-12:
   - [Reword](https://github.com/graphql/graphql-spec/commit/b0ff9a7ae6f6148612516b5da1e15e1d9eebbba6) by [@benjie](https://github.com/benjie)
   - [Reword again](https://github.com/graphql/graphql-spec/commit/f4b51be2ce9b073053f0bc3e3a289a657906bd5b) by [@benjie](https://github.com/benjie)
