@@ -221,13 +221,18 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "997",
-          label: "997: Expand @deprecated to Objects [RFC1]",
+          id: "1110",
+          label: "1110: Incremental Delivery spec draft [RFC1]",
         },
         {
           type: "doc",
-          id: "1110",
-          label: "1110: Incremental Delivery spec draft [RFC1]",
+          id: "1127",
+          label: "1127*: When `sourceStream` errors, yield a `{ errors: [...] }` response [RFC1]",
+        },
+        {
+          type: "doc",
+          id: "997",
+          label: "997: Expand @deprecated to Objects [RFC1]",
         },
         {
           type: "doc",
@@ -272,11 +277,6 @@ const sidebars = {
       collapsed: true,
       collapsible: true,
       items: [
-        {
-          type: "doc",
-          id: "1127",
-          label: "1127*: When `sourceStream` errors, yield a `{ errors: [...] }` response [RFC0]",
-        },
         {
           type: "doc",
           id: "1114",

@@ -17,7 +17,7 @@ be helpful for people to keep track of the various RFCs.
 Ping `@benjie` on the [GraphQL Discord](https://discord.graphql.org) (`#wg`
 channel) and ask for him to run an update!
 
-Last updated: 2025-01-08T16:51:19.914Z
+Last updated: 2025-01-16T10:16:32.852Z
 
 :::
 
@@ -49,8 +49,9 @@ Last updated: 2025-01-08T16:51:19.914Z
 | --- | --- | --- | --- |
 | [#1056](/rfcs/1056 "Fix CoerceArgumentValues() hasValue / RFC1") | [@benjie](https://github.com/benjie) | [Fix CoerceArgumentValues() hasValue](/rfcs/1056) | **Added to [2025-01-09 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/01-Jan/09-wg-primary.md)** [_(more)_](/rfcs/1056#timeline) |
 | [#1058](/rfcs/1058 "List coercion algorithm / RFC1") | [@benjie](https://github.com/benjie) | [List coercion algorithm](/rfcs/1058) | **Added to [2025-01-09 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/01-Jan/09-wg-primary.md)** [_(more)_](/rfcs/1058#timeline) |
+| [#1110](/rfcs/1110 "Incremental Delivery spec draft / RFC1") | [@robrichard](https://github.com/robrichard) | [Incremental Delivery spec draft](/rfcs/1110) | **Commit pushed**: [skip deferred fragment spread when already in visited fragments](https://github.com/graphql/graphql-spec/commit/8e9cbcb46384399f5ed73996fac008de1d394551) on 2025-01-09 by [@robrichard](https://github.com/robrichard) [_(more)_](/rfcs/1110#timeline) |
+| [#1127](/rfcs/1127 "When &#x60;sourceStream&#x60; errors, yield a &#x60;&#x7b; errors: &#x5b;...&#x5d; &#x7d;&#x60; response / RFC1") | [@benjie](https://github.com/benjie) | [When &#x60;sourceStream&#x60; errors, yield a &#x60;&#x7b; errors: &#x5b;...&#x5d; &#x7d;&#x60; response](/rfcs/1127) | **Added to [2025-01-09 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/01-Jan/09-wg-primary.md)** [_(more)_](/rfcs/1127#timeline) |
 | [#997](/rfcs/997 "Expand @deprecated to Objects / RFC1") | [@fotoetienne](https://github.com/fotoetienne) | [Expand @deprecated to Objects](/rfcs/997) | **Added to [2024-11-07 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2024/11-Nov/07-wg-primary.md)** [_(more)_](/rfcs/997#timeline) |
-| [#1110](/rfcs/1110 "Incremental Delivery spec draft / RFC1") | [@robrichard](https://github.com/robrichard) | [Incremental Delivery spec draft](/rfcs/1110) | **Added to [2024-11-07 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2024/11-Nov/07-wg-primary.md)** [_(more)_](/rfcs/1110#timeline) |
 | [#1081](/rfcs/1081 "Fragment arguments/variables (syntax/validation/execution) / RFC1") | [@JoviDeCroock](https://github.com/JoviDeCroock) | [Fragment arguments/variables (syntax/validation/execution)](/rfcs/1081) | **Added to [2024-10-03 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2024/10-Oct/03-wg-primary.md)** [_(more)_](/rfcs/1081#timeline) |
 | [#1059](/rfcs/1059 "Introduce Strict and Legacy All Variable Usages Are Allowed / RFC1") | [@benjie](https://github.com/benjie) | [Introduce Strict and Legacy All Variable Usages Are Allowed](/rfcs/1059) | **Added to [2023-12-07 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2023/12-Dec/07-wg-primary.md)** [_(more)_](/rfcs/1059#timeline) |
 | [#950](/rfcs/950 "allow unions to include interfaces and unions / RFC1") | [@yaacovCR](https://github.com/yaacovCR) | [allow unions to include interfaces and unions](/rfcs/950) | **Added to [2022-08-04 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2022/2022-08-04.md)** [_(more)_](/rfcs/950#timeline) |
@@ -68,7 +69,6 @@ Last updated: 2025-01-08T16:51:19.914Z
 <!-- prettier-ignore -->
 | RFC | Champion | Title | Latest |
 | --- | --- | --- | --- |
-| [#1127](/rfcs/1127 "When &#x60;sourceStream&#x60; errors, yield a &#x60;&#x7b; errors: &#x5b;...&#x5d; &#x7d;&#x60; response / RFC0") | [@benjie](https://github.com/benjie) | [When &#x60;sourceStream&#x60; errors, yield a &#x60;&#x7b; errors: &#x5b;...&#x5d; &#x7d;&#x60; response](/rfcs/1127) | **Added to [2025-01-09 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/01-Jan/09-wg-primary.md)** [_(more)_](/rfcs/1127#timeline) |
 | [#1114](/rfcs/1114 "add __directive meta field parallel to __type / RFC0") | [@yaacovCR](https://github.com/yaacovCR) | [add __directive meta field parallel to __type](/rfcs/1114) | **Added to [2024-11-07 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2024/11-Nov/07-wg-primary.md)** [_(more)_](/rfcs/1114#timeline) |
 | [#1057](/rfcs/1057 "Fix coercion table for list / RFC0") | [@benjie](https://github.com/benjie) | [Fix coercion table for list](/rfcs/1057) | **Added to [2024-10-03 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2024/10-Oct/03-wg-primary.md)** [_(more)_](/rfcs/1057#timeline) |
 | [DeferStream](/rfcs/DeferStream "GraphQL Defer and Stream Directives / RFC0") | - | [GraphQL Defer and Stream Directives](/rfcs/DeferStream) | **[RFC document updated](https://github.com/graphql/graphql-wg/blob/f22ea7748c6ebdf88fdbf770a8d9e41984ebd429/rfcs/DeferStream.md)** on 2024-09-19 by Rob Richard [_(more)_](/rfcs/DeferStream#timeline) |
