@@ -211,13 +211,13 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          id: "1056",
-          label: "1056*: Fix CoerceArgumentValues() hasValue [RFC1]",
+          id: "1058",
+          label: "1058*: List coercion algorithm [RFC1]",
         },
         {
           type: "doc",
-          id: "1058",
-          label: "1058*: List coercion algorithm [RFC1]",
+          id: "1056",
+          label: "1056*: Fix CoerceArgumentValues() hasValue [RFC1]",
         },
         {
           type: "doc",

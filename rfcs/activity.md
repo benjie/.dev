@@ -8,6 +8,9 @@ image: /img/rfc_tracker.png
 
 The below is an aggregate overview of the latest activity across all RFCs. Note that it's _roughly_ in cronological order, but some dates are less accurate than others (e.g. commit timestamps are to the second, whereas working groups are generally to the month...).
 
+- [#1058](/rfcs/1058 "List coercion algorithm / RFC1"): **2 commits pushed** on 2025-01-23:
+  - [Reflect that variable values should already be coerced, and thus appl…](https://github.com/graphql/graphql-spec/commit/8eaa45ba7bff01359afc2e3b038a1842a0c110e7) by [@benjie](https://github.com/benjie)
+  - ['Including null' (copied from section 6)](https://github.com/graphql/graphql-spec/commit/a045f1493352f05570d39b8aa372ef0c5723961d) by [@benjie](https://github.com/benjie)
 - [#976](/rfcs/976 "Add 'extensions' to request / RFC2"): **Added to [2025-01-09 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/01-Jan/09-wg-primary.md)**
 - [#1053](/rfcs/1053 "Implementations may not deprecate a field that the interface hasn't deprecated / RFC2"): **Added to [2025-01-09 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/01-Jan/09-wg-primary.md)**
 - [#1056](/rfcs/1056 "Fix CoerceArgumentValues() hasValue / RFC1"): **Added to [2025-01-09 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/01-Jan/09-wg-primary.md)**
