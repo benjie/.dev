@@ -17,7 +17,7 @@ be helpful for people to keep track of the various RFCs.
 Ping `@benjie` on the [GraphQL Discord](https://discord.graphql.org) (`#wg`
 channel) and ask for him to run an update!
 
-Last updated: 2025-02-06T12:00:21.122Z
+Last updated: 2025-02-13T10:37:41.162Z
 
 :::
 
