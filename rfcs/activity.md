@@ -8,6 +8,15 @@ image: /img/rfc_tracker.png
 
 The below is an aggregate overview of the latest activity across all RFCs. Note that it's _roughly_ in cronological order, but some dates are less accurate than others (e.g. commit timestamps are to the second, whereas working groups are generally to the month...).
 
+- [SemanticNullability](/rfcs/SemanticNullability "Semantic Nullability / RFC0"): **[RFC document updated](https://github.com/graphql/graphql-wg/blob/b3d32a65ff9aaf944c9e733fdc43702aaf064cee/rfcs/SemanticNullability.md)** on 2025-02-17 by Benjie
+- [SemanticNullability](/rfcs/SemanticNullability "Semantic Nullability / RFC0"): **[RFC document updated](https://github.com/graphql/graphql-wg/blob/2a09600d6c757b21e05560958b8fc68882581cf3/rfcs/SemanticNullability.md)** on 2025-02-17 by Alex Reilly
+- [SemanticNullability](/rfcs/SemanticNullability "Semantic Nullability / RFC0"): **[RFC document updated](https://github.com/graphql/graphql-wg/blob/8f2f34308a1ba7abd49199595ec29ffd0d9f92a1/rfcs/SemanticNullability.md)** on 2025-02-17 by Martin Bonnin
+- [SemanticNullability](/rfcs/SemanticNullability "Semantic Nullability / RFC0"): **[RFC document updated](https://github.com/graphql/graphql-wg/blob/1abb4b36871a669fdd4206c3662ed4ce5d7f2931/rfcs/SemanticNullability.md)** on 2025-02-17 by Benjie
+- [SemanticNullability](/rfcs/SemanticNullability "Semantic Nullability / RFC0"): **[RFC document updated](https://github.com/graphql/graphql-wg/blob/a0d1ea9b68d074ada0a3e9d7a65ad7a95dcac562/rfcs/SemanticNullability.md)** on 2025-02-17 by Benjie
+- [SemanticNullability](/rfcs/SemanticNullability "Semantic Nullability / RFC0"): **[RFC document updated](https://github.com/graphql/graphql-wg/blob/4ea256a2926b9dc47034a68056b1de20900f11a3/rfcs/SemanticNullability.md)** on 2025-02-16 by Benjie
+- [SemanticNullability](/rfcs/SemanticNullability "Semantic Nullability / RFC0"): **[RFC document updated](https://github.com/graphql/graphql-wg/blob/f6809bd4fd099f7088e262d3d0fc732e4e3b4c57/rfcs/SemanticNullability.md)** on 2025-02-16 by Benjie
+- [SemanticNullability](/rfcs/SemanticNullability "Semantic Nullability / RFC0"): **[RFC document created](https://github.com/graphql/graphql-wg/blob/7535894a6deec5a618de02aaa16fdcf83a4e09ed/rfcs/SemanticNullability.md)** on 2025-02-15 by Benjie
+- [#1081](/rfcs/1081 "Fragment arguments/variables (syntax/validation/execution) / RFC1"): **Commit pushed**: [Partial update, rest depends on https://github.com/graphql/graphql-sp…](https://github.com/graphql/graphql-spec/commit/9ef0002347029034595726bf7f42c8d36e9177c2) on 2025-02-15 by [@JoviDeCroock](https://github.com/JoviDeCroock)
 - [#1058](/rfcs/1058 "List coercion algorithm / RFC1"): **2 commits pushed** on 2025-01-23:
   - [Reflect that variable values should already be coerced, and thus appl…](https://github.com/graphql/graphql-spec/commit/8eaa45ba7bff01359afc2e3b038a1842a0c110e7) by [@benjie](https://github.com/benjie)
   - ['Including null' (copied from section 6)](https://github.com/graphql/graphql-spec/commit/a045f1493352f05570d39b8aa372ef0c5723961d) by [@benjie](https://github.com/benjie)

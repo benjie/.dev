@@ -211,6 +211,11 @@ const sidebars = {
       items: [
         {
           type: "doc",
+          id: "1081",
+          label: "1081: Fragment arguments/variables (syntax/validation/execution) [RFC1]",
+        },
+        {
+          type: "doc",
           id: "1058",
           label: "1058*: List coercion algorithm [RFC1]",
         },
@@ -233,11 +238,6 @@ const sidebars = {
           type: "doc",
           id: "997",
           label: "997: Expand @deprecated to Objects [RFC1]",
-        },
-        {
-          type: "doc",
-          id: "1081",
-          label: "1081: Fragment arguments/variables (syntax/validation/execution) [RFC1]",
         },
         {
           type: "doc",
@@ -277,6 +277,11 @@ const sidebars = {
       collapsed: true,
       collapsible: true,
       items: [
+        {
+          type: "doc",
+          id: "SemanticNullability",
+          label: "SemanticNullability: Semantic Nullability [RFC0]",
+        },
         {
           type: "doc",
           id: "1114",
