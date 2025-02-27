@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.1.0">
 <title data-rh="true">Semantic Nullability | benjie.dev</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://benjie.dev/rfcs/SemanticNullability"><meta data-rh="true" property="og:locale" content="en_GB"><meta data-rh="true" name="docusaurus_locale" content="en-GB"><meta data-rh="true" name="docsearch:language" content="en-GB"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-rfcs-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-rfcs-current"><meta data-rh="true" property="twitter:title" content="Semantic Nullability | benjie.dev"><meta data-rh="true" property="og:title" content="Semantic Nullability | benjie.dev"><meta data-rh="true" name="description" content="At a glance"><meta data-rh="true" property="og:description" content="At a glance"><meta data-rh="true" property="og:image" content="https://benjie.dev/img/rfc_tracker.png"><meta data-rh="true" name="twitter:image" content="https://benjie.dev/img/rfc_tracker.png"><link data-rh="true" rel="icon" href="/favicon.ico"><link data-rh="true" rel="canonical" href="https://benjie.dev/rfcs/SemanticNullability"><link data-rh="true" rel="alternate" href="https://benjie.dev/rfcs/SemanticNullability" hreflang="en-GB"><link data-rh="true" rel="alternate" href="https://benjie.dev/rfcs/SemanticNullability" hreflang="x-default"><script src="https://assets.calendly.com/assets/external/widget.js"></script><link rel="stylesheet" href="/assets/css/styles.c47278a5.css">
-<script src="/assets/js/runtime~main.26fa4c76.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.37eb5d47.js" defer="defer"></script>
 <script src="/assets/js/main.14b965cd.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
-<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/avatar.jpg" alt="benjie" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/avatar.jpg" alt="benjie" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">benjie.dev</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/rfcs/">RFCs</a></div><div class="navbar__items navbar__items--right"><a class="navbar__item navbar__link" href="/book">📞 Book a call</a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/rfcs/">GraphQL RFC Tracker</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/rfcs/activity">Activity</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" aria-expanded="false" href="/rfcs/525">Stage 3: Accepted</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" aria-expanded="true" href="/rfcs/976">Stage 2: Draft</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/976">976*: Add &#x27;extensions&#x27; to request [RFC2]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/1053">1053*: Implementations may not deprecate a field that the interface hasn&#x27;t deprecated [RFC2]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/794">794: Schema Coordinates [RFC2]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/955">955: Add validation rule that operation types exist [RFC2]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/825">825*: OneOf Input Objects [RFC2]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/1102">1102*: Define Data Collections used in the spec [RFC2]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/1063">1063*: Type system ordering of: object interfaces, directive arguments, input object fields, enum values [RFC2]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/1092">1092*: Recommend that order of unordered collections is maintained where possible [RFC2]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/793">793*: Default value coercion rules [RFC2]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/860">860*: Prevent @skip and @include on root subscription selection set [RFC2]</a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" aria-expanded="true" href="/rfcs/1081">Stage 1: Proposal</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/1081">1081: Fragment arguments/variables (syntax/validation/execution) [RFC1]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/1058">1058*: List coercion algorithm [RFC1]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/1056">1056*: Fix CoerceArgumentValues() hasValue [RFC1]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/1110">1110: Incremental Delivery spec draft [RFC1]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/1127">1127*: When `sourceStream` errors, yield a `{ errors: [...] }` response [RFC1]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/997">997: Expand @deprecated to Objects [RFC1]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/1059">1059*: Introduce Strict and Legacy All Variable Usages Are Allowed [RFC1]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/950">950: allow unions to include interfaces and unions [RFC1]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/939">939: allow unions to declare implementation of interfaces [RFC1]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/907">907: Add support for directives on directives [RFC1]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/892">892: Add descriptions to executable definitions [RFC1]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/509">509: Allow singular variables in list locations [RFC1]</a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" aria-expanded="true" href="/rfcs/SemanticNullability">Stage 0: Strawman</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/rfcs/SemanticNullability">SemanticNullability: Semantic Nullability [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/1114">1114: add __directive meta field parallel to __type [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/1057">1057*: Fix coercion table for list [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/DeferStream">DeferStream: GraphQL Defer and Stream Directives [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/SchemaCoordinates">SchemaCoordinates: Schema Coordinates [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/1065">1065*: SemanticNonNull type (null only on error) [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/ClientControlledNullability">ClientControlledNullability: Client Controlled Nullability [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/InputUnion">InputUnion: GraphQL Input Union [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/FeatureDiscovery">FeatureDiscovery: Feature Discovery [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/Struct">Struct: Polymorphic-capable composite symmetric input/output type (`struct`) [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/1049">1049: Introduce SourceSchemaDocument and FullSchemaDocument [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/wg1410">wg1410: Strict Semantic Nullability [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/1050">1050*: Directive proposal for opting out of null bubbling [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/wg1394">wg1394: True Nullability Schema [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/1045">1045*: Remove fragmentSpreadName from visitedFragments when visit is complete [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/FullSchemas">FullSchemas: Full Schemas [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/1015">1015: &quot;Root&quot; Types clarity → &quot;Operation Type&quot; [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/FragmentArguments">FragmentArguments: Fragment Arguments [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/wg1239">wg1239: Fragment Arguments: RFC + Implementation Details [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/998">998: add spec edits for references [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/OptInFeatures">OptInFeatures: Opt-in features [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/ExpandingSubtyping">ExpandingSubtyping: Expanding Subtyping (for output types) [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/AnnotationStructs">AnnotationStructs: Annotation Structs [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/MetadataStructs">MetadataStructs: Metadata Structs [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/wg1096">wg1096: &quot;Metadata Directives&quot; Proposal [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/CompositeSchemas">CompositeSchemas: GraphQL Composite Schemas [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/wg1071">wg1071*: Struct type [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/673">673: Servers must preserve lexical ordering between SDL and introspection [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/948">948*: OneOf Objects [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/wg944">wg944: New Intersection Type [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/wg857">wg857: Fragment Modularity [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/FragmentModularity">FragmentModularity: Fragment Modularity [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/wg815">wg815: Nested GraphQL Mutations [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/ImplicitInheritance">ImplicitInheritance: Implicit Inheritance [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/OperationExpressions">OperationExpressions: Operation Expressions [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/SchemaFragments">SchemaFragments: Schema Fragments [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/879">879: __fulfilled meta field [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/Subscriptions">Subscriptions: NOTE: this document is kept for historic purposes; GraphQL Subscriptions have been specified and released as part of the official [June 2018 GraphQL Specification](https://spec.graphql.org/June2018/). [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/710">710: Add namedType and punctuatedName to __Type [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/706">706: Add support for directives for an object field name [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/674">674: allow empty selections [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/631">631: Make root query operation type optional [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/567">567: allow directives on directive definitions [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/556">556: Document Directives [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/521">521: Scalar serialize as built-in scalar type [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/325">325: Add &quot;Any&quot; scalar type [RFC0]</a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" aria-expanded="false" href="/rfcs/1091">Stage X: Rejected</a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Semantic Nullability</h1></header><h2 class="anchor anchorWithStickyNavbar_LWe7" id="at-a-glance">At a glance<a href="#at-a-glance" class="hash-link" aria-label="Direct link to At a glance" title="Direct link to At a glance">​</a></h2>
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/avatar.jpg" alt="benjie" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/avatar.jpg" alt="benjie" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">benjie.dev</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/rfcs/">RFCs</a></div><div class="navbar__items navbar__items--right"><a class="navbar__item navbar__link" href="/book">📞 Book a call</a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/rfcs/">GraphQL RFC Tracker</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/rfcs/activity">Activity</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" aria-expanded="false" href="/rfcs/525">Stage 3: Accepted</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" aria-expanded="true" href="/rfcs/860">Stage 2: Draft</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/860">860*: Prevent @skip and @include on root subscription selection set [RFC2]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/976">976*: Add &#x27;extensions&#x27; to request [RFC2]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/1053">1053*: Implementations may not deprecate a field that the interface hasn&#x27;t deprecated [RFC2]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/794">794: Schema Coordinates [RFC2]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/955">955: Add validation rule that operation types exist [RFC2]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/825">825*: OneOf Input Objects [RFC2]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/1102">1102*: Define Data Collections used in the spec [RFC2]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/1063">1063*: Type system ordering of: object interfaces, directive arguments, input object fields, enum values [RFC2]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/1092">1092*: Recommend that order of unordered collections is maintained where possible [RFC2]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/793">793*: Default value coercion rules [RFC2]</a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" aria-expanded="true" href="/rfcs/1081">Stage 1: Proposal</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/1081">1081: Fragment arguments/variables (syntax/validation/execution) [RFC1]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/1058">1058*: List coercion algorithm [RFC1]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/1056">1056*: Fix CoerceArgumentValues() hasValue [RFC1]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/1110">1110: Incremental Delivery spec draft [RFC1]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/1127">1127*: When `sourceStream` errors, yield a `{ errors: [...] }` response [RFC1]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/997">997: Expand @deprecated to Objects [RFC1]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/1059">1059*: Introduce Strict and Legacy All Variable Usages Are Allowed [RFC1]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/950">950: allow unions to include interfaces and unions [RFC1]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/939">939: allow unions to declare implementation of interfaces [RFC1]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/907">907: Add support for directives on directives [RFC1]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/892">892: Add descriptions to executable definitions [RFC1]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/509">509: Allow singular variables in list locations [RFC1]</a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" aria-expanded="true" href="/rfcs/ClientControlledNullability">Stage 0: Strawman</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/ClientControlledNullability">ClientControlledNullability: Client Controlled Nullability [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/rfcs/SemanticNullability">SemanticNullability: Semantic Nullability [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/1114">1114: add __directive meta field parallel to __type [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/1057">1057*: Fix coercion table for list [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/DeferStream">DeferStream: GraphQL Defer and Stream Directives [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/SchemaCoordinates">SchemaCoordinates: Schema Coordinates [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/1065">1065*: SemanticNonNull type (null only on error) [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/InputUnion">InputUnion: GraphQL Input Union [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/FeatureDiscovery">FeatureDiscovery: Feature Discovery [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/Struct">Struct: Polymorphic-capable composite symmetric input/output type (`struct`) [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/1049">1049: Introduce SourceSchemaDocument and FullSchemaDocument [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/wg1410">wg1410: Strict Semantic Nullability [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/1050">1050*: Directive proposal for opting out of null bubbling [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/wg1394">wg1394: True Nullability Schema [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/1045">1045*: Remove fragmentSpreadName from visitedFragments when visit is complete [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/FullSchemas">FullSchemas: Full Schemas [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/1015">1015: &quot;Root&quot; Types clarity → &quot;Operation Type&quot; [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/FragmentArguments">FragmentArguments: Fragment Arguments [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/wg1239">wg1239: Fragment Arguments: RFC + Implementation Details [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/998">998: add spec edits for references [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/OptInFeatures">OptInFeatures: Opt-in features [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/ExpandingSubtyping">ExpandingSubtyping: Expanding Subtyping (for output types) [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/AnnotationStructs">AnnotationStructs: Annotation Structs [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/MetadataStructs">MetadataStructs: Metadata Structs [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/wg1096">wg1096: &quot;Metadata Directives&quot; Proposal [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/CompositeSchemas">CompositeSchemas: GraphQL Composite Schemas [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/wg1071">wg1071*: Struct type [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/673">673: Servers must preserve lexical ordering between SDL and introspection [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/948">948*: OneOf Objects [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/wg944">wg944: New Intersection Type [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/wg857">wg857: Fragment Modularity [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/FragmentModularity">FragmentModularity: Fragment Modularity [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/wg815">wg815: Nested GraphQL Mutations [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/ImplicitInheritance">ImplicitInheritance: Implicit Inheritance [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/OperationExpressions">OperationExpressions: Operation Expressions [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/SchemaFragments">SchemaFragments: Schema Fragments [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/879">879: __fulfilled meta field [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/Subscriptions">Subscriptions: NOTE: this document is kept for historic purposes; GraphQL Subscriptions have been specified and released as part of the official [June 2018 GraphQL Specification](https://spec.graphql.org/June2018/). [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/710">710: Add namedType and punctuatedName to __Type [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/706">706: Add support for directives for an object field name [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/674">674: allow empty selections [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/631">631: Make root query operation type optional [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/567">567: allow directives on directive definitions [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/556">556: Document Directives [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/521">521: Scalar serialize as built-in scalar type [RFC0]</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/rfcs/325">325: Add &quot;Any&quot; scalar type [RFC0]</a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" aria-expanded="false" href="/rfcs/1091">Stage X: Rejected</a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Semantic Nullability</h1></header><h2 class="anchor anchorWithStickyNavbar_LWe7" id="at-a-glance">At a glance<a href="#at-a-glance" class="hash-link" aria-label="Direct link to At a glance" title="Direct link to At a glance">​</a></h2>
 <ul>
 <li><strong>Identifier</strong>: SemanticNullability</li>
 <li><strong>Stage</strong>: <a href="https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-0-strawman" target="_blank" rel="noopener noreferrer">RFC0: Strawman</a></li>
@@ -23,6 +23,11 @@
 </ul>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="timeline">Timeline<a href="#timeline" class="hash-link" aria-label="Direct link to Timeline" title="Direct link to Timeline">​</a></h2>
 <ul>
+<li><strong><a href="https://github.com/graphql/graphql-wg/blob/36aff80993c5e4453274e9ed42ebce5e704971b5/rfcs/SemanticNullability.md" target="_blank" rel="noopener noreferrer">RFC document updated</a></strong> on 2025-02-22 by Benjie</li>
+<li><strong><a href="https://github.com/graphql/graphql-wg/blob/cd807eb3d6cb7d21616d98d71285dbf33facc7a1/rfcs/SemanticNullability.md" target="_blank" rel="noopener noreferrer">RFC document updated</a></strong> on 2025-02-22 by Benjie</li>
+<li><strong><a href="https://github.com/graphql/graphql-wg/blob/3ff9ab3a1cecf70e1d571838bc5358c2187a09f1/rfcs/SemanticNullability.md" target="_blank" rel="noopener noreferrer">RFC document updated</a></strong> on 2025-02-20 by Benjie</li>
+<li><strong><a href="https://github.com/graphql/graphql-wg/blob/93aa905f39d3be8bbe74dfad7964b05925933bd0/rfcs/SemanticNullability.md" target="_blank" rel="noopener noreferrer">RFC document updated</a></strong> on 2025-02-20 by Benjie</li>
+<li><strong><a href="https://github.com/graphql/graphql-wg/blob/d3477790f7d0fddb79c58d799279f265e15768b6/rfcs/SemanticNullability.md" target="_blank" rel="noopener noreferrer">RFC document updated</a></strong> on 2025-02-20 by Martin Bonnin</li>
 <li><strong><a href="https://github.com/graphql/graphql-wg/blob/b3d32a65ff9aaf944c9e733fdc43702aaf064cee/rfcs/SemanticNullability.md" target="_blank" rel="noopener noreferrer">RFC document updated</a></strong> on 2025-02-17 by Benjie</li>
 <li><strong><a href="https://github.com/graphql/graphql-wg/blob/2a09600d6c757b21e05560958b8fc68882581cf3/rfcs/SemanticNullability.md" target="_blank" rel="noopener noreferrer">RFC document updated</a></strong> on 2025-02-17 by Alex Reilly</li>
 <li><strong><a href="https://github.com/graphql/graphql-wg/blob/8f2f34308a1ba7abd49199595ec29ffd0d9f92a1/rfcs/SemanticNullability.md" target="_blank" rel="noopener noreferrer">RFC document updated</a></strong> on 2025-02-17 by Martin Bonnin</li>
@@ -210,36 +215,36 @@ error propagation disabled the selection sets are no longer destroyed.</p>
 <p>Note: Traditional non-nullable types will effectively become semantically
 non-nullable when error propagation is disabled no matter which solution is
 chosen, so this criteria is only concerned with traditionally nullable types.</p>
-<table><thead><tr><th>[1][solution-1]</th><th>[2][solution-2]</th><th>[3][solution-3]</th><th>[4][solution-4]</th><th>[5][solution-5]</th></tr></thead><tbody><tr><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>🚫👍</td></tr></tbody></table>
+<table><thead><tr><th><a href="#-1-new-semantic-non-null-type-represented-by-">1</a></th><th><a href="#-2-strict-semantic-nullability">2</a></th><th><a href="#-3-new-semantic-non-null-type-usurping--syntax">3</a></th><th><a href="#-4-new-semantic-non-null-type-with--used-for-nullable-types">4</a></th><th><a href="#-5-use-non-null-in-semantically-non-nullable-places-and-encourage-disabling-error-propagation">5</a></th><th><a href="#-6-semanticnonnull-directive">6</a></th></tr></thead><tbody><tr><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>🚫👍</td><td>✅</td></tr></tbody></table>
 <p>Criteria score: 🥇</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="-b-existing-executable-documents-should-retain-validity-and-meaning">🎯 B. Existing executable documents should retain validity and meaning<a href="#-b-existing-executable-documents-should-retain-validity-and-meaning" class="hash-link" aria-label="Direct link to 🎯 B. Existing executable documents should retain validity and meaning" title="Direct link to 🎯 B. Existing executable documents should retain validity and meaning">​</a></h2>
 <p>Users should be able to adopt semantic nullability into an existing schema, and
 when doing so all existing operations should remain valid, and should have the
 same meaning as they always did.</p>
-<table><thead><tr><th>[1][solution-1]</th><th>[2][solution-2]</th><th>[3][solution-3]</th><th>[4][solution-4]</th><th>[5][solution-5]</th></tr></thead><tbody><tr><td>✅</td><td>🚫</td><td>✅</td><td>✅</td><td>✅</td></tr></tbody></table>
+<table><thead><tr><th><a href="#-1-new-semantic-non-null-type-represented-by-">1</a></th><th><a href="#-2-strict-semantic-nullability">2</a></th><th><a href="#-3-new-semantic-non-null-type-usurping--syntax">3</a></th><th><a href="#-4-new-semantic-non-null-type-with--used-for-nullable-types">4</a></th><th><a href="#-5-use-non-null-in-semantically-non-nullable-places-and-encourage-disabling-error-propagation">5</a></th><th><a href="#-6-semanticnonnull-directive">6</a></th></tr></thead><tbody><tr><td>✅</td><td>🚫</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr></tbody></table>
 <p>Criteria score: 🥇</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="-c-unadorned-type-should-mean-nullable">🎯 C. Unadorned type should mean nullable<a href="#-c-unadorned-type-should-mean-nullable" class="hash-link" aria-label="Direct link to 🎯 C. Unadorned type should mean nullable" title="Direct link to 🎯 C. Unadorned type should mean nullable">​</a></h2>
 <p>GraphQL has been public for 10 years and there&#x27;s a lot of content out there
 noting that GraphQL types are nullable by default (unadorned type is nullable)
 and our changes should not invalidate this content.</p>
-<table><thead><tr><th>[1][solution-1]</th><th>[2][solution-2]</th><th>[3][solution-3]</th><th>[4][solution-4]</th><th>[5][solution-5]</th></tr></thead><tbody><tr><td>✅</td><td>🚫</td><td>✅</td><td>🚫</td><td>✅</td></tr></tbody></table>
+<table><thead><tr><th><a href="#-1-new-semantic-non-null-type-represented-by-">1</a></th><th><a href="#-2-strict-semantic-nullability">2</a></th><th><a href="#-3-new-semantic-non-null-type-usurping--syntax">3</a></th><th><a href="#-4-new-semantic-non-null-type-with--used-for-nullable-types">4</a></th><th><a href="#-5-use-non-null-in-semantically-non-nullable-places-and-encourage-disabling-error-propagation">5</a></th><th><a href="#-6-semanticnonnull-directive">6</a></th></tr></thead><tbody><tr><td>✅</td><td>🚫</td><td>✅</td><td>🚫</td><td>✅</td><td>✅</td></tr></tbody></table>
 <p>Criteria score: 🥈</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="-d-syntax-should-be-obvious-to-programmers">🎯 D. Syntax should be obvious to programmers<a href="#-d-syntax-should-be-obvious-to-programmers" class="hash-link" aria-label="Direct link to 🎯 D. Syntax should be obvious to programmers" title="Direct link to 🎯 D. Syntax should be obvious to programmers">​</a></h2>
 <p>The GraphQL languages similarity to JSON is one of its strengths, making it
 immediately feel familiar. Syntax used should feel obvious to developers new to
 GraphQL.</p>
-<table><thead><tr><th>[1][solution-1]</th><th>[2][solution-2]</th><th>[3][solution-3]</th><th>[4][solution-4]</th><th>[5][solution-5]</th></tr></thead><tbody><tr><td>🚫</td><td>✅</td><td>✅</td><td>✅</td><td>⚠️</td></tr></tbody></table>
+<table><thead><tr><th><a href="#-1-new-semantic-non-null-type-represented-by-">1</a></th><th><a href="#-2-strict-semantic-nullability">2</a></th><th><a href="#-3-new-semantic-non-null-type-usurping--syntax">3</a></th><th><a href="#-4-new-semantic-non-null-type-with--used-for-nullable-types">4</a></th><th><a href="#-5-use-non-null-in-semantically-non-nullable-places-and-encourage-disabling-error-propagation">5</a></th><th><a href="#-6-semanticnonnull-directive">6</a></th></tr></thead><tbody><tr><td>🚫</td><td>✅</td><td>✅</td><td>✅</td><td>⚠️</td><td>✅</td></tr></tbody></table>
 <p>Criteria score: 🥈</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="-e-syntax-used-in-sdl-and-in-executable-documents-should-be-consistent-with-sdl">🎯 E. Syntax used in SDL and in executable documents should be consistent with SDL<a href="#-e-syntax-used-in-sdl-and-in-executable-documents-should-be-consistent-with-sdl" class="hash-link" aria-label="Direct link to 🎯 E. Syntax used in SDL and in executable documents should be consistent with SDL" title="Direct link to 🎯 E. Syntax used in SDL and in executable documents should be consistent with SDL">​</a></h2>
 <p>When a user wishes to replace the value for an input field or argument with a
 variable in their GraphQL operation, the type syntax should be either identical
 or similar, and should carry the same meaning.</p>
-<table><thead><tr><th>[1][solution-1]</th><th>[2][solution-2]</th><th>[3][solution-3]</th><th>[4][solution-4]</th><th>[5][solution-5]</th></tr></thead><tbody><tr><td>✅</td><td>✅</td><td>✅</td><td>🚫</td><td>✅</td></tr></tbody></table>
+<table><thead><tr><th><a href="#-1-new-semantic-non-null-type-represented-by-">1</a></th><th><a href="#-2-strict-semantic-nullability">2</a></th><th><a href="#-3-new-semantic-non-null-type-usurping--syntax">3</a></th><th><a href="#-4-new-semantic-non-null-type-with--used-for-nullable-types">4</a></th><th><a href="#-5-use-non-null-in-semantically-non-nullable-places-and-encourage-disabling-error-propagation">5</a></th><th><a href="#-6-semanticnonnull-directive">6</a></th></tr></thead><tbody><tr><td>✅</td><td>✅</td><td>✅</td><td>🚫</td><td>✅</td><td>✅</td></tr></tbody></table>
 <p>Criteria score: 🥇</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="-f-alternative-syntaxes-should-not-cause-confusion">🎯 F. Alternative syntaxes should not cause confusion<a href="#-f-alternative-syntaxes-should-not-cause-confusion" class="hash-link" aria-label="Direct link to 🎯 F. Alternative syntaxes should not cause confusion" title="Direct link to 🎯 F. Alternative syntaxes should not cause confusion">​</a></h2>
 <p>Where a proposal allows alternative syntaxes to be used, the two syntaxes should
 not cause confusion.</p>
-<table><thead><tr><th>[1][solution-1]</th><th>[2][solution-2]</th><th>[3][solution-3]</th><th>[4][solution-4]</th><th>[5][solution-5]</th></tr></thead><tbody><tr><td>✅</td><td>✅</td><td>✅</td><td>🚫</td><td>✅</td></tr></tbody></table>
+<table><thead><tr><th><a href="#-1-new-semantic-non-null-type-represented-by-">1</a></th><th><a href="#-2-strict-semantic-nullability">2</a></th><th><a href="#-3-new-semantic-non-null-type-usurping--syntax">3</a></th><th><a href="#-4-new-semantic-non-null-type-with--used-for-nullable-types">4</a></th><th><a href="#-5-use-non-null-in-semantically-non-nullable-places-and-encourage-disabling-error-propagation">5</a></th><th><a href="#-6-semanticnonnull-directive">6</a></th></tr></thead><tbody><tr><td>✅</td><td>✅</td><td>✅</td><td>🚫</td><td>✅</td><td>✅</td></tr></tbody></table>
 <p>Criteria score: 🥇</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="-g-error-propagation-boundaries-should-not-change-in-existing-executable-documents">🎯 G. Error propagation boundaries should not change in existing executable documents<a href="#-g-error-propagation-boundaries-should-not-change-in-existing-executable-documents" class="hash-link" aria-label="Direct link to 🎯 G. Error propagation boundaries should not change in existing executable documents" title="Direct link to 🎯 G. Error propagation boundaries should not change in existing executable documents">​</a></h2>
 <p>An expansion of B, this states that the proposal will not change where errors
@@ -247,7 +252,7 @@ propagate to when error propagation is enabled (i.e. existing documents will
 still keep errors local to the same positions that they did when they were
 published), allowing for the &quot;partial success&quot; feature of GraphQL to continue to
 shine and not compromising the resiliency of legacy deployed app versions.</p>
-<table><thead><tr><th>[1][solution-1]</th><th>[2][solution-2]</th><th>[3][solution-3]</th><th>[4][solution-4]</th><th>[5][solution-5]</th></tr></thead><tbody><tr><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>🚫</td></tr></tbody></table>
+<table><thead><tr><th><a href="#-1-new-semantic-non-null-type-represented-by-">1</a></th><th><a href="#-2-strict-semantic-nullability">2</a></th><th><a href="#-3-new-semantic-non-null-type-usurping--syntax">3</a></th><th><a href="#-4-new-semantic-non-null-type-with--used-for-nullable-types">4</a></th><th><a href="#-5-use-non-null-in-semantically-non-nullable-places-and-encourage-disabling-error-propagation">5</a></th><th><a href="#-6-semanticnonnull-directive">6</a></th></tr></thead><tbody><tr><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>🚫</td><td>✅</td></tr></tbody></table>
 <p>Criteria score: 🥇</p>
 <ul>
 <li>✂️ Objection: proposal to lower the score to 🥈. With enough advance notice and a clear upgrade
@@ -255,19 +260,115 @@ path for legacy apps, the tradeoff might be acceptable.</li>
 </ul>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="-h-implementation-and-spec-simplicity">🎯 H. Implementation and spec simplicity<a href="#-h-implementation-and-spec-simplicity" class="hash-link" aria-label="Direct link to 🎯 H. Implementation and spec simplicity" title="Direct link to 🎯 H. Implementation and spec simplicity">​</a></h2>
 <p>The implementation required to make the proposal work should be simple.</p>
-<table><thead><tr><th>[1][solution-1]</th><th>[2][solution-2]</th><th>[3][solution-3]</th><th>[4][solution-4]</th><th>[5][solution-5]</th></tr></thead><tbody><tr><td>✅</td><td>🚫</td><td>🚫</td><td>🚫</td><td>✅</td></tr></tbody></table>
-<p>Criteria score: 🥉</p>
+<table><thead><tr><th><a href="#-1-new-semantic-non-null-type-represented-by-">1</a></th><th><a href="#-2-strict-semantic-nullability">2</a></th><th><a href="#-3-new-semantic-non-null-type-usurping--syntax">3</a></th><th><a href="#-4-new-semantic-non-null-type-with--used-for-nullable-types">4</a></th><th><a href="#-5-use-non-null-in-semantically-non-nullable-places-and-encourage-disabling-error-propagation">5</a></th><th><a href="#-6-semanticnonnull-directive">6</a></th></tr></thead><tbody><tr><td>✅</td><td>🚫</td><td>🚫</td><td>🚫</td><td>✅</td><td>✅</td></tr></tbody></table>
+<p>Criteria score: 🥈</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-i-syntax-used-in-executable-documents-should-be-unchanged">🎯 I. Syntax used in executable documents should be unchanged<a href="#-i-syntax-used-in-executable-documents-should-be-unchanged" class="hash-link" aria-label="Direct link to 🎯 I. Syntax used in executable documents should be unchanged" title="Direct link to 🎯 I. Syntax used in executable documents should be unchanged">​</a></h2>
+<p>Executable documents do not differentiate between semantic and strict non-null
+since inputs never handle &quot;errors&quot; (&quot;null only on error&quot; is the same as &quot;not
+null&quot; on input). As such, there&#x27;s no benefit to clients for the syntax of
+executable documents to change.</p>
+<table><thead><tr><th><a href="#-1-new-semantic-non-null-type-represented-by-">1</a></th><th><a href="#-2-strict-semantic-nullability">2</a></th><th><a href="#-3-new-semantic-non-null-type-usurping--syntax">3</a></th><th><a href="#-4-new-semantic-non-null-type-with--used-for-nullable-types">4</a></th><th><a href="#-5-use-non-null-in-semantically-non-nullable-places-and-encourage-disabling-error-propagation">5</a></th><th><a href="#-6-semanticnonnull-directive">6</a></th></tr></thead><tbody><tr><td>✅</td><td>❔</td><td>✅</td><td>🚫</td><td>✅</td><td>✅</td></tr></tbody></table>
+<p>Criteria score: 🥇</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-j-type-reasoning-should-remain-local">🎯 J. Type reasoning should remain local<a href="#-j-type-reasoning-should-remain-local" class="hash-link" aria-label="Direct link to 🎯 J. Type reasoning should remain local" title="Direct link to 🎯 J. Type reasoning should remain local">​</a></h2>
+<p>The type of a field (<code>foo: Int</code>) can be determined by looking at the field and
+its type; the reader should not have to read a document or schema directive to
+determine how the type should be interpreted.</p>
+<table><thead><tr><th><a href="#-1-new-semantic-non-null-type-represented-by-">1</a></th><th><a href="#-2-strict-semantic-nullability">2</a></th><th><a href="#-3-new-semantic-non-null-type-usurping--syntax">3</a></th><th><a href="#-4-new-semantic-non-null-type-with--used-for-nullable-types">4</a></th><th><a href="#-5-use-non-null-in-semantically-non-nullable-places-and-encourage-disabling-error-propagation">5</a></th><th><a href="#-6-semanticnonnull-directive">6</a></th></tr></thead><tbody><tr><td>✅</td><td>❔</td><td>⚠️</td><td>🚫</td><td>✅</td><td>⚠️</td></tr></tbody></table>
+<p>Criteria score: 🥇</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-k-introspection-must-be-backwards-compatible">🎯 K. Introspection must be backwards compatible<a href="#-k-introspection-must-be-backwards-compatible" class="hash-link" aria-label="Direct link to 🎯 K. Introspection must be backwards compatible" title="Direct link to 🎯 K. Introspection must be backwards compatible">​</a></h2>
+<p>We do not want to break existing tooling.</p>
+<table><thead><tr><th><a href="#-1-new-semantic-non-null-type-represented-by-">1</a></th><th><a href="#-2-strict-semantic-nullability">2</a></th><th><a href="#-3-new-semantic-non-null-type-usurping--syntax">3</a></th><th><a href="#-4-new-semantic-non-null-type-with--used-for-nullable-types">4</a></th><th><a href="#-5-use-non-null-in-semantically-non-nullable-places-and-encourage-disabling-error-propagation">5</a></th><th><a href="#-6-semanticnonnull-directive">6</a></th></tr></thead><tbody><tr><td>✅</td><td>❔</td><td>✅</td><td>❔</td><td>✅</td><td>✅</td></tr></tbody></table>
+<p>Criteria score: 🥇</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-l-general-graphql-consumers-should-only-need-to-think-about-nullable-vs-non-nullable">🎯 L. General GraphQL consumers should only need to think about nullable vs non-nullable<a href="#-l-general-graphql-consumers-should-only-need-to-think-about-nullable-vs-non-nullable" class="hash-link" aria-label="Direct link to 🎯 L. General GraphQL consumers should only need to think about nullable vs non-nullable" title="Direct link to 🎯 L. General GraphQL consumers should only need to think about nullable vs non-nullable">​</a></h2>
+<p>Schema authors and client frameworks can handle different types of nullability based around
+error handling and error propagation, but consumers (frontend developers) should only need
+to deal with nullable or non-nullable as presented to them by their client framework of choice.</p>
+<p>May contradict: M</p>
+<table><thead><tr><th><a href="#-1-new-semantic-non-null-type-represented-by-">1</a></th><th><a href="#-2-strict-semantic-nullability">2</a></th><th><a href="#-3-new-semantic-non-null-type-usurping--syntax">3</a></th><th><a href="#-4-new-semantic-non-null-type-with--used-for-nullable-types">4</a></th><th><a href="#-5-use-non-null-in-semantically-non-nullable-places-and-encourage-disabling-error-propagation">5</a></th><th><a href="#-6-semanticnonnull-directive">6</a></th></tr></thead><tbody><tr><td>✅</td><td>❔</td><td>✅</td><td>❔</td><td>✅</td><td>⚠️</td></tr></tbody></table>
+<p>Criteria score: 🥇</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-m-the-sdl-should-have-exactly-one-form-used-by-all-producers-and-consumers">🎯 M. The SDL should have exactly one form used by all producers and consumers<a href="#-m-the-sdl-should-have-exactly-one-form-used-by-all-producers-and-consumers" class="hash-link" aria-label="Direct link to 🎯 M. The SDL should have exactly one form used by all producers and consumers" title="Direct link to 🎯 M. The SDL should have exactly one form used by all producers and consumers">​</a></h2>
+<p>The SDL should not be influenced by client features such as local extensions and
+error propagation mechanics, and should always represent the true full source
+schema SDL.</p>
+<p>May contradict: L</p>
+<table><thead><tr><th><a href="#-1-new-semantic-non-null-type-represented-by-">1</a></th><th><a href="#-2-strict-semantic-nullability">2</a></th><th><a href="#-3-new-semantic-non-null-type-usurping--syntax">3</a></th><th><a href="#-4-new-semantic-non-null-type-with--used-for-nullable-types">4</a></th><th><a href="#-5-use-non-null-in-semantically-non-nullable-places-and-encourage-disabling-error-propagation">5</a></th><th><a href="#-6-semanticnonnull-directive">6</a></th></tr></thead><tbody><tr><td>⚠️</td><td>❔</td><td>⚠️</td><td>❔</td><td>✅</td><td>✅</td></tr></tbody></table>
+<p>Criteria score: 🥇</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-n-the-solution-should-add-value-even-with-error-propagation-enabled">🎯 N. The solution should add value even with error propagation enabled<a href="#-n-the-solution-should-add-value-even-with-error-propagation-enabled" class="hash-link" aria-label="Direct link to 🎯 N. The solution should add value even with error propagation enabled" title="Direct link to 🎯 N. The solution should add value even with error propagation enabled">​</a></h2>
+<p>Even when error propagation is enabled, it&#x27;s valuable to be able to tell the
+difference between a field that is truly (semantically) nullable, and one
+that&#x27;s only nullable because errors may occur. GraphQL-TOE can be used in such
+situations so that codegen can safely use non-nullable types in semantically
+non-nullable positions.</p>
+<table><thead><tr><th><a href="#-1-new-semantic-non-null-type-represented-by-">1</a></th><th><a href="#-2-strict-semantic-nullability">2</a></th><th><a href="#-3-new-semantic-non-null-type-usurping--syntax">3</a></th><th><a href="#-4-new-semantic-non-null-type-with--used-for-nullable-types">4</a></th><th><a href="#-5-use-non-null-in-semantically-non-nullable-places-and-encourage-disabling-error-propagation">5</a></th><th><a href="#-6-semanticnonnull-directive">6</a></th></tr></thead><tbody><tr><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>🚫</td><td>✅</td></tr></tbody></table>
+<p>Criteria score: 🥇</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-o-should-not-have-breaking-changes-for-existing-executable-documents">🎯 O. Should not have breaking changes for existing executable documents<a href="#-o-should-not-have-breaking-changes-for-existing-executable-documents" class="hash-link" aria-label="Direct link to 🎯 O. Should not have breaking changes for existing executable documents" title="Direct link to 🎯 O. Should not have breaking changes for existing executable documents">​</a></h2>
+<p>It should be possible to enable the solution without negatively impacting
+existing deployed clients.</p>
+<p>Per Lee:</p>
+<blockquote>
+<p>A breaking change is a client observable change in behavior. The decade old
+GraphQL query should work in the same way as it always has.  (We sometimes
+allow inconsequential changes in behavior, but bubbling the error up isn&#x27;t
+inconsequential.)</p>
+</blockquote>
+<table><thead><tr><th><a href="#-1-new-semantic-non-null-type-represented-by-">1</a></th><th><a href="#-2-strict-semantic-nullability">2</a></th><th><a href="#-3-new-semantic-non-null-type-usurping--syntax">3</a></th><th><a href="#-4-new-semantic-non-null-type-with--used-for-nullable-types">4</a></th><th><a href="#-5-use-non-null-in-semantically-non-nullable-places-and-encourage-disabling-error-propagation">5</a></th><th><a href="#-6-semanticnonnull-directive">6</a></th></tr></thead><tbody><tr><td>✅</td><td>❔</td><td>✅</td><td>✅</td><td>🚫</td><td>✅</td></tr></tbody></table>
+<p>Note: though this criteria is currently not considered due to overlap with B
+and G, it acts as a reminder to look for other forms of breaking change, and
+helps to reason <em>why</em> B and G are important.</p>
+<p>Criteria score: X (not considered - covered by B and G)</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-p-the-solution-should-result-in-users-marking-all-semantically-non-null-fields-as-such">🎯 P. The solution should result in users marking all semantically non-null fields as such<a href="#-p-the-solution-should-result-in-users-marking-all-semantically-non-null-fields-as-such" class="hash-link" aria-label="Direct link to 🎯 P. The solution should result in users marking all semantically non-null fields as such" title="Direct link to 🎯 P. The solution should result in users marking all semantically non-null fields as such">​</a></h2>
+<p>When a field returns data that the business logic dictates does not and will
+never return a legitimate (non-error) null, the schema authors should have no
+hesitation over marking it as semantically non-nullable - and thus all
+semantically non-nullable fields should be marked as such.</p>
+<p>Per Benoit:</p>
+<blockquote>
+<p>Not sure how to express it well, but I feel there should be a criteria to
+mean something like “the solution encourages that eventually most fields in
+most schemas are semantically non null”. As a client developer that’s kind of
+an outcome of this whole effort I’d like to see happening.</p>
+</blockquote>
+<table><thead><tr><th><a href="#-1-new-semantic-non-null-type-represented-by-">1</a></th><th><a href="#-2-strict-semantic-nullability">2</a></th><th><a href="#-3-new-semantic-non-null-type-usurping--syntax">3</a></th><th><a href="#-4-new-semantic-non-null-type-with--used-for-nullable-types">4</a></th><th><a href="#-5-use-non-null-in-semantically-non-nullable-places-and-encourage-disabling-error-propagation">5</a></th><th><a href="#-6-semanticnonnull-directive">6</a></th></tr></thead><tbody><tr><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>🚫</td><td>⚠️</td></tr></tbody></table>
+<p>Criteria score: 🥇</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-q-migrating-the-unadorned-output-type-to-other-forms-of-nullability-should-be-non-breaking">🎯 Q. Migrating the unadorned output type to other forms of nullability should be non-breaking<a href="#-q-migrating-the-unadorned-output-type-to-other-forms-of-nullability-should-be-non-breaking" class="hash-link" aria-label="Direct link to 🎯 Q. Migrating the unadorned output type to other forms of nullability should be non-breaking" title="Direct link to 🎯 Q. Migrating the unadorned output type to other forms of nullability should be non-breaking">​</a></h2>
+<p>The default (unadorned) type should be a type that you can migrate away from,
+once nullability expectations become more concrete, without breaking existing
+client queries.</p>
+<table><thead><tr><th><a href="#-1-new-semantic-non-null-type-represented-by-">1</a></th><th><a href="#-2-strict-semantic-nullability">2</a></th><th><a href="#-3-new-semantic-non-null-type-usurping--syntax">3</a></th><th><a href="#-4-new-semantic-non-null-type-with--used-for-nullable-types">4</a></th><th><a href="#-5-use-non-null-in-semantically-non-nullable-places-and-encourage-disabling-error-propagation">5</a></th><th><a href="#-6-semanticnonnull-directive">6</a></th></tr></thead><tbody><tr><td>✅</td><td>🚫</td><td>✅</td><td>🚫</td><td>✅</td><td>✅</td></tr></tbody></table>
+<p>Note: this is not necessarily a duplicate of C as it doesn&#x27;t specifically
+require​ the unadorned type be nullable, however no proposal currently proposes
+a mechanism for moving from any non-nullable type to a nullable type in a
+non-breaking way, and thus this criteria is <em>currently</em> discounted.</p>
+<p>Criteria score: X (not considered)</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-r-semantic-nullability-should-only-impact-outputs-not-inputs">🎯 R. Semantic nullability should only impact outputs, not inputs<a href="#-r-semantic-nullability-should-only-impact-outputs-not-inputs" class="hash-link" aria-label="Direct link to 🎯 R. Semantic nullability should only impact outputs, not inputs" title="Direct link to 🎯 R. Semantic nullability should only impact outputs, not inputs">​</a></h2>
+<p>There&#x27;s no meaningful difference between semantic non-null and strict non-null
+on input, since inputs do not handle errors (and thus &quot;null only on error&quot;
+describes a situation that cannot occur).</p>
+<p>Inputs include: field arguments, directive arguments, and input fields.</p>
+<p>As such:</p>
+<ul>
+<li>the syntax used to represent input nullability in SDL (<code>Int</code> = nullable, and
+<code>Int!</code> = non-nullable) should be unchanged</li>
+<li>the representation in introspection for inputs (namely the <code>NON_NULL</code> type
+wrapper) should be unchanged</li>
+</ul>
+<table><thead><tr><th><a href="#-1-new-semantic-non-null-type-represented-by-">1</a></th><th><a href="#-2-strict-semantic-nullability">2</a></th><th><a href="#-3-new-semantic-non-null-type-usurping--syntax">3</a></th><th><a href="#-4-new-semantic-non-null-type-with--used-for-nullable-types">4</a></th><th><a href="#-5-use-non-null-in-semantically-non-nullable-places-and-encourage-disabling-error-propagation">5</a></th><th><a href="#-6-semanticnonnull-directive">6</a></th></tr></thead><tbody><tr><td>✅</td><td>❔</td><td>✅</td><td>🚫</td><td>✅</td><td>✅</td></tr></tbody></table>
+<p>Criteria score: 🥇</p>
 <p>&lt;!--</p>
 <p>Template for new items:</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="-x-title">🎯 X. Title<a href="#-x-title" class="hash-link" aria-label="Direct link to 🎯 X. Title" title="Direct link to 🎯 X. Title">​</a></h2>
 <p>DESCRIPTION</p>
-<table><thead><tr><th>[1][solution-1]</th><th>[2][solution-2]</th><th>[3][solution-3]</th><th>[4][solution-4]</th><th>[5][solution-5]</th></tr></thead><tbody><tr><td>?</td><td>?</td><td>?</td><td>?</td><td>?</td></tr></tbody></table>
+<table><thead><tr><th><a href="#-1-new-semantic-non-null-type-represented-by-">1</a></th><th><a href="#-2-strict-semantic-nullability">2</a></th><th><a href="#-3-new-semantic-non-null-type-usurping--syntax">3</a></th><th><a href="#-4-new-semantic-non-null-type-with--used-for-nullable-types">4</a></th><th><a href="#-5-use-non-null-in-semantically-non-nullable-places-and-encourage-disabling-error-propagation">5</a></th></tr></thead><tbody><tr><td>?</td><td>?</td><td>?</td><td>?</td><td>?</td></tr></tbody></table>
 <p>Criteria score: ❔</p>
 <p>--&gt;</p>
 <h1>🚧 Possible Solutions</h1>
 <p>The community has imagined a variety of possible solutions, synthesized here.</p>
 <p>Each solution is identified with a <code>Number</code> so they can be referenced in the
 rest of the document. New solutions must be added to the end of the list.</p>
+<p>Semantic nullability is only relevant to output positions, so when comparing
+syntax we will look for changes versus the current syntax used to represent
+these types:</p>
+<table><thead><tr><th></th><th>Input syntax</th><th>Output syntax</th></tr></thead><tbody><tr><td>Semantically nullable</td><td><code>Int</code></td><td><code>Int</code></td></tr><tr><td>Semantically non-nullable</td><td>-</td><td><code>Int</code></td></tr><tr><td>Strictly non-nullable</td><td><code>Int!</code></td><td><code>Int!</code></td></tr></tbody></table>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="-1-new-semantic-non-null-type-represented-by-">💡 1. New &quot;Semantic Non-Null&quot; type, represented by <code>*</code><a href="#-1-new-semantic-non-null-type-represented-by-" class="hash-link" aria-label="Direct link to -1-new-semantic-non-null-type-represented-by-" title="Direct link to -1-new-semantic-non-null-type-represented-by-">​</a></h2>
 <p><strong>Champion</strong>: @benjie</p>
 <ul>
@@ -293,51 +394,102 @@ non-nullable type (on output) is a non-breaking change. Semantic non-nullable is
 meaningless on input.</p>
 <div class="language-graphql codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-graphql codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">type</span><span class="token plain"> </span><span class="token class-name">Post</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic"># Every post belongs to a topic, however don&#x27;t blow the post up if retrieval of the topic fails.</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token attr-name" style="color:#00a4db">topic</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token class-name">Topic</span><span class="token plain">*</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <p>Querying a semantic non-null field is the same as querying any other field.</p>
-<table><thead><tr><th></th><th>Existing syntax</th><th>Proposed syntax</th></tr></thead><tbody><tr><td>Semantically nullable</td><td><code>Int</code></td><td><code>Int</code></td></tr><tr><td>Semantically non-nullable</td><td>-</td><td><code>Int*</code></td></tr><tr><td>Strictly non-nullable</td><td><code>Int!</code></td><td><code>Int!</code></td></tr></tbody></table>
+<table><thead><tr><th></th><th>Input syntax</th><th>Output syntax</th></tr></thead><tbody><tr><td>Semantically nullable</td><td><code>Int</code></td><td><code>Int</code></td></tr><tr><td>Semantically non-nullable</td><td>-</td><td><code>Int</code> ⇒ <code>Int*</code></td></tr><tr><td>Strictly non-nullable</td><td><code>Int!</code></td><td><code>Int!</code></td></tr></tbody></table>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="-variations">🎲 Variations<a href="#-variations" class="hash-link" aria-label="Direct link to 🎲 Variations" title="Direct link to 🎲 Variations">​</a></h3>
 <p>Various
 <a href="https://gist.github.com/benjie/19d784721d1658b89fd8954e7ee07034" target="_blank" rel="noopener noreferrer">options for the syntax</a>
 have been discussed the choice of symbol comes down mostly to aesthetics.</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="️-evaluation">⚖️ Evaluation<a href="#️-evaluation" class="hash-link" aria-label="Direct link to ⚖️ Evaluation" title="Direct link to ⚖️ Evaluation">​</a></h3>
 <ul>
-<li>[A][criteria-a]<!-- -->
+<li><a href="#-a-graphql-should-be-able-to-indicate-which-nullable-fields-should-become-non-nullable-when-error-propagation-is-disabled">A</a>
 <ul>
 <li>✅</li>
 </ul>
 </li>
-<li>[B][criteria-b]<!-- -->
+<li><a href="#-b-existing-executable-documents-should-retain-validity-and-meaning">B</a>
 <ul>
 <li>✅ Existing symbology unchanged.</li>
 </ul>
 </li>
-<li>[C][criteria-c]<!-- -->
+<li><a href="#-c-unadorned-type-should-mean-nullable">C</a>
 <ul>
 <li>✅ Existing symbology unchanged.</li>
 </ul>
 </li>
-<li>[D][criteria-d]<!-- -->
+<li><a href="#-d-syntax-should-be-obvious-to-programmers">D</a>
 <ul>
 <li>🚫 <code>Int*</code> syntax is not immediately obvious.</li>
 </ul>
 </li>
-<li>[E][criteria-e]<!-- -->
+<li><a href="#-e-syntax-used-in-sdl-and-in-executable-documents-should-be-consistent-with-sdl">E</a>
 <ul>
 <li>✅ Same syntax.</li>
 </ul>
 </li>
-<li>[F][criteria-f]<!-- -->
+<li><a href="#-f-alternative-syntaxes-should-not-cause-confusion">F</a>
 <ul>
 <li>✅ Same syntax.</li>
 </ul>
 </li>
-<li>[G][criteria-g]<!-- -->
+<li><a href="#-g-error-propagation-boundaries-should-not-change-in-existing-executable-documents">G</a>
 <ul>
 <li>✅ Error capture positions unchanged when error propagation enabled</li>
 </ul>
 </li>
-<li>[H][criteria-h]<!-- -->
+<li><a href="#-h-implementation-and-spec-simplicity">H</a>
 <ul>
 <li>✅ Implementation and spec simplicity.</li>
+</ul>
+</li>
+<li><a href="#-i-syntax-used-in-executable-documents-should-be-unchanged">I</a>
+<ul>
+<li>✅ <code>*</code> doesn&#x27;t apply on input, so syntax is unchanged.</li>
+</ul>
+</li>
+<li><a href="#-j-type-reasoning-should-remain-local">J</a>
+<ul>
+<li>✅ Local syntax only</li>
+</ul>
+</li>
+<li><a href="#-k-introspection-must-be-backwards-compatible">K</a>
+<ul>
+<li>✅ Introspection backwards compatible via <code>__Field.type(includeSemanticNonNull: Boolean! = false)</code></li>
+</ul>
+</li>
+<li><a href="#-l-general-graphql-consumers-should-only-need-to-think-about-nullable-vs-non-nullable">L</a>
+<ul>
+<li>✅ Proposal encourages consumers to use client-produced SDL which only uses traditional nullability (<code>Type</code>/<code>Type!</code>)</li>
+</ul>
+</li>
+<li><a href="#-m-the-sdl-should-have-exactly-one-form-used-by-all-producers-and-consumers">M</a>
+<ul>
+<li>⚠️ You can use the same SDL everywhere, but that&#x27;s not what this solution
+encourages.</li>
+</ul>
+</li>
+<li><a href="#-n-the-solution-should-add-value-even-with-error-propagation-enabled">N</a>
+<ul>
+<li>✅ Indicates semantically non-null and strictly non-null types separately</li>
+</ul>
+</li>
+<li><a href="#-o-should-not-have-breaking-changes-for-existing-executable-documents">O</a>
+<ul>
+<li>✅ Client syntax unchanged</li>
+</ul>
+</li>
+<li><a href="#-p-the-solution-should-result-in-users-marking-all-semantically-non-null-fields-as-such">P</a>
+<ul>
+<li>✅ There are no drawbacks to adding semantically non-nullable fields</li>
+</ul>
+</li>
+<li><a href="#-q-migrating-the-unadorned-output-type-to-other-forms-of-nullability-should-be-non-breaking">Q</a>
+<ul>
+<li>✅</li>
+</ul>
+</li>
+<li><a href="#-r-semantic-nullability-should-only-impact-outputs-not-inputs">R</a>
+<ul>
+<li>✅ <code>*</code> only needed in output positions, input positions unchanged</li>
 </ul>
 </li>
 </ul>
@@ -350,72 +502,122 @@ have been discussed the choice of symbol comes down mostly to aesthetics.</p>
 in schemas using this directive would now be semantically non-nullable by
 default, and a new semantically nullable type is introduced (using the <code>?</code>
 symbol) to indicate that a position may semantically be null.</p>
-<table><thead><tr><th></th><th>Existing syntax</th><th>Proposed syntax</th></tr></thead><tbody><tr><td>Semantically nullable</td><td><code>Int</code></td><td><code>Int?</code></td></tr><tr><td>Semantically non-nullable</td><td>-</td><td><code>Int</code></td></tr><tr><td>Strictly non-nullable</td><td><code>Int!</code></td><td><code>Int!</code></td></tr></tbody></table>
+<table><thead><tr><th></th><th>Input syntax</th><th>Output syntax</th></tr></thead><tbody><tr><td>Semantically nullable</td><td><code>Int</code> ⇒ ???</td><td><code>Int</code> ⇒ <code>Int?</code></td></tr><tr><td>Semantically non-nullable</td><td>-</td><td><code>Int</code></td></tr><tr><td>Strictly non-nullable</td><td><code>Int!</code> ⇒ ???</td><td><code>Int!</code></td></tr></tbody></table>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="️-evaluation-1">⚖️ Evaluation<a href="#️-evaluation-1" class="hash-link" aria-label="Direct link to ⚖️ Evaluation" title="Direct link to ⚖️ Evaluation">​</a></h3>
 <ul>
-<li>[A][criteria-a]<!-- -->
+<li><a href="#-a-graphql-should-be-able-to-indicate-which-nullable-fields-should-become-non-nullable-when-error-propagation-is-disabled">A</a>
 <ul>
 <li>✅</li>
 </ul>
 </li>
-<li>[B][criteria-b]<!-- -->
+<li><a href="#-b-existing-executable-documents-should-retain-validity-and-meaning">B</a>
 <ul>
 <li>🚫 Though existing documents remain <em>valid</em>, input variables using the
 unadorned type now mean &quot;semantically non-nullable&quot; and will no longer
 accept <code>null</code> values? {Confirmation by Lee pending.}</li>
 </ul>
 </li>
-<li>[C][criteria-c]<!-- -->
+<li><a href="#-c-unadorned-type-should-mean-nullable">C</a>
 <ul>
 <li>🚫 GraphQL is no longer &quot;nullable by default&quot;, and <code>Int</code> no longer
 represents a nullable integer.</li>
 </ul>
 </li>
-<li>[D][criteria-d]<!-- -->
+<li><a href="#-d-syntax-should-be-obvious-to-programmers">D</a>
 <ul>
 <li>✅ <code>Int?</code> is commonly used to indicate nullablility in programming languages
 and <code>Int!</code> indicating non-nullable or danger is common. <code>Int</code> is less
 obvious when <code>?</code> and <code>!</code> variants exist.</li>
 </ul>
 </li>
-<li>[E][criteria-e]<!-- -->
+<li><a href="#-e-syntax-used-in-sdl-and-in-executable-documents-should-be-consistent-with-sdl">E</a>
 <ul>
 <li>✅ The same syntax is used on input and output.</li>
 </ul>
 </li>
-<li>[F][criteria-f]<!-- -->
+<li><a href="#-f-alternative-syntaxes-should-not-cause-confusion">F</a>
 <ul>
 <li>✅ There is no alternative syntax.</li>
 </ul>
 </li>
-<li>[G][criteria-g]<!-- -->
+<li><a href="#-g-error-propagation-boundaries-should-not-change-in-existing-executable-documents">G</a>
 <ul>
 <li>✅ Error capture positions unchanged when error propagation enabled</li>
 </ul>
 </li>
-<li>[H][criteria-h]<!-- -->
+<li><a href="#-h-implementation-and-spec-simplicity">H</a>
 <ul>
 <li>🚫 Implementation and spec simplicity.</li>
+</ul>
+</li>
+<li><a href="#-i-syntax-used-in-executable-documents-should-be-unchanged">I</a>
+<ul>
+<li>❔</li>
+</ul>
+</li>
+<li><a href="#-j-type-reasoning-should-remain-local">J</a>
+<ul>
+<li>❔</li>
+</ul>
+</li>
+<li><a href="#-k-introspection-must-be-backwards-compatible">K</a>
+<ul>
+<li>❔</li>
+</ul>
+</li>
+<li><a href="#-l-general-graphql-consumers-should-only-need-to-think-about-nullable-vs-non-nullable">L</a>
+<ul>
+<li>❔</li>
+</ul>
+</li>
+<li><a href="#-m-the-sdl-should-have-exactly-one-form-used-by-all-producers-and-consumers">M</a>
+<ul>
+<li>❔</li>
+</ul>
+</li>
+<li><a href="#-n-the-solution-should-add-value-even-with-error-propagation-enabled">N</a>
+<ul>
+<li>✅ Indicates semantically non-null and strictly non-null types separately</li>
+</ul>
+</li>
+<li><a href="#-o-should-not-have-breaking-changes-for-existing-executable-documents">O</a>
+<ul>
+<li>❔</li>
+</ul>
+</li>
+<li><a href="#-p-the-solution-should-result-in-users-marking-all-semantically-non-null-fields-as-such">P</a>
+<ul>
+<li>❔</li>
+</ul>
+</li>
+<li><a href="#-q-migrating-the-unadorned-output-type-to-other-forms-of-nullability-should-be-non-breaking">Q</a>
+<ul>
+<li>🚫 <code>Int</code> → <code>Int?</code> is breaking</li>
+</ul>
+</li>
+<li><a href="#-r-semantic-nullability-should-only-impact-outputs-not-inputs">R</a>
+<ul>
+<li>
+<p>❔</p>
+</li>
 </ul>
 </li>
 </ul>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="-3-new-semantic-non-null-type-usurping--syntax">💡 3. New &quot;Semantic Non-Null&quot; type, usurping <code>!</code> syntax<a href="#-3-new-semantic-non-null-type-usurping--syntax" class="hash-link" aria-label="Direct link to -3-new-semantic-non-null-type-usurping--syntax" title="Direct link to -3-new-semantic-non-null-type-usurping--syntax">​</a></h2>
 <p><strong>Champion</strong>: @benjie</p>
 <p>This proposal is similar to proposal 1, but:</p>
-<ol>
-<li>It introduces a document-level directive, <code>@semanticNullability</code>, which when
+<p>It introduces a document-level directive, <code>@semanticNullability</code>, which when
 present on a document allows the <code>!</code> suffix to be used to represent
-semantically non-nullable types, and a new <code>!!</code> suffix to be used to
-represent strictly non-nullable types:</li>
-</ol>
-<table><thead><tr><th></th><th>Syntax without directive</th><th>Syntax with directive</th></tr></thead><tbody><tr><td>Semantically nullable</td><td><code>Int</code></td><td><code>Int</code></td></tr><tr><td>Semantically non-nullable</td><td>-</td><td><code>Int!</code></td></tr><tr><td>Strictly non-nullable</td><td><code>Int!</code></td><td><code>Int!!</code></td></tr></tbody></table>
-<p>As such all documents (both SDL and executable documents) retain their current
-meaning, and the semantically non-null type can be adopted on a per-document
-basis.</p>
-<ol start="2">
-<li>It allows using semantically non-nullable types in input positions, allowing
-the <code>Int!</code> syntax to simply mean &quot;non-nullable&quot; on input.</li>
-</ol>
+semantically non-nullable output types, and a new <code>!!</code> suffix to be used to
+represent strictly non-nullable output types.</p>
+<p>The <code>Int!</code> syntax simply means &quot;non-nullable&quot; on input, as it always has.
+(Note: input types are always either semantically nullable or strictly
+non-nullable.)</p>
+<p>Syntax only changes when <code>@semanticNullability</code> directive is present:</p>
+<table><thead><tr><th></th><th>Input syntax</th><th>Output syntax</th></tr></thead><tbody><tr><td>Semantically nullable</td><td><code>Int</code></td><td><code>Int</code></td></tr><tr><td>Semantically non-nullable</td><td>-</td><td><code>Int</code> ⇒ <code>Int!</code></td></tr><tr><td>Strictly non-nullable</td><td><code>Int!</code></td><td><code>Int!</code> ⇒ <code>Int!!</code></td></tr></tbody></table>
+<p>All documents (both SDL and executable documents) retain their current meaning,
+and the semantically non-null type can be adopted in output positions on a
+per-document basis by adding the document directive.</p>
 <p>Since there&#x27;s no difference between whether a type is &quot;semantically&quot; or
 &quot;strictly&quot; non-nullable on input (input does not represent errors), executable
 documents will retain their existing syntax in perpetuity and never need to use
@@ -431,35 +633,35 @@ meaning the vast majority of GraphQL consumers do not need to see it in their
 day-to-day work.</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="️-evaluation-2">⚖️ Evaluation<a href="#️-evaluation-2" class="hash-link" aria-label="Direct link to ⚖️ Evaluation" title="Direct link to ⚖️ Evaluation">​</a></h3>
 <ul>
-<li>[A][criteria-a]<!-- -->
+<li><a href="#-a-graphql-should-be-able-to-indicate-which-nullable-fields-should-become-non-nullable-when-error-propagation-is-disabled">A</a>
 <ul>
 <li>✅</li>
 </ul>
 </li>
-<li>[B][criteria-b]<!-- -->
+<li><a href="#-b-existing-executable-documents-should-retain-validity-and-meaning">B</a>
 <ul>
 <li>✅ Executable documents are not impacted by this proposal.</li>
 </ul>
 </li>
-<li>[C][criteria-c]<!-- -->
+<li><a href="#-c-unadorned-type-should-mean-nullable">C</a>
 <ul>
 <li>✅ <code>Int</code> means nullable still.</li>
 </ul>
 </li>
-<li>[D][criteria-d]<!-- -->
+<li><a href="#-d-syntax-should-be-obvious-to-programmers">D</a>
 <ul>
 <li>✅ <code>Int!</code> to indicate non-nullable is common in programming languages; and
 <code>Int!!</code> looks like it indicates &quot;danger&quot;.</li>
 </ul>
 </li>
-<li>[E][criteria-e]<!-- -->
+<li><a href="#-e-syntax-used-in-sdl-and-in-executable-documents-should-be-consistent-with-sdl">E</a>
 <ul>
 <li>✅ Executable documents do not use <code>!!</code>, and <code>!</code> means non-nullable on both
 input and output (the difference between semantic an strict non-null does
 not occur on input)</li>
 </ul>
 </li>
-<li>[F][criteria-f]<!-- -->
+<li><a href="#-f-alternative-syntaxes-should-not-cause-confusion">F</a>
 <ul>
 <li>✅ <code>Int</code> reatains its meaning across both modes, and <code>Int!</code> means
 non-nullable in both modes. Only the SDL ever uses <code>Int!!</code> and it still
@@ -467,14 +669,72 @@ means non-null, just with the additional &quot;kills parent on exception&quot;
 behavior.</li>
 </ul>
 </li>
-<li>[G][criteria-g]<!-- -->
+<li><a href="#-g-error-propagation-boundaries-should-not-change-in-existing-executable-documents">G</a>
 <ul>
 <li>✅ Error capture positions unchanged when error propagation enabled</li>
 </ul>
 </li>
-<li>[H][criteria-h]<!-- -->
+<li><a href="#-h-implementation-and-spec-simplicity">H</a>
 <ul>
 <li>🚫 Implementation and spec simplicity.</li>
+</ul>
+</li>
+<li><a href="#-i-syntax-used-in-executable-documents-should-be-unchanged">I</a>
+<ul>
+<li>✅ Semantic non-null not relevant to inputs, so no reason to use directive in executable documents -&gt; syntax unchanged.</li>
+</ul>
+</li>
+<li><a href="#-j-type-reasoning-should-remain-local">J</a>
+<ul>
+<li>⚠️  Local reasoning holds for all but the schema authors; this is enabled
+through the use of client-generated SDL reflecting client extensions and
+error propagation behavior. For schema authors, local reasoning in the
+source SDL returns whether a field is nullable or non-nullable, but does
+not differentiate between <em>semantically</em> non-nullable and <em>strictly</em>
+non-nullable.</li>
+</ul>
+</li>
+<li><a href="#-k-introspection-must-be-backwards-compatible">K</a>
+<ul>
+<li>✅ Introspection backwards compatible via <code>__Field.type(includeSemanticNonNull: Boolean! = false)</code></li>
+</ul>
+</li>
+<li><a href="#-l-general-graphql-consumers-should-only-need-to-think-about-nullable-vs-non-nullable">L</a>
+<ul>
+<li>✅ Proposal encourages consumers to use client-produced SDL which only uses traditional nullability (<code>Type</code>/<code>Type!</code>)</li>
+</ul>
+</li>
+<li><a href="#-m-the-sdl-should-have-exactly-one-form-used-by-all-producers-and-consumers">M</a>
+<ul>
+<li>⚠️ You can use the same SDL everywhere, but that&#x27;s not what this solution
+encourages.</li>
+</ul>
+</li>
+<li><a href="#-n-the-solution-should-add-value-even-with-error-propagation-enabled">N</a>
+<ul>
+<li>✅ Indicates semantically non-null and strictly non-null types separately</li>
+</ul>
+</li>
+<li><a href="#-o-should-not-have-breaking-changes-for-existing-executable-documents">O</a>
+<ul>
+<li>✅ Client syntax unchanged</li>
+</ul>
+</li>
+<li><a href="#-p-the-solution-should-result-in-users-marking-all-semantically-non-null-fields-as-such">P</a>
+<ul>
+<li>✅ There are no drawbacks to adding semantically non-nullable fields</li>
+</ul>
+</li>
+<li><a href="#-q-migrating-the-unadorned-output-type-to-other-forms-of-nullability-should-be-non-breaking">Q</a>
+<ul>
+<li>✅</li>
+</ul>
+</li>
+<li><a href="#-r-semantic-nullability-should-only-impact-outputs-not-inputs">R</a>
+<ul>
+<li>
+<p>✅ Syntax used for inputs is unchanged with or without the directive.</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -483,53 +743,106 @@ behavior.</li>
 <p>This proposal builds on solution 3, but with a syntactic shuffle such that the
 unadorned type may be used as the semantically non-nullable type when the
 directive is present, and a <code>?</code> symbol is used to indicate a nullable position.</p>
-<table><thead><tr><th></th><th>Syntax without directive</th><th>Syntax with directive</th></tr></thead><tbody><tr><td>Semantically nullable</td><td><code>Int</code></td><td><code>Int?</code></td></tr><tr><td>Semantically non-nullable</td><td>-</td><td><code>Int</code></td></tr><tr><td>Strictly non-nullable</td><td><code>Int!</code></td><td><code>Int!</code></td></tr></tbody></table>
+<p>Syntax only changes when <code>@semanticNullability</code> directive is present:</p>
+<table><thead><tr><th></th><th>Input syntax</th><th>Output syntax</th></tr></thead><tbody><tr><td>Semantically nullable</td><td><code>Int</code> ⇒ <code>Int?</code></td><td><code>Int</code> ⇒ <code>Int?</code></td></tr><tr><td>Semantically non-nullable</td><td>-</td><td><code>Int</code></td></tr><tr><td>Strictly non-nullable</td><td><code>Int!</code> ⇒ <code>Int</code></td><td><code>Int!</code></td></tr></tbody></table>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="️-evaluation-3">⚖️ Evaluation<a href="#️-evaluation-3" class="hash-link" aria-label="Direct link to ⚖️ Evaluation" title="Direct link to ⚖️ Evaluation">​</a></h3>
 <ul>
-<li>[A][criteria-a]<!-- -->
+<li><a href="#-a-graphql-should-be-able-to-indicate-which-nullable-fields-should-become-non-nullable-when-error-propagation-is-disabled">A</a>
 <ul>
 <li>✅</li>
 </ul>
 </li>
-<li>[B][criteria-b]<!-- -->
+<li><a href="#-b-existing-executable-documents-should-retain-validity-and-meaning">B</a>
 <ul>
 <li>✅ Existing documents don&#x27;t use the directive, and thus are not impacted.</li>
 </ul>
 </li>
-<li>[C][criteria-c]<!-- -->
+<li><a href="#-c-unadorned-type-should-mean-nullable">C</a>
 <ul>
 <li>🚫 With the directive present, GraphQL is no longer &quot;nullable by default&quot;,
 and <code>Int</code> no longer represents a nullable integer.</li>
 </ul>
 </li>
-<li>[D][criteria-d]<!-- -->
+<li><a href="#-d-syntax-should-be-obvious-to-programmers">D</a>
 <ul>
 <li>✅ <code>Int?</code> is commonly used to indicate nullablility in programming languages
 and <code>Int!</code> indicating non-nullable or danger is common. <code>Int</code> is less
 obvious when <code>?</code> and <code>!</code> variants exist.</li>
 </ul>
 </li>
-<li>[E][criteria-e]<!-- -->
+<li><a href="#-e-syntax-used-in-sdl-and-in-executable-documents-should-be-consistent-with-sdl">E</a>
 <ul>
 <li>🚫 If the schema uses <code>@semanticNullability</code> but an operation document does
 not, <code>Int</code> has vastly different meanings: nullable on input but non-nullable
 on output.</li>
 </ul>
 </li>
-<li>[F][criteria-f]<!-- -->
+<li><a href="#-f-alternative-syntaxes-should-not-cause-confusion">F</a>
 <ul>
 <li>🚫 <code>Int</code> being nullable in one mode and non-nullable in the other mode is
 unexpected and will likely lead to confusion.</li>
 </ul>
 </li>
-<li>[G][criteria-g]<!-- -->
+<li><a href="#-g-error-propagation-boundaries-should-not-change-in-existing-executable-documents">G</a>
 <ul>
 <li>✅ Error capture positions unchanged when error propagation enabled</li>
 </ul>
 </li>
-<li>[H][criteria-h]<!-- -->
+<li><a href="#-h-implementation-and-spec-simplicity">H</a>
 <ul>
 <li>🚫 Implementation and spec simplicity.</li>
+</ul>
+</li>
+<li><a href="#-i-syntax-used-in-executable-documents-should-be-unchanged">I</a>
+<ul>
+<li>🚫 Clients will need to move to using new syntax (<code>Type?</code>/<code>Type</code>) or have syntax incongruent with schema SDL</li>
+</ul>
+</li>
+<li><a href="#-j-type-reasoning-should-remain-local">J</a>
+<ul>
+<li>🚫 The nullability of <code>Type</code> cannot be determined without checking for a document directive</li>
+</ul>
+</li>
+<li><a href="#-k-introspection-must-be-backwards-compatible">K</a>
+<ul>
+<li>✅ Introspection backwards compatible via <code>__Field.type(includeSemanticNonNull: Boolean! = false)</code></li>
+</ul>
+</li>
+<li><a href="#-l-general-graphql-consumers-should-only-need-to-think-about-nullable-vs-non-nullable">L</a>
+<ul>
+<li>❔</li>
+</ul>
+</li>
+<li><a href="#-m-the-sdl-should-have-exactly-one-form-used-by-all-producers-and-consumers">M</a>
+<ul>
+<li>❔</li>
+</ul>
+</li>
+<li><a href="#-n-the-solution-should-add-value-even-with-error-propagation-enabled">N</a>
+<ul>
+<li>✅ Indicates semantically non-null and strictly non-null types separately</li>
+</ul>
+</li>
+<li><a href="#-o-should-not-have-breaking-changes-for-existing-executable-documents">O</a>
+<ul>
+<li>✅ Clients must opt in to new syntax with document directive</li>
+</ul>
+</li>
+<li><a href="#-p-the-solution-should-result-in-users-marking-all-semantically-non-null-fields-as-such">P</a>
+<ul>
+<li>✅ There are no drawbacks to adding semantically non-nullable fields</li>
+</ul>
+</li>
+<li><a href="#-q-migrating-the-unadorned-output-type-to-other-forms-of-nullability-should-be-non-breaking">Q</a>
+<ul>
+<li>🚫 <code>Int</code> → <code>Int?</code> is breaking</li>
+</ul>
+</li>
+<li><a href="#-r-semantic-nullability-should-only-impact-outputs-not-inputs">R</a>
+<ul>
+<li>
+<p>🚫 Input positions have changed <code>Int</code> ⇒ <code>Int?</code>, <code>Int!</code> ⇒ <code>Int</code></p>
+</li>
 </ul>
 </li>
 </ul>
@@ -539,49 +852,205 @@ unexpected and will likely lead to confusion.</li>
 <li>Discussion: <a href="https://github.com/graphql/nullability-wg/discussions/85" target="_blank" rel="noopener noreferrer">https://github.com/graphql/nullability-wg/discussions/85</a></li>
 </ul>
 <p>This proposal relies on the ability of clients to opt out of error propagation; instead of introducing a new type it instructs schema authors to optimize for error-handling clients and use the traditional non-null type (<code>!</code>) on all semantically non-null fields.</p>
+<table><thead><tr><th></th><th>Input syntax</th><th>Output syntax</th></tr></thead><tbody><tr><td>Semantically nullable</td><td><code>Int</code></td><td><code>Int</code></td></tr><tr><td>Semantically non-nullable</td><td>-</td><td><code>Int</code> ⇒ <code>Int!</code></td></tr><tr><td>Strictly non-nullable</td><td><code>Int!</code></td><td><code>Int!</code></td></tr></tbody></table>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="️-evaluation-4">⚖️ Evaluation<a href="#️-evaluation-4" class="hash-link" aria-label="Direct link to ⚖️ Evaluation" title="Direct link to ⚖️ Evaluation">​</a></h3>
 <ul>
-<li>[A][criteria-a]<!-- -->
+<li><a href="#-a-graphql-should-be-able-to-indicate-which-nullable-fields-should-become-non-nullable-when-error-propagation-is-disabled">A</a>
 <ul>
 <li>🚫👍 The nullability used in both error-propagation and no-error-propagation modes are the same. This is a feature, not a bug!</li>
 </ul>
 </li>
-<li>[B][criteria-b]<!-- -->
+<li><a href="#-b-existing-executable-documents-should-retain-validity-and-meaning">B</a>
 <ul>
 <li>✅ The change from nullable to non-nullable on output is backwards compatible from a type perspective; for impact on error boundaries see G.</li>
 </ul>
 </li>
-<li>[C][criteria-c]<!-- -->
+<li><a href="#-c-unadorned-type-should-mean-nullable">C</a>
 <ul>
 <li>✅ <code>Int</code> means nullable still.</li>
 </ul>
 </li>
-<li>[D][criteria-d]<!-- -->
+<li><a href="#-d-syntax-should-be-obvious-to-programmers">D</a>
 <ul>
 <li>⚠️ Adding <code>@onError</code> to operations is not immediately intuitive but most error-handling clients should add it automatically, making it transparent to end users.</li>
 </ul>
 </li>
-<li>[E][criteria-e]<!-- -->
+<li><a href="#-e-syntax-used-in-sdl-and-in-executable-documents-should-be-consistent-with-sdl">E</a>
 <ul>
 <li>✅ Same syntax.</li>
 </ul>
 </li>
-<li>[F][criteria-f]<!-- -->
+<li><a href="#-f-alternative-syntaxes-should-not-cause-confusion">F</a>
 <ul>
 <li>✅ Same syntax.</li>
 </ul>
 </li>
-<li>[G][criteria-g]<!-- -->
+<li><a href="#-g-error-propagation-boundaries-should-not-change-in-existing-executable-documents">G</a>
 <ul>
 <li>🚫 Using non-null in more positions will change the error boundary positions when error propagation is enabled.</li>
 </ul>
 </li>
-<li>[H][criteria-h]<!-- -->
+<li><a href="#-h-implementation-and-spec-simplicity">H</a>
 <ul>
 <li>✅ Implementation and spec simplicity.</li>
 </ul>
 </li>
+<li><a href="#-i-syntax-used-in-executable-documents-should-be-unchanged">I</a>
+<ul>
+<li>✅ No change</li>
 </ul>
-</blockquote></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/rfcs/509"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Allow singular variables in list locations</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/rfcs/1114"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">add __directive meta field parallel to __type</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#at-a-glance" class="table-of-contents__link toc-highlight">At a glance</a></li><li><a href="#timeline" class="table-of-contents__link toc-highlight">Timeline</a></li><li><a href="#error-propagation" class="table-of-contents__link toc-highlight">Error propagation</a><ul><li><a href="#complication-1-partial-success" class="table-of-contents__link toc-highlight">Complication 1: partial success</a></li><li><a href="#complication-2-nullable-epidemic" class="table-of-contents__link toc-highlight">Complication 2: nullable epidemic</a></li><li><a href="#complication-3-normalized-caching" class="table-of-contents__link toc-highlight">Complication 3: normalized caching</a></li></ul></li><li><a href="#the-nullability-working-group" class="table-of-contents__link toc-highlight">The Nullability Working Group</a><ul><li><a href="#client-controlled-nullability" class="table-of-contents__link toc-highlight">Client-controlled nullability</a></li><li><a href="#true-nullability-schema" class="table-of-contents__link toc-highlight">True nullability schema</a></li></ul></li><li><a href="#disabling-error-propagation" class="table-of-contents__link toc-highlight">Disabling error propagation</a><ul><li><a href="#semantic-nullability" class="table-of-contents__link toc-highlight">Semantic nullability</a></li></ul></li><li><a href="#-a-graphql-should-be-able-to-indicate-which-nullable-fields-should-become-non-nullable-when-error-propagation-is-disabled" class="table-of-contents__link toc-highlight">🎯 A. GraphQL should be able to indicate which nullable fields should become non-nullable when error propagation is disabled</a></li><li><a href="#-b-existing-executable-documents-should-retain-validity-and-meaning" class="table-of-contents__link toc-highlight">🎯 B. Existing executable documents should retain validity and meaning</a></li><li><a href="#-c-unadorned-type-should-mean-nullable" class="table-of-contents__link toc-highlight">🎯 C. Unadorned type should mean nullable</a></li><li><a href="#-d-syntax-should-be-obvious-to-programmers" class="table-of-contents__link toc-highlight">🎯 D. Syntax should be obvious to programmers</a></li><li><a href="#-e-syntax-used-in-sdl-and-in-executable-documents-should-be-consistent-with-sdl" class="table-of-contents__link toc-highlight">🎯 E. Syntax used in SDL and in executable documents should be consistent with SDL</a></li><li><a href="#-f-alternative-syntaxes-should-not-cause-confusion" class="table-of-contents__link toc-highlight">🎯 F. Alternative syntaxes should not cause confusion</a></li><li><a href="#-g-error-propagation-boundaries-should-not-change-in-existing-executable-documents" class="table-of-contents__link toc-highlight">🎯 G. Error propagation boundaries should not change in existing executable documents</a></li><li><a href="#-h-implementation-and-spec-simplicity" class="table-of-contents__link toc-highlight">🎯 H. Implementation and spec simplicity</a></li><li><a href="#-x-title" class="table-of-contents__link toc-highlight">🎯 X. Title</a></li><li><a href="#-1-new-semantic-non-null-type-represented-by-" class="table-of-contents__link toc-highlight">💡 1. New &quot;Semantic Non-Null&quot; type, represented by <code>*</code></a><ul><li><a href="#-variations" class="table-of-contents__link toc-highlight">🎲 Variations</a></li><li><a href="#️-evaluation" class="table-of-contents__link toc-highlight">⚖️ Evaluation</a></li></ul></li><li><a href="#-2-strict-semantic-nullability" class="table-of-contents__link toc-highlight">💡 2. &quot;Strict Semantic Nullability&quot;</a><ul><li><a href="#️-evaluation-1" class="table-of-contents__link toc-highlight">⚖️ Evaluation</a></li></ul></li><li><a href="#-3-new-semantic-non-null-type-usurping--syntax" class="table-of-contents__link toc-highlight">💡 3. New &quot;Semantic Non-Null&quot; type, usurping <code>!</code> syntax</a><ul><li><a href="#️-evaluation-2" class="table-of-contents__link toc-highlight">⚖️ Evaluation</a></li></ul></li><li><a href="#-4-new-semantic-non-null-type-with--used-for-nullable-types" class="table-of-contents__link toc-highlight">💡 4. New &quot;Semantic Non-Null&quot; type, with <code>?</code> used for nullable types</a><ul><li><a href="#️-evaluation-3" class="table-of-contents__link toc-highlight">⚖️ Evaluation</a></li></ul></li><li><a href="#-5-use-non-null-in-semantically-non-nullable-places-and-encourage-disabling-error-propagation" class="table-of-contents__link toc-highlight">💡 5. Use non-null in semantically non-nullable places and encourage disabling error propagation</a><ul><li><a href="#️-evaluation-4" class="table-of-contents__link toc-highlight">⚖️ Evaluation</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 Benjie Gillam; all rights reserved. RFC pages pull content from public GitHub issues/PRs/files/etc; this content remains owned its various authors.</div></div></div></footer></div>
+</li>
+<li><a href="#-j-type-reasoning-should-remain-local">J</a>
+<ul>
+<li>✅ No change</li>
+</ul>
+</li>
+<li><a href="#-k-introspection-must-be-backwards-compatible">K</a>
+<ul>
+<li>✅ No change</li>
+</ul>
+</li>
+<li><a href="#-l-general-graphql-consumers-should-only-need-to-think-about-nullable-vs-non-nullable">L</a>
+<ul>
+<li>✅ No change</li>
+</ul>
+</li>
+<li><a href="#-m-the-sdl-should-have-exactly-one-form-used-by-all-producers-and-consumers">M</a>
+<ul>
+<li>✅ No change</li>
+</ul>
+</li>
+<li><a href="#-n-the-solution-should-add-value-even-with-error-propagation-enabled">N</a>
+<ul>
+<li>🚫 Solution actually decreases value when error propagation is enabled due to lowered resilience to errors.</li>
+</ul>
+</li>
+<li><a href="#-o-should-not-have-breaking-changes-for-existing-executable-documents">O</a>
+<ul>
+<li>🚫 Changing fields to strictly non-null causes errors to propagate further, a breaking change. (Duplicate of G.)</li>
+</ul>
+</li>
+<li><a href="#-p-the-solution-should-result-in-users-marking-all-semantically-non-null-fields-as-such">P</a>
+<ul>
+<li>🚫 Though the solution states it encourages the adoption of non-null, doing so is a breaking change for existing clients and so adopters are likely to hesitate when marking some semantically non-nullable positions as such</li>
+</ul>
+</li>
+<li><a href="#-q-migrating-the-unadorned-output-type-to-other-forms-of-nullability-should-be-non-breaking">Q</a>
+<ul>
+<li>✅ Same syntax.</li>
+</ul>
+</li>
+<li><a href="#-r-semantic-nullability-should-only-impact-outputs-not-inputs">R</a>
+<ul>
+<li>✅ Same syntax.</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-6-semanticnonnull-directive">💡 6. <code>@semanticNonNull</code> directive<a href="#-6-semanticnonnull-directive" class="hash-link" aria-label="Direct link to -6-semanticnonnull-directive" title="Direct link to -6-semanticnonnull-directive">​</a></h2>
+<p><strong>Champion</strong>: -</p>
+<p>Outline: <a href="https://specs.apollo.dev/nullability/v0.4/#@semanticNonNull" target="_blank" rel="noopener noreferrer">https://specs.apollo.dev/nullability/v0.4/#@semanticNonNull</a></p>
+<p>This proposal (which is already adopted in a few places!) introduces a
+directive that can be added to fields to indicate their semantic nullability
+(and that of their nested list positions).</p>
+<div class="language-graphql codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-graphql codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">directive</span><span class="token plain"> </span><span class="token directive function" style="color:#d73a49">@semanticNonNull</span><span class="token punctuation" style="color:#393A34">(</span><span class="token attr-name" style="color:#00a4db">levels</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token scalar">Int</span><span class="token operator" style="color:#393A34">!</span><span class="token punctuation" style="color:#393A34">]</span><span class="token operator" style="color:#393A34">!</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token number" style="color:#36acaa">0</span><span class="token punctuation" style="color:#393A34">]</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token keyword" style="color:#00009f">on</span><span class="token plain"> </span><span class="token constant" style="color:#36acaa">FIELD_DEFINITION</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">type</span><span class="token plain"> </span><span class="token class-name">Query</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token attr-name" style="color:#00a4db">nonNullListOfNonNullInt</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token scalar">Int</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"> </span><span class="token directive function" style="color:#d73a49">@semanticNonNull</span><span class="token punctuation" style="color:#393A34">(</span><span class="token attr-name" style="color:#00a4db">levels</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token number" style="color:#36acaa">0</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">1</span><span class="token punctuation" style="color:#393A34">]</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>The proposal is broadly similar to <a href="#-1-new-semantic-non-null-type-represented-by-">solution 1</a>, but avoids
+introducing new syntax. Interestingly, since the directive only applies on
+<code>FIELD_DEFINITION</code> it explicitly limits semantic nullability to output
+positions.</p>
+<table><thead><tr><th></th><th>Input syntax</th><th>Output syntax</th></tr></thead><tbody><tr><td>Semantically nullable</td><td><code>Int</code></td><td><code>Int</code></td></tr><tr><td>Semantically non-nullable</td><td>-</td><td><code>Int</code> ⇒ <code>Int @semanticNotNull</code></td></tr><tr><td>Strictly non-nullable</td><td><code>Int!</code></td><td><code>Int!</code></td></tr></tbody></table>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="️-evaluation-5">⚖️ Evaluation<a href="#️-evaluation-5" class="hash-link" aria-label="Direct link to ⚖️ Evaluation" title="Direct link to ⚖️ Evaluation">​</a></h3>
+<ul>
+<li><a href="#-a-graphql-should-be-able-to-indicate-which-nullable-fields-should-become-non-nullable-when-error-propagation-is-disabled">A</a>
+<ul>
+<li>✅</li>
+</ul>
+</li>
+<li><a href="#-b-existing-executable-documents-should-retain-validity-and-meaning">B</a>
+<ul>
+<li>✅ Existing symbology unchanged.</li>
+</ul>
+</li>
+<li><a href="#-c-unadorned-type-should-mean-nullable">C</a>
+<ul>
+<li>✅ Existing symbology unchanged.</li>
+</ul>
+</li>
+<li><a href="#-d-syntax-should-be-obvious-to-programmers">D</a>
+<ul>
+<li>✅ No syntax change (directive syntax already exists).</li>
+</ul>
+</li>
+<li><a href="#-e-syntax-used-in-sdl-and-in-executable-documents-should-be-consistent-with-sdl">E</a>
+<ul>
+<li>✅ Same syntax.</li>
+</ul>
+</li>
+<li><a href="#-f-alternative-syntaxes-should-not-cause-confusion">F</a>
+<ul>
+<li>✅ Same syntax.</li>
+</ul>
+</li>
+<li><a href="#-g-error-propagation-boundaries-should-not-change-in-existing-executable-documents">G</a>
+<ul>
+<li>✅ Error capture positions unchanged when error propagation enabled</li>
+</ul>
+</li>
+<li><a href="#-h-implementation-and-spec-simplicity">H</a>
+<ul>
+<li>✅ Implementation and spec simplicity.</li>
+</ul>
+</li>
+<li><a href="#-i-syntax-used-in-executable-documents-should-be-unchanged">I</a>
+<ul>
+<li>✅ Directive does not apply to input positions.</li>
+</ul>
+</li>
+<li><a href="#-j-type-reasoning-should-remain-local">J</a>
+<ul>
+<li>⚠️ Though the directives are local to the field, the reader must still correlate the directive and the passed indexes with the types specified to conclude what the final type is.</li>
+</ul>
+</li>
+<li><a href="#-k-introspection-must-be-backwards-compatible">K</a>
+<ul>
+<li>✅ Introspection backwards compatible via <code>__Field.type(includeSemanticNonNull: Boolean! = false)</code></li>
+</ul>
+</li>
+<li><a href="#-l-general-graphql-consumers-should-only-need-to-think-about-nullable-vs-non-nullable">L</a>
+<ul>
+<li>⚠️  Depends whether we advise using client-generated SDL or not.</li>
+</ul>
+</li>
+<li><a href="#-m-the-sdl-should-have-exactly-one-form-used-by-all-producers-and-consumers">M</a>
+<ul>
+<li>✅ Same SDL everywhere.</li>
+</ul>
+</li>
+<li><a href="#-n-the-solution-should-add-value-even-with-error-propagation-enabled">N</a>
+<ul>
+<li>✅ Indicates semantically non-null and strictly non-null types separately.</li>
+</ul>
+</li>
+<li><a href="#-o-should-not-have-breaking-changes-for-existing-executable-documents">O</a>
+<ul>
+<li>✅</li>
+</ul>
+</li>
+<li><a href="#-p-the-solution-should-result-in-users-marking-all-semantically-non-null-fields-as-such">P</a>
+<ul>
+<li>⚠️ Though there&#x27;s no technical reason not to do so, the mechanics of adding the directive (particularly when referencing positions inside lists) are tiresome in SDL-first schemas, decreasing likeliness that positions will be updated. (Code-first schemas are unaffected.) Further, the directives are likely to have a significant impact on the formatting of the SDL (<code>@semanticNonNull</code> is 16 characters, almost quarter of a line if wrap at 80), so designers may wish to only add them in the most critical of locations.</li>
+</ul>
+</li>
+<li><a href="#-q-migrating-the-unadorned-output-type-to-other-forms-of-nullability-should-be-non-breaking">Q</a>
+<ul>
+<li>✅</li>
+</ul>
+</li>
+<li><a href="#-r-semantic-nullability-should-only-impact-outputs-not-inputs">R</a>
+<ul>
+<li>✅ Directive is only valid on output positions.</li>
+</ul>
+</li>
+</ul>
+</blockquote></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/rfcs/ClientControlledNullability"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">NOTE: this document is not being worked on at the moment, instead the Nullability WG are currently exploring an alternative solution that addresses many of the same underlying issues in a different way: [Semantic Nullability RFC](SemanticNullability.md).</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/rfcs/1114"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">add __directive meta field parallel to __type</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#at-a-glance" class="table-of-contents__link toc-highlight">At a glance</a></li><li><a href="#timeline" class="table-of-contents__link toc-highlight">Timeline</a></li><li><a href="#error-propagation" class="table-of-contents__link toc-highlight">Error propagation</a><ul><li><a href="#complication-1-partial-success" class="table-of-contents__link toc-highlight">Complication 1: partial success</a></li><li><a href="#complication-2-nullable-epidemic" class="table-of-contents__link toc-highlight">Complication 2: nullable epidemic</a></li><li><a href="#complication-3-normalized-caching" class="table-of-contents__link toc-highlight">Complication 3: normalized caching</a></li></ul></li><li><a href="#the-nullability-working-group" class="table-of-contents__link toc-highlight">The Nullability Working Group</a><ul><li><a href="#client-controlled-nullability" class="table-of-contents__link toc-highlight">Client-controlled nullability</a></li><li><a href="#true-nullability-schema" class="table-of-contents__link toc-highlight">True nullability schema</a></li></ul></li><li><a href="#disabling-error-propagation" class="table-of-contents__link toc-highlight">Disabling error propagation</a><ul><li><a href="#semantic-nullability" class="table-of-contents__link toc-highlight">Semantic nullability</a></li></ul></li><li><a href="#-a-graphql-should-be-able-to-indicate-which-nullable-fields-should-become-non-nullable-when-error-propagation-is-disabled" class="table-of-contents__link toc-highlight">🎯 A. GraphQL should be able to indicate which nullable fields should become non-nullable when error propagation is disabled</a></li><li><a href="#-b-existing-executable-documents-should-retain-validity-and-meaning" class="table-of-contents__link toc-highlight">🎯 B. Existing executable documents should retain validity and meaning</a></li><li><a href="#-c-unadorned-type-should-mean-nullable" class="table-of-contents__link toc-highlight">🎯 C. Unadorned type should mean nullable</a></li><li><a href="#-d-syntax-should-be-obvious-to-programmers" class="table-of-contents__link toc-highlight">🎯 D. Syntax should be obvious to programmers</a></li><li><a href="#-e-syntax-used-in-sdl-and-in-executable-documents-should-be-consistent-with-sdl" class="table-of-contents__link toc-highlight">🎯 E. Syntax used in SDL and in executable documents should be consistent with SDL</a></li><li><a href="#-f-alternative-syntaxes-should-not-cause-confusion" class="table-of-contents__link toc-highlight">🎯 F. Alternative syntaxes should not cause confusion</a></li><li><a href="#-g-error-propagation-boundaries-should-not-change-in-existing-executable-documents" class="table-of-contents__link toc-highlight">🎯 G. Error propagation boundaries should not change in existing executable documents</a></li><li><a href="#-h-implementation-and-spec-simplicity" class="table-of-contents__link toc-highlight">🎯 H. Implementation and spec simplicity</a></li><li><a href="#-i-syntax-used-in-executable-documents-should-be-unchanged" class="table-of-contents__link toc-highlight">🎯 I. Syntax used in executable documents should be unchanged</a></li><li><a href="#-j-type-reasoning-should-remain-local" class="table-of-contents__link toc-highlight">🎯 J. Type reasoning should remain local</a></li><li><a href="#-k-introspection-must-be-backwards-compatible" class="table-of-contents__link toc-highlight">🎯 K. Introspection must be backwards compatible</a></li><li><a href="#-l-general-graphql-consumers-should-only-need-to-think-about-nullable-vs-non-nullable" class="table-of-contents__link toc-highlight">🎯 L. General GraphQL consumers should only need to think about nullable vs non-nullable</a></li><li><a href="#-m-the-sdl-should-have-exactly-one-form-used-by-all-producers-and-consumers" class="table-of-contents__link toc-highlight">🎯 M. The SDL should have exactly one form used by all producers and consumers</a></li><li><a href="#-n-the-solution-should-add-value-even-with-error-propagation-enabled" class="table-of-contents__link toc-highlight">🎯 N. The solution should add value even with error propagation enabled</a></li><li><a href="#-o-should-not-have-breaking-changes-for-existing-executable-documents" class="table-of-contents__link toc-highlight">🎯 O. Should not have breaking changes for existing executable documents</a></li><li><a href="#-p-the-solution-should-result-in-users-marking-all-semantically-non-null-fields-as-such" class="table-of-contents__link toc-highlight">🎯 P. The solution should result in users marking all semantically non-null fields as such</a></li><li><a href="#-q-migrating-the-unadorned-output-type-to-other-forms-of-nullability-should-be-non-breaking" class="table-of-contents__link toc-highlight">🎯 Q. Migrating the unadorned output type to other forms of nullability should be non-breaking</a></li><li><a href="#-r-semantic-nullability-should-only-impact-outputs-not-inputs" class="table-of-contents__link toc-highlight">🎯 R. Semantic nullability should only impact outputs, not inputs</a></li><li><a href="#-x-title" class="table-of-contents__link toc-highlight">🎯 X. Title</a></li><li><a href="#-1-new-semantic-non-null-type-represented-by-" class="table-of-contents__link toc-highlight">💡 1. New &quot;Semantic Non-Null&quot; type, represented by <code>*</code></a><ul><li><a href="#-variations" class="table-of-contents__link toc-highlight">🎲 Variations</a></li><li><a href="#️-evaluation" class="table-of-contents__link toc-highlight">⚖️ Evaluation</a></li></ul></li><li><a href="#-2-strict-semantic-nullability" class="table-of-contents__link toc-highlight">💡 2. &quot;Strict Semantic Nullability&quot;</a><ul><li><a href="#️-evaluation-1" class="table-of-contents__link toc-highlight">⚖️ Evaluation</a></li></ul></li><li><a href="#-3-new-semantic-non-null-type-usurping--syntax" class="table-of-contents__link toc-highlight">💡 3. New &quot;Semantic Non-Null&quot; type, usurping <code>!</code> syntax</a><ul><li><a href="#️-evaluation-2" class="table-of-contents__link toc-highlight">⚖️ Evaluation</a></li></ul></li><li><a href="#-4-new-semantic-non-null-type-with--used-for-nullable-types" class="table-of-contents__link toc-highlight">💡 4. New &quot;Semantic Non-Null&quot; type, with <code>?</code> used for nullable types</a><ul><li><a href="#️-evaluation-3" class="table-of-contents__link toc-highlight">⚖️ Evaluation</a></li></ul></li><li><a href="#-5-use-non-null-in-semantically-non-nullable-places-and-encourage-disabling-error-propagation" class="table-of-contents__link toc-highlight">💡 5. Use non-null in semantically non-nullable places and encourage disabling error propagation</a><ul><li><a href="#️-evaluation-4" class="table-of-contents__link toc-highlight">⚖️ Evaluation</a></li></ul></li><li><a href="#-6-semanticnonnull-directive" class="table-of-contents__link toc-highlight">💡 6. <code>@semanticNonNull</code> directive</a><ul><li><a href="#️-evaluation-5" class="table-of-contents__link toc-highlight">⚖️ Evaluation</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 Benjie Gillam; all rights reserved. RFC pages pull content from public GitHub issues/PRs/files/etc; this content remains owned its various authors.</div></div></div></footer></div>
 </body>
 </html>
