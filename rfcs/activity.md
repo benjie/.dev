@@ -8,6 +8,16 @@ image: /img/rfc_tracker.png
 
 The below is an aggregate overview of the latest activity across all RFCs. Note that it's _roughly_ in cronological order, but some dates are less accurate than others (e.g. commit timestamps are to the second, whereas working groups are generally to the month...).
 
+- [#860](/rfcs/860 "Prevent @skip and @include on root subscription selection set / RFC2"): **Added to [2025-03-06 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/03-Mar/06-wg-primary.md)**
+- [#860](/rfcs/860 "Prevent @skip and @include on root subscription selection set / RFC2"): **2 commits pushed** on 2025-02-26:
+  - [Merge branch 'main' into subscription-single-root-field](https://github.com/graphql/graphql-spec/commit/10e6a5e9a754cb2fd0646aefe7aafa1b175e7013) by [@benjie](https://github.com/benjie)
+  - [Fix algorithm format](https://github.com/graphql/graphql-spec/commit/c22c75d9fb60938cf370eb4de718ccbaf0847ab9) by [@benjie](https://github.com/benjie)
+- [ClientControlledNullability](/rfcs/ClientControlledNullability "Client Controlled Nullability / RFC0"): **[RFC document updated](https://github.com/graphql/graphql-wg/blob/bc70c2c1aa125456449473a0b6d377462141fe2b/rfcs/ClientControlledNullability.md)** on 2025-02-24 by Martin Bonnin
+- [SemanticNullability](/rfcs/SemanticNullability "Semantic Nullability / RFC0"): **[RFC document updated](https://github.com/graphql/graphql-wg/blob/36aff80993c5e4453274e9ed42ebce5e704971b5/rfcs/SemanticNullability.md)** on 2025-02-22 by Benjie
+- [SemanticNullability](/rfcs/SemanticNullability "Semantic Nullability / RFC0"): **[RFC document updated](https://github.com/graphql/graphql-wg/blob/cd807eb3d6cb7d21616d98d71285dbf33facc7a1/rfcs/SemanticNullability.md)** on 2025-02-22 by Benjie
+- [SemanticNullability](/rfcs/SemanticNullability "Semantic Nullability / RFC0"): **[RFC document updated](https://github.com/graphql/graphql-wg/blob/3ff9ab3a1cecf70e1d571838bc5358c2187a09f1/rfcs/SemanticNullability.md)** on 2025-02-20 by Benjie
+- [SemanticNullability](/rfcs/SemanticNullability "Semantic Nullability / RFC0"): **[RFC document updated](https://github.com/graphql/graphql-wg/blob/93aa905f39d3be8bbe74dfad7964b05925933bd0/rfcs/SemanticNullability.md)** on 2025-02-20 by Benjie
+- [SemanticNullability](/rfcs/SemanticNullability "Semantic Nullability / RFC0"): **[RFC document updated](https://github.com/graphql/graphql-wg/blob/d3477790f7d0fddb79c58d799279f265e15768b6/rfcs/SemanticNullability.md)** on 2025-02-20 by Martin Bonnin
 - [SemanticNullability](/rfcs/SemanticNullability "Semantic Nullability / RFC0"): **[RFC document updated](https://github.com/graphql/graphql-wg/blob/b3d32a65ff9aaf944c9e733fdc43702aaf064cee/rfcs/SemanticNullability.md)** on 2025-02-17 by Benjie
 - [SemanticNullability](/rfcs/SemanticNullability "Semantic Nullability / RFC0"): **[RFC document updated](https://github.com/graphql/graphql-wg/blob/2a09600d6c757b21e05560958b8fc68882581cf3/rfcs/SemanticNullability.md)** on 2025-02-17 by Alex Reilly
 - [SemanticNullability](/rfcs/SemanticNullability "Semantic Nullability / RFC0"): **[RFC document updated](https://github.com/graphql/graphql-wg/blob/8f2f34308a1ba7abd49199595ec29ffd0d9f92a1/rfcs/SemanticNullability.md)** on 2025-02-17 by Martin Bonnin

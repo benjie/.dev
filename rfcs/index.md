@@ -17,7 +17,7 @@ be helpful for people to keep track of the various RFCs.
 Ping `@benjie` on the [GraphQL Discord](https://discord.graphql.org) (`#wg`
 channel) and ask for him to run an update!
 
-Last updated: 2025-02-20T09:57:53.461Z
+Last updated: 2025-02-27T10:10:54.466Z
 
 :::
 
@@ -27,6 +27,7 @@ Last updated: 2025-02-20T09:57:53.461Z
 <!-- prettier-ignore -->
 | RFC | Champion | Title | Latest |
 | --- | --- | --- | --- |
+| [#860](/rfcs/860 "Prevent @skip and @include on root subscription selection set / RFC2") | [@benjie](https://github.com/benjie) | [Prevent @skip and @include on root subscription selection set](/rfcs/860) | **Added to [2025-03-06 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/03-Mar/06-wg-primary.md)** [_(more)_](/rfcs/860#timeline) |
 | [#976](/rfcs/976 "Add 'extensions' to request / RFC2") | [@benjie](https://github.com/benjie) | [Add 'extensions' to request](/rfcs/976) | **Added to [2025-01-09 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/01-Jan/09-wg-primary.md)** [_(more)_](/rfcs/976#timeline) |
 | [#1053](/rfcs/1053 "Implementations may not deprecate a field that the interface hasn't deprecated / RFC2") | [@benjie](https://github.com/benjie) | [Implementations may not deprecate a field that the interface hasn't deprecated](/rfcs/1053) | **Added to [2025-01-09 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/01-Jan/09-wg-primary.md)** [_(more)_](/rfcs/1053#timeline) |
 | [#794](/rfcs/794 "Schema Coordinates / RFC2") | [@magicmark](https://github.com/magicmark) | [Schema Coordinates](/rfcs/794) | **2 commits pushed**: [(latest)](https://github.com/graphql/graphql-spec/commit/07b3bbdac29f23445be4084431d9aff7bebbf57b) on 2025-01-02 by [@magicmark](https://github.com/magicmark) [_(more)_](/rfcs/794#timeline) |
@@ -36,7 +37,6 @@ Last updated: 2025-02-20T09:57:53.461Z
 | [#1063](/rfcs/1063 "Type system ordering of: object interfaces, directive arguments, input object fields, enum values / RFC2") | [@benjie](https://github.com/benjie) | [Type system ordering of: object interfaces, directive arguments, input object fields, enum values](/rfcs/1063) | **Commit pushed**: [Clarify wording](https://github.com/graphql/graphql-spec/commit/da69309e7ad69c37aa62397345fb967a98990af0) on 2024-07-01 by [@benjie](https://github.com/benjie) [_(more)_](/rfcs/1063#timeline) |
 | [#1092](/rfcs/1092 "Recommend that order of unordered collections is maintained where possible / RFC2") | [@benjie](https://github.com/benjie) | [Recommend that order of unordered collections is maintained where possible](/rfcs/1092) | **Added to [2024-06-06 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2024/06-Jun/06-wg-primary.md)** [_(more)_](/rfcs/1092#timeline) |
 | [#793](/rfcs/793 "Default value coercion rules / RFC2") | [@benjie](https://github.com/benjie) | [Default value coercion rules](/rfcs/793) | **Added to [2023-12-07 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2023/12-Dec/07-wg-primary.md)** [_(more)_](/rfcs/793#timeline) |
-| [#860](/rfcs/860 "Prevent @skip and @include on root subscription selection set / RFC2") | [@benjie](https://github.com/benjie) | [Prevent @skip and @include on root subscription selection set](/rfcs/860) | **Added to [2023-12-07 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2023/12-Dec/07-wg-primary.md)** [_(more)_](/rfcs/860#timeline) |
 
 
 
@@ -69,13 +69,13 @@ Last updated: 2025-02-20T09:57:53.461Z
 <!-- prettier-ignore -->
 | RFC | Champion | Title | Latest |
 | --- | --- | --- | --- |
-| [SemanticNulla…](/rfcs/SemanticNullability "Semantic Nullability / RFC0") | - | [Semantic Nullability](/rfcs/SemanticNullability) | **[RFC document updated](https://github.com/graphql/graphql-wg/blob/b3d32a65ff9aaf944c9e733fdc43702aaf064cee/rfcs/SemanticNullability.md)** on 2025-02-17 by Benjie [_(more)_](/rfcs/SemanticNullability#timeline) |
+| [ClientControl…](/rfcs/ClientControlledNullability "Client Controlled Nullability / RFC0") | - | [NOTE: this document is not being worked on at the moment, instead the Nullability WG are currently exploring an alternative solution that addresses many of the same underlying issues in a different way: &#x5b;Semantic Nullability RFC&#x5d;(SemanticNullability.md).](/rfcs/ClientControlledNullability) | **[RFC document updated](https://github.com/graphql/graphql-wg/blob/bc70c2c1aa125456449473a0b6d377462141fe2b/rfcs/ClientControlledNullability.md)** on 2025-02-24 by Martin Bonnin [_(more)_](/rfcs/ClientControlledNullability#timeline) |
+| [SemanticNulla…](/rfcs/SemanticNullability "Semantic Nullability / RFC0") | - | [Semantic Nullability](/rfcs/SemanticNullability) | **[RFC document updated](https://github.com/graphql/graphql-wg/blob/36aff80993c5e4453274e9ed42ebce5e704971b5/rfcs/SemanticNullability.md)** on 2025-02-22 by Benjie [_(more)_](/rfcs/SemanticNullability#timeline) |
 | [#1114](/rfcs/1114 "add __directive meta field parallel to __type / RFC0") | [@yaacovCR](https://github.com/yaacovCR) | [add __directive meta field parallel to __type](/rfcs/1114) | **Added to [2024-11-07 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2024/11-Nov/07-wg-primary.md)** [_(more)_](/rfcs/1114#timeline) |
 | [#1057](/rfcs/1057 "Fix coercion table for list / RFC0") | [@benjie](https://github.com/benjie) | [Fix coercion table for list](/rfcs/1057) | **Added to [2024-10-03 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2024/10-Oct/03-wg-primary.md)** [_(more)_](/rfcs/1057#timeline) |
 | [DeferStream](/rfcs/DeferStream "GraphQL Defer and Stream Directives / RFC0") | - | [GraphQL Defer and Stream Directives](/rfcs/DeferStream) | **[RFC document updated](https://github.com/graphql/graphql-wg/blob/f22ea7748c6ebdf88fdbf770a8d9e41984ebd429/rfcs/DeferStream.md)** on 2024-09-19 by Rob Richard [_(more)_](/rfcs/DeferStream#timeline) |
 | [SchemaCoordin…](/rfcs/SchemaCoordinates "Schema Coordinates / RFC0") | - | [Schema Coordinates](/rfcs/SchemaCoordinates) | **[RFC document updated](https://github.com/graphql/graphql-wg/blob/6d02705dea034fb65ebc6799632adb7bd550d0aa/rfcs/SchemaCoordinates.md)** on 2024-02-08 by Benjie [_(more)_](/rfcs/SchemaCoordinates#timeline) |
 | [#1065](/rfcs/1065 "SemanticNonNull type (null only on error) / RFC0") | [@benjie](https://github.com/benjie) | [SemanticNonNull type (null only on error)](/rfcs/1065) | **Commit pushed**: [Add IsValidImplementationFieldType updates](https://github.com/graphql/graphql-spec/commit/bd038f24720b0bf9dc7d9e2eb3edf4f4498a4759) on 2024-01-03 by [@benjie](https://github.com/benjie) [_(more)_](/rfcs/1065#timeline) |
-| [ClientControl…](/rfcs/ClientControlledNullability "Client Controlled Nullability / RFC0") | - | [Client Controlled Nullability](/rfcs/ClientControlledNullability) | **[RFC document updated](https://github.com/graphql/graphql-wg/blob/ca0fc775c66ae0e31c4ed605503a2679d9390705/rfcs/ClientControlledNullability.md)** on 2023-11-28 by Benjie Gillam [_(more)_](/rfcs/ClientControlledNullability#timeline) |
 | [InputUnion](/rfcs/InputUnion "GraphQL Input Union / RFC0") | - | [GraphQL Input Union](/rfcs/InputUnion) | **[RFC document updated](https://github.com/graphql/graphql-wg/blob/ca0fc775c66ae0e31c4ed605503a2679d9390705/rfcs/InputUnion.md)** on 2023-11-28 by Benjie Gillam [_(more)_](/rfcs/InputUnion#timeline) |
 | [FeatureDiscov…](/rfcs/FeatureDiscovery "Feature Discovery / RFC0") | - | [Feature Discovery](/rfcs/FeatureDiscovery) | **[RFC document updated](https://github.com/graphql/graphql-wg/blob/5bfb8d590cc9693db1149b547d8db5041f05b731/rfcs/FeatureDiscovery.md)** on 2023-11-28 by Benjie Gillam [_(more)_](/rfcs/FeatureDiscovery#timeline) |
 | [Struct](/rfcs/Struct "Polymorphic-capable composite symmetric input/output type (&#x60;struct&#x60;) / RFC0") | - | [Polymorphic-capable composite symmetric input/output type (&#x60;struct&#x60;)](/rfcs/Struct) | **[RFC document updated](https://github.com/graphql/graphql-wg/blob/c46f67dad4154c3b693d337c815900a5c7909423/rfcs/Struct.md)** on 2023-11-28 by Benjie [_(more)_](/rfcs/Struct#timeline) |

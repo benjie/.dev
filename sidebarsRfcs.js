@@ -153,6 +153,11 @@ const sidebars = {
       items: [
         {
           type: "doc",
+          id: "860",
+          label: "860*: Prevent @skip and @include on root subscription selection set [RFC2]",
+        },
+        {
+          type: "doc",
           id: "976",
           label: "976*: Add 'extensions' to request [RFC2]",
         },
@@ -195,11 +200,6 @@ const sidebars = {
           type: "doc",
           id: "793",
           label: "793*: Default value coercion rules [RFC2]",
-        },
-        {
-          type: "doc",
-          id: "860",
-          label: "860*: Prevent @skip and @include on root subscription selection set [RFC2]",
         },
       ],
     },
@@ -279,6 +279,11 @@ const sidebars = {
       items: [
         {
           type: "doc",
+          id: "ClientControlledNullability",
+          label: "ClientControlledNullability: Client Controlled Nullability [RFC0]",
+        },
+        {
+          type: "doc",
           id: "SemanticNullability",
           label: "SemanticNullability: Semantic Nullability [RFC0]",
         },
@@ -306,11 +311,6 @@ const sidebars = {
           type: "doc",
           id: "1065",
           label: "1065*: SemanticNonNull type (null only on error) [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "ClientControlledNullability",
-          label: "ClientControlledNullability: Client Controlled Nullability [RFC0]",
         },
         {
           type: "doc",
