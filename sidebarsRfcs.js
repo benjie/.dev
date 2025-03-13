@@ -153,6 +153,16 @@ const sidebars = {
       items: [
         {
           type: "doc",
+          id: "793",
+          label: "793*: Default value coercion rules [RFC2]",
+        },
+        {
+          type: "doc",
+          id: "825",
+          label: "825*: OneOf Input Objects [RFC2]",
+        },
+        {
+          type: "doc",
           id: "860",
           label: "860*: Prevent @skip and @include on root subscription selection set [RFC2]",
         },
@@ -168,26 +178,6 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "794",
-          label: "794: Schema Coordinates [RFC2]",
-        },
-        {
-          type: "doc",
-          id: "955",
-          label: "955: Add validation rule that operation types exist [RFC2]",
-        },
-        {
-          type: "doc",
-          id: "825",
-          label: "825*: OneOf Input Objects [RFC2]",
-        },
-        {
-          type: "doc",
-          id: "1102",
-          label: "1102*: Define Data Collections used in the spec [RFC2]",
-        },
-        {
-          type: "doc",
           id: "1063",
           label: "1063*: Type system ordering of: object interfaces, directive arguments, input object fields, enum values [RFC2]",
         },
@@ -198,8 +188,23 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "793",
-          label: "793*: Default value coercion rules [RFC2]",
+          id: "1102",
+          label: "1102*: Define Data Collections used in the spec [RFC2]",
+        },
+        {
+          type: "doc",
+          id: "1081",
+          label: "1081: Fragment arguments/variables (syntax/validation/execution) [RFC2]",
+        },
+        {
+          type: "doc",
+          id: "794",
+          label: "794: Schema Coordinates [RFC2]",
+        },
+        {
+          type: "doc",
+          id: "955",
+          label: "955: Add validation rule that operation types exist [RFC2]",
         },
       ],
     },
@@ -211,8 +216,8 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          id: "1081",
-          label: "1081: Fragment arguments/variables (syntax/validation/execution) [RFC1]",
+          id: "1142",
+          label: "1142: make `includeDeprecated` non nullable [RFC1]",
         },
         {
           type: "doc",
@@ -279,13 +284,23 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          id: "ClientControlledNullability",
-          label: "ClientControlledNullability: Client Controlled Nullability [RFC0]",
+          id: "1050",
+          label: "1050*: Directive proposal for opting out of null bubbling [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "1065",
+          label: "1065*: SemanticNonNull type (null only on error) [RFC0]",
         },
         {
           type: "doc",
           id: "SemanticNullability",
           label: "SemanticNullability: Semantic Nullability [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "ClientControlledNullability",
+          label: "ClientControlledNullability: Client Controlled Nullability [RFC0]",
         },
         {
           type: "doc",
@@ -306,11 +321,6 @@ const sidebars = {
           type: "doc",
           id: "SchemaCoordinates",
           label: "SchemaCoordinates: Schema Coordinates [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "1065",
-          label: "1065*: SemanticNonNull type (null only on error) [RFC0]",
         },
         {
           type: "doc",
@@ -336,11 +346,6 @@ const sidebars = {
           type: "doc",
           id: "wg1410",
           label: "wg1410: Strict Semantic Nullability [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "1050",
-          label: "1050*: Directive proposal for opting out of null bubbling [RFC0]",
         },
         {
           type: "doc",

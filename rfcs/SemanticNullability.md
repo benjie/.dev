@@ -4,6 +4,10 @@ stage: "0"
 title: Semantic Nullability
 events:
   - type: docUpdated
+    date: 2025-03-06T18:17:49+00:00
+    href: https://github.com/graphql/graphql-wg/blob/3441a2d5eda2f7211f17f02f5a5cf7352b94f72c/rfcs/SemanticNullability.md
+    actor: Benjie
+  - type: docUpdated
     date: 2025-02-22T12:45:51+00:00
     href: https://github.com/graphql/graphql-wg/blob/36aff80993c5e4453274e9ed42ebce5e704971b5/rfcs/SemanticNullability.md
     actor: Benjie
@@ -78,6 +82,7 @@ image: /img/rfc_tracker.png
 
 ## Timeline
 
+- **[RFC document updated](https://github.com/graphql/graphql-wg/blob/3441a2d5eda2f7211f17f02f5a5cf7352b94f72c/rfcs/SemanticNullability.md)** on 2025-03-06 by Benjie
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/36aff80993c5e4453274e9ed42ebce5e704971b5/rfcs/SemanticNullability.md)** on 2025-02-22 by Benjie
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/cd807eb3d6cb7d21616d98d71285dbf33facc7a1/rfcs/SemanticNullability.md)** on 2025-02-22 by Benjie
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/3ff9ab3a1cecf70e1d571838bc5358c2187a09f1/rfcs/SemanticNullability.md)** on 2025-02-20 by Benjie
@@ -328,7 +333,7 @@ image: /img/rfc_tracker.png
 > |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|
 > | ✅               | ✅               | ✅               | ✅               | 🚫👍              | ✅        |
 > 
-> Criteria score: 🥇
+> Criteria score: 🥈
 > 
 > ## 🎯 B. Existing executable documents should retain validity and meaning
 > 
@@ -342,7 +347,7 @@ image: /img/rfc_tracker.png
 > |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|
 > | ✅               | 🚫              | ✅               | ✅               | ✅               | ✅          |
 > 
-> Criteria score: 🥇
+> Criteria score: 🥈
 > 
 > ## 🎯 C. Unadorned type should mean nullable
 > 
@@ -356,7 +361,7 @@ image: /img/rfc_tracker.png
 > |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|
 > | ✅               | 🚫              | ✅               | 🚫              | ✅               | ✅          |
 > 
-> Criteria score: 🥈
+> Criteria score: 🥉
 > 
 > ## 🎯 D. Syntax should be obvious to programmers
 > 
@@ -370,7 +375,7 @@ image: /img/rfc_tracker.png
 > |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|
 > | 🚫              | ✅               | ✅               | ✅              | ⚠️               | ✅          |
 > 
-> Criteria score: 🥈
+> Criteria score: 🥇
 > 
 > ## 🎯 E. Syntax used in SDL and in executable documents should be consistent with SDL
 > 
@@ -413,7 +418,7 @@ image: /img/rfc_tracker.png
 > | --------------- | --------------- | --------------- | --------------- |-----------------|-----------------|
 > | ✅              | ✅              | ✅              | ✅              | 🚫              | ✅          |
 > 
-> Criteria score: 🥇
+> Criteria score: 🥈
 > 
 > * ✂️ Objection: proposal to lower the score to 🥈. With enough advance notice and a clear upgrade
 > path for legacy apps, the tradeoff might be acceptable.
@@ -428,7 +433,7 @@ image: /img/rfc_tracker.png
 > | --------------- | --------------- | --------------- | --------------- |-----------------|-----------------|
 > | ✅              | 🚫              | 🚫              | 🚫              | ✅             | ✅          |
 > 
-> Criteria score: 🥈
+> Criteria score: 🥇
 > 
 > ## 🎯 I. Syntax used in executable documents should be unchanged
 > 
@@ -443,7 +448,7 @@ image: /img/rfc_tracker.png
 > |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|
 > | ✅               | ❔              | ✅               | 🚫               | ✅               | ✅          |
 > 
-> Criteria score: 🥇
+> Criteria score: 🥈
 > 
 > ## 🎯 J. Type reasoning should remain local
 > 
@@ -469,7 +474,7 @@ image: /img/rfc_tracker.png
 > |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|
 > | ✅               | ❔              | ✅               | ❔               | ✅               | ✅          |
 > 
-> Criteria score: 🥇
+> Criteria score: 🥈
 > 
 > ## 🎯 L. General GraphQL consumers should only need to think about nullable vs non-nullable
 > 
@@ -485,7 +490,7 @@ image: /img/rfc_tracker.png
 > |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|
 > | ✅               | ❔              | ✅               | ❔               | ✅               | ⚠️          |
 > 
-> Criteria score: 🥇
+> Criteria score: 🥈
 > 
 > ## 🎯 M. The SDL should have exactly one form used by all producers and consumers
 > 
@@ -517,7 +522,7 @@ image: /img/rfc_tracker.png
 > |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|
 > | ✅               | ✅              | ✅               | ✅               | 🚫               | ✅          |
 > 
-> Criteria score: 🥇
+> Criteria score: 🥉
 > 
 > ## 🎯 O. Should not have breaking changes for existing executable documents
 > 
@@ -608,7 +613,7 @@ image: /img/rfc_tracker.png
 > |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|
 > | ✅               | ❔              | ✅               | 🚫               | ✅               | ✅          |
 > 
-> Criteria score: 🥇
+> Criteria score: 🥈
 > 
 > \<!--
 > 
