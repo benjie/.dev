@@ -284,6 +284,11 @@ const sidebars = {
       items: [
         {
           type: "doc",
+          id: "DisableErrorPropagationDirective",
+          label: "DisableErrorPropagationDirective: Disable Error Propagation Directive [RFC0]",
+        },
+        {
+          type: "doc",
           id: "1050",
           label: "1050*: Directive proposal for opting out of null bubbling [RFC0]",
         },

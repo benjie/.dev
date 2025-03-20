@@ -17,6 +17,7 @@ The below is an aggregate overview of the latest activity across all RFCs. Note 
 - [#1092](/rfcs/1092 "Recommend that order of unordered collections is maintained where possible / RFC2"): **Added to [2025-04-03 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/04-Apr/03-wg-primary.md)**
 - [#1102](/rfcs/1102 "Define Data Collections used in the spec / RFC2"): **Added to [2025-04-03 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/04-Apr/03-wg-primary.md)**
 - [#1142](/rfcs/1142 "make &#x60;includeDeprecated&#x60; non nullable / RFC1"): **Added to [2025-04-03 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/04-Apr/03-wg-primary.md)**
+- [DisableErrorPropagationDirective](/rfcs/DisableErrorPropagationDirective "Disable Error Propagation Directive / RFC0"): **[RFC document created](https://github.com/graphql/graphql-wg/blob/7032c7f032c0ed9776cab3ac4b52037116782d2f/rfcs/DisableErrorPropagationDirective.md)** on 2025-03-19 by Alex Reilly
 - [#1050](/rfcs/1050 "Directive proposal for opting out of null bubbling / RFC0"): **4 commits pushed** on 2025-03-10:
   - [Rename directive to preferred name](https://github.com/graphql/graphql-spec/commit/107e9fd2974c862e44235c77191a4f788b7ed544) by [@benjie](https://github.com/benjie)
   - [Add execution logic referencing the directive](https://github.com/graphql/graphql-spec/commit/ac3a6ca9788d5c1ef7e95707ebe014ccf17f9d42) by [@benjie](https://github.com/benjie)
