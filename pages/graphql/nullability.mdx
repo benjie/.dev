@@ -1,0 +1,273 @@
+---
+type: page
+title: "Nullability"
+description: "The past and future of GraphQL nullability, according to Benjie"
+tag: graphql
+author: Benjie
+breadcrumb: false
+sidebar_position: 35
+---
+
+import LegacyAppWidgetError from "./legacy-app-widget-error.png";
+import LegacyAppFullscreenError from "./legacy-app-fullscreen-error.png";
+import EveryonesHappy from "./everyones-happy.png";
+
+### Nullable by default
+
+_By default data doesn't exist._
+
+In mathematics and in many programming languages we use `null` to represent data
+that doesn't exist (let's not get into JavaScript...).
+
+SQL factored this knowledge into its design, so `int` in SQL means "an integer
+or null"; to represent just an integer you would use `int not null`.
+
+GraphQL is similar, the named types are nullable. To narrow a type to exclude
+null, we add a "non null" wrapper indicated by an exclamation point:
+
+```graphql title="Initial schema"
+type User {
+  name: String! # Definitely a string, never null
+}
+type Query {
+  you: User! # Definitely a User, never null
+}
+```
+
+### Partial success
+
+Resiliency was a key design goal of GraphQL. When working on the newsfeed,
+Facebook wanted to ensure that any temporary interruptions in one part of the
+system would not impact on other parts and cause user outages. Instead, they
+wanted GraphQL to enable "partial success" where as much data as possible would
+be rendered to the user.
+
+To enable this resiliency, when GraphQL meets an error it notes where it was,
+adds it to the "errors" list, and replaces the output data with `null`:
+
+```graphql title="Query type"
+type Query {
+  you: User!
+  me: User
+}
+```
+
+```graphql title="Query"
+query Q {
+  you {
+    name
+  }
+  me {
+    name
+  }
+}
+```
+
+```json title="Response"
+{
+  "data": {
+    "you": {
+      "name": "Jo"
+    },
+    "me": null // < An error occurred, see `errors`
+  },
+  "errors": [
+    {
+      "path": ["me"],
+      "message": "Not logged in"
+    }
+  ]
+}
+```
+
+But what if a non-null field errors? If we placed a null in that position,
+wouldn't that be a contradiction?
+
+```graphql title="Query type"
+type Query {
+  you: User!
+  me: User! # How does non-null interact with errors?
+}
+```
+
+### Error propagation (aka null bubbling)
+
+To keep the non-null promise, GraphQL decided to perform a behavior it terms
+"error propagation" but most people refer to as "null bubbling" - it would throw
+the error and catch it at the next nullable position (or the operation root if
+no such position existed).
+
+The end result: GraphQL will destroy result data outside of the field that
+failed in order to keep non-null promises. No wonder Facebook call the non-null
+type "**kills parent on exception**"!
+
+```json title="Response"
+{
+  "data": null,
+  //     👆 All of the data was destroyed, even the unrelated `you` field!
+  "errors": [
+    {
+      "path": ["me"],
+      "message": "Not logged in"
+    }
+  ]
+}
+```
+
+### Schema best practice?
+
+So when designing schemas it has been best practice to make fields nullable
+unless we're fairly certain they won't error. This allows the client to retain
+its resilience to errors, by rendering partially successful data.
+
+But having null checks throughout our client sucks!
+
+```tsx
+if (data.me) {
+  return <User user={data.me} />;
+} else {
+  // TODO: determine if this was an error null,
+  // or just a non-existant user.
+  return <NotFoundOrError />;
+}
+```
+
+### Handling errors on the client
+
+[`graphql-toe`](https://github.com/graphile/graphql-toe) is an npm module that
+uses getters to reproduce server errors on the client by throwing when an
+errored field is accessed:
+
+```ts
+import { toe } from "graphql-toe";
+import { gql, request } from "graffle";
+
+const response = await request("/graphql", document);
+const dataAndErrors = toe(response);
+
+dataAndErrors.you; // Returns {"name": "Jo"}
+dataAndErrors.me; // ‼️ throws Error("Log in!") ‼️
+```
+
+`graphql-toe` can be integrated into many frameworks in the JS ecosystem (Apollo
+Client, urql, graffle, `fetch()`), but other frameworks may have their own
+native error handling (e.g. Relay has the
+[`@throwOnFieldError` directive](https://relay.dev/docs/guides/throw-on-field-error-directive/)
+which can be applied to fragments).
+
+By recombining `errors` back into `data` we no longer need GraphQL to bubble
+nulls to keep its promise; since a `null` can never be read from an errored
+position.
+
+We call clients that handle errors in this way "error handling clients".
+
+:::tip Error handling clients are the future
+
+Handling errors in this way allows your developers to use traditional error
+handling mechanisms to handle errors, whether that be `try`/`catch` or
+`<ErrorBoundary />` or whatever your language or framework supports.
+
+You can likely make your existing client an error-handling client today by
+integrating `graphql-toe`, it's only 512 bytes gzipped! (You can also just
+integrate the source code, it's less than 100 LOC in TypeScript and is MIT
+licensed.)
+
+:::
+
+### Disabling error propagation and reflecting true nullability
+
+So, if the client were to take responsibility for error handling by disabling
+null bubbling and implementing a "throw on error" or similar behavior, we could
+reflect the data's true nullability in the schema:
+
+```graphql title="Query type"
+type Query {
+  you: User!
+  me: User! # True nullability; client handles errors
+}
+```
+
+Hooray for fewer null checks!
+
+```tsx title="Before 😞"
+if (data.me) {
+  return <User user={data.me} />;
+} else {
+  // TODO: determine if this was an error null,
+  // or just a non-existant user.
+  return <NotFoundOrError />;
+}
+```
+
+```tsx title="After 🤩"
+return <User user={data.me} />;
+```
+
+:::tip Try it today!
+
+Some GraphQL engines already support clients disabling error propagation via the
+`@experimental_disableErrorPropagation` operation directive!
+
+:::
+
+### Supporting legacy clients
+
+But what does this mean for our existing deployed applications, for example
+mobile apps on legacy devices that can no longer be updated? This is certainly a
+critical concern for organizations such as Facebook!
+
+If we introduce non-null in more places, this would have the effect of making
+existing deployed applications less resilient to errors since errors will now
+destroy even more of the returned data. For example, an application such as this
+one that handles errors at the widget level:
+
+<img
+  alt="A legacy mobile application rendering many widgets, one of which has errored"
+  src={LegacyAppWidgetError}
+  style={{ maxWidth: "250px" }}
+/>
+
+might result in a full page error if we simply marked the type as non-nullable:
+
+<img
+  alt="A legacy mobile application rendering a full-page error"
+  src={LegacyAppFullscreenError}
+  style={{ maxWidth: "250px" }}
+/>
+
+_(Thanks to v0 for generating these app mockups for me!)_
+
+### The "transitional non-null" type
+
+To support these legacy apps, I propose a "**transitional** non-null" type,
+represented by the wildcard symbol `*`, that changes to either be nullable (`T*`
+&rArr; `T`) for legacy apps (those with error propagation enabled) or
+non-nullable (`T*` &rArr; `T!`) for our future "error handling clients".
+
+<img
+  alt="Legacy and future apps side by side, handling errors gracefully thanks to transitional non-null type"
+  src={EveryonesHappy}
+  style={{ maxWidth: "500px" }}
+/>
+
+:::tip Use `graphql-sock` to convert these types
+
+`graphql-sock` is an npm module that provides a CLI capable of converting a
+"semantic nullability" schema (that is to say one that supports the "semantic
+non null" aka "transitional non null" type) into a schema with traditional
+syntax, either by removing the semantic non-nullability for legacy clients
+(`semantic-to-nullable`) or by replacing transitional/semantic non-null with the
+traditional (strict) non-null for error-handling clients (`semantic-to-strict`).
+
+Use it today to support both your legacy (`semantic-to-nullable`) and
+error-handling (`semantic-to-strict`) applications' codegen and similar needs.
+
+:::
+
+### New app? No new syntax!
+
+The best part about this? If you're starting a new project from scratch and only
+want to support error-handling clients, you'll never need to add this symbol to
+your schema or anywhere else! But with it, existing schemas can allow new apps
+to leverage true nullability in the schema, without breaking existing clients.
+Everybody wins!
