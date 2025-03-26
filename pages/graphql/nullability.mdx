@@ -12,23 +12,29 @@ import LegacyAppWidgetError from "./legacy-app-widget-error.png";
 import LegacyAppFullscreenError from "./legacy-app-fullscreen-error.png";
 import EveryonesHappy from "./everyones-happy.png";
 
-### Nullable by default
+> _This article reflects Benjie's opinions on the past and the future of
+> Nullability in GraphQL; but note that these are merely opinions._
 
-_By default data doesn't exist._
+### By default, data doesn't exist
 
 In mathematics and in many programming languages we use `null` to represent data
 that doesn't exist (let's not get into JavaScript...).
 
-SQL factored this knowledge into its design, so `int` in SQL means "an integer
-or null"; to represent just an integer you would use `int not null`.
+The original SQL standard factored this knowledge into its design, so an `int`
+column in SQL means "an integer or null". To represent a non-nullable integer
+you would add a type narrowing constraint, such as `int not null`. This pattern
+of the type including null unless otherwise constrained is called "**nullable by
+default**".
 
-GraphQL is similar, the named types are nullable. To narrow a type to exclude
-null, we add a "non null" wrapper indicated by an exclamation point:
+GraphQL is similar, types are nullable by default. To narrow a type to exclude
+null, we add a "non null" wrapper, indicated in the GraphQL language by an
+exclamation point:
 
 ```graphql title="Initial schema"
 type User {
   name: String! # Definitely a string, never null
 }
+
 type Query {
   you: User! # Definitely a User, never null
 }
@@ -159,9 +165,9 @@ By recombining `errors` back into `data` we no longer need GraphQL to bubble
 nulls to keep its promise; since a `null` can never be read from an errored
 position.
 
-We call clients that handle errors in this way "error handling clients".
+We call clients that handle errors in this way "error-handling clients".
 
-:::tip Error handling clients are the future
+:::tip Error-handling clients are the future
 
 Handling errors in this way allows your developers to use traditional error
 handling mechanisms to handle errors, whether that be `try`/`catch` or
