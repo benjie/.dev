@@ -59,7 +59,7 @@ events:
     date: 2025-02-15T12:58:27+00:00
     href: https://github.com/graphql/graphql-wg/blob/7535894a6deec5a618de02aaa16fdcf83a4e09ed/rfcs/SemanticNullability.md
     actor: Benjie
-related: 1065, wg1410
+related: 1065, wg1410, wg1700
 shortname: Semantic Nullability
 image: /img/rfc_tracker.png
 ---
@@ -73,6 +73,7 @@ image: /img/rfc_tracker.png
 - **Related**:
   - [#1065](/rfcs/1065 "SemanticNonNull type (null only on error) / RFC0") (SemanticNonNull type (null only on error))
   - [wg#1410](/rfcs/wg1410 "Strict Semantic Nullability / RFC0") (Strict Semantic Nullability)
+  - [wg#1700](/rfcs/wg1700 "Lee's new nullability &#x26; error propagation proposal / RFC0") (Lee's new nullability &#x26; error propagation proposal)
 
 <!-- BEGIN_CUSTOM_TEXT -->
 

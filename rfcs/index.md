@@ -17,7 +17,7 @@ be helpful for people to keep track of the various RFCs.
 Ping `@benjie` on the [GraphQL Discord](https://discord.graphql.org) (`#wg`
 channel) and ask for him to run an update!
 
-Last updated: 2025-03-20T09:16:32.200Z
+Last updated: 2025-03-27T19:13:58.913Z
 
 :::
 
@@ -70,6 +70,7 @@ Last updated: 2025-03-20T09:16:32.200Z
 <!-- prettier-ignore -->
 | RFC | Champion | Title | Latest |
 | --- | --- | --- | --- |
+| [wg#1700](/rfcs/wg1700 "Lee's new nullability &#x26; error propagation proposal / RFC0") | [@leebyron](https://github.com/leebyron) | [Lee's new nullability &#x26; error propagation proposal](/rfcs/wg1700) | **[WG discussion](https://github.com/graphql/graphql-wg/discussions/1700) created** on 2025-03-26 by leebyron [_(more)_](/rfcs/wg1700#timeline) |
 | [DisableErrorP…](/rfcs/DisableErrorPropagationDirective "Disable Error Propagation Directive / RFC0") | - | [Disable Error Propagation Directive](/rfcs/DisableErrorPropagationDirective) | **[RFC document created](https://github.com/graphql/graphql-wg/blob/7032c7f032c0ed9776cab3ac4b52037116782d2f/rfcs/DisableErrorPropagationDirective.md)** on 2025-03-19 by Alex Reilly [_(more)_](/rfcs/DisableErrorPropagationDirective#timeline) |
 | [#1050](/rfcs/1050 "Directive proposal for opting out of null bubbling / RFC0") | [@benjie](https://github.com/benjie) | [Directive proposal for opting out of null bubbling](/rfcs/1050) | **4 commits pushed**: [(latest)](https://github.com/graphql/graphql-spec/commit/f844dabcd05508d2f042757540e885aca439a3f2) on 2025-03-10 by [@benjie](https://github.com/benjie) [_(more)_](/rfcs/1050#timeline) |
 | [#1065](/rfcs/1065 "SemanticNonNull type (null only on error) / RFC0") | [@benjie](https://github.com/benjie) | [SemanticNonNull type (null only on error)](/rfcs/1065) | **6 commits pushed**: [(latest)](https://github.com/graphql/graphql-spec/commit/5e6ebb2b6e7d98a5ae9979c0a6a2f4086485ccdd) on 2025-03-10 by [@benjie](https://github.com/benjie) [_(more)_](/rfcs/1065#timeline) |

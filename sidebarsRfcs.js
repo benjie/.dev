@@ -284,6 +284,11 @@ const sidebars = {
       items: [
         {
           type: "doc",
+          id: "wg1700",
+          label: "wg1700: Lee's new nullability & error propagation proposal [RFC0]",
+        },
+        {
+          type: "doc",
           id: "DisableErrorPropagationDirective",
           label: "DisableErrorPropagationDirective: Disable Error Propagation Directive [RFC0]",
         },
