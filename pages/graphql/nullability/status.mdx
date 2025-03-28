@@ -1,0 +1,266 @@
+---
+type: page
+title: "WG Status"
+description: "A rough summary of the status of the nullability WG"
+tag: graphql
+author: Benjie
+breadcrumb: false
+---
+
+A rough overview of the current state of the nullability proposals from the
+nullability working group.
+
+**Disclaimer**: this is based on Benjie's opinions
+
+## Disabling error propagation
+
+_Last updated: 2025-03-28_
+
+Generally agreed that the future of GraphQL in one in which error propagation is
+disabled. Current thought is it should be a request option.
+
+- Originally proposed as a directive
+  ([spec edits](https://github.com/graphql/graphql-spec/pull/1050)) - currently
+  `@disableErrorPropagation`
+- Currently, Benjie proposes this should be a request (in the GraphQL sense, not
+  necessarily the HTTP sense) parameter:
+  https://github.com/graphql/graphql-spec/pull/1153
+- There's discussion around whether clients that reject the entire response on
+  any error should get their own "behavior", e.g. `onError: "ABORT"` - this
+  would increase server efficiency, and prevent sending unnecessary data over
+  the wire that the client would ignore anyway.
+
+The `@experimental_disableErrorPropagation` directive can be used to experiment
+with disabling error propagation without any further impact, and will be
+available in the next releases of:
+
+- [graphql-js](https://github.com/graphql/graphql-js/pull/4348)
+- [graphql-java](https://github.com/graphql-java/graphql-java/pull/3772)
+
+Similarly the `onError` request property can be adopted without impact, and is
+available via:
+
+- [graphql-js](https://github.com/graphql/graphql-js/pull/4364)
+  `graphql@canary-pr-4364`
+
+## Semantic nullability
+
+**THIS IS BENJIE'S OPINION, FOR TRUE STATUS SEE
+[THE RFC DOCUMENT](https://github.com/graphql/graphql-wg/blob/main/rfcs/SemanticNullability.md)!**
+
+_Last updated: 2025-03-28_
+
+### Specification
+
+To deal with the legacy clients problem, the working group has generally
+solidified around the concept of a "semantic non-nullable" type that can be
+thought of as "null only on error" - i.e. it will never be `null` unless an
+error has occurred (and been noted in the `"errors"` list).
+
+However, how this is presented via the SDL is under heavy discussion. There were
+[7 solutions](https://github.com/graphql/graphql-wg/blob/main/rfcs/SemanticNullability.md#-possible-solutions)
+discussed, but currently solutions 1, 6 and 7 are under discussion
+
+1.  **Semantic non-null, represented by `*`**
+
+    - **Champion**: Benjie
+    - **Status**: Preferred by Benjie, outdated.
+    - **Spec edits**: https://github.com/graphql/graphql-spec/pull/1065
+    - **Reference implementation**:
+      https://github.com/graphql/graphql-js/pull/4192 - available via
+      `graphql@canary-pr-4192`
+    - An outdated version of what is proposed above.
+    - **TODO**: update this!
+
+<details>
+
+<summary>Rejected solutions</summary>
+
+2.  **Strict Semantic Nullability**
+
+    - **Champion**: Lee Byron
+    - **Status**: Rejected by Lee
+    - **Spec edits**: none
+    - **Reference implementation**: none
+    - This proposal choose to break the "nullable by default" tradition in
+      favour of representing nullable with a `?`: nullable (`T?`), semantically
+      non-nullable (`T`) and strictly non-nullable (`T!`)strictly non-nullable
+      (`T!`), and does so by introducing a directive on the schema to indicate
+      this.
+    - Benjie believes it's non-viable for a number of reasons, chiefly that it
+      doesn't consider what it means for executable documents (how do clients
+      define variables?), and none of the three solutions to executable
+      documents seem desirable.
+
+3.  **Semantic non-null usurps `!` syntax, strict non-null uses `!!`**
+
+    - **Champion**: Benjie
+    - **Status**: On hold, since solution 1 is currently preferred by Benjie.
+    - **Spec edits**: none
+    - **Reference implementation**: none
+    - This was a derivative of solution 1 to attempt to address concerns that
+      the `*` syntax was non-obvious.
+    - It requires a document directive to opt in to the new syntax (otherwise
+      `!` will continue to mean strict non-null).
+    - Client documents need not change.
+    - It recognises the two modes laid out in this article, but tries to move
+      towards a future where every schema only uses semantically non-null types,
+      and the legacy strict non-null is phased out.
+    - Benjie doesn't currently prefer this because he agrees with solution 5 -
+      the future of GraphQL uses its current syntax, and doesn't need a
+      `"use strict"`-style pragma at the top of every document.
+
+4.  **Unadorned becomes semantic non-null, nullable represented by `?`**
+
+    - **Champion**: None (currently Alex Reilly is representing)
+    - **Status**: Unknown
+    - **Spec edits**: none
+    - **Reference implementation**:
+      https://github.com/graphql/graphql-js/pull/4337
+    - This is an expansion of solution 2 that moves the directive from the
+      schema to the document.
+    - Benjie dislikes it because:
+      - Data is nullable by default, but this makes data semantically
+        non-nullable by default.
+      - The unadorned type cannot be migrated to other types (specifically the
+        `T?` nullable type) in a non-breaking way, so schema authors will have
+        to be extra careful that they have remembered to mark up every type
+        correctly - they can't fix it later by adding a symbol.
+      - If `?` means nullable in the SDL and unadorned means non-nullable, what
+        does this mean for existing executable documents where unadorned means
+        nullable?
+        - Should executable documents use `@semanticNullability` and use
+          `?`/unadorned, or should they continue to use unadorned/`!`?
+        - Will this cause a split in the GraphQL ecosystem over best practices
+          around this?
+      - Having the meaning of unadorned suddenly mean the opposite of what it
+        did before (nullable &rArr; non-nullable) based on the presence of a
+        directive at the top of the document is super confusing.
+      - Spec implementation is complex.
+      - Reference implementation is complex.
+      - Updating all the "nullable by default" documentation across the last
+        decade for GraphQL is not desirable.
+      - Newbies to GraphQL will be super confused.
+      - I think this would be one of the worst possible moves that GraphQL could
+        make.
+      - I would much rather see a "GraphQL 2.0" that disables null bubbling
+        (and, if you like, gets rid of the `!` syntax in favour of `?`) than see
+        GraphQL enter this state.
+      - _Increasingly incoherent "old man yells at cloud" noises._
+
+5.  **Just use `!` for semantically non-nullable**
+
+    - **Champion**: Martin Bonnin
+    - **Status**: Actively proposed
+    - **Spec edits**: no action needed!
+    - **Reference implementation**: no action needed!
+    - Martin thinks we should just use the existing non-null in semantically
+      non-nullable places, relying on the ability to disable error propagation
+      for all future clients.
+    - This proposal is extremely compelling, it feels like it should be the
+      future of GraphQL, and it recognises that error propagation was probably a
+      mistake and just turning that off should be enough to fix our woes.
+    - Unfortunately, as laid out [above](#supporting-legacy-clients), this would
+      be a major shift in behavior for existing deployed clients resulting in
+      error boundaries moving towards the root of the operation, causing legacy
+      clients that cannot be updated to be less resilient to errors.
+    - This sparked Benjie's reframing of solution 1 as presented in this
+      article.
+
+</details>
+
+6.  **`@semanticNonNull` directive**
+    - **Champion**: Benjie (the nullability WG designed this together as an
+      interrim solution, Benjie is treating it as a syntax variant of solution 1)
+    - **Status**: Interrim solution, implemented in a number of runtimes
+    - **Spec edits**: None (though solution 1 could be changed to doing this
+      with very few edits)
+    - **Reference implementation**: None (though solution 1 could be changed to
+      doing this with very few edits)
+    - **Community spec**:
+      https://specs.apollo.dev/nullability/v0.4/#@semanticNonNull
+    - Essentially this is solution 1, but instead of introducing a `*` character
+      (e.g. `[T*]*`) we use a directive to indicate semantic nullability
+      (`[T] @semanticNonNull(levels: [0, 1])`)
+    - Does everything that solution 1 does, except for the convenient syntax.
+    - Directives already exist, so we don't need to debate syntax!
+    - Benjie's opinion:
+      - Given this is essentially solution 1 but without the syntax changes, I
+        support it...
+      - Do we really hate `*` syntax so much that we'd rather type
+        `@semanticNonNull(levels: [0, 1])` than adding two `*` characters?
+      - I currently see this as being implemented in the same way as solution 1;
+        **however**, it could be implemented as schema metadata and thus never
+        actually enter the specification.
+        - It needs support in both server and client, so it feels like it should
+          be part of the spec.
+        - Keeping it as schema metadata would require a solution to the infamous
+          [#300](https://github.com/graphql/graphql-spec/issues/300)
+
+7.  **Lee's new nullability & error propagation proposal**
+    - **Champion**: Lee
+    - **Status**: Being discussed
+    - **Spec edits**: None
+    - **Reference implementation**: None
+    - See: https://github.com/graphql/graphql-wg/discussions/1700
+    - Seems to be a variant of solution 6 that flips to marking up the
+      traditional type rather than the new type, focusses on errors rather than
+      data, and breaks introspection for existing clients
+    - Benjie's critique here: https://github.com/graphql/graphql-wg/discussions/1700#discussioncomment-12634500
+      - Breaks introspection for existing clients
+      - Requires a major release of libraries
+      - Has a complex migration path
+      - Requires a major release to public APIs
+
+
+### Server support
+
+Users can manually mark up schemas with `@semanticNonNull` for use by
+`graphql-sock`, `graphql-code-generator` and other tools.
+
+Native support for semantic nullability is available in the following GraphQL
+implementations:
+
+- `graphql@canary-pr-4192` has support for the `*` syntax for semantic
+  nullability
+- Grats has support for `@semanticNonNull` in
+  [v0.0.32](https://grats.capt.dev/docs/guides/strict-semantic-nullability/)
+- Hot Chocolate has support for `@semanticNonNull` as of
+  [v14.2.0](https://github.com/ChilliCream/graphql-platform/releases/tag/14.2.0)
+- Caliban supports `@semanticNonNull`:
+  https://ghostdogpr.github.io/caliban/docs/schema.html#semanticnonnull-support
+- Strawberry is
+  [working on support for semantic nullability](https://github.com/strawberry-graphql/strawberry/pull/3722)
+- async-graphql is
+  [working on support for @semanticNonNull](https://github.com/async-graphql/async-graphql/issues/1605)
+- gqlgen is has
+  [an issue tracking this desire](https://github.com/99designs/gqlgen/issues/3396)
+
+### Client support
+
+Most clients can become error-handling clients by integrating
+[`graphql-toe`](https://github.com/graphile/graphql-toe).
+
+- Graffle, fetch, and other simple clients have examples in the graphql-toe
+  `README`
+- Apollo Client has an example of `useTOEQuery()` (to replace `useQuery()`) in
+  the graphql-toe `README`
+- URQL has `@urql/exchange-throw-on-error` that integrates `graphql-toe`
+- Relay users should use `@throwOnFieldError` instead
+- Apollo Kotlin has native support for `@catch`
+
+Most clients can use [`graphql-sock`](https://github.com/graphile/graphql-sock)
+to convert a semantic nullability schema into a nullable
+(`semantic-to-nullable`) schema for legacy clients, or a strict
+(`semantic-to-strict`) schema for error handling clients, for the purposes of
+code generation, linting, and other needs.
+
+- GraphQL code generator has support for `@semanticNonNull` (any version) and
+  the `*` syntax (if you're using `graphql@canary-pr-4192`) in the
+  [latest alpha](https://github.com/dotansimha/graphql-code-generator/pull/10323)
+  via `graphql-sock`.
+- Relay has built in support for code generation respecting semantic nullability
+  on a per-fragment and per-field basis as of Relay v18 via the `@catch` and
+  `@throwOnFieldError` directives.
+- Apollo Kotlin's code generator has native support for `@semanticNonNull` and
+  `@catch`
