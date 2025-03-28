@@ -261,15 +261,17 @@ existing deployed applications less resilient to errors since errors will now
 destroy even more of the returned data. For example, an application such as this
 one that handles errors at the widget level might result in a full page error if we simply marked the type as non-nullable:
 
+<div style={{textAlign: "center"}}>
 <img
   alt="A legacy mobile application rendering many widgets, one of which has errored"
   src={LegacyAppWidgetError}
-  style={{ maxWidth: "250px" }}
+  style={{ maxWidth: "200px" }}
 /> <img
   alt="A legacy mobile application rendering a full-page error"
   src={LegacyAppFullscreenError}
-  style={{ maxWidth: "250px" }}
+  style={{ maxWidth: "200px" }}
 />
+</div>
 
 This is much less useful for the user!
 
@@ -282,11 +284,13 @@ represented by the wildcard symbol `*`, that changes to either be nullable (`T*`
 &rArr; `T`) for legacy/traditional apps or non-nullable (`T*` &rArr; `T!`) for
 our future "error handling clients".
 
+<div style={{textAlign: "center"}}>
 <img
   alt="Legacy and future apps side by side, handling errors gracefully thanks to transitional non-null type"
   src={EveryonesHappy}
-  style={{ maxWidth: "500px", width: "100%" }}
+  style={{ maxWidth: "300px", width: "100%" }}
 />
+</div>
 
 :::tip Use `graphql-sock` to convert these types
 
