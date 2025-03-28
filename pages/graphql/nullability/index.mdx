@@ -259,17 +259,13 @@ critical concern for organizations such as Facebook!
 If we introduce non-null in more places, this would have the effect of making
 existing deployed applications less resilient to errors since errors will now
 destroy even more of the returned data. For example, an application such as this
-one that handles errors at the widget level:
+one that handles errors at the widget level might result in a full page error if we simply marked the type as non-nullable:
 
 <img
   alt="A legacy mobile application rendering many widgets, one of which has errored"
   src={LegacyAppWidgetError}
   style={{ maxWidth: "250px" }}
-/>
-
-might result in a full page error if we simply marked the type as non-nullable:
-
-<img
+/> <img
   alt="A legacy mobile application rendering a full-page error"
   src={LegacyAppFullscreenError}
   style={{ maxWidth: "250px" }}
