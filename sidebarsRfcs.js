@@ -284,6 +284,11 @@ const sidebars = {
       items: [
         {
           type: "doc",
+          id: "SemanticNullability",
+          label: "SemanticNullability: Semantic Nullability [RFC0]",
+        },
+        {
+          type: "doc",
           id: "wg1700",
           label: "wg1700: Lee's new nullability & error propagation proposal [RFC0]",
         },
@@ -301,11 +306,6 @@ const sidebars = {
           type: "doc",
           id: "1065",
           label: "1065*: SemanticNonNull type (null only on error) [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "SemanticNullability",
-          label: "SemanticNullability: Semantic Nullability [RFC0]",
         },
         {
           type: "doc",
@@ -579,6 +579,11 @@ const sidebars = {
           type: "doc",
           id: "395",
           label: "395: inputUnion type [RFC1]",
+        },
+        {
+          type: "doc",
+          id: "1157",
+          label: "1157: Exclude custom scalar literals from validation [RFC0]",
         },
         {
           type: "doc",

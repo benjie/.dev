@@ -4,6 +4,18 @@ stage: "0"
 title: Semantic Nullability
 events:
   - type: docUpdated
+    date: 2025-03-29T08:49:34+01:00
+    href: https://github.com/graphql/graphql-wg/blob/5629792430b8d22343883084be36e6f27951d0ba/rfcs/SemanticNullability.md
+    actor: Martin Bonnin
+  - type: docUpdated
+    date: 2025-03-28T11:43:16+01:00
+    href: https://github.com/graphql/graphql-wg/blob/058bf9055d2c8235d3db3df8d365984d312769c9/rfcs/SemanticNullability.md
+    actor: Martin Bonnin
+  - type: docUpdated
+    date: 2025-03-28T00:43:47-07:00
+    href: https://github.com/graphql/graphql-wg/blob/dd2c3c6fcda4f3b4a27345a57f1c63761a0bd2ac/rfcs/SemanticNullability.md
+    actor: Alex Reilly
+  - type: docUpdated
     date: 2025-03-06T18:17:49+00:00
     href: https://github.com/graphql/graphql-wg/blob/3441a2d5eda2f7211f17f02f5a5cf7352b94f72c/rfcs/SemanticNullability.md
     actor: Benjie
@@ -83,6 +95,9 @@ image: /img/rfc_tracker.png
 
 ## Timeline
 
+- **[RFC document updated](https://github.com/graphql/graphql-wg/blob/5629792430b8d22343883084be36e6f27951d0ba/rfcs/SemanticNullability.md)** on 2025-03-29 by Martin Bonnin
+- **[RFC document updated](https://github.com/graphql/graphql-wg/blob/058bf9055d2c8235d3db3df8d365984d312769c9/rfcs/SemanticNullability.md)** on 2025-03-28 by Martin Bonnin
+- **[RFC document updated](https://github.com/graphql/graphql-wg/blob/dd2c3c6fcda4f3b4a27345a57f1c63761a0bd2ac/rfcs/SemanticNullability.md)** on 2025-03-28 by Alex Reilly
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/3441a2d5eda2f7211f17f02f5a5cf7352b94f72c/rfcs/SemanticNullability.md)** on 2025-03-06 by Benjie
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/36aff80993c5e4453274e9ed42ebce5e704971b5/rfcs/SemanticNullability.md)** on 2025-02-22 by Benjie
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/cd807eb3d6cb7d21616d98d71285dbf33facc7a1/rfcs/SemanticNullability.md)** on 2025-02-22 by Benjie
@@ -639,6 +654,9 @@ image: /img/rfc_tracker.png
 > Each solution is identified with a `Number` so they can be referenced in the
 > rest of the document. New solutions must be added to the end of the list.
 > 
+> Some of the solutions have been ruled out and are kept here for historical 
+> reasons. Those solutions are folded in a `<details>` tag.
+> 
 > Semantic nullability is only relevant to output positions, so when comparing
 > syntax we will look for changes versus the current syntax used to represent
 > these types:
@@ -737,6 +755,10 @@ image: /img/rfc_tracker.png
 > 
 > ## 💡 2. "Strict Semantic Nullability"
 > 
+> <details>
+> 
+> <summary>Rejected - click for details</summary>
+> 
 > [solution-2]: #-2-strict-semantic-nullability
 > 
 > **Champion**: @leebyron
@@ -798,8 +820,13 @@ image: /img/rfc_tracker.png
 > - [R][criteria-r]
 >   - ❔
 > 
+> </details>
 > 
 > ## 💡 3. New "Semantic Non-Null" type, usurping `!` syntax
+> 
+> <details>
+> 
+> <summary>Rejected - click for details</summary>
 > 
 > [solution-3]: #-3-new-semantic-non-null-type-usurping--syntax
 > 
@@ -894,12 +921,17 @@ image: /img/rfc_tracker.png
 > - [R][criteria-r]
 >   - ✅ Syntax used for inputs is unchanged with or without the directive.
 > 
+> </details>
 > 
 > ## 💡 4. New "Semantic Non-Null" type, with `?` used for nullable types
 > 
 > [solution-4]: #-4-new-semantic-non-null-type-with--used-for-nullable-types
 > 
-> **Champion**: @twof
+> <details>
+> 
+> <summary>Rejected - click for details</summary>
+> 
+> **Champion**: none (put your name here to become the champion!)
 > 
 > This proposal builds on solution 3, but with a syntactic shuffle such that the
 > unadorned type may be used as the semantically non-nullable type when the
@@ -959,8 +991,14 @@ image: /img/rfc_tracker.png
 > - [R][criteria-r]
 >   - 🚫 Input positions have changed `Int` &rArr; `Int?`, `Int!` &rArr; `Int`
 > 
+> </details>
+> 
 > 
 > ## 💡 5. Use non-null in semantically non-nullable places and encourage disabling error propagation
+> 
+> <details>
+> 
+> <summary>Rejected - click for details</summary>
 > 
 > [solution-5]: #-5-use-non-null-in-semantically-non-nullable-places-and-encourage-disabling-error-propagation
 > 
@@ -1015,17 +1053,24 @@ image: /img/rfc_tracker.png
 > - [R][criteria-r]
 >   - ✅ Same syntax.
 > 
+> </details>
+> 
 > ## 💡 6. `@semanticNonNull` directive
 > 
 > [solution-6]: #-6-semanticnonnull-directive
 > 
-> **Champion**: -
+> **Champion**: @benjie
 > 
 > Outline: https://specs.apollo.dev/nullability/v0.4/#@semanticNonNull
 > 
-> This proposal (which is already adopted in a few places!) introduces a
-> directive that can be added to fields to indicate their semantic nullability
-> (and that of their nested list positions).
+> This proposal relies on:
+> - A new directive, `@semanticNonNull`
+> - Either:
+>   - A new introspection argument, `includeSemanticNonNull` (`__Field.type(includeSemanticNonNull: Boolean! = false)`), if represented as a type, or
+>   - A new introspection field, `__Field.semanticNonNullLevels: [Int!]`, if represented as field metadata
+> 
+> The directive (which is already adopted in a few places!) can be added to 
+> fields to indicate their semantic nullability (and that of their nested list positions).
 > 
 > ```graphql
 > directive @semanticNonNull(levels: [Int!]! = [0]) on FIELD_DEFINITION
