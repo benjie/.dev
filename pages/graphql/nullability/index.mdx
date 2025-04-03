@@ -71,6 +71,9 @@ be rendered to the user.
 To enable this resiliency, when GraphQL meets an error it notes where it was,
 adds it to the "errors" list, and replaces the output data with `null`:
 
+<details>
+  <summary>Schema and query (click to show/hide)</summary>
+
 ```graphql title="Query type"
 type Query {
   you: User!
@@ -88,6 +91,8 @@ query Q {
   }
 }
 ```
+
+</details>
 
 ```json title="Response"
 {
@@ -265,8 +270,8 @@ one that handles errors at the widget level might result in a full page error if
 <img
   alt="A legacy mobile application rendering many widgets, one of which has errored"
   src={LegacyAppWidgetError}
-  style={{ maxWidth: "200px" }}
-/> <img
+  style={{ maxWidth: "200px", marginRight: "1em" }}
+/><img
   alt="A legacy mobile application rendering a full-page error"
   src={LegacyAppFullscreenError}
   style={{ maxWidth: "200px" }}
@@ -308,10 +313,20 @@ similar needs.
 
 :::
 
-### New app? No new syntax!
+### New schema? New field? No legacy clients? No asterisk needed!
 
-The best part about this? If you're starting a new project from scratch and only
-want to support error-handling clients, you'll never need to add this symbol or
-any new directives to your schema or anywhere else! But with it, existing
-schemas can allow new apps to leverage true nullability in the schema, without
-breaking existing clients. Everybody wins!
+The best part about this? **If you're starting a new project from scratch and
+only want to support error-handling clients, you'll never need to add this
+symbol to your schema or anywhere else!** It'll be as if it doesn't exist!
+
+You also don't need to add the symbol to types in any new fields on an existing
+schema since a new field has no legacy &mdash; you can just use `!` directly to
+represent "semantically" non-null positions as a way of encouraging all
+clients to become error-handling clients.
+
+If you want to leverage "true nullability" in new clients without breaking your
+existing deployed clients, this little symbol is there for you. And once all
+your clients have become error-handling clients you can just replace `*` for
+`!` and your migration is complete!
+
+Everybody wins!
