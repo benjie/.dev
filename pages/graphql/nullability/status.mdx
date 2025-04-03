@@ -14,7 +14,7 @@ nullability working group.
 
 ## Disabling error propagation
 
-_Last updated: 2025-03-28_
+_Last updated: 2025-04-03_
 
 Generally agreed that the future of GraphQL in one in which error propagation is
 disabled. Current thought is it should be a request option.
@@ -23,11 +23,11 @@ disabled. Current thought is it should be a request option.
   ([spec edits](https://github.com/graphql/graphql-spec/pull/1050)) - currently
   `@disableErrorPropagation`
 - Currently, Benjie proposes this should be a request (in the GraphQL sense, not
-  necessarily the HTTP sense) parameter:
+  necessarily the HTTP sense) parameter `onError: "NO_PROPAGATE"`:
   https://github.com/graphql/graphql-spec/pull/1153
-- There's discussion around whether clients that reject the entire response on
-  any error should get their own "behavior", e.g. `onError: "ABORT"` - this
-  would increase server efficiency, and prevent sending unnecessary data over
+- Proposal includes `onError: "ABORT"` that allows the entire request to abort
+  on the first error, useful for clients that reject the entire response on any
+  error. Increases server efficiency, and prevent sending unnecessary data over
   the wire that the client would ignore anyway.
 
 The `@experimental_disableErrorPropagation` directive can be used to experiment
@@ -48,7 +48,7 @@ available via:
 **THIS IS BENJIE'S OPINION, FOR TRUE STATUS SEE
 [THE RFC DOCUMENT](https://github.com/graphql/graphql-wg/blob/main/rfcs/SemanticNullability.md)!**
 
-_Last updated: 2025-03-28_
+_Last updated: 2025-04-03_
 
 ### Specification
 
@@ -196,6 +196,14 @@ discussed, but currently solutions 1, 6 and 7 are under discussion
           be part of the spec.
         - Keeping it as schema metadata would require a solution to the infamous
           [#300](https://github.com/graphql/graphql-spec/issues/300)
+      - It could also be implemented as a metadata property on the field (like
+        `deprecationReason`) which means a new type wouldn't be added, however:
+        - This complicates the error handling section of the spec.
+        - This complicates any part of the spec that checks if the type is a
+          non-null type, such as [Value completion](https://spec.graphql.org/draft/#sel-IANTLFCBCBGBOl7Q).
+        - Is generally more complex to implement both in the spec and in GraphQL.js
+        - This is less ergonomic for people writing their schema code-first as
+          they have to think about nullability/type in two places
 
 7.  **Lee's new nullability & error propagation proposal**
     - **Champion**: Lee
@@ -211,9 +219,14 @@ discussed, but currently solutions 1, 6 and 7 are under discussion
       - Requires a major release of libraries
       - Has a complex migration path
       - Requires a major release to public APIs
+      - Otherwise achieves the same end goal as solutions 1, 5 and 6: the
+        GraphQL of the future looks like the GraphQL of today, only there's no
+        null bubbling and the true nullability is represented in the schema.
 
 
 ### Server support
+
+_Last updated: 2025-03-28_
 
 Users can manually mark up schemas with `@semanticNonNull` for use by
 `graphql-sock`, `graphql-code-generator` and other tools.
@@ -237,6 +250,8 @@ implementations:
   [an issue tracking this desire](https://github.com/99designs/gqlgen/issues/3396)
 
 ### Client support
+
+_Last updated: 2025-03-28_
 
 Most clients can become error-handling clients by integrating
 [`graphql-toe`](https://github.com/graphile/graphql-toe).
