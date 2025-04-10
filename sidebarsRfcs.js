@@ -35,6 +35,11 @@ const sidebars = {
         },
         {
           type: "doc",
+          id: "976",
+          label: "976*: Add 'extensions' to request [RFC3]",
+        },
+        {
+          type: "doc",
           id: "1040",
           label: "1040: Make the reason argument in `@deprecated` non-nullable [RFC3]",
         },
@@ -168,11 +173,6 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "976",
-          label: "976*: Add 'extensions' to request [RFC2]",
-        },
-        {
-          type: "doc",
           id: "1053",
           label: "1053*: Implementations may not deprecate a field that the interface hasn't deprecated [RFC2]",
         },
@@ -190,6 +190,11 @@ const sidebars = {
           type: "doc",
           id: "1102",
           label: "1102*: Define Data Collections used in the spec [RFC2]",
+        },
+        {
+          type: "doc",
+          id: "1142",
+          label: "1142: make `includeDeprecated` non nullable [RFC2]",
         },
         {
           type: "doc",
@@ -216,8 +221,8 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          id: "1142",
-          label: "1142: make `includeDeprecated` non nullable [RFC1]",
+          id: "1153",
+          label: "1153*: Allow clients to disable error propagation via request parameter [RFC1]",
         },
         {
           type: "doc",
@@ -284,6 +289,11 @@ const sidebars = {
       items: [
         {
           type: "doc",
+          id: "1065",
+          label: "1065*: SemanticNonNull type (null only on error) [RFC0]",
+        },
+        {
+          type: "doc",
           id: "SemanticNullability",
           label: "SemanticNullability: Semantic Nullability [RFC0]",
         },
@@ -301,11 +311,6 @@ const sidebars = {
           type: "doc",
           id: "1050",
           label: "1050*: Directive proposal for opting out of null bubbling [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "1065",
-          label: "1065*: SemanticNonNull type (null only on error) [RFC0]",
         },
         {
           type: "doc",
