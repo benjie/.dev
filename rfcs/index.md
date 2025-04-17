@@ -17,7 +17,7 @@ be helpful for people to keep track of the various RFCs.
 Ping `@benjie` on the [GraphQL Discord](https://discord.graphql.org) (`#wg`
 channel) and ask for him to run an update!
 
-Last updated: 2025-04-10T08:40:44.186Z
+Last updated: 2025-04-17T06:54:28.308Z
 
 :::
 
@@ -131,7 +131,7 @@ Last updated: 2025-04-10T08:40:44.186Z
 | [#525](/rfcs/525 "Allow deprecation of input values / RFC3") | [@smitt04](https://github.com/smitt04) | [Allow deprecation of input values](/rfcs/525) | **Mentioned in [2021-02-04 WG notes](https://github.com/graphql/graphql-wg/blob/main/notes/2021/2021-02-04.md)** [_(more)_](/rfcs/525#timeline) |
 | [#823](/rfcs/823 "operation expressions / RFC3") | [@benjie](https://github.com/benjie) | [operation expressions](/rfcs/823) | **2 commits pushed**: [(latest)](https://github.com/graphql/graphql-spec/commit/f982594af97e66591729124e4670e4b965c5f7bb) on 2021-03-16 by [@benjie](https://github.com/benjie) [_(more)_](/rfcs/823#timeline) |
 | [#667](/rfcs/667 "&#x5b;RFC Sketch&#x5d; Defer and Stream Directives / RFC3") | [@lilianammmatos](https://github.com/lilianammmatos) | [&#x5b;RFC Sketch&#x5d; Defer and Stream Directives](/rfcs/667) | **Added to [2020-01-09 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2020/2020-01-09.md)** [_(more)_](/rfcs/667#timeline) |
-| [#976](/rfcs/976 "Add 'extensions' to request / RFC3") | [@benjie](https://github.com/benjie) | [Add 'extensions' to request](/rfcs/976) | **Added to [2025-04-03 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/04-Apr/03-wg-primary.md)** [_(more)_](/rfcs/976#timeline) |
+| [#976](/rfcs/976 "Add 'extensions' to request / RFC3") | [@benjie](https://github.com/benjie) | [Add 'extensions' to request](/rfcs/976) | **Commit pushed**: [Update Section 6 -- Execution.md](https://github.com/graphql/graphql-spec/commit/1ac663a937a708865dec4864ba012c264548335a) on 2025-04-17 by [@leebyron](https://github.com/leebyron) [_(more)_](/rfcs/976#timeline) |
 | [#1040](/rfcs/1040 "Make the reason argument in &#x60;@deprecated&#x60; non-nullable / RFC3") | [@martinbonnin](https://github.com/martinbonnin) | [Make the reason argument in &#x60;@deprecated&#x60; non-nullable](/rfcs/1040) | **Added to [2024-12-05 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2024/12-Dec/05-wg-primary.md)** [_(more)_](/rfcs/1040#timeline) |
 | [#1073](/rfcs/1073 "Be strict about error paths format / RFC3") | [@martinbonnin](https://github.com/martinbonnin) | [Be strict about error paths format](/rfcs/1073) | **Added to [2024-04-04 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2024/04-Apr/04-wg-primary.md)** [_(more)_](/rfcs/1073#timeline) |
 | [#987](/rfcs/987 "Fix ambiguity around when schema definition may be omitted / RFC3") | [@benjie](https://github.com/benjie) | [Fix ambiguity around when schema definition may be omitted](/rfcs/987) | **Commit pushed**: [add related definition and specific example](https://github.com/graphql/graphql-spec/commit/058b4ec190b01834d3a44647b87795235d925d24) on 2023-02-09 by [@leebyron](https://github.com/leebyron) [_(more)_](/rfcs/987#timeline) |

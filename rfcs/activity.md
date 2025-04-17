@@ -8,6 +8,7 @@ image: /img/rfc_tracker.png
 
 The below is an aggregate overview of the latest activity across all RFCs. Note that it's _roughly_ in cronological order, but some dates are less accurate than others (e.g. commit timestamps are to the second, whereas working groups are generally to the month...).
 
+- [#976](/rfcs/976 "Add 'extensions' to request / RFC3"): **Commit pushed**: [Update Section 6 -- Execution.md](https://github.com/graphql/graphql-spec/commit/1ac663a937a708865dec4864ba012c264548335a) on 2025-04-17 by [@leebyron](https://github.com/leebyron)
 - [#793](/rfcs/793 "Default value coercion rules / RFC2"): **Added to [2025-04-03 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/04-Apr/03-wg-primary.md)**
 - [#825](/rfcs/825 "OneOf Input Objects / RFC2"): **Added to [2025-04-03 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/04-Apr/03-wg-primary.md)**
 - [#860](/rfcs/860 "Prevent @skip and @include on root subscription selection set / RFC2"): **Added to [2025-04-03 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/04-Apr/03-wg-primary.md)**
@@ -26,7 +27,12 @@ The below is an aggregate overview of the latest activity across all RFCs. Note 
 - [SemanticNullability](/rfcs/SemanticNullability "Semantic Nullability / RFC0"): **[RFC document updated](https://github.com/graphql/graphql-wg/blob/058bf9055d2c8235d3db3df8d365984d312769c9/rfcs/SemanticNullability.md)** on 2025-03-28 by Martin Bonnin
 - [SemanticNullability](/rfcs/SemanticNullability "Semantic Nullability / RFC0"): **[RFC document updated](https://github.com/graphql/graphql-wg/blob/dd2c3c6fcda4f3b4a27345a57f1c63761a0bd2ac/rfcs/SemanticNullability.md)** on 2025-03-28 by Alex Reilly
 - [#1153](/rfcs/1153 "Allow clients to disable error propagation via request parameter / RFC1"): **[Spec PR](https://github.com/graphql/graphql-spec/pull/1153) created** on 2025-03-27 by benjie
-- [#1153](/rfcs/1153 "Allow clients to disable error propagation via request parameter / RFC1"): **4 commits pushed** on 2025-03-27:
+- [#1153](/rfcs/1153 "Allow clients to disable error propagation via request parameter / RFC1"): **9 commits pushed** on 2025-03-27:
+  - [Rename 'field error' to 'runtime error' and define 'error position'](https://github.com/graphql/graphql-spec/commit/920283ac96be6caf72cb29d7b0480561d57fdeab) by [@benjie](https://github.com/benjie)
+  - [Request errors should not be raised during CoerceArgumentValues](https://github.com/graphql/graphql-spec/commit/03460ff86d3049a555bd3ea9040b64f27782a3b7) by [@benjie](https://github.com/benjie)
+  - [Typo](https://github.com/graphql/graphql-spec/commit/c5eed341b4a5468eff74b8e7292311115a5cb9c5) by [@benjie](https://github.com/benjie)
+  - [Rename 'runtime error' to 'execution error'](https://github.com/graphql/graphql-spec/commit/fdc2b81474dea3dfde173b1af4f5d10925f73dd6) by [@benjie](https://github.com/benjie)
+  - [Oops, missed out these edits](https://github.com/graphql/graphql-spec/commit/a4fe27e982e64b333cfe30280d1394201e96d636) by [@benjie](https://github.com/benjie)
   - [Add error behaviors to the spec](https://github.com/graphql/graphql-spec/commit/920983277da43cb0df8d4db00546dbabbd03acbc) by [@benjie](https://github.com/benjie)
   - [Any execution may include onError](https://github.com/graphql/graphql-spec/commit/9fee169010ef6a49774db656b9715c7e714a63e3) by [@benjie](https://github.com/benjie)
   - [Clearer wording, fix spelling](https://github.com/graphql/graphql-spec/commit/bd04f99a1e1c0aa2d906a30d6cb267b3aecff983) by [@benjie](https://github.com/benjie)
