@@ -11,7 +11,7 @@ events:
     date: 2021-01-07T11:18:22-08:00
     href: https://github.com/graphql/graphql-wg/blob/257673b7ede31f1856b53ae833a43fc5034ac99b/rfcs/SchemaCoordinates.md
     actor: Mark Larah
-related: 733, 735, 746, 794
+related: 733, 735, 746, 794, FieldExtensions
 shortname: Schema Coordinates
 image: /img/rfc_tracker.png
 ---
@@ -25,6 +25,7 @@ image: /img/rfc_tracker.png
 - **Related**:
   - [#733](/rfcs/733 "Tagged type / RFCX") (Tagged type)
   - [#794](/rfcs/794 "Schema Coordinates / RFC2") (Schema Coordinates)
+  - [FieldExtensions](/rfcs/FieldExtensions "Field Extensions / RFC0") (Field Extensions)
 
 <!-- BEGIN_CUSTOM_TEXT -->
 

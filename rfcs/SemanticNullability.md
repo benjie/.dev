@@ -4,6 +4,18 @@ stage: "0"
 title: Semantic Nullability
 events:
   - type: docUpdated
+    date: 2025-05-01T16:31:59+01:00
+    href: https://github.com/graphql/graphql-wg/blob/1cd0215e06037621dac28c2590fffb1dab939261/rfcs/SemanticNullability.md
+    actor: Benjie
+  - type: docUpdated
+    date: 2025-05-01T15:46:17+01:00
+    href: https://github.com/graphql/graphql-wg/blob/e3630e38fd430ca33c08e91ffb377a2f5f705898/rfcs/SemanticNullability.md
+    actor: Benjie
+  - type: docUpdated
+    date: 2025-04-25T15:10:33+02:00
+    href: https://github.com/graphql/graphql-wg/blob/6816e9f6050cee9722f24b79f38dd3eef31c5daa/rfcs/SemanticNullability.md
+    actor: Martin Bonnin
+  - type: docUpdated
     date: 2025-03-29T08:49:34+01:00
     href: https://github.com/graphql/graphql-wg/blob/5629792430b8d22343883084be36e6f27951d0ba/rfcs/SemanticNullability.md
     actor: Martin Bonnin
@@ -71,7 +83,7 @@ events:
     date: 2025-02-15T12:58:27+00:00
     href: https://github.com/graphql/graphql-wg/blob/7535894a6deec5a618de02aaa16fdcf83a4e09ed/rfcs/SemanticNullability.md
     actor: Benjie
-related: 1065, wg1410, wg1700
+related: 1065, 1165, wg1410, wg1700
 shortname: Semantic Nullability
 image: /img/rfc_tracker.png
 ---
@@ -84,6 +96,7 @@ image: /img/rfc_tracker.png
 - **PR**: -
 - **Related**:
   - [#1065](/rfcs/1065 "SemanticNonNull type (null only on error) / RFC0") (SemanticNonNull type (null only on error))
+  - [#1165](/rfcs/1165 "Add Transitional Non-Null appendix (&#x60;@noPropagate&#x60; directive) / RFC0") (Add Transitional Non-Null appendix (&#x60;@noPropagate&#x60; directive))
   - [wg#1410](/rfcs/wg1410 "Strict Semantic Nullability / RFC0") (Strict Semantic Nullability)
   - [wg#1700](/rfcs/wg1700 "Lee's new nullability &#x26; error propagation proposal / RFC0") (Lee's new nullability &#x26; error propagation proposal)
 
@@ -95,6 +108,9 @@ image: /img/rfc_tracker.png
 
 ## Timeline
 
+- **[RFC document updated](https://github.com/graphql/graphql-wg/blob/1cd0215e06037621dac28c2590fffb1dab939261/rfcs/SemanticNullability.md)** on 2025-05-01 by Benjie
+- **[RFC document updated](https://github.com/graphql/graphql-wg/blob/e3630e38fd430ca33c08e91ffb377a2f5f705898/rfcs/SemanticNullability.md)** on 2025-05-01 by Benjie
+- **[RFC document updated](https://github.com/graphql/graphql-wg/blob/6816e9f6050cee9722f24b79f38dd3eef31c5daa/rfcs/SemanticNullability.md)** on 2025-04-25 by Martin Bonnin
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/5629792430b8d22343883084be36e6f27951d0ba/rfcs/SemanticNullability.md)** on 2025-03-29 by Martin Bonnin
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/058bf9055d2c8235d3db3df8d365984d312769c9/rfcs/SemanticNullability.md)** on 2025-03-28 by Martin Bonnin
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/dd2c3c6fcda4f3b4a27345a57f1c63761a0bd2ac/rfcs/SemanticNullability.md)** on 2025-03-28 by Alex Reilly
@@ -345,9 +361,9 @@ image: /img/rfc_tracker.png
 > non-nullable when error propagation is disabled no matter which solution is
 > chosen, so this criteria is only concerned with traditionally nullable types.
 > 
-> | [1][solution-1] | [2][solution-2] | [3][solution-3] | [4][solution-4] | [5][solution-5] | [6][solution-6] |
-> |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|
-> | ✅               | ✅               | ✅               | ✅               | 🚫👍              | ✅        |
+> | [1][solution-1] | [2][solution-2] | [3][solution-3] | [4][solution-4] | [5][solution-5] | [6][solution-6] | [7][solution-7] | [8][solution-8] |
+> |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|
+> | ✅               | ✅               | ✅               | ✅               | 🚫👍            | ✅               | ✅               | ✅              |
 > 
 > Criteria score: 🥈
 > 
@@ -359,9 +375,9 @@ image: /img/rfc_tracker.png
 > when doing so all existing operations should remain valid, and should have the
 > same meaning as they always did.
 > 
-> | [1][solution-1] | [2][solution-2] | [3][solution-3] | [4][solution-4] | [5][solution-5] | [6][solution-6] |
-> |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|
-> | ✅               | 🚫              | ✅               | ✅               | ✅               | ✅          |
+> | [1][solution-1] | [2][solution-2] | [3][solution-3] | [4][solution-4] | [5][solution-5] | [6][solution-6] | [7][solution-7] | [8][solution-8] |
+> |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|
+> | ✅               | 🚫              | ✅               | ✅               | ✅               | ✅               | ✅               | ✅                |
 > 
 > Criteria score: 🥈
 > 
@@ -373,9 +389,9 @@ image: /img/rfc_tracker.png
 > noting that GraphQL types are nullable by default (unadorned type is nullable)
 > and our changes should not invalidate this content.
 > 
-> | [1][solution-1] | [2][solution-2] | [3][solution-3] | [4][solution-4] | [5][solution-5] | [6][solution-6] |
-> |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|
-> | ✅               | 🚫              | ✅               | 🚫              | ✅               | ✅          |
+> | [1][solution-1] | [2][solution-2] | [3][solution-3] | [4][solution-4] | [5][solution-5] | [6][solution-6] | [7][solution-7] | [8][solution-8] |
+> |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|
+> | ✅               | 🚫              | ✅               | 🚫              | ✅               | ✅               | ✅               | ✅                 |
 > 
 > Criteria score: 🥉
 > 
@@ -387,9 +403,9 @@ image: /img/rfc_tracker.png
 > immediately feel familiar. Syntax used should feel obvious to developers new to
 > GraphQL.
 > 
-> | [1][solution-1] | [2][solution-2] | [3][solution-3] | [4][solution-4] | [5][solution-5] | [6][solution-6] |
-> |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|
-> | 🚫              | ✅               | ✅               | ✅              | ⚠️               | ✅          |
+> | [1][solution-1] | [2][solution-2] | [3][solution-3] | [4][solution-4] | [5][solution-5] | [6][solution-6] | [7][solution-7] | [8][solution-8] |
+> |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|-------------|-----------------|
+> | 🚫              | ✅               | ✅               | ✅              | ⚠️               | ✅          | ✅            | ✅                 |
 > 
 > Criteria score: 🥇
 > 
@@ -401,9 +417,9 @@ image: /img/rfc_tracker.png
 > variable in their GraphQL operation, the type syntax should be either identical
 > or similar, and should carry the same meaning.
 > 
-> | [1][solution-1] | [2][solution-2] | [3][solution-3] | [4][solution-4] | [5][solution-5] | [6][solution-6] |
-> |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|
-> | ✅               | ✅               | ✅               | 🚫              | ✅               | ✅          |
+> | [1][solution-1] | [2][solution-2] | [3][solution-3] | [4][solution-4] | [5][solution-5] | [6][solution-6] | [7][solution-7] | [8][solution-8] |
+> |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|--------------|-----------------|
+> | ✅               | ✅               | ✅               | 🚫              | ✅               | ✅          | ✅             | ✅                 |
 > 
 > Criteria score: 🥇
 > 
@@ -414,9 +430,9 @@ image: /img/rfc_tracker.png
 > Where a proposal allows alternative syntaxes to be used, the two syntaxes should
 > not cause confusion.
 > 
-> | [1][solution-1] | [2][solution-2] | [3][solution-3] | [4][solution-4] | [5][solution-5] | [6][solution-6] |
-> |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|
-> | ✅               | ✅               | ✅               | 🚫              | ✅               | ✅          |
+> | [1][solution-1] | [2][solution-2] | [3][solution-3] | [4][solution-4] | [5][solution-5] | [6][solution-6] | [7][solution-7] | [8][solution-8] |
+> |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|--------------|-----------------|
+> | ✅               | ✅               | ✅               | 🚫              | ✅               | ✅          | ✅             | ✅                 |
 > 
 > Criteria score: 🥇
 > 
@@ -430,9 +446,9 @@ image: /img/rfc_tracker.png
 > published), allowing for the "partial success" feature of GraphQL to continue to
 > shine and not compromising the resiliency of legacy deployed app versions.
 > 
-> | [1][solution-1] | [2][solution-2] | [3][solution-3] | [4][solution-4] | [5][solution-5] | [6][solution-6] |
-> | --------------- | --------------- | --------------- | --------------- |-----------------|-----------------|
-> | ✅              | ✅              | ✅              | ✅              | 🚫              | ✅          |
+> | [1][solution-1] | [2][solution-2] | [3][solution-3] | [4][solution-4] | [5][solution-5] | [6][solution-6] | [7][solution-7] | [8][solution-8] |
+> | --------------- | --------------- | --------------- | --------------- |-----------------|-----------------|-------------|-----------------|
+> | ✅              | ✅              | ✅              | ✅              | 🚫              | ✅          | ⚠️            | ✅                 |
 > 
 > Criteria score: 🥈
 > 
@@ -445,9 +461,9 @@ image: /img/rfc_tracker.png
 > 
 > The implementation required to make the proposal work should be simple.
 > 
-> | [1][solution-1] | [2][solution-2] | [3][solution-3] | [4][solution-4] | [5][solution-5] | [6][solution-6] |
-> | --------------- | --------------- | --------------- | --------------- |-----------------|-----------------|
-> | ✅              | 🚫              | 🚫              | 🚫              | ✅             | ✅          |
+> | [1][solution-1] | [2][solution-2] | [3][solution-3] | [4][solution-4] | [5][solution-5] | [6][solution-6] | [7][solution-7] | [8][solution-8] |
+> | --------------- | --------------- | --------------- | --------------- |-----------------|-----------------|--------------|-----------------|
+> | ✅              | 🚫              | 🚫              | 🚫              | ✅             | ✅          | ✅            | ✅                 |
 > 
 > Criteria score: 🥇
 > 
@@ -460,9 +476,9 @@ image: /img/rfc_tracker.png
 > null" on input). As such, there's no benefit to clients for the syntax of
 > executable documents to change.
 > 
-> | [1][solution-1] | [2][solution-2] | [3][solution-3] | [4][solution-4] | [5][solution-5] | [6][solution-6] |
-> |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|
-> | ✅               | ❔              | ✅               | 🚫               | ✅               | ✅          |
+> | [1][solution-1] | [2][solution-2] | [3][solution-3] | [4][solution-4] | [5][solution-5] | [6][solution-6] | [7][solution-7] | [8][solution-8] |
+> |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|-------------|-----------------|
+> | ✅               | ❔              | ✅               | 🚫               | ✅               | ✅          | ✅            | ✅                 |
 > 
 > Criteria score: 🥈
 > 
@@ -474,9 +490,9 @@ image: /img/rfc_tracker.png
 > its type; the reader should not have to read a document or schema directive to
 > determine how the type should be interpreted.
 > 
-> | [1][solution-1] | [2][solution-2] | [3][solution-3] | [4][solution-4] | [5][solution-5] | [6][solution-6] |
-> |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|
-> | ✅               | ❔              | ⚠️               | 🚫               | ✅               | ⚠️          |
+> | [1][solution-1] | [2][solution-2] | [3][solution-3] | [4][solution-4] | [5][solution-5] | [6][solution-6] | [7][solution-7] | [8][solution-8] |
+> |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|-------------|-----------------|
+> | ✅               | ❔              | ⚠️               | 🚫               | ✅               | ⚠️          | ✅            | ✅                 |
 > 
 > Criteria score: 🥇
 > 
@@ -486,9 +502,9 @@ image: /img/rfc_tracker.png
 > 
 > We do not want to break existing tooling.
 > 
-> | [1][solution-1] | [2][solution-2] | [3][solution-3] | [4][solution-4] | [5][solution-5] | [6][solution-6] |
-> |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|
-> | ✅               | ❔              | ✅               | ❔               | ✅               | ✅          |
+> | [1][solution-1] | [2][solution-2] | [3][solution-3] | [4][solution-4] | [5][solution-5] | [6][solution-6] | [7][solution-7] | [8][solution-8] |
+> |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|-------------|-----------------|
+> | ✅               | ❔              | ✅               | ❔               | ✅               | ✅          | ⚠️            | ✅                 |
 > 
 > Criteria score: 🥈
 > 
@@ -502,9 +518,9 @@ image: /img/rfc_tracker.png
 > 
 > May contradict: M
 > 
-> | [1][solution-1] | [2][solution-2] | [3][solution-3] | [4][solution-4] | [5][solution-5] | [6][solution-6] |
-> |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|
-> | ✅               | ❔              | ✅               | ❔               | ✅               | ⚠️          |
+> | [1][solution-1] | [2][solution-2] | [3][solution-3] | [4][solution-4] | [5][solution-5] | [6][solution-6] | [7][solution-7] | [8][solution-8] |
+> |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|--------------|-----------------|
+> | ✅               | ❔              | ✅               | ❔               | ✅               | ⚠️          | ✅             | ✅                 |
 > 
 > Criteria score: 🥈
 > 
@@ -518,9 +534,9 @@ image: /img/rfc_tracker.png
 > 
 > May contradict: L
 > 
-> | [1][solution-1] | [2][solution-2] | [3][solution-3] | [4][solution-4] | [5][solution-5] | [6][solution-6] |
-> |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|
-> | ⚠️               | ❔              | ⚠️               | ❔               | ✅               | ✅          |
+> | [1][solution-1] | [2][solution-2] | [3][solution-3] | [4][solution-4] | [5][solution-5] | [6][solution-6] | [7][solution-7] | [8][solution-8] |
+> |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|-------------|-----------------|
+> | ✅               | ❔              | ⚠️               | ❔               | ✅               | ✅          | ✅            | ✅                 |
 > 
 > Criteria score: 🥇
 > 
@@ -534,9 +550,9 @@ image: /img/rfc_tracker.png
 > situations so that codegen can safely use non-nullable types in semantically
 > non-nullable positions.
 > 
-> | [1][solution-1] | [2][solution-2] | [3][solution-3] | [4][solution-4] | [5][solution-5] | [6][solution-6] |
-> |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|
-> | ✅               | ✅              | ✅               | ✅               | 🚫               | ✅          |
+> | [1][solution-1] | [2][solution-2] | [3][solution-3] | [4][solution-4] | [5][solution-5] | [6][solution-6] | [7][solution-7] | [8][solution-8] |
+> |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|-------------|-----------------|
+> | ✅               | ✅              | ✅               | ✅               | 🚫               | ✅          | ✅            | ✅                 |
 > 
 > Criteria score: 🥉
 > 
@@ -554,9 +570,9 @@ image: /img/rfc_tracker.png
 > > allow inconsequential changes in behavior, but bubbling the error up isn't
 > > inconsequential.)
 > 
-> | [1][solution-1] | [2][solution-2] | [3][solution-3] | [4][solution-4] | [5][solution-5] | [6][solution-6] |
-> |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|
-> | ✅               | ❔              | ✅               | ✅               | 🚫               | ✅          |
+> | [1][solution-1] | [2][solution-2] | [3][solution-3] | [4][solution-4] | [5][solution-5] | [6][solution-6] | [7][solution-7] | [8][solution-8] |
+> |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|-------------|-----------------|
+> | ✅               | ❔              | ✅               | ✅               | 🚫               | ✅          | ⚠️            | ✅                 |
 > 
 > 
 > Note: though this criteria is currently not considered due to overlap with B
@@ -583,9 +599,9 @@ image: /img/rfc_tracker.png
 > > an outcome of this whole effort I’d like to see happening.
 > 
 > 
-> | [1][solution-1] | [2][solution-2] | [3][solution-3] | [4][solution-4] | [5][solution-5] | [6][solution-6] |
-> |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|
-> | ✅               | ✅              | ✅               | ✅               | 🚫               | ⚠️           |
+> | [1][solution-1] | [2][solution-2] | [3][solution-3] | [4][solution-4] | [5][solution-5] | [6][solution-6] | [7][solution-7] | [8][solution-8] |
+> |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|--------------|-----------------|
+> | ✅               | ✅              | ✅               | ✅               | 🚫               | ✅           | 🚫             | ✅                 |
 > 
 > Criteria score: 🥇
 > 
@@ -597,9 +613,9 @@ image: /img/rfc_tracker.png
 > once nullability expectations become more concrete, without breaking existing
 > client queries.
 > 
-> | [1][solution-1] | [2][solution-2] | [3][solution-3] | [4][solution-4] | [5][solution-5] | [6][solution-6] |
-> |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|
-> | ✅               | 🚫              | ✅               | 🚫               | ✅               | ✅          |
+> | [1][solution-1] | [2][solution-2] | [3][solution-3] | [4][solution-4] | [5][solution-5] | [6][solution-6] | [7][solution-7] | [8][solution-8] |
+> |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|-------------|-----------------|
+> | ✅               | 🚫              | ✅               | 🚫               | ✅               | ✅          | ✅            | ✅                 |
 > 
 > Note: this is not necessarily a duplicate of C as it doesn't specifically
 > require​ the unadorned type be nullable, however no proposal currently proposes
@@ -625,11 +641,65 @@ image: /img/rfc_tracker.png
 > - the representation in introspection for inputs (namely the `NON_NULL` type
 > wrapper) should be unchanged
 > 
-> | [1][solution-1] | [2][solution-2] | [3][solution-3] | [4][solution-4] | [5][solution-5] | [6][solution-6] |
-> |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|
-> | ✅               | ❔              | ✅               | 🚫               | ✅               | ✅          |
+> | [1][solution-1] | [2][solution-2] | [3][solution-3] | [4][solution-4] | [5][solution-5] | [6][solution-6] | [7][solution-7] | [8][solution-8] |
+> |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|-------------|-----------------|
+> | ✅               | ❔              | ✅               | 🚫               | ✅               | ✅          | ✅            | ✅                 |
 > 
 > Criteria score: 🥈
+> 
+> ## 🎯 S. Should be incrementally adoptable
+> 
+> [criteria-s]: #-s-should-be-incrementally-adoptable
+> 
+> We want to enable schema designers to solve developers pain points with the minimum of fuss;
+> large scale schema transforms are expensive - especially when they cascade to subschemas and/or schemas you don't control.
+> A schema designer should be able to mark an individual response position as semantically non-null without requiring a big lift.
+> Error-handling clients should see value from this very first interaction.
+> 
+> | [1][solution-1] | [2][solution-2] | [3][solution-3] | [4][solution-4] | [5][solution-5] | [6][solution-6] | [7][solution-7] | [8][solution-8] |
+> | --------------- | --------------- | --------------- | --------------- |-----------------|-----------------|-----------------|-----------------|
+> | ✅              | ❔              | ❔              | ❔              | ❔              | ✅              | 🚫              | ✅              |
+> 
+> Criteria score: ❔
+> 
+> ## 🎯 T. Should be incrementally removable
+> 
+> [criteria-t]: #-t-should-be-incrementally-removable
+> 
+> Once no legacy clients are using a field,
+> a schema designer should be able to update its types to use true nullability (removing its semantic nullability concerns) without impacting other fields that are still in use by legacy clients.
+> Over time, the number of fields having explicit semantic nullability markups should trend downwards.
+> No big-bang multi-subschema orchastrated transition should be required.
+> 
+> | [1][solution-1] | [2][solution-2] | [3][solution-3] | [4][solution-4] | [5][solution-5] | [6][solution-6] | [7][solution-7] | [8][solution-8] |
+> | --------------- | --------------- | --------------- | --------------- |-----------------|-----------------|-----------------|-----------------|
+> | ✅              | ❔              | ❔              | ❔              | ❔              | ✅              | ❔              | ✅              |
+> 
+> Criteria score: ❔
+> 
+> ## 🎯 U. Legacy tooling and clients should safely interpret SDL even when ignoring directives
+> 
+> [criteria-u]: #-u-legacy-tooling-and-clients-should-safely-interpret-sdl-even-when-ignoring-directives
+> 
+> [Meta's evaluation of semantic nullability proposals](https://github.com/graphql/nullability-wg/discussions/98) has revealed that Meta deal heavily in SDL,
+> and that their various tooling ignores directives that they don't recognize.
+> A field such as solution 8's `foo: Int! @noPropagate` or solution 7's `foo: Int!` would be interpreted by existing such tooling as strictly non-nullable,
+> which is incorrect since these positions may be null on error.
+> This would require​ all tooling to be migrated before such solutions could be used.
+> It would be very hard to detect tooling that was missed if the syntax remained valid - issues would be discovered in production - so
+> if the response nullability would change then a syntax error should be thrown (which should score as ⚠️).
+> 
+> For the avoidance of doubt:
+> 
+> - Interpretting Semantic Non-Null as Nullable is safe for existing clients and tooling.
+> - Interpretting Semantic Non-Null as Non-Null is unsafe for existing clients and tooling.
+> 
+> | [1][solution-1] | [2][solution-2] | [3][solution-3] | [4][solution-4] | [5][solution-5] | [6][solution-6] | [7][solution-7] | [8][solution-8] |
+> | --------------- | --------------- | --------------- | --------------- |-----------------|-----------------|-----------------|-----------------|
+> | ✅⚠️             | ❔              | ❔              | ❔              | ❔              | ✅              | 🚫              | ✅🚫            |
+> 
+> Criteria score: ❔
+> 
 > 
 > \<!--
 > 
@@ -639,9 +709,9 @@ image: /img/rfc_tracker.png
 > 
 > DESCRIPTION
 > 
-> | [1][solution-1] | [2][solution-2] | [3][solution-3] | [4][solution-4] | [5][solution-5] |
-> | --------------- | --------------- | --------------- | --------------- |-----------------|
-> | ?               | ?               | ?               | ?               | ?               |
+> | [1][solution-1] | [2][solution-2] | [3][solution-3] | [4][solution-4] | [5][solution-5] | [6][solution-6] | [7][solution-7] | [8][solution-8] |
+> | --------------- | --------------- | --------------- | --------------- |-----------------|-----------------|-----------------|-----------------|
+> | ❔              | ❔              | ❔              | ❔              | ❔              | ❔              | ❔              | ❔              |
 > 
 > Criteria score: ❔
 > 
@@ -740,7 +810,7 @@ image: /img/rfc_tracker.png
 > - [L][criteria-l]
 >   - ✅ Proposal encourages consumers to use client-produced SDL which only uses traditional nullability (`Type`/`Type!`)
 > - [M][criteria-m]
->   - ⚠️ You can use the same SDL everywhere, but that's not what this solution
+>   - ✅ You can use the same SDL everywhere, but that's not what this solution
 >     encourages.
 > - [N][criteria-n]
 >   - ✅ Indicates semantically non-null and strictly non-null types separately
@@ -752,6 +822,13 @@ image: /img/rfc_tracker.png
 >   - ✅
 > - [R][criteria-r]
 >   - ✅ `*` only needed in output positions, input positions unchanged
+> - [S][criteria-s]
+>   - ✅ Add a `*` and a type is now semantic non-nullable, no other changes needed.
+> - [T][criteria-t]
+>   - ✅ Change a `*` to a `!` and the type is now simply non-nullable, no other changes needed.
+> - [U][criteria-u]
+>   - ✅ If you use client-generated SDL then there is no change in meaning or syntax. 
+>   - ⚠️  If you use common SDL across all clients (new and old) then a syntax error will be raised.
 > 
 > ## 💡 2. "Strict Semantic Nullability"
 > 
@@ -1124,8 +1201,157 @@ image: /img/rfc_tracker.png
 > - [O][criteria-o]
 >   - ✅
 > - [P][criteria-p]
->   - ⚠️ Though there's no technical reason not to do so, the mechanics of adding the directive (particularly when referencing positions inside lists) are tiresome in SDL-first schemas, decreasing likeliness that positions will be updated. (Code-first schemas are unaffected.) Further, the directives are likely to have a significant impact on the formatting of the SDL (`@semanticNonNull` is 16 characters, almost quarter of a line if wrap at 80), so designers may wish to only add them in the most critical of locations.
+>   - ✅ Though there's no technical reason not to do so, though the mechanics of adding the directive (particularly when referencing positions inside lists) are tiresome in SDL-first schemas, decreasing likeliness that positions will be updated. (Code-first schemas are unaffected.) Further, the directives are likely to have a significant impact on the formatting of the SDL (`@semanticNonNull` is 16 characters, almost quarter of a line if wrap at 80), so designers may wish to only add them in the most critical of locations.
 > - [Q][criteria-q]
 >   - ✅
 > - [R][criteria-r]
 >   - ✅ Directive is only valid on output positions.
+> - [S][criteria-s]
+>   - ✅ Just add `@semanticNonNull` directive to the field, no other changes needed.
+> - [T][criteria-t]
+>   - ✅ Just remove `@semanticNonNull` directive from the field and mark the relevant types non-nullable, no other changes needed.
+> - [U][criteria-u]
+>   - ✅ Stripping the directive results in types being interpreted as nullable, which is safe.
+> 
+> ## 💡 7. `@propagateError` directive
+> 
+> [solution-7]: #-7-propagateerror-directive
+> 
+> **Champion**: @leebyron
+> 
+> Discussion: https://github.com/graphql/graphql-wg/discussions/1700
+> 
+> This proposal changes the `!` symbol and the `NON_NULL` introspection kind both to mean "semantic non null" (allowing for `null` on error). It introduces the `@propagateError` directive that can be added to fields to indicate that they should propagate errors in order to provide backwards compatibility with existing deployed clients.
+> 
+> ```graphql
+>  type Person {
+>    id: ID! @propagateError
+>    name: String
+>    age: Int
+>    picture: Url
+> }
+> ```
+> 
+> 
+> ### ⚖️ Evaluation
+> 
+> - [A][criteria-a]
+>   - ✅ semantically non-null without propagateError
+> - [B][criteria-b]
+>   - ~✅ This is true when existing services must ensure propagateError is set when adopting this behavior.
+> - [C][criteria-c]
+>   - ✅ Existing symbology unchanged.
+> - [D][criteria-d]
+>   - ✅ No new symbols. No new types. Error bubbling was previously implicit behavior, now it is explicit.
+> - [E][criteria-e]
+>   - ✅ No change to input types
+> - [F][criteria-f]
+>   - ✅ 
+> - [G][criteria-g]
+>   - ⚠️ With propagateErrorOnAllNonNullFields: true, adding ! (semantic non-null) in existing positions will change error propagation boundaries in existing (deployed) executable documents, in the same way that it would for solution 6, so semantic non-null could not be added until propagateErrorOnAllNonNullFields is set to false (i.e. after all clients and tooling migrate). 
+> - [H][criteria-h]
+>   - ~✅ One new directive/introspection field. Behavior change is straightforward. Managing adoption/migration requires careful consideration.
+> - [I][criteria-i]
+>   - ✅ This proposes no change to executable documents
+> - [J][criteria-j]
+>   - ✅ The propagateError introspection/directive is local to the field (the optional propagateErrorOnAllNonNullFields config just does this for you).
+> - [K][criteria-k]
+>   - ✅ Adds one new field. Migration path supports existing semantics for shipped clients.
+> - [L][criteria-l]
+>   - ✅ There are only two types and they remain the same as they are today. This proposal is about changing error bubbling behavior, not nullability.
+> - [M][criteria-m]
+>   - ✅ First party APIs have a clear path to introduce propagateError for all consumers.
+>   - ⚠️ Third party APIs have a more challenging migration path, and may wish to expose different Schema to different clients.
+> - [N][criteria-n]
+>   - ✅ Separating nullability from error bubbling allows for more control. Clients should preferably disable error bubbling, but even if they do not - this unlocks the ability for a semantically non-null type which does not error propagate.
+> - [O][criteria-o]
+>   - ✅
+> - [P][criteria-p]
+>   - 🚫 If propagateErrorOnAllNonNullFields: true is set, then adding ! to more fields changes the error boundaries, and thus means that existing users cannot add ! in more places without breaking existing clients error resilience.
+> - [Q][criteria-q]
+>   - ✅
+> - [R][criteria-r]
+>   - ✅ No proposed change to inputs
+> - [S][criteria-s]
+>   - 🚫 Large up-front migration is needed before the first field can be marked semantically non-null
+> - [T][criteria-t]
+>   - ❔
+> - [U][criteria-u]
+>   - 🚫 `T!` would be interpreted by existing tooling as strictly non-null, which would be incorrect once the migration is underway.
+>     This change would not yield a syntax error, so it would be very hard to detect small tools or services that were missed during migration.
+> 
+> 
+> ## 💡 8. Transitional Non-Null appendix
+> 
+> [solution-8]: #-8-transitional-non-null-appendix
+> 
+> **Champion**: @benjie
+> 
+> Spec edits: https://github.com/graphql/graphql-spec/pull/1165
+> 
+> This solution revolves around a new appendix to the spec, implementation of
+> which is optional. There are no changes to the main spec text.
+> 
+> It introduces a `@noPropagate` directive on fields, which is used to indicate
+> the non-null types in the field return type that must not propagate errors (even
+> when error propagation is explicitly enabled); such positions are called
+> "transitional" non-null positions.
+> 
+> |                           | Input syntax | Output syntax                    |
+> | ------------------------- | ------------ | -------------------------------- |
+> | Semantically nullable     | `Int`        | `Int`                            |
+> | Semantically non-nullable | -            | `Int` &rArr; `Int! @noPropagate` |
+> | Strictly non-nullable     | `Int!`       | `Int!`                           |
+> 
+> Clients and tooling that have error propagation enabled will see transitional
+> non-null positions as nullable, resulting in no breaking changes for existing
+> clients or tooling.
+> 
+> 
+> ### ⚖️ Evaluation
+> 
+> - [A][criteria-a]
+>   - ✅
+> - [B][criteria-b]
+>   - ✅ Existing symbology unchanged.
+> - [C][criteria-c]
+>   - ✅ Existing symbology unchanged.
+> - [D][criteria-d]
+>   - ✅ Directive.
+> - [E][criteria-e]
+>   - ✅ Directive only.
+> - [F][criteria-f]
+>   - ✅ Same syntax.
+> - [G][criteria-g]
+>   - ✅ `Int` and `Int! @noPropagate` both act as error boundaries in error propagation mode.
+> - [H][criteria-h]
+>   - ✅ Just an appendix!
+> - [I][criteria-i]
+>   - ✅ Syntax unchanged.
+> - [J][criteria-j]
+>   - ✅ Field directive is local.
+> - [K][criteria-k]
+>   - ✅ Introspection backwards compatible via `__Field.type` returning filtered type when error propagation is enabled.
+> - [L][criteria-l]
+>   - ✅ Proposal encourages consumers to use client-produced SDL which only uses traditional nullability (`Type`/`Type!`)
+> - [M][criteria-m]
+>   - ✅ You can use the same SDL everywhere, but better to split SDL based on error propagation setting.
+> - [N][criteria-n]
+>   - ✅ `! @noPropagate` can be treated as semantically non-null by legacy clients
+> - [O][criteria-o]
+>   - ✅ Client syntax unchanged
+> - [P][criteria-p]
+>   - ✅
+> - [Q][criteria-q]
+>   - ✅
+> - [R][criteria-r]
+>   - ✅ Field directive.
+> - [S][criteria-s]
+>   - ✅ Can add `! @noPropagate` to a position without requiring any other changes.
+> - [T][criteria-t]
+>   - ✅ Can remove `@noPropagate` from a position without requiring any other changes.
+> - [U][criteria-u]
+>   - ✅ Using `graphql-sock`, different (traditional) SDL can be produced for legacy and error-handling clients; existing tooling would use the legacy SDL.
+>   - 🚫 If you're not using different SDL for legacy vs error-handling clients, then `T! @noPropagate`, ignoring directives,
+>     would be interpreted by existing tooling as strictly non-null, which would be incorrect.
+>     This change would not yield a syntax error, so it would be very hard to detect small tools or services that were missed during migration.

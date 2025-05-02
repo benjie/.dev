@@ -35,6 +35,26 @@ const sidebars = {
         },
         {
           type: "doc",
+          id: "825",
+          label: "825*: OneOf Input Objects [RFC3]",
+        },
+        {
+          type: "doc",
+          id: "860",
+          label: "860*: Prevent @skip and @include on root subscription selection set [RFC3]",
+        },
+        {
+          type: "doc",
+          id: "1053",
+          label: "1053*: Implementations may not deprecate a field that the interface hasn't deprecated [RFC3]",
+        },
+        {
+          type: "doc",
+          id: "1142",
+          label: "1142: make `includeDeprecated` non nullable [RFC3]",
+        },
+        {
+          type: "doc",
           id: "976",
           label: "976*: Add 'extensions' to request [RFC3]",
         },
@@ -163,21 +183,6 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "825",
-          label: "825*: OneOf Input Objects [RFC2]",
-        },
-        {
-          type: "doc",
-          id: "860",
-          label: "860*: Prevent @skip and @include on root subscription selection set [RFC2]",
-        },
-        {
-          type: "doc",
-          id: "1053",
-          label: "1053*: Implementations may not deprecate a field that the interface hasn't deprecated [RFC2]",
-        },
-        {
-          type: "doc",
           id: "1063",
           label: "1063*: Type system ordering of: object interfaces, directive arguments, input object fields, enum values [RFC2]",
         },
@@ -190,11 +195,6 @@ const sidebars = {
           type: "doc",
           id: "1102",
           label: "1102*: Define Data Collections used in the spec [RFC2]",
-        },
-        {
-          type: "doc",
-          id: "1142",
-          label: "1142: make `includeDeprecated` non nullable [RFC2]",
         },
         {
           type: "doc",
@@ -221,8 +221,8 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          id: "1153",
-          label: "1153*: Allow clients to disable error propagation via request parameter [RFC1]",
+          id: "1163",
+          label: "1163*: Allow clients to disable error propagation via request parameter (take 2) [RFC1]",
         },
         {
           type: "doc",
@@ -289,13 +289,28 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          id: "1065",
-          label: "1065*: SemanticNonNull type (null only on error) [RFC0]",
+          id: "SemanticNullability",
+          label: "SemanticNullability: Semantic Nullability [RFC0]",
         },
         {
           type: "doc",
-          id: "SemanticNullability",
-          label: "SemanticNullability: Semantic Nullability [RFC0]",
+          id: "1166",
+          label: "1166*: Enable 'schema' keyword to be provided without root operations [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "1165",
+          label: "1165*: Add Transitional Non-Null appendix (`@noPropagate` directive) [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "FieldExtensions",
+          label: "FieldExtensions: Field Extensions [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "1065",
+          label: "1065*: SemanticNonNull type (null only on error) [RFC0]",
         },
         {
           type: "doc",
@@ -544,6 +559,11 @@ const sidebars = {
           type: "doc",
           id: "742",
           label: "742: Spec edits for @defer/@stream [RFC2]",
+        },
+        {
+          type: "doc",
+          id: "1153",
+          label: "1153*: Allow clients to disable error propagation via request parameter [RFC1]",
         },
         {
           type: "doc",
