@@ -221,6 +221,11 @@ const sidebars = {
       items: [
         {
           type: "doc",
+          id: "892",
+          label: "892: Add descriptions to executable definitions [RFC1]",
+        },
+        {
+          type: "doc",
           id: "1163",
           label: "1163*: Allow clients to disable error propagation via request parameter (take 2) [RFC1]",
         },
@@ -268,11 +273,6 @@ const sidebars = {
           type: "doc",
           id: "907",
           label: "907: Add support for directives on directives [RFC1]",
-        },
-        {
-          type: "doc",
-          id: "892",
-          label: "892: Add descriptions to executable definitions [RFC1]",
         },
         {
           type: "doc",

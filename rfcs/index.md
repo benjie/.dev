@@ -17,7 +17,7 @@ be helpful for people to keep track of the various RFCs.
 Ping `@benjie` on the [GraphQL Discord](https://discord.graphql.org) (`#wg`
 channel) and ask for him to run an update!
 
-Last updated: 2025-05-02T17:54:29.631Z
+Last updated: 2025-05-08T19:33:05.499Z
 
 :::
 
@@ -44,6 +44,7 @@ Last updated: 2025-05-02T17:54:29.631Z
 <!-- prettier-ignore -->
 | RFC | Champion | Title | Latest |
 | --- | --- | --- | --- |
+| [#892](/rfcs/892 "Add descriptions to executable definitions / RFC1") | [@IvanGoncharov](https://github.com/IvanGoncharov) | [Add descriptions to executable definitions](/rfcs/892) | **Added to [2025-05-15 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/05-May/15-wg-secondary-eu.md)** [_(more)_](/rfcs/892#timeline) |
 | [#1163](/rfcs/1163 "Allow clients to disable error propagation via request parameter (take 2) / RFC1") | [@benjie](https://github.com/benjie) | [Allow clients to disable error propagation via request parameter (take 2)](/rfcs/1163) | **Added to [2025-05-01 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/05-May/01-wg-primary.md)** [_(more)_](/rfcs/1163#timeline) |
 | [#1058](/rfcs/1058 "List coercion algorithm / RFC1") | [@benjie](https://github.com/benjie) | [List coercion algorithm](/rfcs/1058) | **2 commits pushed**: [(latest)](https://github.com/graphql/graphql-spec/commit/a045f1493352f05570d39b8aa372ef0c5723961d) on 2025-01-23 by [@benjie](https://github.com/benjie) [_(more)_](/rfcs/1058#timeline) |
 | [#1056](/rfcs/1056 "Fix CoerceArgumentValues() hasValue / RFC1") | [@benjie](https://github.com/benjie) | [Fix CoerceArgumentValues() hasValue](/rfcs/1056) | **Added to [2025-01-09 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/01-Jan/09-wg-primary.md)** [_(more)_](/rfcs/1056#timeline) |
@@ -54,7 +55,6 @@ Last updated: 2025-05-02T17:54:29.631Z
 | [#950](/rfcs/950 "allow unions to include interfaces and unions / RFC1") | [@yaacovCR](https://github.com/yaacovCR) | [allow unions to include interfaces and unions](/rfcs/950) | **Added to [2022-08-04 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2022/2022-08-04.md)** [_(more)_](/rfcs/950#timeline) |
 | [#939](/rfcs/939 "allow unions to declare implementation of interfaces / RFC1") | [@yaacovCR](https://github.com/yaacovCR) | [allow unions to declare implementation of interfaces](/rfcs/939) | **Added to [2022-06-02 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2022/2022-06-02.md)** [_(more)_](/rfcs/939#timeline) |
 | [#907](/rfcs/907 "Add support for directives on directives / RFC1") | [@IvanGoncharov](https://github.com/IvanGoncharov) | [Add support for directives on directives](/rfcs/907) | **Added to [2022-01-06 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2022/2022-01-06.md)** [_(more)_](/rfcs/907#timeline) |
-| [#892](/rfcs/892 "Add descriptions to executable definitions / RFC1") | [@IvanGoncharov](https://github.com/IvanGoncharov) | [Add descriptions to executable definitions](/rfcs/892) | **[Spec PR](https://github.com/graphql/graphql-spec/pull/892) created** on 2021-10-07 by IvanGoncharov [_(more)_](/rfcs/892#timeline) |
 | [#509](/rfcs/509 "Allow singular variables in list locations / RFC1") | [@taion](https://github.com/taion) | [Allow singular variables in list locations](/rfcs/509) | **Commit pushed**: [Remove CoerceVariableValues](https://github.com/graphql/graphql-spec/commit/16978d440b8657b443a6fad4983cd8caf692b6d9) on 2018-09-01 by [@taion](https://github.com/taion) [_(more)_](/rfcs/509#timeline) |
 
 

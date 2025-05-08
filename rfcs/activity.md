@@ -8,6 +8,7 @@ image: /img/rfc_tracker.png
 
 The below is an aggregate overview of the latest activity across all RFCs. Note that it's _roughly_ in cronological order, but some dates are less accurate than others (e.g. commit timestamps are to the second, whereas working groups are generally to the month...).
 
+- [#892](/rfcs/892 "Add descriptions to executable definitions / RFC1"): **Added to [2025-05-15 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/05-May/15-wg-secondary-eu.md)**
 - [SemanticNullability](/rfcs/SemanticNullability "Semantic Nullability / RFC0"): **[RFC document updated](https://github.com/graphql/graphql-wg/blob/1cd0215e06037621dac28c2590fffb1dab939261/rfcs/SemanticNullability.md)** on 2025-05-01 by Benjie
 - [SemanticNullability](/rfcs/SemanticNullability "Semantic Nullability / RFC0"): **[RFC document updated](https://github.com/graphql/graphql-wg/blob/e3630e38fd430ca33c08e91ffb377a2f5f705898/rfcs/SemanticNullability.md)** on 2025-05-01 by Benjie
 - [#1166](/rfcs/1166 "Enable 'schema' keyword to be provided without root operations / RFC0"): **[Spec PR](https://github.com/graphql/graphql-spec/pull/1166) created** on 2025-05-01 by benjie
