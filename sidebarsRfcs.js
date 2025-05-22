@@ -178,6 +178,21 @@ const sidebars = {
       items: [
         {
           type: "doc",
+          id: "892",
+          label: "892: Add descriptions to executable definitions [RFC2]",
+        },
+        {
+          type: "doc",
+          id: "1102",
+          label: "1102*: Define Data Collections used in the spec [RFC2]",
+        },
+        {
+          type: "doc",
+          id: "794",
+          label: "794: Schema Coordinates [RFC2]",
+        },
+        {
+          type: "doc",
           id: "793",
           label: "793*: Default value coercion rules [RFC2]",
         },
@@ -193,18 +208,8 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "1102",
-          label: "1102*: Define Data Collections used in the spec [RFC2]",
-        },
-        {
-          type: "doc",
           id: "1081",
           label: "1081: Fragment arguments/variables (syntax/validation/execution) [RFC2]",
-        },
-        {
-          type: "doc",
-          id: "794",
-          label: "794: Schema Coordinates [RFC2]",
         },
         {
           type: "doc",
@@ -219,11 +224,6 @@ const sidebars = {
       collapsed: false,
       collapsible: true,
       items: [
-        {
-          type: "doc",
-          id: "892",
-          label: "892: Add descriptions to executable definitions [RFC1]",
-        },
         {
           type: "doc",
           id: "1163",
@@ -287,6 +287,11 @@ const sidebars = {
       collapsed: true,
       collapsible: true,
       items: [
+        {
+          type: "doc",
+          id: "1167",
+          label: "1167*: Do not exclude schema keyword if schema has description [RFC0]",
+        },
         {
           type: "doc",
           id: "SemanticNullability",

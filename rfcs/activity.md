@@ -8,7 +8,23 @@ image: /img/rfc_tracker.png
 
 The below is an aggregate overview of the latest activity across all RFCs. Note that it's _roughly_ in cronological order, but some dates are less accurate than others (e.g. commit timestamps are to the second, whereas working groups are generally to the month...).
 
-- [#892](/rfcs/892 "Add descriptions to executable definitions / RFC1"): **Added to [2025-05-15 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/05-May/15-wg-secondary-eu.md)**
+- [#892](/rfcs/892 "Add descriptions to executable definitions / RFC2"): **Added to [2025-06-05 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/06-Jun/05-wg-primary.md)**
+- [#825](/rfcs/825 "OneOf Input Objects / RFC3"): **2 commits pushed** on 2025-05-22:
+  - [Merge branch 'main' into oneof-v2](https://github.com/graphql/graphql-spec/commit/d15f7bb95f67096163cfa7682e4acc5b8ce63c02) by [@benjie](https://github.com/benjie)
+  - [Use 'execution error' and 'raise' rather than throw an error](https://github.com/graphql/graphql-spec/commit/63104756c2d62988bfd6863b40c3754dce517abd) by [@benjie](https://github.com/benjie)
+- [#860](/rfcs/860 "Prevent @skip and @include on root subscription selection set / RFC3"): **Commit pushed**: [Merge branch 'main' into subscription-single-root-field](https://github.com/graphql/graphql-spec/commit/8e7d2a204721243bb897c683f460a869ab361381) on 2025-05-22 by [@benjie](https://github.com/benjie)
+- [#1102](/rfcs/1102 "Define Data Collections used in the spec / RFC2"): **Commit pushed**: [Merge branch 'main' into data-collections](https://github.com/graphql/graphql-spec/commit/f04f86fd9113384157d282df682cf64da1047863) on 2025-05-22 by [@benjie](https://github.com/benjie)
+- [#1167](/rfcs/1167 "Do not exclude schema keyword if schema has description / RFC0"): **[Spec PR](https://github.com/graphql/graphql-spec/pull/1167) created** on 2025-05-19 by benjie
+- [#1167](/rfcs/1167 "Do not exclude schema keyword if schema has description / RFC0"): **Commit pushed**: [Do not exclude schema keyword if schema has description](https://github.com/graphql/graphql-spec/commit/c11671dbc9a1b93a7e6ba4b95b5dc494ee57fa03) on 2025-05-19 by [@benjie](https://github.com/benjie)
+- [#794](/rfcs/794 "Schema Coordinates / RFC2"): **Commit pushed**: [Run prettier](https://github.com/graphql/graphql-spec/commit/258d8413dd567d93cb51b26dd9a36bac78e5d8aa) on 2025-05-16 by [@benjie](https://github.com/benjie)
+- [#794](/rfcs/794 "Schema Coordinates / RFC2"): **Commit pushed**: [Merge branch 'main' into schema_coordinates_spec_edit](https://github.com/graphql/graphql-spec/commit/a3383ee3dfd46905c005cca9393c21107e016d82) on 2025-05-15 by [@benjie](https://github.com/benjie)
+- [#892](/rfcs/892 "Add descriptions to executable definitions / RFC2"): **Added to [2025-05-15 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/05-May/15-wg-secondary-eu.md)**
+- [#1163](/rfcs/1163 "Allow clients to disable error propagation via request parameter (take 2) / RFC1"): **4 commits pushed** on 2025-05-15:
+  - [ABORT -&#x3e; HALT](https://github.com/graphql/graphql-spec/commit/94446abd36edde953c33e388d06a00d43a3f03d5) by [@benjie](https://github.com/benjie)
+  - [Start speccing out the capabilities system](https://github.com/graphql/graphql-spec/commit/3c633556b4d60e7b61a6945a3438d2f043878ef9) by [@benjie](https://github.com/benjie)
+  - [Add a number of basic capabilities](https://github.com/graphql/graphql-spec/commit/7056690be839020447178f1969e6bf9682109be2) by [@benjie](https://github.com/benjie)
+  - [Move default error behavior to the service](https://github.com/graphql/graphql-spec/commit/0fa7a33f3e004730a98d2924b9f67a49ca9e8b46) by [@benjie](https://github.com/benjie)
+- [#1163](/rfcs/1163 "Allow clients to disable error propagation via request parameter (take 2) / RFC1"): **Added to [2025-05-15 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/05-May/15-wg-secondary-eu.md)**
 - [SemanticNullability](/rfcs/SemanticNullability "Semantic Nullability / RFC0"): **[RFC document updated](https://github.com/graphql/graphql-wg/blob/1cd0215e06037621dac28c2590fffb1dab939261/rfcs/SemanticNullability.md)** on 2025-05-01 by Benjie
 - [SemanticNullability](/rfcs/SemanticNullability "Semantic Nullability / RFC0"): **[RFC document updated](https://github.com/graphql/graphql-wg/blob/e3630e38fd430ca33c08e91ffb377a2f5f705898/rfcs/SemanticNullability.md)** on 2025-05-01 by Benjie
 - [#1166](/rfcs/1166 "Enable 'schema' keyword to be provided without root operations / RFC0"): **[Spec PR](https://github.com/graphql/graphql-spec/pull/1166) created** on 2025-05-01 by benjie
@@ -1140,7 +1156,7 @@ The below is an aggregate overview of the latest activity across all RFCs. Note 
 - [#895](/rfcs/895 "Client Controlled Nullability / RFCX"): **2 commits pushed** on 2021-10-18:
   - [initial changes](https://github.com/graphql/graphql-spec/commit/8a13c8f5f66821fc78c693add2326908d948a458) by [@twof](https://github.com/twof)
   - [another question mark](https://github.com/graphql/graphql-spec/commit/c07d86c7f40bb71c427520558c84d409a14f3e54) by [@twof](https://github.com/twof)
-- [#892](/rfcs/892 "Add descriptions to executable definitions / RFC1"): **[Spec PR](https://github.com/graphql/graphql-spec/pull/892) created** on 2021-10-07 by IvanGoncharov
+- [#892](/rfcs/892 "Add descriptions to executable definitions / RFC2"): **[Spec PR](https://github.com/graphql/graphql-spec/pull/892) created** on 2021-10-07 by IvanGoncharov
 - [#891](/rfcs/891 "Add explanation about argument name uniqueness. / RFC3"): **[Spec PR](https://github.com/graphql/graphql-spec/pull/891) created** on 2021-10-07 by dugenkui03
 - [#825](/rfcs/825 "OneOf Input Objects / RFC3"): **Added to [2021-10-07 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2021/2021-10-07.md)**
 - [#825](/rfcs/825 "OneOf Input Objects / RFC3"): **Mentioned in [2021-10-07 WG notes](https://github.com/graphql/graphql-wg/blob/main/notes/2021/2021-10-07.md)**
@@ -1149,9 +1165,9 @@ The below is an aggregate overview of the latest activity across all RFCs. Note 
 - [#891](/rfcs/891 "Add explanation about argument name uniqueness. / RFC3"): **Commit pushed**: [add explanation about argument name uniqueness.](https://github.com/graphql/graphql-spec/commit/5350f2882ac1cf2da66c8dc99a7fd074418021f0) on 2021-10-07 by [@dugenkui03](https://github.com/dugenkui03)
 - [#891](/rfcs/891 "Add explanation about argument name uniqueness. / RFC3"): **Added to [2021-10-07 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2021/2021-10-07.md)**
 - [#891](/rfcs/891 "Add explanation about argument name uniqueness. / RFC3"): **Mentioned in [2021-10-07 WG notes](https://github.com/graphql/graphql-wg/blob/main/notes/2021/2021-10-07.md)**
-- [#892](/rfcs/892 "Add descriptions to executable definitions / RFC1"): **Commit pushed**: [Add descriptions to executable definitions](https://github.com/graphql/graphql-spec/commit/14cce6147cc1621dfa9c532ab979168c50a05bea) on 2021-10-07 by [@IvanGoncharov](https://github.com/IvanGoncharov)
-- [#892](/rfcs/892 "Add descriptions to executable definitions / RFC1"): **Added to [2021-10-07 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2021/2021-10-07.md)**
-- [#892](/rfcs/892 "Add descriptions to executable definitions / RFC1"): **Mentioned in [2021-10-07 WG notes](https://github.com/graphql/graphql-wg/blob/main/notes/2021/2021-10-07.md)**
+- [#892](/rfcs/892 "Add descriptions to executable definitions / RFC2"): **Commit pushed**: [Add descriptions to executable definitions](https://github.com/graphql/graphql-spec/commit/14cce6147cc1621dfa9c532ab979168c50a05bea) on 2021-10-07 by [@IvanGoncharov](https://github.com/IvanGoncharov)
+- [#892](/rfcs/892 "Add descriptions to executable definitions / RFC2"): **Added to [2021-10-07 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2021/2021-10-07.md)**
+- [#892](/rfcs/892 "Add descriptions to executable definitions / RFC2"): **Mentioned in [2021-10-07 WG notes](https://github.com/graphql/graphql-wg/blob/main/notes/2021/2021-10-07.md)**
 - [#888](/rfcs/888 "Map type / RFCX"): **[Spec PR](https://github.com/graphql/graphql-spec/pull/888) created** on 2021-09-29 by nojvek
 - [#888](/rfcs/888 "Map type / RFCX"): **Commit pushed**: [RFC: Map type](https://github.com/graphql/graphql-spec/commit/96ce95dcc53af344be1bfdfa87db04b4b7e485fd) on 2021-09-29 by [@nojvek](https://github.com/nojvek)
 - [ImplicitInheritance](/rfcs/ImplicitInheritance "Implicit Inheritance / RFC0"): **[RFC document updated](https://github.com/graphql/graphql-wg/blob/06122e6774b9c4237513187068f46be6fa67a26e/rfcs/ImplicitInheritance.md)** on 2021-09-03 by Lee Byron
