@@ -178,13 +178,8 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          id: "892",
-          label: "892: Add descriptions to executable definitions [RFC2]",
-        },
-        {
-          type: "doc",
-          id: "1102",
-          label: "1102*: Define Data Collections used in the spec [RFC2]",
+          id: "793",
+          label: "793*: Default value coercion rules [RFC2]",
         },
         {
           type: "doc",
@@ -193,8 +188,13 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "793",
-          label: "793*: Default value coercion rules [RFC2]",
+          id: "892",
+          label: "892: Add descriptions to executable definitions [RFC2]",
+        },
+        {
+          type: "doc",
+          id: "1102",
+          label: "1102*: Define Data Collections used in the spec [RFC2]",
         },
         {
           type: "doc",
@@ -296,11 +296,6 @@ const sidebars = {
           type: "doc",
           id: "SemanticNullability",
           label: "SemanticNullability: Semantic Nullability [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "1166",
-          label: "1166*: Enable 'schema' keyword to be provided without root operations [RFC0]",
         },
         {
           type: "doc",
@@ -684,6 +679,11 @@ const sidebars = {
           type: "doc",
           id: "326",
           label: "326: Scalar serialize as built-in scalar type [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "1166",
+          label: "1166*: Enable 'schema' keyword to be provided without root operations [RFCX]",
         },
         {
           type: "doc",

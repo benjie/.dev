@@ -8,12 +8,31 @@ image: /img/rfc_tracker.png
 
 The below is an aggregate overview of the latest activity across all RFCs. Note that it's _roughly_ in cronological order, but some dates are less accurate than others (e.g. commit timestamps are to the second, whereas working groups are generally to the month...).
 
+- [#793](/rfcs/793 "Default value coercion rules / RFC2"): **Added to [2025-06-05 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/06-Jun/05-wg-primary.md)**
+- [#794](/rfcs/794 "Schema Coordinates / RFC2"): **Added to [2025-06-05 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/06-Jun/05-wg-primary.md)**
+- [#825](/rfcs/825 "OneOf Input Objects / RFC3"): **Added to [2025-06-05 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/06-Jun/05-wg-primary.md)**
+- [#860](/rfcs/860 "Prevent @skip and @include on root subscription selection set / RFC3"): **Added to [2025-06-05 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/06-Jun/05-wg-primary.md)**
 - [#892](/rfcs/892 "Add descriptions to executable definitions / RFC2"): **Added to [2025-06-05 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/06-Jun/05-wg-primary.md)**
+- [#1102](/rfcs/1102 "Define Data Collections used in the spec / RFC2"): **Added to [2025-06-05 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/06-Jun/05-wg-primary.md)**
+- [#1163](/rfcs/1163 "Allow clients to disable error propagation via request parameter (take 2) / RFC1"): **Added to [2025-06-05 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/06-Jun/05-wg-primary.md)**
+- [#1167](/rfcs/1167 "Do not exclude schema keyword if schema has description / RFC0"): **Added to [2025-06-05 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/06-Jun/05-wg-primary.md)**
+- [#1163](/rfcs/1163 "Allow clients to disable error propagation via request parameter (take 2) / RFC1"): **Commit pushed**: [Update spec/Section 4 -- Introspection.md](https://github.com/graphql/graphql-spec/commit/1c3f0cd2b1ed6a97996dd750818eb88ce3139856) on 2025-05-28 by [@benjie](https://github.com/benjie)
+- [#793](/rfcs/793 "Default value coercion rules / RFC2"): **2 commits pushed** on 2025-05-22:
+  - [Fix accidental mutation](https://github.com/graphql/graphql-spec/commit/4f76d6f7a39c55119259bb36a990d6433453cf93) by [@benjie](https://github.com/benjie)
+  - [Merge branch 'main' into input-object-default-value](https://github.com/graphql/graphql-spec/commit/4bac8df736c527ce3ecc2828ebfca951b4ad1048) by [@benjie](https://github.com/benjie)
 - [#825](/rfcs/825 "OneOf Input Objects / RFC3"): **2 commits pushed** on 2025-05-22:
   - [Merge branch 'main' into oneof-v2](https://github.com/graphql/graphql-spec/commit/d15f7bb95f67096163cfa7682e4acc5b8ce63c02) by [@benjie](https://github.com/benjie)
   - [Use 'execution error' and 'raise' rather than throw an error](https://github.com/graphql/graphql-spec/commit/63104756c2d62988bfd6863b40c3754dce517abd) by [@benjie](https://github.com/benjie)
 - [#860](/rfcs/860 "Prevent @skip and @include on root subscription selection set / RFC3"): **Commit pushed**: [Merge branch 'main' into subscription-single-root-field](https://github.com/graphql/graphql-spec/commit/8e7d2a204721243bb897c683f460a869ab361381) on 2025-05-22 by [@benjie](https://github.com/benjie)
 - [#1102](/rfcs/1102 "Define Data Collections used in the spec / RFC2"): **Commit pushed**: [Merge branch 'main' into data-collections](https://github.com/graphql/graphql-spec/commit/f04f86fd9113384157d282df682cf64da1047863) on 2025-05-22 by [@benjie](https://github.com/benjie)
+- [#1163](/rfcs/1163 "Allow clients to disable error propagation via request parameter (take 2) / RFC1"): **7 commits pushed** on 2025-05-22:
+  - [Rework capabilities](https://github.com/graphql/graphql-spec/commit/1f975e465405c0c6b638847eb9c83d51da945499) by [@benjie](https://github.com/benjie)
+  - [Use a definition](https://github.com/graphql/graphql-spec/commit/8c4008671a324e8769083e596c97d997782ea743) by [@benjie](https://github.com/benjie)
+  - [Reorder](https://github.com/graphql/graphql-spec/commit/641a786a3eb154a36d54687c2cb39bb7c6158e2d) by [@benjie](https://github.com/benjie)
+  - [Reword](https://github.com/graphql/graphql-spec/commit/026982b3188118c57faede2cfa723b2471e88090) by [@benjie](https://github.com/benjie)
+  - [Editorial](https://github.com/graphql/graphql-spec/commit/a7c6ad5454c4476df980cfe884ab8771699732c6) by [@benjie](https://github.com/benjie)
+  - [More editorial](https://github.com/graphql/graphql-spec/commit/fe559ea23fd02d0f2ab08bf127fa14673d2061c9) by [@benjie](https://github.com/benjie)
+  - [More editorial](https://github.com/graphql/graphql-spec/commit/b5f64ae9ec60288d993913eb422dee46be4b5826) by [@benjie](https://github.com/benjie)
 - [#1167](/rfcs/1167 "Do not exclude schema keyword if schema has description / RFC0"): **[Spec PR](https://github.com/graphql/graphql-spec/pull/1167) created** on 2025-05-19 by benjie
 - [#1167](/rfcs/1167 "Do not exclude schema keyword if schema has description / RFC0"): **Commit pushed**: [Do not exclude schema keyword if schema has description](https://github.com/graphql/graphql-spec/commit/c11671dbc9a1b93a7e6ba4b95b5dc494ee57fa03) on 2025-05-19 by [@benjie](https://github.com/benjie)
 - [#794](/rfcs/794 "Schema Coordinates / RFC2"): **Commit pushed**: [Run prettier](https://github.com/graphql/graphql-spec/commit/258d8413dd567d93cb51b26dd9a36bac78e5d8aa) on 2025-05-16 by [@benjie](https://github.com/benjie)
@@ -27,7 +46,7 @@ The below is an aggregate overview of the latest activity across all RFCs. Note 
 - [#1163](/rfcs/1163 "Allow clients to disable error propagation via request parameter (take 2) / RFC1"): **Added to [2025-05-15 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/05-May/15-wg-secondary-eu.md)**
 - [SemanticNullability](/rfcs/SemanticNullability "Semantic Nullability / RFC0"): **[RFC document updated](https://github.com/graphql/graphql-wg/blob/1cd0215e06037621dac28c2590fffb1dab939261/rfcs/SemanticNullability.md)** on 2025-05-01 by Benjie
 - [SemanticNullability](/rfcs/SemanticNullability "Semantic Nullability / RFC0"): **[RFC document updated](https://github.com/graphql/graphql-wg/blob/e3630e38fd430ca33c08e91ffb377a2f5f705898/rfcs/SemanticNullability.md)** on 2025-05-01 by Benjie
-- [#1166](/rfcs/1166 "Enable 'schema' keyword to be provided without root operations / RFC0"): **[Spec PR](https://github.com/graphql/graphql-spec/pull/1166) created** on 2025-05-01 by benjie
+- [#1166](/rfcs/1166 "Enable 'schema' keyword to be provided without root operations / RFCX"): **[Spec PR](https://github.com/graphql/graphql-spec/pull/1166) created** on 2025-05-01 by benjie
 - [#793](/rfcs/793 "Default value coercion rules / RFC2"): **Added to [2025-05-01 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/05-May/01-wg-primary.md)**
 - [#825](/rfcs/825 "OneOf Input Objects / RFC3"): **Added to [2025-05-01 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/05-May/01-wg-primary.md)**
 - [#860](/rfcs/860 "Prevent @skip and @include on root subscription selection set / RFC3"): **Added to [2025-05-01 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/05-May/01-wg-primary.md)**
@@ -37,7 +56,7 @@ The below is an aggregate overview of the latest activity across all RFCs. Note 
 - [#1102](/rfcs/1102 "Define Data Collections used in the spec / RFC2"): **Added to [2025-05-01 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/05-May/01-wg-primary.md)**
 - [#1142](/rfcs/1142 "make &#x60;includeDeprecated&#x60; non nullable / RFC3"): **Added to [2025-05-01 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/05-May/01-wg-primary.md)**
 - [#1163](/rfcs/1163 "Allow clients to disable error propagation via request parameter (take 2) / RFC1"): **Added to [2025-05-01 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/05-May/01-wg-primary.md)**
-- [#1166](/rfcs/1166 "Enable 'schema' keyword to be provided without root operations / RFC0"): **Added to [2025-05-01 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/05-May/01-wg-primary.md)**
+- [#1166](/rfcs/1166 "Enable 'schema' keyword to be provided without root operations / RFCX"): **Added to [2025-05-01 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/05-May/01-wg-primary.md)**
 - [#1165](/rfcs/1165 "Add Transitional Non-Null appendix (&#x60;@noPropagate&#x60; directive) / RFC0"): **[Spec PR](https://github.com/graphql/graphql-spec/pull/1165) created** on 2025-04-30 by benjie
 - [#1163](/rfcs/1163 "Allow clients to disable error propagation via request parameter (take 2) / RFC1"): **[Spec PR](https://github.com/graphql/graphql-spec/pull/1163) created** on 2025-04-30 by benjie
 - [#1163](/rfcs/1163 "Allow clients to disable error propagation via request parameter (take 2) / RFC1"): **3 commits pushed** on 2025-04-30:
@@ -50,7 +69,7 @@ The below is an aggregate overview of the latest activity across all RFCs. Note 
   - [Revise first paragraph](https://github.com/graphql/graphql-spec/commit/3c8a3c14102be346d590191922c34f4d683383da) by [@benjie](https://github.com/benjie)
   - [Overhaul overview](https://github.com/graphql/graphql-spec/commit/ab61cd71fdfa2ec78a6622e44181c4d8d809837a) by [@benjie](https://github.com/benjie)
   - [Tweak titles](https://github.com/graphql/graphql-spec/commit/872d58a34b04bba5dffdd9278f3848c25a5c4453) by [@benjie](https://github.com/benjie)
-- [#1166](/rfcs/1166 "Enable 'schema' keyword to be provided without root operations / RFC0"): **Commit pushed**: [Enable 'schema' keyword to be provided without root operations](https://github.com/graphql/graphql-spec/commit/470358cb7cf3b5dc79643a4b5c7d141a30f0fdb5) on 2025-04-30 by [@benjie](https://github.com/benjie)
+- [#1166](/rfcs/1166 "Enable 'schema' keyword to be provided without root operations / RFCX"): **Commit pushed**: [Enable 'schema' keyword to be provided without root operations](https://github.com/graphql/graphql-spec/commit/470358cb7cf3b5dc79643a4b5c7d141a30f0fdb5) on 2025-04-30 by [@benjie](https://github.com/benjie)
 - [SemanticNullability](/rfcs/SemanticNullability "Semantic Nullability / RFC0"): **[RFC document updated](https://github.com/graphql/graphql-wg/blob/6816e9f6050cee9722f24b79f38dd3eef31c5daa/rfcs/SemanticNullability.md)** on 2025-04-25 by Martin Bonnin
 - [FieldExtensions](/rfcs/FieldExtensions "Field Extensions / RFC0"): **[RFC document created](https://github.com/graphql/graphql-wg/blob/02f0d30971b6d5183a23b8ceba11fd1af4f36e50/rfcs/FieldExtensions.md)** on 2025-04-25 by Martin Bonnin
 - [#976](/rfcs/976 "Add 'extensions' to request / RFC3"): **Commit pushed**: [Update Section 6 -- Execution.md](https://github.com/graphql/graphql-spec/commit/1ac663a937a708865dec4864ba012c264548335a) on 2025-04-17 by [@leebyron](https://github.com/leebyron)
