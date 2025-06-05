@@ -16,6 +16,23 @@ The below is an aggregate overview of the latest activity across all RFCs. Note 
 - [#1102](/rfcs/1102 "Define Data Collections used in the spec / RFC2"): **Added to [2025-06-05 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/06-Jun/05-wg-primary.md)**
 - [#1163](/rfcs/1163 "Allow clients to disable error propagation via request parameter (take 2) / RFC1"): **Added to [2025-06-05 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/06-Jun/05-wg-primary.md)**
 - [#1167](/rfcs/1167 "Do not exclude schema keyword if schema has description / RFC0"): **Added to [2025-06-05 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/06-Jun/05-wg-primary.md)**
+- [#794](/rfcs/794 "Schema Coordinates / RFC2"): **Commit pushed**: [Update spec/Appendix B -- Grammar Summary.md](https://github.com/graphql/graphql-spec/commit/87f6bd0c46984e7e1fdb085d56a11363a6e84b7e) on 2025-06-03 by [@magicmark](https://github.com/magicmark)
+- [#794](/rfcs/794 "Schema Coordinates / RFC2"): **15 commits pushed** on 2025-06-02:
+  - [add spec updates](https://github.com/graphql/graphql-spec/commit/8a97138dfb099b82d8bbb2d9591827d98db95cc9) by [@magicmark](https://github.com/magicmark)
+  - [Add back assertion](https://github.com/graphql/graphql-spec/commit/c8a2cfeb5f1a0b9826076e89563e3f7d243ab45f) by [@magicmark](https://github.com/magicmark)
+  - [assert that ... -&#x3e; assert ...](https://github.com/graphql/graphql-spec/commit/a96836aa8877084643fa292f5d29b9cf4903c10c) by [@magicmark](https://github.com/magicmark)
+  - [consistent periods](https://github.com/graphql/graphql-spec/commit/3effd4ab31b8163f71b2f165016f9c56c63889a3) by [@magicmark](https://github.com/magicmark)
+  - [consistent exists/must exist](https://github.com/graphql/graphql-spec/commit/9feceb2bbe08c5593f423ecc59803de7a3ec20b5) by [@magicmark](https://github.com/magicmark)
+  - [void -&#x3e; null](https://github.com/graphql/graphql-spec/commit/11b9e96f85658f470d226cb707eb2a0ecf948d5c) by [@magicmark](https://github.com/magicmark)
+  - [remove note prefix for error throwing note](https://github.com/graphql/graphql-spec/commit/10742dd44edee9f25ceb24d8e32da7459525bb71) by [@magicmark](https://github.com/magicmark)
+  - [Various stylistic fixes](https://github.com/graphql/graphql-spec/commit/4b9f37aa118b2b42ecaa388907ea6562b7de13bc) by [@benjie](https://github.com/benjie)
+  - [Update spec/Section 3 -- Type System.md](https://github.com/graphql/graphql-spec/commit/3555f575a219a20e9421f3a9c1fec2baa7536f79) by [@magicmark](https://github.com/magicmark)
+  - [Update spec/Section 3 -- Type System.md](https://github.com/graphql/graphql-spec/commit/a52e312089ffe820650f3ac9638ad0b2ed45988a) by [@magicmark](https://github.com/magicmark)
+  - [Apply benjie's suggestions from code review](https://github.com/graphql/graphql-spec/commit/dc1374d385b670f5601868ec41b8de28332eb645) by [@magicmark](https://github.com/magicmark)
+  - [split out SchemaCoordinate definition](https://github.com/graphql/graphql-spec/commit/8c018027fc1e1d0ff926f631056183e6f9974202) by [@magicmark](https://github.com/magicmark)
+  - [Update spec/Section 3 -- Type System.md](https://github.com/graphql/graphql-spec/commit/b4f2515b4fb28d3f192f0c2acab949089d0330c6) by [@magicmark](https://github.com/magicmark)
+  - [condense assertion](https://github.com/graphql/graphql-spec/commit/8584fa343b5296ac1be1a84314dc06a21b87d9a0) by [@magicmark](https://github.com/magicmark)
+  - [more condensing](https://github.com/graphql/graphql-spec/commit/37c9c102a1570ac193b5ca4e4a05389f2f6be380) by [@magicmark](https://github.com/magicmark)
 - [#1163](/rfcs/1163 "Allow clients to disable error propagation via request parameter (take 2) / RFC1"): **Commit pushed**: [Update spec/Section 4 -- Introspection.md](https://github.com/graphql/graphql-spec/commit/1c3f0cd2b1ed6a97996dd750818eb88ce3139856) on 2025-05-28 by [@benjie](https://github.com/benjie)
 - [#793](/rfcs/793 "Default value coercion rules / RFC2"): **2 commits pushed** on 2025-05-22:
   - [Fix accidental mutation](https://github.com/graphql/graphql-spec/commit/4f76d6f7a39c55119259bb36a990d6433453cf93) by [@benjie](https://github.com/benjie)
