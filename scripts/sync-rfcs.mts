@@ -100,6 +100,8 @@ interface Frontmatter {
   image?: string;
   /** If something was actually merged but doesn't come up as merged in GitHub, add this */
   weirdMerge?: boolean;
+  /** Does it have the 'Next stage?' label? */
+  nextStage?: boolean;
 }
 
 function assertFrontmatter(
@@ -378,6 +380,9 @@ async function syncRfcPRs(ctx: Ctx) {
           node.labels?.edges?.map((e) => e?.node?.name) ?? [],
           identifier,
         ),
+        nextStage: hasNextStageLabel(
+          node.labels?.edges?.map((e) => e?.node?.name) ?? [],
+        ),
         champion: node.assignees.nodes?.[0]?.login ?? node.author?.login,
 
         prUrl: `https://github.com/graphql/graphql-spec/pull/${node.number}`,
@@ -639,6 +644,10 @@ async function updateRfc(ctx: Ctx, details: Omit<Frontmatter, "shortname">) {
   }
 }
 
+function hasNextStageLabel(labels: (string | undefined)[]): boolean {
+  return labels.some((l) => l && /next stage/i.test(l));
+}
+
 function labelsToStage(
   labels: (string | undefined)[],
   identifier: string,
@@ -720,6 +729,10 @@ async function generateIndexAndMeta(ctx: Ctx) {
     const s =
       stageWeight(z.frontmatter.stage) - stageWeight(a.frontmatter.stage);
     if (s !== 0) return s;
+    // Next stage comes first
+    const n =
+      (z.frontmatter.nextStage ? 1 : 0) - (a.frontmatter.nextStage ? 1 : 0);
+    if (n !== 0) return n;
     const aNewestEvent = a.frontmatter.events[0];
     const zNewestEvent = z.frontmatter.events[0];
     const t = Date.parse(zNewestEvent.date) - Date.parse(aNewestEvent.date);
@@ -1234,7 +1247,9 @@ function printTable(things: RFCFile[]): MDX {
     return mdx`| ${maybeStrikethrough(
       thing,
       rfcLink(thing.frontmatter, "supershort"),
-    )} | ${githubUsernameMarkdown(
+    )}${
+      thing.frontmatter.nextStage ? mdx` 🚀` : mdx``
+    } | ${githubUsernameMarkdown(
       thing.frontmatter.champion,
     )} | [${maybeStrikethrough(
       thing,
