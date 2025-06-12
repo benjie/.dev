@@ -1223,16 +1223,28 @@ ${printTable(things)}
   return mdx.join(output, "\n\n");
 }
 
+function maybeStrikethrough(thing: RFCFile, inner: MDX) {
+  if (!thing.frontmatter.mergedAt && !thing.frontmatter.closedAt) return inner;
+  if (thing.frontmatter.stage === "3") return inner;
+  if (thing.frontmatter.stage === "X") return inner;
+  return mdx`~~${inner}~~`;
+}
+
 function printTable(things: RFCFile[]): MDX {
   const printRow = (thing: RFCFile): MDX => {
-    return mdx`| ${rfcLink(
-      thing.frontmatter,
-      "supershort",
-    )} | ${githubUsernameMarkdown(thing.frontmatter.champion)} | [${mdx.escape(
-      thing.frontmatter.title,
-    )}](${mdx.url(
-      `/rfcs/${thing.frontmatter.identifier}`,
-    )}) | ${formatTimelineEvent(
+    return mdx`| ${maybeStrikethrough(
+      thing,
+      rfcLink(thing.frontmatter, "supershort"),
+    )} | ${githubUsernameMarkdown(
+      thing.frontmatter.champion,
+    )} | [${maybeStrikethrough(
+      thing,
+      mdx.escape(thing.frontmatter.title),
+    )}](${mdx.url(`/rfcs/${thing.frontmatter.identifier}`)})${
+      thing.frontmatter.prUrl
+        ? mdx` <small>[GitHub](${mdx.url(thing.frontmatter.prUrl)})</small>`
+        : mdx``
+    } | ${formatTimelineEvent(
       thing.frontmatter.events[0],
       thing.frontmatter,
       false,
