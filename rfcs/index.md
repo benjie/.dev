@@ -17,7 +17,7 @@ be helpful for people to keep track of the various RFCs.
 Ping `@benjie` on the [GraphQL Discord](https://discord.graphql.org) (`#wg`
 channel) and ask for him to run an update!
 
-Last updated: 2025-06-12T07:58:05.454Z
+Last updated: 2025-06-12T08:14:27.478Z
 
 :::
 
@@ -126,7 +126,6 @@ Last updated: 2025-06-12T07:58:05.454Z
 <!-- prettier-ignore -->
 | RFC | Champion | Title | Latest |
 | --- | --- | --- | --- |
-| [#525](/rfcs/525 "Allow deprecation of input values / RFC3") | [@smitt04](https://github.com/smitt04) | [Allow deprecation of input values](/rfcs/525) | **Mentioned in [2021-02-04 WG notes](https://github.com/graphql/graphql-wg/blob/main/notes/2021/2021-02-04.md)** [_(more)_](/rfcs/525#timeline) |
 | [#823](/rfcs/823 "operation expressions / RFC3") | [@benjie](https://github.com/benjie) | [operation expressions](/rfcs/823) | **2 commits pushed**: [(latest)](https://github.com/graphql/graphql-spec/commit/f982594af97e66591729124e4670e4b965c5f7bb) on 2021-03-16 by [@benjie](https://github.com/benjie) [_(more)_](/rfcs/823#timeline) |
 | [#667](/rfcs/667 "&#x5b;RFC Sketch&#x5d; Defer and Stream Directives / RFC3") | [@lilianammmatos](https://github.com/lilianammmatos) | [&#x5b;RFC Sketch&#x5d; Defer and Stream Directives](/rfcs/667) | **Added to [2020-01-09 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2020/2020-01-09.md)** [_(more)_](/rfcs/667#timeline) |
 | [#793](/rfcs/793 "Default value coercion rules / RFC3") | [@benjie](https://github.com/benjie) | [Default value coercion rules](/rfcs/793) | **Added to [2025-06-05 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/06-Jun/05-wg-primary.md)** [_(more)_](/rfcs/793#timeline) |
@@ -144,6 +143,7 @@ Last updated: 2025-06-12T07:58:05.454Z
 | [#776](/rfcs/776 "__typename is not valid at subscription root / RFC3") | [@benjie](https://github.com/benjie) | [__typename is not valid at subscription root](/rfcs/776) | **Added to [2021-05-13 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2021/2021-05-13.md)** [_(more)_](/rfcs/776#timeline) |
 | [#649](/rfcs/649 "Custom Scalar Specification URLs / RFC3") | [@eapache](https://github.com/eapache) | [Custom Scalar Specification URLs](/rfcs/649) | **2 commits pushed**: [(latest)](https://github.com/graphql/graphql-spec/commit/89014b934809e2bfb0da112a9acb5510871b566f) on 2021-04-09 by [@leebyron](https://github.com/leebyron) [_(more)_](/rfcs/649#timeline) |
 | [#803](/rfcs/803 "Replace 'query error' with 'request error' / RFC3") | [@benjie](https://github.com/benjie) | [Replace 'query error' with 'request error'](/rfcs/803) | **2 commits pushed**: [(latest)](https://github.com/graphql/graphql-spec/commit/c63b6a5968cf30ace12e1873c90e05a89c1db13d) on 2021-04-07 by [@leebyron](https://github.com/leebyron) [_(more)_](/rfcs/803#timeline) |
+| [#525](/rfcs/525 "Allow deprecation of input values / RFC3") | [@smitt04](https://github.com/smitt04) | [Allow deprecation of input values](/rfcs/525) | **Mentioned in [2021-02-04 WG notes](https://github.com/graphql/graphql-wg/blob/main/notes/2021/2021-02-04.md)** [_(more)_](/rfcs/525#timeline) |
 | [#701](/rfcs/701 "Disallow non-breakable chains of circular references in Input Objects / RFC3") | [@spawnia](https://github.com/spawnia) | [Disallow non-breakable chains of circular references in Input Objects](/rfcs/701) | **2 commits pushed**: [(latest)](https://github.com/graphql/graphql-spec/commit/90744b14e01027a200541d48c2772e605df959f8) on 2021-01-11 by [@leebyron](https://github.com/leebyron) [_(more)_](/rfcs/701#timeline) |
 | [#373](/rfcs/373 "Allow interfaces to implement other interfaces / RFC3") | [@mike-marcacci](https://github.com/mike-marcacci) | [Allow interfaces to implement other interfaces](/rfcs/373) | **5 commits pushed**: [(latest)](https://github.com/graphql/graphql-spec/commit/db7b7e119f8f23b3033ec70da482f2894f045f3f) on 2020-01-11 by [@leebyron](https://github.com/leebyron) [_(more)_](/rfcs/373#timeline) |
 | [#472](/rfcs/472 "Repeatable directives / RFC3") | [@OlegIlyenko](https://github.com/OlegIlyenko) | [Repeatable directives](/rfcs/472) | **2 commits pushed**: [(latest)](https://github.com/graphql/graphql-spec/commit/69669c3cf773d61ff3adbe243e4c4b0e4e21d7ab) on 2020-01-10 by [@leebyron](https://github.com/leebyron) [_(more)_](/rfcs/472#timeline) |

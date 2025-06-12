@@ -20,31 +20,6 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          id: "525",
-          label: "525: Allow deprecation of input values [RFC2]",
-        },
-        {
-          type: "doc",
-          id: "823",
-          label: "823*: operation expressions [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "667",
-          label: "667: [RFC Sketch] Defer and Stream Directives [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "793",
-          label: "793*: Default value coercion rules [RFC3]",
-        },
-        {
-          type: "doc",
-          id: "825",
-          label: "825*: OneOf Input Objects [RFC3]",
-        },
-        {
-          type: "doc",
           id: "860",
           label: "860*: Prevent @skip and @include on root subscription selection set [RFC3]",
         },
@@ -107,6 +82,11 @@ const sidebars = {
           type: "doc",
           id: "803",
           label: "803*: Replace 'query error' with 'request error' [RFC3]",
+        },
+        {
+          type: "doc",
+          id: "525",
+          label: "525: Allow deprecation of input values [RFC3]",
         },
         {
           type: "doc",
@@ -177,6 +157,29 @@ const sidebars = {
     },
     {
       type: "category",
+      label: "Stage 3: Accepted (pending edits)",
+      collapsed: false,
+      collapsible: true,
+      items: [
+        {
+          type: "doc",
+          id: "793",
+          label: "793*: Default value coercion rules [RFC3]",
+        },
+        {
+          type: "doc",
+          id: "825",
+          label: "825*: OneOf Input Objects [RFC3]",
+        },
+        {
+          type: "doc",
+          id: "445",
+          label: "445: Disallow non-breakable chains of circular references in Input Objects [RFC3]",
+        },
+      ],
+    },
+    {
+      type: "category",
       label: "Stage 2: Draft",
       collapsed: false,
       collapsible: true,
@@ -220,6 +223,16 @@ const sidebars = {
           type: "doc",
           id: "955",
           label: "955: Add validation rule that operation types exist [RFC2]",
+        },
+        {
+          type: "doc",
+          id: "1091",
+          label: "1091*: Define Data Collections used in the spec [RFC2]",
+        },
+        {
+          type: "doc",
+          id: "742",
+          label: "742: Spec edits for @defer/@stream [RFC2]",
         },
       ],
     },
@@ -283,6 +296,51 @@ const sidebars = {
           type: "doc",
           id: "509",
           label: "509: Allow singular variables in list locations [RFC1]",
+        },
+        {
+          type: "doc",
+          id: "1153",
+          label: "1153*: Allow clients to disable error propagation via request parameter [RFC1]",
+        },
+        {
+          type: "doc",
+          id: "1098",
+          label: "1098: Add 5.2.4 Operation Type Exists [RFC1]",
+        },
+        {
+          type: "doc",
+          id: "1010",
+          label: "1010: Fragment Arguments: Spec Implementation [RFC1]",
+        },
+        {
+          type: "doc",
+          id: "865",
+          label: "865: Fragment Arguments (parameterized fragments) for GraphQL [RFC1]",
+        },
+        {
+          type: "doc",
+          id: "895",
+          label: "895: Client Controlled Nullability [RFC1]",
+        },
+        {
+          type: "doc",
+          id: "883",
+          label: "883: Relax SameResponseShape algorithm to be compatible with covariant fields [RFC1]",
+        },
+        {
+          type: "doc",
+          id: "877",
+          label: "877: Forbid duplicating argument names [RFC1]",
+        },
+        {
+          type: "doc",
+          id: "733",
+          label: "733*: Tagged type [RFC1]",
+        },
+        {
+          type: "doc",
+          id: "395",
+          label: "395: inputUnion type [RFC1]",
         },
       ],
     },
@@ -499,6 +557,11 @@ const sidebars = {
         },
         {
           type: "doc",
+          id: "823",
+          label: "823*: operation expressions [RFC0]",
+        },
+        {
+          type: "doc",
           id: "Subscriptions",
           label: "Subscriptions: NOTE: this document is kept for historic purposes; GraphQL Subscriptions have been specified and released as part of the official [June 2018 GraphQL Specification](https://spec.graphql.org/June2018/). [RFC0]",
         },
@@ -516,6 +579,11 @@ const sidebars = {
           type: "doc",
           id: "674",
           label: "674: allow empty selections [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "667",
+          label: "667: [RFC Sketch] Defer and Stream Directives [RFC0]",
         },
         {
           type: "doc",
@@ -541,69 +609,6 @@ const sidebars = {
           type: "doc",
           id: "325",
           label: "325: Add \"Any\" scalar type [RFC0]",
-        },
-      ],
-    },
-    {
-      type: "category",
-      label: "Stage X: Rejected",
-      collapsed: true,
-      collapsible: true,
-      items: [
-        {
-          type: "doc",
-          id: "1091",
-          label: "1091*: Define Data Collections used in the spec [RFC2]",
-        },
-        {
-          type: "doc",
-          id: "742",
-          label: "742: Spec edits for @defer/@stream [RFC2]",
-        },
-        {
-          type: "doc",
-          id: "1153",
-          label: "1153*: Allow clients to disable error propagation via request parameter [RFC1]",
-        },
-        {
-          type: "doc",
-          id: "1098",
-          label: "1098: Add 5.2.4 Operation Type Exists [RFC1]",
-        },
-        {
-          type: "doc",
-          id: "1010",
-          label: "1010: Fragment Arguments: Spec Implementation [RFC1]",
-        },
-        {
-          type: "doc",
-          id: "865",
-          label: "865: Fragment Arguments (parameterized fragments) for GraphQL [RFC1]",
-        },
-        {
-          type: "doc",
-          id: "895",
-          label: "895: Client Controlled Nullability [RFC1]",
-        },
-        {
-          type: "doc",
-          id: "883",
-          label: "883: Relax SameResponseShape algorithm to be compatible with covariant fields [RFC1]",
-        },
-        {
-          type: "doc",
-          id: "877",
-          label: "877: Forbid duplicating argument names [RFC1]",
-        },
-        {
-          type: "doc",
-          id: "733",
-          label: "733*: Tagged type [RFC1]",
-        },
-        {
-          type: "doc",
-          id: "395",
-          label: "395: inputUnion type [RFC1]",
         },
         {
           type: "doc",
@@ -680,6 +685,14 @@ const sidebars = {
           id: "326",
           label: "326: Scalar serialize as built-in scalar type [RFC0]",
         },
+      ],
+    },
+    {
+      type: "category",
+      label: "Stage X: Rejected",
+      collapsed: true,
+      collapsible: true,
+      items: [
         {
           type: "doc",
           id: "1166",
@@ -709,11 +722,6 @@ const sidebars = {
           type: "doc",
           id: "232",
           label: "232: __id field for unique identifiers [RFCX]",
-        },
-        {
-          type: "doc",
-          id: "445",
-          label: "445: Disallow non-breakable chains of circular references in Input Objects [RFC3]",
         },
       ],
     },

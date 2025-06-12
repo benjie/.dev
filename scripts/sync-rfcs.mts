@@ -729,6 +729,13 @@ async function generateIndexAndMeta(ctx: Ctx) {
     collapsible: true,
     items: [] as SidebarItemConfig[],
   } satisfies SidebarItemConfig;
+  const RFC3_UNMERGED = {
+    type: "category",
+    label: "Stage 3: Accepted (pending edits)",
+    collapsed: false,
+    collapsible: true,
+    items: [] as SidebarItemConfig[],
+  } satisfies SidebarItemConfig;
   const RFCX = {
     type: "category",
     label: "Stage X: Rejected",
@@ -756,6 +763,7 @@ async function generateIndexAndMeta(ctx: Ctx) {
         label: "Activity",
       },
       RFC3,
+      RFC3_UNMERGED,
       RFC2,
       RFC1,
       RFC0,
@@ -768,21 +776,32 @@ async function generateIndexAndMeta(ctx: Ctx) {
       identifier,
       frontmatter: { stage, shortname, champion, closedAt, mergedAt },
     } = thing;
-    const RFCCategory = mergedAt
-      ? RFC3
-      : closedAt
-        ? RFCX
-        : stage === "0"
-          ? RFC0
-          : stage === "1"
-            ? RFC1
-            : stage === "2"
-              ? RFC2
-              : stage === "3"
+    const RFCCategory =
+      stage === "0"
+        ? RFC0
+        : stage === "1"
+          ? RFC1
+          : stage === "2"
+            ? RFC2
+            : stage === "3"
+              ? mergedAt
                 ? RFC3
-                : stage === "X"
+                : RFC3_UNMERGED
+              : stage === "X"
+                ? RFCX
+                : closedAt
                   ? RFCX
                   : RFCUnknown;
+    if (
+      (RFCCategory === RFCUnknown ||
+        RFCCategory === RFC1 ||
+        RFCCategory === RFC2) &&
+      mergedAt
+    ) {
+      console.warn(
+        `https://github.com/graphql/graphql-spec/pull/${identifier} is merged; should it be RFC3`,
+      );
+    }
     RFCCategory.items.push({
       type: "doc",
       id: identifier,
@@ -943,7 +962,11 @@ function frontmatterStageMarkdown(
   frontmatter: Frontmatter,
   options: StageMarkdownOptions = {},
 ) {
-  if (frontmatter.closedAt && !frontmatter.mergedAt) {
+  if (
+    frontmatter.stage !== "3" &&
+    frontmatter.closedAt &&
+    !frontmatter.mergedAt
+  ) {
     const { prefix: rawPrefix, short } = options;
     const prefix = rawPrefix ?? (short ? mdx`` : mdx`RFC`);
     return short
