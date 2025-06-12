@@ -670,7 +670,7 @@ function labelsToStage(
       }
     }
   }
-  return null;
+  return match;
 }
 
 async function readMd(filePath: string) {
