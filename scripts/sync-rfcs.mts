@@ -98,6 +98,8 @@ interface Frontmatter {
   /** Append only, comma-separated list */
   related?: string;
   image?: string;
+  /** If something was actually merged but doesn't come up as merged in GitHub, add this */
+  weirdMerge?: boolean;
 }
 
 function assertFrontmatter(
@@ -790,7 +792,14 @@ async function generateIndexAndMeta(ctx: Ctx) {
   for (const thing of everything) {
     const {
       identifier,
-      frontmatter: { stage, shortname, champion, closedAt, mergedAt },
+      frontmatter: {
+        stage,
+        shortname,
+        champion,
+        closedAt,
+        mergedAt,
+        weirdMerge,
+      },
     } = thing;
     const RFCCategory =
       stage === "0"
@@ -813,7 +822,13 @@ async function generateIndexAndMeta(ctx: Ctx) {
         `https://github.com/graphql/graphql-spec/pull/${identifier} (RFC${stage}) is merged; should it be RFC3? (Or, if just an RFC doc, RFCS since it is "superseded" with the doc itself.)`,
       );
     }
-    if (closedAt && !mergedAt && RFCCategory !== RFCX && RFCCategory !== RFCS) {
+    if (
+      closedAt &&
+      !mergedAt &&
+      RFCCategory !== RFCX &&
+      RFCCategory !== RFCS &&
+      !weirdMerge
+    ) {
       console.warn(
         `https://github.com/graphql/graphql-spec/pull/${identifier} (RFC${stage}) is closed; should it be RFCX/S?`,
       );
