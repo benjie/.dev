@@ -835,7 +835,7 @@ async function generateIndexAndMeta(ctx: Ctx) {
                   : RFCUnknown;
     if (mergedAt && RFCCategory !== RFC3 && RFCCategory !== RFCS) {
       console.warn(
-        `https://github.com/graphql/graphql-spec/pull/${identifier} (RFC${stage}) is merged; should it be RFC3? (Or, if just an RFC doc, RFCS since it is "superseded" with the doc itself.)`,
+        `https://github.com/graphql/graphql-spec/pull/${identifier} (RFC${stage}; ${RFCCategory.label}) is merged; should it be RFC3? (Or RFCS for an RFC document.)`,
       );
     }
     if (
@@ -846,7 +846,7 @@ async function generateIndexAndMeta(ctx: Ctx) {
       !weirdMerge
     ) {
       console.warn(
-        `https://github.com/graphql/graphql-spec/pull/${identifier} (RFC${stage}) is closed; should it be RFCX/S?`,
+        `https://github.com/graphql/graphql-spec/pull/${identifier} (RFC${stage}; ${RFCCategory.label}) is closed; should it be RFCX/S?`,
       );
     }
     RFCCategory.items.push({
