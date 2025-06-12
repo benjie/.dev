@@ -376,6 +376,7 @@ async function syncRfcPRs(ctx: Ctx) {
         title: tidyTitle(node.title),
         stage: labelsToStage(
           node.labels?.edges?.map((e) => e?.node?.name) ?? [],
+          identifier,
         ),
         champion: node.assignees.nodes?.[0]?.login ?? node.author?.login,
 
@@ -447,8 +448,10 @@ async function syncRfcDiscussions(ctx: Ctx) {
         identifier,
         title: tidyTitle(node.title),
         stage:
-          labelsToStage(node.labels?.edges?.map((e) => e?.node?.name) ?? []) ??
-          "0",
+          labelsToStage(
+            node.labels?.edges?.map((e) => e?.node?.name) ?? [],
+            identifier,
+          ) ?? "0",
         champion: node.author?.login,
 
         wgDiscussionUrl: `https://github.com/graphql/graphql-wg/discussions/${node.number}`,
@@ -610,7 +613,7 @@ async function updateRfc(ctx: Ctx, details: Omit<Frontmatter, "shortname">) {
   }
 
   // Apply updates. Most keys overwrite, but some have special handling
-  for (const key of Object.keys(details) as (keyof typeof details)[]) {
+  for (const key of Object.keys(details) as (keyof Frontmatter)[]) {
     if (key === "events") {
       if (details.events == null) continue;
       for (const event of details.events) {
@@ -624,33 +627,46 @@ async function updateRfc(ctx: Ctx, details: Omit<Frontmatter, "shortname">) {
       }
       frontmatter.related = Array.from(related).sort().join(", ");
       // These keys only replace if not already set
-    } else if (["shortname", "superceded"].includes(key)) {
+    } else if (key === "shortname" || key === "superceded") {
       if (details.superceded == null) continue;
       if (!frontmatter[key]) {
-        frontmatter[key] = details[key] as any;
+        (frontmatter[key] as any) = details[key];
       }
     } else {
       if (details[key] == null) continue;
-      frontmatter[key] = details[key] as any;
+      (frontmatter[key] as any) = details[key];
     }
   }
 }
 
 function labelsToStage(
   labels: (string | undefined)[],
+  identifier: string,
 ): "0" | "1" | "2" | "3" | "X" | "S" | null {
+  let match: "0" | "1" | "2" | "3" | "X" | "S" | null = null;
   for (const label of labels) {
     if (!label) continue;
     const matches = label.match(/RFC\s*([0123X])/);
     if (matches) {
+      let thisMatch: "0" | "1" | "2" | "3" | "X" | "S" | null = null;
       if (matches[1] === "X") {
         if (label.match(/Superseded/)) {
-          return "S";
+          thisMatch = "S";
         } else {
-          return "X";
+          thisMatch = "X";
         }
       } else {
-        return matches[1] as "0" | "1" | "2" | "3" | "X";
+        thisMatch = matches[1] as "0" | "1" | "2" | "3";
+      }
+      if (match === null) {
+        match = thisMatch;
+      } else if (thisMatch === "X" || thisMatch === "S") {
+        // X overrides
+        match = thisMatch;
+      } else {
+        throw new Error(
+          `RFC ${identifier} has labels ${labels}, which matches both ${match} and ${thisMatch}.`,
+        );
       }
     }
   }
