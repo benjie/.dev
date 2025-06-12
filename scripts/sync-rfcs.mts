@@ -1019,19 +1019,6 @@ function frontmatterStageMarkdown(
   frontmatter: Frontmatter,
   options: StageMarkdownOptions = {},
 ) {
-  if (
-    frontmatter.stage !== "3" &&
-    frontmatter.closedAt &&
-    !frontmatter.mergedAt
-  ) {
-    const { prefix: rawPrefix, short } = options;
-    const prefix = rawPrefix ?? (short ? mdx`` : mdx`RFC`);
-    return short
-      ? mdx`${prefix}X/Closed`
-      : mdx`[${prefix}X: Closed](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-x-rejected) ${mdx.escape(
-          frontmatter.closedAt,
-        )}`;
-  }
   return stageMarkdown(frontmatter.stage, options);
 }
 function stageMarkdown(
