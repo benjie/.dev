@@ -78,7 +78,7 @@ interface Frontmatter {
   events: Event[];
   /** Human controlled */
   shortname: string;
-  stage: "0" | "1" | "2" | "3" | "X" | null;
+  stage: "0" | "1" | "2" | "3" | "X" | "S" | null;
   closedAt?: string;
   mergedAt?: string;
   mergedBy?: string;
@@ -636,12 +636,20 @@ async function updateRfc(ctx: Ctx, details: Omit<Frontmatter, "shortname">) {
 
 function labelsToStage(
   labels: (string | undefined)[],
-): "0" | "1" | "2" | "3" | "X" | null {
+): "0" | "1" | "2" | "3" | "X" | "S" | null {
   for (const label of labels) {
     if (!label) continue;
     const matches = label.match(/RFC\s*([0123X])/);
     if (matches) {
-      return matches[1] as "0" | "1" | "2" | "3" | "X";
+      if (matches[1] === "X") {
+        if (label.match(/Superseded/)) {
+          return "S";
+        } else {
+          return "X";
+        }
+      } else {
+        return matches[1] as "0" | "1" | "2" | "3" | "X";
+      }
     }
   }
   return null;
@@ -743,6 +751,13 @@ async function generateIndexAndMeta(ctx: Ctx) {
     collapsible: true,
     items: [] as SidebarItemConfig[],
   } satisfies SidebarItemConfig;
+  const RFCS = {
+    type: "category",
+    label: "Stage X: Superseded",
+    collapsed: true,
+    collapsible: true,
+    items: [] as SidebarItemConfig[],
+  } satisfies SidebarItemConfig;
   const RFCUnknown = {
     type: "category",
     label: "Other",
@@ -768,6 +783,7 @@ async function generateIndexAndMeta(ctx: Ctx) {
       RFC1,
       RFC0,
       RFCX,
+      RFCS,
       RFCUnknown,
     ],
   } satisfies SidebarsConfig;
@@ -784,22 +800,22 @@ async function generateIndexAndMeta(ctx: Ctx) {
           : stage === "2"
             ? RFC2
             : stage === "3"
-              ? mergedAt
+              ? mergedAt || closedAt
                 ? RFC3
                 : RFC3_UNMERGED
               : stage === "X"
                 ? RFCX
-                : closedAt
-                  ? RFCX
+                : stage === "S"
+                  ? RFCS
                   : RFCUnknown;
-    if (
-      (RFCCategory === RFCUnknown ||
-        RFCCategory === RFC1 ||
-        RFCCategory === RFC2) &&
-      mergedAt
-    ) {
+    if (mergedAt && RFCCategory !== RFC3 && RFCCategory !== RFCS) {
       console.warn(
-        `https://github.com/graphql/graphql-spec/pull/${identifier} is merged; should it be RFC3`,
+        `https://github.com/graphql/graphql-spec/pull/${identifier} (RFC${stage}) is merged; should it be RFC3? (Or, if just an RFC doc, RFCS since it is "superseded" with the doc itself.)`,
+      );
+    }
+    if (closedAt && !mergedAt && RFCCategory !== RFCX && RFCCategory !== RFCS) {
+      console.warn(
+        `https://github.com/graphql/graphql-spec/pull/${identifier} (RFC${stage}) is closed; should it be RFCX/S?`,
       );
     }
     RFCCategory.items.push({
@@ -922,27 +938,23 @@ function rfcLink(
     length === "supershort",
   )}](${mdx.url(`/rfcs/${frontmatter.identifier}`)} "${mdx.linkDescription(
     frontmatter.shortname,
-  )} / RFC${mdx.escape(
-    frontmatter.mergedAt
-      ? "3"
-      : frontmatter.closedAt
-        ? "X"
-        : frontmatter.stage ?? "?",
-  )}")${
+  )} / RFC${mdx.escape(frontmatter.stage ?? "?")}")${
     length === "expanded" ? mdx` (${mdx.escape(frontmatter.shortname)})` : mdx``
   }`;
 }
 
 function stageWeight(stage: string | null | undefined): number {
   return stage === "3"
-    ? -4
+    ? -5
     : stage == null
-      ? -3
+      ? -4
       : stage === "X"
-        ? -2
-        : stage === "0"
-          ? -1
-          : parseInt(stage, 10);
+        ? -3
+        : stage === "S"
+          ? -2
+          : stage === "0"
+            ? -1
+            : parseInt(stage, 10);
 }
 
 function tidyTitle(title: string): string {
@@ -956,6 +968,7 @@ function tidyTitle(title: string): string {
 
 interface StageMarkdownOptions {
   prefix?: MDX;
+  suffix?: MDX | null;
   short?: boolean;
 }
 function frontmatterStageMarkdown(
@@ -979,30 +992,35 @@ function frontmatterStageMarkdown(
 }
 function stageMarkdown(
   stage: string | null,
-  { prefix: rawPrefix, short }: StageMarkdownOptions = {},
+  { prefix: rawPrefix, suffix: rawSuffix, short }: StageMarkdownOptions = {},
 ): MDX {
   const prefix = rawPrefix ?? (short ? mdx`` : mdx`RFC`);
+  const suffix = rawSuffix ?? mdx``;
   switch (stage) {
     case "0":
       return short
         ? mdx`${prefix}0/Strawman`
-        : mdx`[${prefix}0: Strawman](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-0-strawman)`;
+        : mdx`[${prefix}0: Strawman${suffix}](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-0-strawman)`;
     case "1":
       return short
         ? mdx`${prefix}1/Proposal`
-        : mdx`[${prefix}1: Proposal](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-1-proposal)`;
+        : mdx`[${prefix}1: Proposal${suffix}](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-1-proposal)`;
     case "2":
       return short
         ? mdx`${prefix}2/Draft`
-        : mdx`[${prefix}2: Draft](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-2-draft)`;
+        : mdx`[${prefix}2: Draft${suffix}](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-2-draft)`;
     case "3":
       return short
         ? mdx`${prefix}3/Accepted`
-        : mdx`[${prefix}3: Accepted](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-3-accepted)`;
+        : mdx`[${prefix}3: Accepted${suffix}](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-3-accepted)`;
     case "X":
       return short
         ? mdx`${prefix}X/Rejected`
-        : mdx`[${prefix}X: Rejected](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-x-rejected)`;
+        : mdx`[${prefix}X: Rejected${suffix}](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-x-rejected)`;
+    case "S":
+      return short
+        ? mdx`${prefix}X/Superseded`
+        : mdx`[${prefix}X: Superseded${suffix}](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-x-rejected)`;
     default:
       return mdx`Unknown`;
   }
@@ -1131,22 +1149,40 @@ function formatDate(date: string): MDX {
 }
 
 function printTables(everything: RFCFile[]) {
-  const thingsByStage = {};
+  const thingsByStage: Record<string, RFCFile[]> = {};
   for (const thing of everything) {
-    const stage = thing.frontmatter.mergedAt
-      ? "3"
-      : thing.frontmatter.closedAt
-        ? "X"
-        : thing.frontmatter.stage ?? "?";
+    const stage = thing.frontmatter.stage ?? "?";
     thingsByStage[stage] ??= [];
     thingsByStage[stage].push(thing);
   }
   const output: MDX[] = [];
-  for (const stage of ["2", "1", "0", "3", "X", "?"]) {
-    const things = thingsByStage[stage];
+  for (const spec of [
+    ["3", true] as const,
+    "2",
+    "1",
+    "0",
+    ["3", false] as const,
+    "S",
+    "X",
+    "?",
+  ]) {
+    const stage = Array.isArray(spec) ? spec[0] : spec;
+    const needsEditorial = Array.isArray(spec) ? spec[1] : null;
+    const unfilteredThings = thingsByStage[stage];
+    const things =
+      needsEditorial !== null
+        ? unfilteredThings.filter(
+            (t) =>
+              (!t.frontmatter.mergedAt && !t.frontmatter.closedAt) ===
+              needsEditorial,
+          )
+        : unfilteredThings;
     if (things?.length) {
       output.push(mdx`\
-## ${stageMarkdown(stage, { prefix: mdx`Stage ` })}
+## ${stageMarkdown(stage, {
+        prefix: mdx`Stage `,
+        suffix: needsEditorial === true ? mdx` (pending editorial)` : null,
+      })}
 
 ${printTable(things)}
 

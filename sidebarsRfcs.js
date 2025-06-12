@@ -153,6 +153,11 @@ const sidebars = {
           id: "454",
           label: "454: Add validation steps for schema extensions [RFC3]",
         },
+        {
+          type: "doc",
+          id: "445",
+          label: "445: Disallow non-breakable chains of circular references in Input Objects [RFC3]",
+        },
       ],
     },
     {
@@ -170,11 +175,6 @@ const sidebars = {
           type: "doc",
           id: "825",
           label: "825*: OneOf Input Objects [RFC3]",
-        },
-        {
-          type: "doc",
-          id: "445",
-          label: "445: Disallow non-breakable chains of circular references in Input Objects [RFC3]",
         },
       ],
     },
