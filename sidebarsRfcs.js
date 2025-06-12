@@ -224,16 +224,6 @@ const sidebars = {
           id: "955",
           label: "955: Add validation rule that operation types exist [RFC2]",
         },
-        {
-          type: "doc",
-          id: "1091",
-          label: "1091*: Define Data Collections used in the spec [RFC2]",
-        },
-        {
-          type: "doc",
-          id: "742",
-          label: "742: Spec edits for @defer/@stream [RFC2]",
-        },
       ],
     },
     {
@@ -297,51 +287,6 @@ const sidebars = {
           id: "509",
           label: "509: Allow singular variables in list locations [RFC1]",
         },
-        {
-          type: "doc",
-          id: "1153",
-          label: "1153*: Allow clients to disable error propagation via request parameter [RFC1]",
-        },
-        {
-          type: "doc",
-          id: "1098",
-          label: "1098: Add 5.2.4 Operation Type Exists [RFC1]",
-        },
-        {
-          type: "doc",
-          id: "1010",
-          label: "1010: Fragment Arguments: Spec Implementation [RFC1]",
-        },
-        {
-          type: "doc",
-          id: "865",
-          label: "865: Fragment Arguments (parameterized fragments) for GraphQL [RFC1]",
-        },
-        {
-          type: "doc",
-          id: "895",
-          label: "895: Client Controlled Nullability [RFC1]",
-        },
-        {
-          type: "doc",
-          id: "883",
-          label: "883: Relax SameResponseShape algorithm to be compatible with covariant fields [RFC1]",
-        },
-        {
-          type: "doc",
-          id: "877",
-          label: "877: Forbid duplicating argument names [RFC1]",
-        },
-        {
-          type: "doc",
-          id: "733",
-          label: "733*: Tagged type [RFC1]",
-        },
-        {
-          type: "doc",
-          id: "395",
-          label: "395: inputUnion type [RFC1]",
-        },
       ],
     },
     {
@@ -350,6 +295,11 @@ const sidebars = {
       collapsed: true,
       collapsible: true,
       items: [
+        {
+          type: "doc",
+          id: "521",
+          label: "521: Scalar serialize as built-in scalar type [RFC0]",
+        },
         {
           type: "doc",
           id: "InputUnion",
@@ -557,11 +507,6 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "823",
-          label: "823*: operation expressions [RFC0]",
-        },
-        {
-          type: "doc",
           id: "Subscriptions",
           label: "Subscriptions: NOTE: this document is kept for historic purposes; GraphQL Subscriptions have been specified and released as part of the official [June 2018 GraphQL Specification](https://spec.graphql.org/June2018/). [RFC0]",
         },
@@ -582,11 +527,6 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "667",
-          label: "667: [RFC Sketch] Defer and Stream Directives [RFC0]",
-        },
-        {
-          type: "doc",
           id: "631",
           label: "631: Make root query operation type optional [RFC0]",
         },
@@ -602,88 +542,8 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "521",
-          label: "521: Scalar serialize as built-in scalar type [RFC0]",
-        },
-        {
-          type: "doc",
           id: "325",
           label: "325: Add \"Any\" scalar type [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "1157",
-          label: "1157: Exclude custom scalar literals from validation [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "1126",
-          label: "1126*: GraphQL Subscriptions should handle errors in the source stream [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "1052",
-          label: "1052: deduplicated incremental delivery [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "1048",
-          label: "1048*: Null-Only-On-Error / Semantically-Non-Null type (asterisk) [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "1034",
-          label: "1034: incremental delivery with deduplication + concurrent execution [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "999",
-          label: "999: introduce ExecuteGroupedFieldSet, CollectRootFields and CollectSubfields [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "1026",
-          label: "1026: incremental delivery with deduplication + concurrent execution [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "1018",
-          label: "1018*: Alternative proposal for `@stream`/`@defer` [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "1023",
-          label: "1023: incremental delivery without branching [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "960",
-          label: "960: Allow recursion within ResolveAbstractType [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "888",
-          label: "888: Map type [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "806",
-          label: "806*: __typename should be valid at subscription root [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "586",
-          label: "586*: Input Objects accepting exactly @oneField [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "471",
-          label: "471: Limit uniqueness to `@skip`, `@include` and `@deprecated` directives [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "326",
-          label: "326: Scalar serialize as built-in scalar type [RFC0]",
         },
       ],
     },
@@ -697,6 +557,41 @@ const sidebars = {
           type: "doc",
           id: "1166",
           label: "1166*: Enable 'schema' keyword to be provided without root operations [RFCX]",
+        },
+        {
+          type: "doc",
+          id: "1018",
+          label: "1018*: Alternative proposal for `@stream`/`@defer` [RFCX]",
+        },
+        {
+          type: "doc",
+          id: "960",
+          label: "960: Allow recursion within ResolveAbstractType [RFCX]",
+        },
+        {
+          type: "doc",
+          id: "895",
+          label: "895: Client Controlled Nullability [RFCX]",
+        },
+        {
+          type: "doc",
+          id: "888",
+          label: "888: Map type [RFCX]",
+        },
+        {
+          type: "doc",
+          id: "883",
+          label: "883: Relax SameResponseShape algorithm to be compatible with covariant fields [RFCX]",
+        },
+        {
+          type: "doc",
+          id: "733",
+          label: "733*: Tagged type [RFCX]",
+        },
+        {
+          type: "doc",
+          id: "806",
+          label: "806*: __typename should be valid at subscription root [RFCX]",
         },
         {
           type: "doc",
@@ -715,6 +610,11 @@ const sidebars = {
         },
         {
           type: "doc",
+          id: "395",
+          label: "395: inputUnion type [RFCX]",
+        },
+        {
+          type: "doc",
           id: "315",
           label: "315: Support DateTime scalar [RFCX]",
         },
@@ -722,6 +622,114 @@ const sidebars = {
           type: "doc",
           id: "232",
           label: "232: __id field for unique identifiers [RFCX]",
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Stage X: Superseded",
+      collapsed: true,
+      collapsible: true,
+      items: [
+        {
+          type: "doc",
+          id: "823",
+          label: "823*: operation expressions [RFCS]",
+        },
+        {
+          type: "doc",
+          id: "667",
+          label: "667: [RFC Sketch] Defer and Stream Directives [RFCS]",
+        },
+        {
+          type: "doc",
+          id: "1153",
+          label: "1153*: Allow clients to disable error propagation via request parameter [RFCS]",
+        },
+        {
+          type: "doc",
+          id: "1157",
+          label: "1157: Exclude custom scalar literals from validation [RFCS]",
+        },
+        {
+          type: "doc",
+          id: "1126",
+          label: "1126*: GraphQL Subscriptions should handle errors in the source stream [RFCS]",
+        },
+        {
+          type: "doc",
+          id: "1098",
+          label: "1098: Add 5.2.4 Operation Type Exists [RFCS]",
+        },
+        {
+          type: "doc",
+          id: "1091",
+          label: "1091*: Define Data Collections used in the spec [RFCS]",
+        },
+        {
+          type: "doc",
+          id: "1010",
+          label: "1010: Fragment Arguments: Spec Implementation [RFCS]",
+        },
+        {
+          type: "doc",
+          id: "1052",
+          label: "1052: deduplicated incremental delivery [RFCS]",
+        },
+        {
+          type: "doc",
+          id: "1048",
+          label: "1048*: Null-Only-On-Error / Semantically-Non-Null type (asterisk) [RFCS]",
+        },
+        {
+          type: "doc",
+          id: "1034",
+          label: "1034: incremental delivery with deduplication + concurrent execution [RFCS]",
+        },
+        {
+          type: "doc",
+          id: "999",
+          label: "999: introduce ExecuteGroupedFieldSet, CollectRootFields and CollectSubfields [RFCS]",
+        },
+        {
+          type: "doc",
+          id: "1026",
+          label: "1026: incremental delivery with deduplication + concurrent execution [RFCS]",
+        },
+        {
+          type: "doc",
+          id: "1023",
+          label: "1023: incremental delivery without branching [RFCS]",
+        },
+        {
+          type: "doc",
+          id: "742",
+          label: "742: Spec edits for @defer/@stream [RFCS]",
+        },
+        {
+          type: "doc",
+          id: "865",
+          label: "865: Fragment Arguments (parameterized fragments) for GraphQL [RFCS]",
+        },
+        {
+          type: "doc",
+          id: "877",
+          label: "877: Forbid duplicating argument names [RFCS]",
+        },
+        {
+          type: "doc",
+          id: "586",
+          label: "586*: Input Objects accepting exactly @oneField [RFCS]",
+        },
+        {
+          type: "doc",
+          id: "471",
+          label: "471: Limit uniqueness to `@skip`, `@include` and `@deprecated` directives [RFCS]",
+        },
+        {
+          type: "doc",
+          id: "326",
+          label: "326: Scalar serialize as built-in scalar type [RFCS]",
         },
       ],
     },

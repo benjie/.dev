@@ -38,7 +38,7 @@ image: /img/rfc_tracker.png
 - **Champion**: -
 - **PR**: -
 - **Related**:
-  - [#895](/rfcs/895 "Client Controlled Nullability / RFC1") (Client Controlled Nullability)
+  - [#895](/rfcs/895 "Client Controlled Nullability / RFCX") (Client Controlled Nullability)
   - [FragmentModularity](/rfcs/FragmentModularity "Fragment Modularity / RFC0") (Fragment Modularity)
   - [wg#1394](/rfcs/wg1394 "True Nullability Schema / RFC0") (True Nullability Schema)
 

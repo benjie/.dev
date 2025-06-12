@@ -23,8 +23,8 @@ image: /img/rfc_tracker.png
 - **Champion**: -
 - **PR**: -
 - **Related**:
-  - [#865](/rfcs/865 "Fragment Arguments (parameterized fragments) for GraphQL / RFC1") (Fragment Arguments (parameterized fragments) for GraphQL)
-  - [#895](/rfcs/895 "Client Controlled Nullability / RFC1") (Client Controlled Nullability)
+  - [#865](/rfcs/865 "Fragment Arguments (parameterized fragments) for GraphQL / RFCS") (Fragment Arguments (parameterized fragments) for GraphQL)
+  - [#895](/rfcs/895 "Client Controlled Nullability / RFCX") (Client Controlled Nullability)
 
 <!-- BEGIN_CUSTOM_TEXT -->
 
