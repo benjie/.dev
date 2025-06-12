@@ -35,6 +35,11 @@ const sidebars = {
         },
         {
           type: "doc",
+          id: "793",
+          label: "793*: Default value coercion rules [RFC3]",
+        },
+        {
+          type: "doc",
           id: "825",
           label: "825*: OneOf Input Objects [RFC3]",
         },
@@ -178,11 +183,6 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          id: "793",
-          label: "793*: Default value coercion rules [RFC2]",
-        },
-        {
-          type: "doc",
           id: "794",
           label: "794: Schema Coordinates [RFC2]",
         },
@@ -195,6 +195,11 @@ const sidebars = {
           type: "doc",
           id: "1102",
           label: "1102*: Define Data Collections used in the spec [RFC2]",
+        },
+        {
+          type: "doc",
+          id: "1167",
+          label: "1167*: Do not exclude schema keyword if schema has description [RFC2]",
         },
         {
           type: "doc",
@@ -289,8 +294,8 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          id: "1167",
-          label: "1167*: Do not exclude schema keyword if schema has description [RFC0]",
+          id: "InputUnion",
+          label: "InputUnion: GraphQL Input Union [RFC0]",
         },
         {
           type: "doc",
@@ -351,11 +356,6 @@ const sidebars = {
           type: "doc",
           id: "SchemaCoordinates",
           label: "SchemaCoordinates: Schema Coordinates [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "InputUnion",
-          label: "InputUnion: GraphQL Input Union [RFC0]",
         },
         {
           type: "doc",

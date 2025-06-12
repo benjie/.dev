@@ -1,8 +1,14 @@
 ---
 identifier: InputUnion
 stage: "0"
-title: GraphQL Input Union
+title: "NOTE: this document is kept for historic purposes;
+  [`@oneOf`](https://github.com/graphql/graphql-spec/pull/825) gained RFC3
+  status in May 2025."
 events:
+  - type: docUpdated
+    date: 2025-06-05T17:57:59+01:00
+    href: https://github.com/graphql/graphql-wg/blob/87c54082d9851b2ed195f8208bc75fd751ceefa2/rfcs/InputUnion.md
+    actor: Benjie
   - type: docUpdated
     date: 2023-11-28T18:43:39+00:00
     href: https://github.com/graphql/graphql-wg/blob/ca0fc775c66ae0e31c4ed605503a2679d9390705/rfcs/InputUnion.md
@@ -187,7 +193,7 @@ events:
     date: 2019-06-20T02:21:00-07:00
     href: https://github.com/graphql/graphql-wg/blob/4868aa41cc940ce9e47d0eae588118411afb112b/rfcs/InputUnion.md
     actor: Vince Foley
-related: 202, 395, 488, 586, 733, Struct, wg426
+related: 202, 395, 488, 586, 733, 825, Struct, wg426
 shortname: GraphQL Input Union
 image: /img/rfc_tracker.png
 ---
@@ -202,6 +208,7 @@ image: /img/rfc_tracker.png
   - [#395](/rfcs/395 "inputUnion type / RFCX") (inputUnion type)
   - [#586](/rfcs/586 "Input Objects accepting exactly @oneField / RFCX") (Input Objects accepting exactly @oneField)
   - [#733](/rfcs/733 "Tagged type / RFCX") (Tagged type)
+  - [#825](/rfcs/825 "OneOf Input Objects / RFC3") (OneOf Input Objects)
   - [Struct](/rfcs/Struct "Polymorphic-capable composite symmetric input/output type (&#x60;struct&#x60;) / RFC0") (Polymorphic-capable composite symmetric input/output type (&#x60;struct&#x60;))
 
 <!-- BEGIN_CUSTOM_TEXT -->
@@ -212,6 +219,7 @@ image: /img/rfc_tracker.png
 
 ## Timeline
 
+- **[RFC document updated](https://github.com/graphql/graphql-wg/blob/87c54082d9851b2ed195f8208bc75fd751ceefa2/rfcs/InputUnion.md)** on 2025-06-05 by Benjie
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/ca0fc775c66ae0e31c4ed605503a2679d9390705/rfcs/InputUnion.md)** on 2023-11-28 by Benjie Gillam
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/5bfb8d590cc9693db1149b547d8db5041f05b731/rfcs/InputUnion.md)** on 2023-11-28 by Benjie Gillam
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/8079f5885f03f78a5910a6a5bdeaea063f9a3184/rfcs/InputUnion.md)** on 2021-09-03 by Lee Byron
@@ -263,6 +271,10 @@ image: /img/rfc_tracker.png
 
 ---
 
+> NOTE: this document is kept for historic purposes; [`@oneOf`](https://github.com/graphql/graphql-spec/pull/825) gained RFC3 status in May 2025.
+> 
+> ---
+> 
 > RFC: GraphQL Input Union
 > ----------
 > 
