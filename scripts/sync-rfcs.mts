@@ -1225,8 +1225,7 @@ ${printTable(things)}
 
 function maybeStrikethrough(thing: RFCFile, inner: MDX) {
   if (!thing.frontmatter.mergedAt && !thing.frontmatter.closedAt) return inner;
-  if (thing.frontmatter.stage === "3") return inner;
-  if (thing.frontmatter.stage === "X") return inner;
+  if (["3", "X", "S", null].includes(thing.frontmatter.stage)) return inner;
   return mdx`~~${inner}~~`;
 }
 
