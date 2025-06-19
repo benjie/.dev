@@ -17,7 +17,7 @@ be helpful for people to keep track of the various RFCs.
 Ping `@benjie` on the [GraphQL Discord](https://discord.graphql.org) (`#wg`
 channel) and ask for him to run an update!
 
-Last updated: 2025-06-19T06:28:19.823Z
+Last updated: 2025-06-19T15:28:11.673Z
 
 :::
 
@@ -39,7 +39,7 @@ Last updated: 2025-06-19T06:28:19.823Z
 <!-- prettier-ignore -->
 | RFC | Champion | Title | Latest |
 | --- | --- | --- | --- |
-| [#794](/rfcs/794 "Schema Coordinates / RFC2") 🚀 | [@magicmark](https://github.com/magicmark) | [Schema Coordinates](/rfcs/794) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/794)</small> | **Added to [2025-06-19 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/06-Jun/19-wg-secondary-eu.md)** [_(more)_](/rfcs/794#timeline) |
+| [#794](/rfcs/794 "Schema Coordinates / RFC2") 🚀 | [@magicmark](https://github.com/magicmark) | [Schema Coordinates](/rfcs/794) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/794)</small> | **Added to [2025-06-26 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/06-Jun/26-wg-secondary-eu.md)** [_(more)_](/rfcs/794#timeline) |
 | [#892](/rfcs/892 "Add descriptions to executable definitions / RFC2") | [@IvanGoncharov](https://github.com/IvanGoncharov) | [Add descriptions to executable definitions](/rfcs/892) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/892)</small> | **Added to [2025-06-05 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/06-Jun/05-wg-primary.md)** [_(more)_](/rfcs/892#timeline) |
 | [#1102](/rfcs/1102 "Define Data Collections used in the spec / RFC2") | [@benjie](https://github.com/benjie) | [Define Data Collections used in the spec](/rfcs/1102) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1102)</small> | **Added to [2025-06-05 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/06-Jun/05-wg-primary.md)** [_(more)_](/rfcs/1102#timeline) |
 | [#1167](/rfcs/1167 "Do not exclude schema keyword if schema has description / RFC2") | [@benjie](https://github.com/benjie) | [Do not exclude schema keyword if schema has description](/rfcs/1167) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1167)</small> | **Added to [2025-06-05 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/06-Jun/05-wg-primary.md)** [_(more)_](/rfcs/1167#timeline) |

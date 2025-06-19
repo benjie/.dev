@@ -8,7 +8,7 @@ image: /img/rfc_tracker.png
 
 The below is an aggregate overview of the latest activity across all RFCs. Note that it's _roughly_ in cronological order, but some dates are less accurate than others (e.g. commit timestamps are to the second, whereas working groups are generally to the month...).
 
-- [#794](/rfcs/794 "Schema Coordinates / RFC2"): **Added to [2025-06-19 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/06-Jun/19-wg-secondary-eu.md)**
+- [#794](/rfcs/794 "Schema Coordinates / RFC2"): **Added to [2025-06-26 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/06-Jun/26-wg-secondary-eu.md)**
 - [#825](/rfcs/825 "OneOf Input Objects / RFC3"): **4 commits pushed** on 2025-06-12:
   - [Update spec/Section 3 -- Type System.md](https://github.com/graphql/graphql-spec/commit/c26463f2697c84aeb8f9b9ad50827b7c04480757) by [@benjie](https://github.com/benjie)
   - [Whitespace](https://github.com/graphql/graphql-spec/commit/ff986be8afe9e97e96c73763be8d5b0843f8f6a8) by [@benjie](https://github.com/benjie)
