@@ -9,6 +9,11 @@ image: /img/rfc_tracker.png
 The below is an aggregate overview of the latest activity across all RFCs. Note that it's _roughly_ in cronological order, but some dates are less accurate than others (e.g. commit timestamps are to the second, whereas working groups are generally to the month...).
 
 - [#794](/rfcs/794 "Schema Coordinates / RFC2"): **Added to [2025-06-19 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/06-Jun/19-wg-secondary-eu.md)**
+- [#825](/rfcs/825 "OneOf Input Objects / RFC3"): **4 commits pushed** on 2025-06-12:
+  - [Update spec/Section 3 -- Type System.md](https://github.com/graphql/graphql-spec/commit/c26463f2697c84aeb8f9b9ad50827b7c04480757) by [@benjie](https://github.com/benjie)
+  - [Whitespace](https://github.com/graphql/graphql-spec/commit/ff986be8afe9e97e96c73763be8d5b0843f8f6a8) by [@benjie](https://github.com/benjie)
+  - [Clarify algorithm](https://github.com/graphql/graphql-spec/commit/016f47f49131a89efc4ececebb0b91d143995ca3) by [@benjie](https://github.com/benjie)
+  - [Rename 'Tagged'](https://github.com/graphql/graphql-spec/commit/b1ff1ab2fdc4fba7e4bd70f1c18db8dbada20fe9) by [@benjie](https://github.com/benjie)
 - [#794](/rfcs/794 "Schema Coordinates / RFC2"): **2 commits pushed** on 2025-06-06:
   - [Revert "Use &#x60;::&#x60; syntax for enum values"](https://github.com/graphql/graphql-spec/commit/7b754896b8019078ed8e5af607acc5792779f582) by [@magicmark](https://github.com/magicmark)
   - [revert back to MemberCoordinates](https://github.com/graphql/graphql-spec/commit/be6938c915cd7d81d444b717fcd27e9ea487800f) by [@magicmark](https://github.com/magicmark)

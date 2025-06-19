@@ -168,13 +168,13 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          id: "793",
-          label: "793*: Default value coercion rules [RFC3]",
+          id: "825",
+          label: "825*: OneOf Input Objects [RFC3]",
         },
         {
           type: "doc",
-          id: "825",
-          label: "825*: OneOf Input Objects [RFC3]",
+          id: "793",
+          label: "793*: Default value coercion rules [RFC3]",
         },
       ],
     },
@@ -234,6 +234,11 @@ const sidebars = {
       items: [
         {
           type: "doc",
+          id: "1056",
+          label: "1056*: Fix CoerceArgumentValues() hasValue [RFC1]",
+        },
+        {
+          type: "doc",
           id: "1163",
           label: "1163*: Allow clients to disable error propagation via request parameter (take 2) [RFC1]",
         },
@@ -241,11 +246,6 @@ const sidebars = {
           type: "doc",
           id: "1058",
           label: "1058*: List coercion algorithm [RFC1]",
-        },
-        {
-          type: "doc",
-          id: "1056",
-          label: "1056*: Fix CoerceArgumentValues() hasValue [RFC1]",
         },
         {
           type: "doc",

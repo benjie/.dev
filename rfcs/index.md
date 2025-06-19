@@ -17,7 +17,7 @@ be helpful for people to keep track of the various RFCs.
 Ping `@benjie` on the [GraphQL Discord](https://discord.graphql.org) (`#wg`
 channel) and ask for him to run an update!
 
-Last updated: 2025-06-12T10:50:10.581Z
+Last updated: 2025-06-19T06:28:19.823Z
 
 :::
 
@@ -27,8 +27,8 @@ Last updated: 2025-06-12T10:50:10.581Z
 <!-- prettier-ignore -->
 | RFC | Champion | Title | Latest |
 | --- | --- | --- | --- |
+| [#825](/rfcs/825 "OneOf Input Objects / RFC3") | [@benjie](https://github.com/benjie) | [OneOf Input Objects](/rfcs/825) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/825)</small> | **4 commits pushed**: [(latest)](https://github.com/graphql/graphql-spec/commit/b1ff1ab2fdc4fba7e4bd70f1c18db8dbada20fe9) on 2025-06-12 by [@benjie](https://github.com/benjie) [_(more)_](/rfcs/825#timeline) |
 | [#793](/rfcs/793 "Default value coercion rules / RFC3") | [@benjie](https://github.com/benjie) | [Default value coercion rules](/rfcs/793) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/793)</small> | **Added to [2025-06-05 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/06-Jun/05-wg-primary.md)** [_(more)_](/rfcs/793#timeline) |
-| [#825](/rfcs/825 "OneOf Input Objects / RFC3") | [@benjie](https://github.com/benjie) | [OneOf Input Objects](/rfcs/825) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/825)</small> | **Added to [2025-06-05 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/06-Jun/05-wg-primary.md)** [_(more)_](/rfcs/825#timeline) |
 
 
 
@@ -57,9 +57,9 @@ Last updated: 2025-06-12T10:50:10.581Z
 <!-- prettier-ignore -->
 | RFC | Champion | Title | Latest |
 | --- | --- | --- | --- |
+| [#1056](/rfcs/1056 "Fix CoerceArgumentValues() hasValue / RFC1") 🚀 | [@benjie](https://github.com/benjie) | [Fix CoerceArgumentValues() hasValue](/rfcs/1056) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1056)</small> | **Added to [2025-01-09 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/01-Jan/09-wg-primary.md)** [_(more)_](/rfcs/1056#timeline) |
 | [#1163](/rfcs/1163 "Allow clients to disable error propagation via request parameter (take 2) / RFC1") | [@benjie](https://github.com/benjie) | [Service capabilities / error behaviors](/rfcs/1163) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1163)</small> | **Added to [2025-06-05 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/06-Jun/05-wg-primary.md)** [_(more)_](/rfcs/1163#timeline) |
 | [#1058](/rfcs/1058 "List coercion algorithm / RFC1") | [@benjie](https://github.com/benjie) | [List coercion algorithm](/rfcs/1058) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1058)</small> | **2 commits pushed**: [(latest)](https://github.com/graphql/graphql-spec/commit/a045f1493352f05570d39b8aa372ef0c5723961d) on 2025-01-23 by [@benjie](https://github.com/benjie) [_(more)_](/rfcs/1058#timeline) |
-| [#1056](/rfcs/1056 "Fix CoerceArgumentValues() hasValue / RFC1") | [@benjie](https://github.com/benjie) | [Fix CoerceArgumentValues() hasValue](/rfcs/1056) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1056)</small> | **Added to [2025-01-09 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/01-Jan/09-wg-primary.md)** [_(more)_](/rfcs/1056#timeline) |
 | [#1110](/rfcs/1110 "Incremental Delivery spec draft / RFC1") | [@robrichard](https://github.com/robrichard) | [Incremental Delivery spec draft](/rfcs/1110) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1110)</small> | **Commit pushed**: [skip deferred fragment spread when already in visited fragments](https://github.com/graphql/graphql-spec/commit/8e9cbcb46384399f5ed73996fac008de1d394551) on 2025-01-09 by [@robrichard](https://github.com/robrichard) [_(more)_](/rfcs/1110#timeline) |
 | [#1127](/rfcs/1127 "When &#x60;sourceStream&#x60; errors, yield a &#x60;&#x7b; errors: &#x5b;...&#x5d; &#x7d;&#x60; response / RFC1") | [@benjie](https://github.com/benjie) | [When &#x60;sourceStream&#x60; errors, yield a &#x60;&#x7b; errors: &#x5b;...&#x5d; &#x7d;&#x60; response](/rfcs/1127) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1127)</small> | **Added to [2025-01-09 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/01-Jan/09-wg-primary.md)** [_(more)_](/rfcs/1127#timeline) |
 | [#997](/rfcs/997 "Expand @deprecated to Objects / RFC1") | [@fotoetienne](https://github.com/fotoetienne) | [Expand @deprecated to Objects](/rfcs/997) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/997)</small> | **Added to [2024-11-07 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2024/11-Nov/07-wg-primary.md)** [_(more)_](/rfcs/997#timeline) |
