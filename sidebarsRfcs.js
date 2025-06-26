@@ -20,6 +20,16 @@ const sidebars = {
       items: [
         {
           type: "doc",
+          id: "955",
+          label: "955: Add validation rule that operation types exist [RFC3]",
+        },
+        {
+          type: "doc",
+          id: "1167",
+          label: "1167*: Do not exclude schema keyword if schema has description [RFC3]",
+        },
+        {
+          type: "doc",
           id: "860",
           label: "860*: Prevent @skip and @include on root subscription selection set [RFC3]",
         },
@@ -168,6 +178,11 @@ const sidebars = {
       items: [
         {
           type: "doc",
+          id: "1102",
+          label: "1102*: Define Data Collections used in the spec [RFC3]",
+        },
+        {
+          type: "doc",
           id: "825",
           label: "825*: OneOf Input Objects [RFC3]",
         },
@@ -175,6 +190,11 @@ const sidebars = {
           type: "doc",
           id: "793",
           label: "793*: Default value coercion rules [RFC3]",
+        },
+        {
+          type: "doc",
+          id: "1092",
+          label: "1092*: Recommend that order of unordered collections is maintained where possible [RFC3]",
         },
       ],
     },
@@ -191,33 +211,13 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "1102",
-          label: "1102*: Define Data Collections used in the spec [RFC2]",
-        },
-        {
-          type: "doc",
-          id: "1167",
-          label: "1167*: Do not exclude schema keyword if schema has description [RFC2]",
-        },
-        {
-          type: "doc",
           id: "1063",
           label: "1063*: Type system ordering of: object interfaces, directive arguments, input object fields, enum values [RFC2]",
         },
         {
           type: "doc",
-          id: "1092",
-          label: "1092*: Recommend that order of unordered collections is maintained where possible [RFC2]",
-        },
-        {
-          type: "doc",
-          id: "955",
-          label: "955: Add validation rule that operation types exist [RFC2]",
-        },
-        {
-          type: "doc",
-          id: "892",
-          label: "892: Add descriptions to executable definitions [RFC2]",
+          id: "1170",
+          label: "1170: Add descriptions to executable documents | 2025 Update [RFC2]",
         },
         {
           type: "doc",
@@ -640,6 +640,11 @@ const sidebars = {
           type: "doc",
           id: "667",
           label: "667: [RFC Sketch] Defer and Stream Directives [RFCS]",
+        },
+        {
+          type: "doc",
+          id: "892",
+          label: "892: Add descriptions to executable definitions [RFCS]",
         },
         {
           type: "doc",
