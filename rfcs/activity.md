@@ -9,6 +9,7 @@ image: /img/rfc_tracker.png
 The below is an aggregate overview of the latest activity across all RFCs. Note that it's _roughly_ in cronological order, but some dates are less accurate than others (e.g. commit timestamps are to the second, whereas working groups are generally to the month...).
 
 - [#794](/rfcs/794 "Schema Coordinates / RFC2"): **Added to [2025-06-26 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/06-Jun/26-wg-secondary-eu.md)**
+- [#997](/rfcs/997 "Expand @deprecated to Objects / RFC1"): **Added to [2025-06-26 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/06-Jun/26-wg-secondary-eu.md)**
 - [#794](/rfcs/794 "Schema Coordinates / RFC2"): **4 commits pushed** on 2025-06-25:
   - [Merge branch 'graphql:main' into schema_coordinates_spec_edit](https://github.com/graphql/graphql-spec/commit/f96841f2aff2c93c4c17afb544c997ce81b0fee4) by [@magicmark](https://github.com/magicmark)
   - [", or &#x7b;null&#x7d; if no such field exists." -&#x3e; "if it exists."](https://github.com/graphql/graphql-spec/commit/5ac68a005b07b70a581574774cbd58b1971dd78a) by [@magicmark](https://github.com/magicmark)

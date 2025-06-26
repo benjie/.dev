@@ -191,11 +191,6 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "892",
-          label: "892: Add descriptions to executable definitions [RFC2]",
-        },
-        {
-          type: "doc",
           id: "1102",
           label: "1102*: Define Data Collections used in the spec [RFC2]",
         },
@@ -216,13 +211,18 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "1081",
-          label: "1081: Fragment arguments/variables (syntax/validation/execution) [RFC2]",
+          id: "955",
+          label: "955: Add validation rule that operation types exist [RFC2]",
         },
         {
           type: "doc",
-          id: "955",
-          label: "955: Add validation rule that operation types exist [RFC2]",
+          id: "892",
+          label: "892: Add descriptions to executable definitions [RFC2]",
+        },
+        {
+          type: "doc",
+          id: "1081",
+          label: "1081: Fragment arguments/variables (syntax/validation/execution) [RFC2]",
         },
       ],
     },
@@ -234,18 +234,23 @@ const sidebars = {
       items: [
         {
           type: "doc",
+          id: "1058",
+          label: "1058*: List coercion algorithm [RFC1]",
+        },
+        {
+          type: "doc",
           id: "1056",
           label: "1056*: Fix CoerceArgumentValues() hasValue [RFC1]",
         },
         {
           type: "doc",
-          id: "1163",
-          label: "1163*: Allow clients to disable error propagation via request parameter (take 2) [RFC1]",
+          id: "997",
+          label: "997: Expand @deprecated to Objects [RFC1]",
         },
         {
           type: "doc",
-          id: "1058",
-          label: "1058*: List coercion algorithm [RFC1]",
+          id: "1163",
+          label: "1163*: Allow clients to disable error propagation via request parameter (take 2) [RFC1]",
         },
         {
           type: "doc",
@@ -256,11 +261,6 @@ const sidebars = {
           type: "doc",
           id: "1127",
           label: "1127*: When `sourceStream` errors, yield a `{ errors: [...] }` response [RFC1]",
-        },
-        {
-          type: "doc",
-          id: "997",
-          label: "997: Expand @deprecated to Objects [RFC1]",
         },
         {
           type: "doc",
