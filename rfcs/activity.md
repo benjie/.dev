@@ -9,6 +9,11 @@ image: /img/rfc_tracker.png
 The below is an aggregate overview of the latest activity across all RFCs. Note that it's _roughly_ in cronological order, but some dates are less accurate than others (e.g. commit timestamps are to the second, whereas working groups are generally to the month...).
 
 - [#794](/rfcs/794 "Schema Coordinates / RFC2"): **Added to [2025-06-26 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/06-Jun/26-wg-secondary-eu.md)**
+- [#794](/rfcs/794 "Schema Coordinates / RFC2"): **4 commits pushed** on 2025-06-25:
+  - [Merge branch 'graphql:main' into schema_coordinates_spec_edit](https://github.com/graphql/graphql-spec/commit/f96841f2aff2c93c4c17afb544c997ce81b0fee4) by [@magicmark](https://github.com/magicmark)
+  - [", or &#x7b;null&#x7d; if no such field exists." -&#x3e; "if it exists."](https://github.com/graphql/graphql-spec/commit/5ac68a005b07b70a581574774cbd58b1971dd78a) by [@magicmark](https://github.com/magicmark)
+  - [add non-metafield clarification](https://github.com/graphql/graphql-spec/commit/62ce19aafb0e0be105cd248e3e044d3f5103a897) by [@magicmark](https://github.com/magicmark)
+  - [Spell check](https://github.com/graphql/graphql-spec/commit/c0dee02a5caace786c05bcf63fb899acbc6ec02d) by [@magicmark](https://github.com/magicmark)
 - [#825](/rfcs/825 "OneOf Input Objects / RFC3"): **4 commits pushed** on 2025-06-12:
   - [Update spec/Section 3 -- Type System.md](https://github.com/graphql/graphql-spec/commit/c26463f2697c84aeb8f9b9ad50827b7c04480757) by [@benjie](https://github.com/benjie)
   - [Whitespace](https://github.com/graphql/graphql-spec/commit/ff986be8afe9e97e96c73763be8d5b0843f8f6a8) by [@benjie](https://github.com/benjie)
