@@ -20,6 +20,21 @@ const sidebars = {
       items: [
         {
           type: "doc",
+          id: "793",
+          label: "793*: Default value coercion rules [RFC3]",
+        },
+        {
+          type: "doc",
+          id: "1102",
+          label: "1102*: Define Data Collections used in the spec [RFC3]",
+        },
+        {
+          type: "doc",
+          id: "1170",
+          label: "1170: Add descriptions to executable documents | 2025 Update [RFC3]",
+        },
+        {
+          type: "doc",
           id: "955",
           label: "955: Add validation rule that operation types exist [RFC3]",
         },
@@ -178,18 +193,8 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          id: "1102",
-          label: "1102*: Define Data Collections used in the spec [RFC3]",
-        },
-        {
-          type: "doc",
           id: "825",
           label: "825*: OneOf Input Objects [RFC3]",
-        },
-        {
-          type: "doc",
-          id: "793",
-          label: "793*: Default value coercion rules [RFC3]",
         },
         {
           type: "doc",
@@ -206,18 +211,13 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          id: "794",
-          label: "794: Schema Coordinates [RFC2]",
-        },
-        {
-          type: "doc",
           id: "1063",
           label: "1063*: Type system ordering of: object interfaces, directive arguments, input object fields, enum values [RFC2]",
         },
         {
           type: "doc",
-          id: "1170",
-          label: "1170: Add descriptions to executable documents | 2025 Update [RFC2]",
+          id: "794",
+          label: "794: Schema Coordinates [RFC2]",
         },
         {
           type: "doc",
@@ -295,6 +295,11 @@ const sidebars = {
       collapsed: true,
       collapsible: true,
       items: [
+        {
+          type: "doc",
+          id: "1177",
+          label: "1177*: Incorporate meta-fields into ExecuteCollectedFields [RFC0]",
+        },
         {
           type: "doc",
           id: "521",

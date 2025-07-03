@@ -17,7 +17,7 @@ be helpful for people to keep track of the various RFCs.
 Ping `@benjie` on the [GraphQL Discord](https://discord.graphql.org) (`#wg`
 channel) and ask for him to run an update!
 
-Last updated: 2025-06-26T19:21:25.609Z
+Last updated: 2025-07-03T13:14:29.675Z
 
 :::
 
@@ -27,9 +27,7 @@ Last updated: 2025-06-26T19:21:25.609Z
 <!-- prettier-ignore -->
 | RFC | Champion | Title | Latest |
 | --- | --- | --- | --- |
-| [#1102](/rfcs/1102 "Define Data Collections used in the spec / RFC3") | [@benjie](https://github.com/benjie) | [Define Data Collections used in the spec](/rfcs/1102) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1102)</small> | **Added to [2025-06-26 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/06-Jun/26-wg-secondary-eu.md)** [_(more)_](/rfcs/1102#timeline) |
-| [#825](/rfcs/825 "OneOf Input Objects / RFC3") | [@benjie](https://github.com/benjie) | [OneOf Input Objects](/rfcs/825) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/825)</small> | **4 commits pushed**: [(latest)](https://github.com/graphql/graphql-spec/commit/b1ff1ab2fdc4fba7e4bd70f1c18db8dbada20fe9) on 2025-06-12 by [@benjie](https://github.com/benjie) [_(more)_](/rfcs/825#timeline) |
-| [#793](/rfcs/793 "Default value coercion rules / RFC3") | [@benjie](https://github.com/benjie) | [Default value coercion rules](/rfcs/793) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/793)</small> | **Added to [2025-06-05 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/06-Jun/05-wg-primary.md)** [_(more)_](/rfcs/793#timeline) |
+| [#825](/rfcs/825 "OneOf Input Objects / RFC3") | [@benjie](https://github.com/benjie) | [OneOf Input Objects](/rfcs/825) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/825)</small> | **2 commits pushed**: [(latest)](https://github.com/graphql/graphql-spec/commit/59ad4b7c0b9d9da62aadaa333d7b2d6225c7e485) on 2025-07-01 by [@leebyron](https://github.com/leebyron) [_(more)_](/rfcs/825#timeline) |
 | [#1092](/rfcs/1092 "Recommend that order of unordered collections is maintained where possible / RFC3") | [@benjie](https://github.com/benjie) | [Recommend that order of unordered collections is maintained where possible](/rfcs/1092) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1092)</small> | **Added to [2025-05-01 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/05-May/01-wg-primary.md)** [_(more)_](/rfcs/1092#timeline) |
 
 
@@ -41,10 +39,9 @@ Last updated: 2025-06-26T19:21:25.609Z
 <!-- prettier-ignore -->
 | RFC | Champion | Title | Latest |
 | --- | --- | --- | --- |
-| [#794](/rfcs/794 "Schema Coordinates / RFC2") 🚀 | [@magicmark](https://github.com/magicmark) | [Schema Coordinates](/rfcs/794) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/794)</small> | **Added to [2025-06-26 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/06-Jun/26-wg-secondary-eu.md)** [_(more)_](/rfcs/794#timeline) |
 | [#1063](/rfcs/1063 "Type system ordering of: object interfaces, directive arguments, input object fields, enum values / RFC2") 🚀 | [@benjie](https://github.com/benjie) | [Type system ordering of: object interfaces, directive arguments, input object fields, enum values](/rfcs/1063) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1063)</small> | **Added to [2025-05-01 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/05-May/01-wg-primary.md)** [_(more)_](/rfcs/1063#timeline) |
-| [#1170](/rfcs/1170 "Add descriptions to executable documents &#x7c; 2025 Update / RFC2") | [@fotoetienne](https://github.com/fotoetienne) | [Add descriptions to executable documents &#x7c; 2025 Update](/rfcs/1170) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1170)</small> | **Added to [2025-06-26 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/06-Jun/26-wg-secondary-eu.md)** [_(more)_](/rfcs/1170#timeline) |
-| [#1081](/rfcs/1081 "Fragment arguments/variables (syntax/validation/execution) / RFC2") | [@JoviDeCroock](https://github.com/JoviDeCroock) | [Fragment arguments/variables (syntax/validation/execution)](/rfcs/1081) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1081)</small> | **Commit pushed**: [Partial update, rest depends on https://github.com/graphql/graphql-sp…](https://github.com/graphql/graphql-spec/commit/9ef0002347029034595726bf7f42c8d36e9177c2) on 2025-02-15 by [@JoviDeCroock](https://github.com/JoviDeCroock) [_(more)_](/rfcs/1081#timeline) |
+| [#794](/rfcs/794 "Schema Coordinates / RFC2") | [@magicmark](https://github.com/magicmark) | [Schema Coordinates](/rfcs/794) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/794)</small> | **3 commits pushed**: [(latest)](https://github.com/graphql/graphql-spec/commit/bd7f38ee89df39065d36a8d082878d9c2ccf4c83) on 2025-07-03 by [@benjie](https://github.com/benjie) [_(more)_](/rfcs/794#timeline) |
+| [#1081](/rfcs/1081 "Fragment arguments/variables (syntax/validation/execution) / RFC2") | [@JoviDeCroock](https://github.com/JoviDeCroock) | [Fragment arguments/variables (syntax/validation/execution)](/rfcs/1081) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1081)</small> | **3 commits pushed**: [(latest)](https://github.com/graphql/graphql-spec/commit/0d7bc1a50ba62d2ddaa9afaeb20b1297e9a5f90c) on 2025-07-03 by [@JoviDeCroock](https://github.com/JoviDeCroock) [_(more)_](/rfcs/1081#timeline) |
 
 
 
@@ -76,6 +73,7 @@ Last updated: 2025-06-26T19:21:25.609Z
 <!-- prettier-ignore -->
 | RFC | Champion | Title | Latest |
 | --- | --- | --- | --- |
+| [#1177](/rfcs/1177 "Incorporate meta-fields into ExecuteCollectedFields / RFC0") 🚀 | [@benjie](https://github.com/benjie) | [Incorporate meta-fields into ExecuteCollectedFields](/rfcs/1177) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1177)</small> | **[Spec PR](https://github.com/graphql/graphql-spec/pull/1177) created** on 2025-07-03 by benjie [_(more)_](/rfcs/1177#timeline) |
 | [#521](/rfcs/521 "Scalar serialize as built-in scalar type / RFC0") 🚀 | [@IvanGoncharov](https://github.com/IvanGoncharov) | [Scalar serialize as built-in scalar type](/rfcs/521) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/521)</small> | **[Spec PR](https://github.com/graphql/graphql-spec/pull/521) created** on 2018-10-14 by IvanGoncharov [_(more)_](/rfcs/521#timeline) |
 | [InputUnion](/rfcs/InputUnion "GraphQL Input Union / RFC0") | - | [NOTE: this document is kept for historic purposes; &#x5b;&#x60;@oneOf&#x60;&#x5d;(https://github.com/graphql/graphql-spec/pull/825) gained RFC3 status in May 2025.](/rfcs/InputUnion) | **[RFC document updated](https://github.com/graphql/graphql-wg/blob/87c54082d9851b2ed195f8208bc75fd751ceefa2/rfcs/InputUnion.md)** on 2025-06-05 by Benjie [_(more)_](/rfcs/InputUnion#timeline) |
 | [SemanticNulla…](/rfcs/SemanticNullability "Semantic Nullability / RFC0") | - | [Semantic Nullability](/rfcs/SemanticNullability) | **[RFC document updated](https://github.com/graphql/graphql-wg/blob/1cd0215e06037621dac28c2590fffb1dab939261/rfcs/SemanticNullability.md)** on 2025-05-01 by Benjie [_(more)_](/rfcs/SemanticNullability#timeline) |
@@ -136,6 +134,9 @@ Last updated: 2025-06-26T19:21:25.609Z
 <!-- prettier-ignore -->
 | RFC | Champion | Title | Latest |
 | --- | --- | --- | --- |
+| [#793](/rfcs/793 "Default value coercion rules / RFC3") | [@benjie](https://github.com/benjie) | [Default value coercion rules](/rfcs/793) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/793)</small> | **2 commits pushed**: [(latest)](https://github.com/graphql/graphql-spec/commit/b293158d290b23bc018a55503ab374dcbbc27241) on 2025-07-01 by [@leebyron](https://github.com/leebyron) [_(more)_](/rfcs/793#timeline) |
+| [#1102](/rfcs/1102 "Define Data Collections used in the spec / RFC3") | [@benjie](https://github.com/benjie) | [Define Data Collections used in the spec](/rfcs/1102) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1102)</small> | **Commit pushed**: [Lee editorial updates](https://github.com/graphql/graphql-spec/commit/68bc42abe47b74d1242f126ee46ec27c75e9e934) on 2025-07-01 by [@leebyron](https://github.com/leebyron) [_(more)_](/rfcs/1102#timeline) |
+| [#1170](/rfcs/1170 "Add descriptions to executable documents &#x7c; 2025 Update / RFC3") | [@fotoetienne](https://github.com/fotoetienne) | [Add descriptions to executable documents &#x7c; 2025 Update](/rfcs/1170) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1170)</small> | **3 commits pushed**: [(latest)](https://github.com/graphql/graphql-spec/commit/f2b1b1f63b5a90918b33335c38dabfa406fa995f) on 2025-07-01 by [@leebyron](https://github.com/leebyron) [_(more)_](/rfcs/1170#timeline) |
 | [#955](/rfcs/955 "Add validation rule that operation types exist / RFC3") | [@benjaminjkraft](https://github.com/benjaminjkraft) | [Add validation rule that operation types exist](/rfcs/955) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/955)</small> | **Added to [2025-06-26 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/06-Jun/26-wg-secondary-eu.md)** [_(more)_](/rfcs/955#timeline) |
 | [#1167](/rfcs/1167 "Do not exclude schema keyword if schema has description / RFC3") | [@benjie](https://github.com/benjie) | [Do not exclude schema keyword if schema has description](/rfcs/1167) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1167)</small> | **Added to [2025-06-26 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/06-Jun/26-wg-secondary-eu.md)** [_(more)_](/rfcs/1167#timeline) |
 | [#860](/rfcs/860 "Prevent @skip and @include on root subscription selection set / RFC3") | [@benjie](https://github.com/benjie) | [Prevent @skip and @include on root subscription selection set](/rfcs/860) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/860)</small> | **Added to [2025-06-05 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/06-Jun/05-wg-primary.md)** [_(more)_](/rfcs/860#timeline) |
