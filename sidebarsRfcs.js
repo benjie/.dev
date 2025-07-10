@@ -20,6 +20,11 @@ const sidebars = {
       items: [
         {
           type: "doc",
+          id: "1056",
+          label: "1056*: Fix CoerceArgumentValues() hasValue [RFC3]",
+        },
+        {
+          type: "doc",
           id: "793",
           label: "793*: Default value coercion rules [RFC3]",
         },
@@ -193,6 +198,11 @@ const sidebars = {
       items: [
         {
           type: "doc",
+          id: "794",
+          label: "794: Schema Coordinates [RFC3]",
+        },
+        {
+          type: "doc",
           id: "825",
           label: "825*: OneOf Input Objects [RFC3]",
         },
@@ -211,18 +221,18 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          id: "1063",
-          label: "1063*: Type system ordering of: object interfaces, directive arguments, input object fields, enum values [RFC2]",
-        },
-        {
-          type: "doc",
-          id: "794",
-          label: "794: Schema Coordinates [RFC2]",
+          id: "1058",
+          label: "1058*: List coercion algorithm [RFC2]",
         },
         {
           type: "doc",
           id: "1081",
           label: "1081: Fragment arguments/variables (syntax/validation/execution) [RFC2]",
+        },
+        {
+          type: "doc",
+          id: "1063",
+          label: "1063*: Type system ordering of: object interfaces, directive arguments, input object fields, enum values [RFC2]",
         },
       ],
     },
@@ -234,23 +244,23 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          id: "1058",
-          label: "1058*: List coercion algorithm [RFC1]",
-        },
-        {
-          type: "doc",
-          id: "1056",
-          label: "1056*: Fix CoerceArgumentValues() hasValue [RFC1]",
-        },
-        {
-          type: "doc",
-          id: "997",
-          label: "997: Expand @deprecated to Objects [RFC1]",
+          id: "1177",
+          label: "1177*: Incorporate meta-fields into ExecuteCollectedFields [RFC1]",
         },
         {
           type: "doc",
           id: "1163",
           label: "1163*: Allow clients to disable error propagation via request parameter (take 2) [RFC1]",
+        },
+        {
+          type: "doc",
+          id: "1179",
+          label: "1179: CoerceInputValue() [RFC1]",
+        },
+        {
+          type: "doc",
+          id: "997",
+          label: "997: Expand @deprecated to Objects [RFC1]",
         },
         {
           type: "doc",
@@ -297,13 +307,18 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          id: "1177",
-          label: "1177*: Incorporate meta-fields into ExecuteCollectedFields [RFC0]",
+          id: "521",
+          label: "521: Scalar serialize as built-in scalar type [RFC0]",
         },
         {
           type: "doc",
-          id: "521",
-          label: "521: Scalar serialize as built-in scalar type [RFC0]",
+          id: "1045",
+          label: "1045*: Remove fragmentSpreadName from visitedFragments when visit is complete [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "1184",
+          label: "1184*: Sibling errors should not be added after propagation [RFC0]",
         },
         {
           type: "doc",
@@ -397,11 +412,6 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "1045",
-          label: "1045*: Remove fragmentSpreadName from visitedFragments when visit is complete [RFC0]",
-        },
-        {
-          type: "doc",
           id: "FullSchemas",
           label: "FullSchemas: Full Schemas [RFC0]",
         },
@@ -464,11 +474,6 @@ const sidebars = {
           type: "doc",
           id: "673",
           label: "673: Servers must preserve lexical ordering between SDL and introspection [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "948",
-          label: "948*: OneOf Objects [RFC0]",
         },
         {
           type: "doc",
@@ -572,6 +577,11 @@ const sidebars = {
           type: "doc",
           id: "960",
           label: "960: Allow recursion within ResolveAbstractType [RFCX]",
+        },
+        {
+          type: "doc",
+          id: "948",
+          label: "948*: OneOf Objects [RFCX]",
         },
         {
           type: "doc",

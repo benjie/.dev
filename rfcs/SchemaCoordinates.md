@@ -24,7 +24,7 @@ image: /img/rfc_tracker.png
 - **PR**: -
 - **Related**:
   - [#733](/rfcs/733 "Tagged type / RFCX") (Tagged type)
-  - [#794](/rfcs/794 "Schema Coordinates / RFC2") (Schema Coordinates)
+  - [#794](/rfcs/794 "Schema Coordinates / RFC3") (Schema Coordinates)
   - [FieldExtensions](/rfcs/FieldExtensions "Field Extensions / RFC0") (Field Extensions)
 
 <!-- BEGIN_CUSTOM_TEXT -->
