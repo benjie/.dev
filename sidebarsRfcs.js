@@ -307,13 +307,8 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          id: "521",
-          label: "521: Scalar serialize as built-in scalar type [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "1045",
-          label: "1045*: Remove fragmentSpreadName from visitedFragments when visit is complete [RFC0]",
+          id: "1183",
+          label: "1183*: Fix \"response position\" definition; clarify sibling errors on propagation [RFC0]",
         },
         {
           type: "doc",
@@ -552,6 +547,11 @@ const sidebars = {
         },
         {
           type: "doc",
+          id: "521",
+          label: "521: Scalar serialize as built-in scalar type [RFC0]",
+        },
+        {
+          type: "doc",
           id: "325",
           label: "325: Add \"Any\" scalar type [RFC0]",
         },
@@ -563,6 +563,11 @@ const sidebars = {
       collapsed: true,
       collapsible: true,
       items: [
+        {
+          type: "doc",
+          id: "1045",
+          label: "1045*: Remove fragmentSpreadName from visitedFragments when visit is complete [RFCX]",
+        },
         {
           type: "doc",
           id: "1166",

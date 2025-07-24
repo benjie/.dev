@@ -17,7 +17,7 @@ be helpful for people to keep track of the various RFCs.
 Ping `@benjie` on the [GraphQL Discord](https://discord.graphql.org) (`#wg`
 channel) and ask for him to run an update!
 
-Last updated: 2025-07-17T08:18:38.164Z
+Last updated: 2025-07-24T09:37:54.960Z
 
 :::
 
@@ -27,7 +27,7 @@ Last updated: 2025-07-17T08:18:38.164Z
 <!-- prettier-ignore -->
 | RFC | Champion | Title | Latest |
 | --- | --- | --- | --- |
-| [#794](/rfcs/794 "Schema Coordinates / RFC3") | [@magicmark](https://github.com/magicmark) | [Schema Coordinates](/rfcs/794) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/794)</small> | **4 commits pushed**: [(latest)](https://github.com/graphql/graphql-spec/commit/4c39cdaaf1b3ec48bf725b6c64d9a780ebf5cf99) on 2025-07-04 by [@magicmark](https://github.com/magicmark) [_(more)_](/rfcs/794#timeline) |
+| [#794](/rfcs/794 "Schema Coordinates / RFC3") | [@magicmark](https://github.com/magicmark) | [Schema Coordinates](/rfcs/794) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/794)</small> | **Added to [2025-07-17 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/07-Jul/17-wg-secondary-eu.md)** [_(more)_](/rfcs/794#timeline) |
 | [#825](/rfcs/825 "OneOf Input Objects / RFC3") | [@benjie](https://github.com/benjie) | [OneOf Input Objects](/rfcs/825) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/825)</small> | **8 commits pushed**: [(latest)](https://github.com/graphql/graphql-spec/commit/5f6e777278027bd4a0bd24c3aa57947912bcf4ef) on 2025-07-04 by [@benjie](https://github.com/benjie) [_(more)_](/rfcs/825#timeline) |
 | [#1092](/rfcs/1092 "Recommend that order of unordered collections is maintained where possible / RFC3") | [@benjie](https://github.com/benjie) | [Recommend that order of unordered collections is maintained where possible](/rfcs/1092) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1092)</small> | **Commit pushed**: [Merge branch 'main' into maintain-order](https://github.com/graphql/graphql-spec/commit/313562a4fff977c1dd7d9b3cd3ef4df1ab2d0bf3) on 2025-07-03 by [@benjie](https://github.com/benjie) [_(more)_](/rfcs/1092#timeline) |
 
@@ -74,8 +74,7 @@ Last updated: 2025-07-17T08:18:38.164Z
 <!-- prettier-ignore -->
 | RFC | Champion | Title | Latest |
 | --- | --- | --- | --- |
-| [#521](/rfcs/521 "Scalar serialize as built-in scalar type / RFC0") 🚀 | [@IvanGoncharov](https://github.com/IvanGoncharov) | [Scalar serialize as built-in scalar type](/rfcs/521) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/521)</small> | **[Spec PR](https://github.com/graphql/graphql-spec/pull/521) created** on 2018-10-14 by IvanGoncharov [_(more)_](/rfcs/521#timeline) |
-| [#1045](/rfcs/1045 "Remove fragmentSpreadName from visitedFragments when visit is complete / RFC0") | [@benjie](https://github.com/benjie) | [Remove fragmentSpreadName from visitedFragments when visit is complete](/rfcs/1045) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1045)</small> | **Added to [2025-07-17 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/07-Jul/17-wg-secondary-eu.md)** [_(more)_](/rfcs/1045#timeline) |
+| [#1183](/rfcs/1183 "Fix &#x22;response position&#x22; definition; clarify sibling errors on propagation / RFC0") | [@benjie](https://github.com/benjie) | [Fix "response position" definition; clarify sibling errors on propagation](/rfcs/1183) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1183)</small> | **Added to [2025-07-17 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/07-Jul/17-wg-secondary-eu.md)** [_(more)_](/rfcs/1183#timeline) |
 | [#1184](/rfcs/1184 "Sibling errors should not be added after propagation / RFC0") | [@benjie](https://github.com/benjie) | [Sibling errors should not be added after propagation](/rfcs/1184) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1184)</small> | **[Spec PR](https://github.com/graphql/graphql-spec/pull/1184) created** on 2025-07-10 by benjie [_(more)_](/rfcs/1184#timeline) |
 | [InputUnion](/rfcs/InputUnion "GraphQL Input Union / RFC0") | - | [NOTE: this document is kept for historic purposes; &#x5b;&#x60;@oneOf&#x60;&#x5d;(https://github.com/graphql/graphql-spec/pull/825) gained RFC3 status in May 2025.](/rfcs/InputUnion) | **[RFC document updated](https://github.com/graphql/graphql-wg/blob/87c54082d9851b2ed195f8208bc75fd751ceefa2/rfcs/InputUnion.md)** on 2025-06-05 by Benjie [_(more)_](/rfcs/InputUnion#timeline) |
 | [SemanticNulla…](/rfcs/SemanticNullability "Semantic Nullability / RFC0") | - | [Semantic Nullability](/rfcs/SemanticNullability) | **[RFC document updated](https://github.com/graphql/graphql-wg/blob/1cd0215e06037621dac28c2590fffb1dab939261/rfcs/SemanticNullability.md)** on 2025-05-01 by Benjie [_(more)_](/rfcs/SemanticNullability#timeline) |
@@ -123,6 +122,7 @@ Last updated: 2025-07-17T08:18:38.164Z
 | [#631](/rfcs/631 "Make root query operation type optional / RFC0") | [@victorandree](https://github.com/victorandree) | [Make root query operation type optional](/rfcs/631) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/631)</small> | **Added to [2019-12-05 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2019/2019-12-05.md)** [_(more)_](/rfcs/631#timeline) |
 | [#567](/rfcs/567 "allow directives on directive definitions / RFC0") | [@benhead](https://github.com/benhead) | [allow directives on directive definitions](/rfcs/567) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/567)</small> | **[Spec PR](https://github.com/graphql/graphql-spec/pull/567) created** on 2019-02-28 by benhead [_(more)_](/rfcs/567#timeline) |
 | [#556](/rfcs/556 "Document Directives / RFC0") | [@langpavel](https://github.com/langpavel) | [Document Directives](/rfcs/556) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/556)</small> | **Commit pushed**: [Document directives are not special](https://github.com/graphql/graphql-spec/commit/f89de40eb8f7e0c2ab27a81ba9fac9cc1a89fbee) on 2019-02-01 by [@langpavel](https://github.com/langpavel) [_(more)_](/rfcs/556#timeline) |
+| [#521](/rfcs/521 "Scalar serialize as built-in scalar type / RFC0") | [@IvanGoncharov](https://github.com/IvanGoncharov) | [Scalar serialize as built-in scalar type](/rfcs/521) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/521)</small> | **[Spec PR](https://github.com/graphql/graphql-spec/pull/521) created** on 2018-10-14 by IvanGoncharov [_(more)_](/rfcs/521#timeline) |
 | [#325](/rfcs/325 "Add &#x22;Any&#x22; scalar type / RFC0") | [@IvanGoncharov](https://github.com/IvanGoncharov) | [Add "Any" scalar type](/rfcs/325) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/325)</small> | **[Spec PR](https://github.com/graphql/graphql-spec/pull/325) created** on 2017-06-19 by IvanGoncharov [_(more)_](/rfcs/325#timeline) |
 
 
@@ -209,6 +209,7 @@ Last updated: 2025-07-17T08:18:38.164Z
 <!-- prettier-ignore -->
 | RFC | Champion | Title | Latest |
 | --- | --- | --- | --- |
+| [#1045](/rfcs/1045 "Remove fragmentSpreadName from visitedFragments when visit is complete / RFCX") | [@benjie](https://github.com/benjie) | [Remove fragmentSpreadName from visitedFragments when visit is complete](/rfcs/1045) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1045)</small> | **Added to [2025-07-17 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/07-Jul/17-wg-secondary-eu.md)** [_(more)_](/rfcs/1045#timeline) |
 | [#1166](/rfcs/1166 "Enable 'schema' keyword to be provided without root operations / RFCX") | [@benjie](https://github.com/benjie) | [Enable 'schema' keyword to be provided without root operations](/rfcs/1166) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1166)</small> | **[Spec PR](https://github.com/graphql/graphql-spec/pull/1166) created** on 2025-05-01 by benjie [_(more)_](/rfcs/1166#timeline) |
 | [#1018](/rfcs/1018 "Alternative proposal for &#x60;@stream&#x60;/&#x60;@defer&#x60; / RFCX") | [@benjie](https://github.com/benjie) | [Alternative proposal for &#x60;@stream&#x60;/&#x60;@defer&#x60;](/rfcs/1018) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1018)</small> | **Added to [2023-04-06 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2023/04-Apr/06-wg-primary.md)** [_(more)_](/rfcs/1018#timeline) |
 | [#960](/rfcs/960 "Allow recursion within ResolveAbstractType / RFCX") | [@yaacovCR](https://github.com/yaacovCR) | [Allow recursion within ResolveAbstractType](/rfcs/960) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/960)</small> | **Added to [2022-07-07 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2022/2022-07-07.md)** [_(more)_](/rfcs/960#timeline) |

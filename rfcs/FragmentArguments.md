@@ -19,7 +19,7 @@ image: /img/rfc_tracker.png
 - **Champion**: -
 - **PR**: -
 - **Related**:
-  - [#1045](/rfcs/1045 "Remove fragmentSpreadName from visitedFragments when visit is complete / RFC0") (Remove fragmentSpreadName from visitedFragments when visit is complete)
+  - [#1045](/rfcs/1045 "Remove fragmentSpreadName from visitedFragments when visit is complete / RFCX") (Remove fragmentSpreadName from visitedFragments when visit is complete)
 
 <!-- BEGIN_CUSTOM_TEXT -->
 
