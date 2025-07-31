@@ -8,6 +8,7 @@ image: /img/rfc_tracker.png
 
 The below is an aggregate overview of the latest activity across all RFCs. Note that it's _roughly_ in cronological order, but some dates are less accurate than others (e.g. commit timestamps are to the second, whereas working groups are generally to the month...).
 
+- [#794](/rfcs/794 "Schema Coordinates / RFC3"): **Added to [2025-08-07 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/08-Aug/07-wg-primary.md)**
 - [#794](/rfcs/794 "Schema Coordinates / RFC3"): **Added to [2025-07-17 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/07-Jul/17-wg-secondary-eu.md)**
 - [#1045](/rfcs/1045 "Remove fragmentSpreadName from visitedFragments when visit is complete / RFCX"): **Added to [2025-07-17 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/07-Jul/17-wg-secondary-eu.md)**
 - [#1183](/rfcs/1183 "Fix &#x22;response position&#x22; definition; clarify sibling errors on propagation / RFC0"): **Added to [2025-07-17 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/07-Jul/17-wg-secondary-eu.md)**
