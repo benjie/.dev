@@ -17,7 +17,7 @@ be helpful for people to keep track of the various RFCs.
 Ping `@benjie` on the [GraphQL Discord](https://discord.graphql.org) (`#wg`
 channel) and ask for him to run an update!
 
-Last updated: 2025-08-07T16:06:11.979Z
+Last updated: 2025-08-18T18:37:06.113Z
 
 :::
 
@@ -27,7 +27,7 @@ Last updated: 2025-08-07T16:06:11.979Z
 <!-- prettier-ignore -->
 | RFC | Champion | Title | Latest |
 | --- | --- | --- | --- |
-| [#794](/rfcs/794 "Schema Coordinates / RFC3") | [@magicmark](https://github.com/magicmark) | [Schema Coordinates](/rfcs/794) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/794)</small> | **Added to [2025-08-07 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/08-Aug/07-wg-primary.md)** [_(more)_](/rfcs/794#timeline) |
+| [#794](/rfcs/794 "Schema Coordinates / RFC3") | [@magicmark](https://github.com/magicmark) | [Schema Coordinates](/rfcs/794) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/794)</small> | **2 commits pushed**: [(latest)](https://github.com/graphql/graphql-spec/commit/63b093394d9292d6218185aebf753bb94b92679e) on 2025-08-07 by [@magicmark](https://github.com/magicmark) [_(more)_](/rfcs/794#timeline) |
 | [#825](/rfcs/825 "OneOf Input Objects / RFC3") | [@benjie](https://github.com/benjie) | [OneOf Input Objects](/rfcs/825) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/825)</small> | **8 commits pushed**: [(latest)](https://github.com/graphql/graphql-spec/commit/5f6e777278027bd4a0bd24c3aa57947912bcf4ef) on 2025-07-04 by [@benjie](https://github.com/benjie) [_(more)_](/rfcs/825#timeline) |
 | [#1092](/rfcs/1092 "Recommend that order of unordered collections is maintained where possible / RFC3") | [@benjie](https://github.com/benjie) | [Recommend that order of unordered collections is maintained where possible](/rfcs/1092) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1092)</small> | **Commit pushed**: [Merge branch 'main' into maintain-order](https://github.com/graphql/graphql-spec/commit/313562a4fff977c1dd7d9b3cd3ef4df1ab2d0bf3) on 2025-07-03 by [@benjie](https://github.com/benjie) [_(more)_](/rfcs/1092#timeline) |
 
