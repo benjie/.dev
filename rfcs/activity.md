@@ -8,6 +8,7 @@ image: /img/rfc_tracker.png
 
 The below is an aggregate overview of the latest activity across all RFCs. Note that it's _roughly_ in cronological order, but some dates are less accurate than others (e.g. commit timestamps are to the second, whereas working groups are generally to the month...).
 
+- [#794](/rfcs/794 "Schema Coordinates / RFC3"): **Added to [2025-08-21 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/08-Aug/21-wg-secondary-eu.md)**
 - [#794](/rfcs/794 "Schema Coordinates / RFC3"): **2 commits pushed** on 2025-08-07:
   - [restrict schema coordinates to a unique grammar](https://github.com/graphql/graphql-spec/commit/fc1ddcacdec86fa94fd8fef830a0e1a3954e1090) by [@magicmark](https://github.com/magicmark)
   - [format](https://github.com/graphql/graphql-spec/commit/63b093394d9292d6218185aebf753bb94b92679e) by [@magicmark](https://github.com/magicmark)
