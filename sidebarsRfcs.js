@@ -20,6 +20,21 @@ const sidebars = {
       items: [
         {
           type: "doc",
+          id: "794",
+          label: "794: Schema Coordinates [RFC3]",
+        },
+        {
+          type: "doc",
+          id: "825",
+          label: "825*: OneOf Input Objects [RFC3]",
+        },
+        {
+          type: "doc",
+          id: "1092",
+          label: "1092*: Recommend that order of unordered collections is maintained where possible [RFC3]",
+        },
+        {
+          type: "doc",
           id: "1056",
           label: "1056*: Fix CoerceArgumentValues() hasValue [RFC3]",
         },
@@ -40,8 +55,8 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "955",
-          label: "955: Add validation rule that operation types exist [RFC3]",
+          id: "860",
+          label: "860*: Prevent @skip and @include on root subscription selection set [RFC3]",
         },
         {
           type: "doc",
@@ -50,8 +65,8 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "860",
-          label: "860*: Prevent @skip and @include on root subscription selection set [RFC3]",
+          id: "976",
+          label: "976*: Add 'extensions' to request [RFC3]",
         },
         {
           type: "doc",
@@ -65,13 +80,13 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "976",
-          label: "976*: Add 'extensions' to request [RFC3]",
+          id: "1040",
+          label: "1040: Make the reason argument in `@deprecated` non-nullable [RFC3]",
         },
         {
           type: "doc",
-          id: "1040",
-          label: "1040: Make the reason argument in `@deprecated` non-nullable [RFC3]",
+          id: "955",
+          label: "955: Add validation rule that operation types exist [RFC3]",
         },
         {
           type: "doc",
@@ -115,13 +130,13 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "525",
-          label: "525: Allow deprecation of input values [RFC3]",
+          id: "701",
+          label: "701: Disallow non-breakable chains of circular references in Input Objects [RFC3]",
         },
         {
           type: "doc",
-          id: "701",
-          label: "701: Disallow non-breakable chains of circular references in Input Objects [RFC3]",
+          id: "525",
+          label: "525: Allow deprecation of input values [RFC3]",
         },
         {
           type: "doc",
@@ -135,13 +150,13 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "599",
-          label: "599: Clarify that lexing is greedy [RFC3]",
+          id: "601",
+          label: "601: Number value literal lookahead restrictions [RFC3]",
         },
         {
           type: "doc",
-          id: "601",
-          label: "601: Number value literal lookahead restrictions [RFC3]",
+          id: "599",
+          label: "599: Clarify that lexing is greedy [RFC3]",
         },
         {
           type: "doc",
@@ -192,42 +207,19 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Stage 3: Accepted (pending edits)",
-      collapsed: false,
-      collapsible: true,
-      items: [
-        {
-          type: "doc",
-          id: "794",
-          label: "794: Schema Coordinates [RFC3]",
-        },
-        {
-          type: "doc",
-          id: "825",
-          label: "825*: OneOf Input Objects [RFC3]",
-        },
-        {
-          type: "doc",
-          id: "1092",
-          label: "1092*: Recommend that order of unordered collections is maintained where possible [RFC3]",
-        },
-      ],
-    },
-    {
-      type: "category",
       label: "Stage 2: Draft",
       collapsed: false,
       collapsible: true,
       items: [
         {
           type: "doc",
-          id: "1058",
-          label: "1058*: List coercion algorithm [RFC2]",
+          id: "1081",
+          label: "1081: Fragment arguments/variables (syntax/validation/execution) [RFC2]",
         },
         {
           type: "doc",
-          id: "1081",
-          label: "1081: Fragment arguments/variables (syntax/validation/execution) [RFC2]",
+          id: "1058",
+          label: "1058*: List coercion algorithm [RFC2]",
         },
         {
           type: "doc",
@@ -259,11 +251,6 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "997",
-          label: "997: Expand @deprecated to Objects [RFC1]",
-        },
-        {
-          type: "doc",
           id: "1110",
           label: "1110: Incremental Delivery spec draft [RFC1]",
         },
@@ -276,6 +263,11 @@ const sidebars = {
           type: "doc",
           id: "1059",
           label: "1059*: Introduce Strict and Legacy All Variable Usages Are Allowed [RFC1]",
+        },
+        {
+          type: "doc",
+          id: "997",
+          label: "997: Expand @deprecated to Objects [RFC1]",
         },
         {
           type: "doc",
@@ -307,13 +299,13 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          id: "1183",
-          label: "1183*: Fix \"response position\" definition; clarify sibling errors on propagation [RFC0]",
+          id: "1184",
+          label: "1184*: Sibling errors should not be added after propagation [RFC0]",
         },
         {
           type: "doc",
-          id: "1184",
-          label: "1184*: Sibling errors should not be added after propagation [RFC0]",
+          id: "1183",
+          label: "1183*: Fix \"response position\" definition; clarify sibling errors on propagation [RFC0]",
         },
         {
           type: "doc",
@@ -337,11 +329,6 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "1065",
-          label: "1065*: SemanticNonNull type (null only on error) [RFC0]",
-        },
-        {
-          type: "doc",
           id: "wg1700",
           label: "wg1700: Lee's new nullability & error propagation proposal [RFC0]",
         },
@@ -357,6 +344,11 @@ const sidebars = {
         },
         {
           type: "doc",
+          id: "1065",
+          label: "1065*: SemanticNonNull type (null only on error) [RFC0]",
+        },
+        {
+          type: "doc",
           id: "ClientControlledNullability",
           label: "ClientControlledNullability: Client Controlled Nullability [RFC0]",
         },
@@ -364,11 +356,6 @@ const sidebars = {
           type: "doc",
           id: "1114",
           label: "1114: add __directive meta field parallel to __type [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "1057",
-          label: "1057*: Fix coercion table for list [RFC0]",
         },
         {
           type: "doc",
@@ -397,6 +384,11 @@ const sidebars = {
         },
         {
           type: "doc",
+          id: "1057",
+          label: "1057*: Fix coercion table for list [RFC0]",
+        },
+        {
+          type: "doc",
           id: "wg1410",
           label: "wg1410: Strict Semantic Nullability [RFC0]",
         },
@@ -412,13 +404,13 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "1015",
-          label: "1015: \"Root\" Types clarity → \"Operation Type\" [RFC0]",
+          id: "FragmentArguments",
+          label: "FragmentArguments: Fragment Arguments [RFC0]",
         },
         {
           type: "doc",
-          id: "FragmentArguments",
-          label: "FragmentArguments: Fragment Arguments [RFC0]",
+          id: "1015",
+          label: "1015: \"Root\" Types clarity → \"Operation Type\" [RFC0]",
         },
         {
           type: "doc",
@@ -615,11 +607,6 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "319",
-          label: "319: Add '@ignoreIfUnknown' to allow forward compatibility for clients [RFCX]",
-        },
-        {
-          type: "doc",
           id: "606",
           label: "606: Support empty composite types [RFCX]",
         },
@@ -632,6 +619,11 @@ const sidebars = {
           type: "doc",
           id: "395",
           label: "395: inputUnion type [RFCX]",
+        },
+        {
+          type: "doc",
+          id: "319",
+          label: "319: Add '@ignoreIfUnknown' to allow forward compatibility for clients [RFCX]",
         },
         {
           type: "doc",
@@ -663,18 +655,13 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "892",
-          label: "892: Add descriptions to executable definitions [RFCS]",
+          id: "1157",
+          label: "1157: Exclude custom scalar literals from validation [RFCS]",
         },
         {
           type: "doc",
           id: "1153",
           label: "1153*: Allow clients to disable error propagation via request parameter [RFCS]",
-        },
-        {
-          type: "doc",
-          id: "1157",
-          label: "1157: Exclude custom scalar literals from validation [RFCS]",
         },
         {
           type: "doc",
@@ -693,11 +680,6 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "1010",
-          label: "1010: Fragment Arguments: Spec Implementation [RFCS]",
-        },
-        {
-          type: "doc",
           id: "1052",
           label: "1052: deduplicated incremental delivery [RFCS]",
         },
@@ -713,18 +695,23 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "999",
-          label: "999: introduce ExecuteGroupedFieldSet, CollectRootFields and CollectSubfields [RFCS]",
-        },
-        {
-          type: "doc",
           id: "1026",
           label: "1026: incremental delivery with deduplication + concurrent execution [RFCS]",
         },
         {
           type: "doc",
+          id: "999",
+          label: "999: introduce ExecuteGroupedFieldSet, CollectRootFields and CollectSubfields [RFCS]",
+        },
+        {
+          type: "doc",
           id: "1023",
           label: "1023: incremental delivery without branching [RFCS]",
+        },
+        {
+          type: "doc",
+          id: "1010",
+          label: "1010: Fragment Arguments: Spec Implementation [RFCS]",
         },
         {
           type: "doc",
@@ -735,6 +722,11 @@ const sidebars = {
           type: "doc",
           id: "865",
           label: "865: Fragment Arguments (parameterized fragments) for GraphQL [RFCS]",
+        },
+        {
+          type: "doc",
+          id: "892",
+          label: "892: Add descriptions to executable definitions [RFCS]",
         },
         {
           type: "doc",

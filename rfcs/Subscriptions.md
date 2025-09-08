@@ -65,8 +65,8 @@ image: /img/rfc_tracker.png
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/5db83c773d7950a05a9306d1cd8d7e0704e77bda/rfcs/Subscriptions.md)** on 2020-08-19 by Benjie Gillam
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/a04a5af71b87b10de34b214ad99191a21502f8f5/rfcs/Subscriptions.md)** on 2018-02-08 by Ivan Goncharov
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/f31ea10c73f6cc500df896c3470fcaf01131ad6b/rfcs/Subscriptions.md)** on 2017-05-02 by Robert Zhu
-- **[RFC document updated](https://github.com/graphql/graphql-wg/blob/33bf11ba564bf939e97bc9424fafd9b5cf913739/rfcs/Subscriptions.md)** on 2017-05-01 by Robert Zhu
-- **[RFC document updated](https://github.com/graphql/graphql-wg/blob/252acc477ac3df38f306a0acdbb4e70b7bf5ccd1/rfcs/Subscriptions.md)** on 2017-05-01 by Robert Zhu
+- **[RFC document updated](https://github.com/graphql/graphql-wg/blob/33bf11ba564bf939e97bc9424fafd9b5cf913739/rfcs/Subscriptions.md)** on 2017-05-02 by Robert Zhu
+- **[RFC document updated](https://github.com/graphql/graphql-wg/blob/252acc477ac3df38f306a0acdbb4e70b7bf5ccd1/rfcs/Subscriptions.md)** on 2017-05-02 by Robert Zhu
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/509433383c3649219d2668423995aa8ae127860e/rfcs/Subscriptions.md)** on 2017-04-28 by Robert Zhu
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/f2c3127b463582dc4928cb17dad438f0816f7203/rfcs/Subscriptions.md)** on 2017-04-01 by Brad Fults
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/b6d97ffb5a9a5a94ca52449771248182ae699765/rfcs/Subscriptions.md)** on 2017-03-28 by Robert Zhu

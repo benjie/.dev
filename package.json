@@ -17,7 +17,7 @@
     "write-heading-ids": "docusaurus write-heading-ids",
     "wg:clone": "rm -Rf temp/wg && mkdir -p temp && git clone https://github.com/graphql/graphql-wg temp/wg",
     "wg:update": "cd temp/wg && git checkout main && git pull",
-    "sync-rfcs": "yarn graphql-codegen && yarn wg:update && node --loader ts-node/esm ./scripts/sync-rfcs.mts && git add rfcs",
+    "sync-rfcs": "mkdir -p tmp/wg/rfcs && yarn graphql-codegen && yarn wg:update && node --loader ts-node/esm ./scripts/sync-rfcs.mts && git add rfcs",
     "sync-rfcs:watch": "yarn wg:update && node --watch --loader ts-node/esm ./scripts/sync-rfcs.mts"
   },
   "dependencies": {
