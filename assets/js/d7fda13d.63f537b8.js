@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_localrepo_benjie_dev=self.webpackChunk_localrepo_benjie_dev||[]).push([[9439],{5689:e=>{e.exports=JSON.parse('{"name":"docusaurus-plugin-content-docs","id":"rfcs"}')}}]);
