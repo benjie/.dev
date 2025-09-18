@@ -117,7 +117,7 @@ image: /img/rfc_tracker.png
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/460f3e79c186fc85cada7fe87fda80d8d0c0ef73/rfcs/CompositeSchemas.md)** on 2022-06-14 by agata-wit
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/0c65abccb33d6f4947daf2feb2fbb3c9f9302ed9/rfcs/CompositeSchemas.md)** on 2022-06-10 by Chi Chan
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/1191bf22525bb998a78f6a6707191feaa9637bb4/rfcs/CompositeSchemas.md)** on 2022-06-08 by Nathan Chapman
-- **[RFC document updated](https://github.com/graphql/graphql-wg/blob/1e49e7cca5031c722523c1c486958928470930ff/rfcs/CompositeSchemas.md)** on 2022-06-08 by Bobbie Cochrane
+- **[RFC document updated](https://github.com/graphql/graphql-wg/blob/1e49e7cca5031c722523c1c486958928470930ff/rfcs/CompositeSchemas.md)** on 2022-06-07 by Bobbie Cochrane
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/b362d53e7283f2bc1decc3b24e8ff3cfa9611ecf/rfcs/CompositeSchemas.md)** on 2022-06-03 by Rafael Abreu
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/bd9795b2224067073e9a9bdc53f5308054f0d429/rfcs/CompositeSchemas.md)** on 2022-06-03 by Julian
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/51aad240d661e1a931adbebe9177be54bed17ce3/rfcs/CompositeSchemas.md)** on 2022-06-02 by Nicholas DeJaco
