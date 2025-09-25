@@ -299,6 +299,11 @@ const sidebars = {
       items: [
         {
           type: "doc",
+          id: "MatchesDirective",
+          label: "MatchesDirective: Matches Directive [RFC0]",
+        },
+        {
+          type: "doc",
           id: "1183",
           label: "1183*: Fix \"response position\" definition; clarify sibling errors on propagation [RFC0]",
         },

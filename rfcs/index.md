@@ -17,7 +17,7 @@ be helpful for people to keep track of the various RFCs.
 Ping `@benjie` on the [GraphQL Discord](https://discord.graphql.org) (`#wg`
 channel) and ask for him to run an update!
 
-Last updated: 2025-09-18T13:33:47.171Z
+Last updated: 2025-09-25T12:17:57.676Z
 
 :::
 
@@ -61,6 +61,7 @@ Last updated: 2025-09-18T13:33:47.171Z
 <!-- prettier-ignore -->
 | RFC | Champion | Title | Latest |
 | --- | --- | --- | --- |
+| [MatchesDirect…](/rfcs/MatchesDirective "Matches Directive / RFC0") | - | [Matches Directive](/rfcs/MatchesDirective) | **[RFC document created](https://github.com/graphql/graphql-wg/blob/1f6dce664b79bb6fce63e9b4132df653f0ed0285/rfcs/MatchesDirective.md)** on 2025-09-19 by Mark Larah [_(more)_](/rfcs/MatchesDirective#timeline) |
 | [#1183](/rfcs/1183 "Fix &#x22;response position&#x22; definition; clarify sibling errors on propagation / RFC0") | [@benjie](https://github.com/benjie) | [Fix "response position" definition; clarify sibling errors on propagation](/rfcs/1183) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1183)</small> | **Added to [2025-07-17 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/07-Jul/17-wg-secondary-eu.md)** [_(more)_](/rfcs/1183#timeline) |
 | [#1184](/rfcs/1184 "Sibling errors should not be added after propagation / RFC0") | [@benjie](https://github.com/benjie) | [Sibling errors should not be added after propagation](/rfcs/1184) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1184)</small> | **[Spec PR](https://github.com/graphql/graphql-spec/pull/1184) created** on 2025-07-10 by benjie [_(more)_](/rfcs/1184#timeline) |
 | [InputUnion](/rfcs/InputUnion "GraphQL Input Union / RFC0") | - | [NOTE: this document is kept for historic purposes; &#x5b;&#x60;@oneOf&#x60;&#x5d;(https://github.com/graphql/graphql-spec/pull/825) gained RFC3 status in May 2025.](/rfcs/InputUnion) | **[RFC document updated](https://github.com/graphql/graphql-wg/blob/87c54082d9851b2ed195f8208bc75fd751ceefa2/rfcs/InputUnion.md)** on 2025-06-05 by Benjie [_(more)_](/rfcs/InputUnion#timeline) |
