@@ -299,6 +299,11 @@ const sidebars = {
       items: [
         {
           type: "doc",
+          id: "FieldExtensions",
+          label: "FieldExtensions: Field Extensions [RFC0]",
+        },
+        {
+          type: "doc",
           id: "MatchesDirective",
           label: "MatchesDirective: Matches Directive [RFC0]",
         },
@@ -326,11 +331,6 @@ const sidebars = {
           type: "doc",
           id: "1165",
           label: "1165*: Add Transitional Non-Null appendix (`@noPropagate` directive) [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "FieldExtensions",
-          label: "FieldExtensions: Field Extensions [RFC0]",
         },
         {
           type: "doc",

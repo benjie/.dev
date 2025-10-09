@@ -3,6 +3,10 @@ identifier: FieldExtensions
 stage: "0"
 title: Field Extensions
 events:
+  - type: docUpdated
+    date: 2025-10-03T18:54:36+02:00
+    href: https://github.com/graphql/graphql-wg/blob/bef7d62f7d5fb0a4ba718a99a205932f4f942d55/rfcs/FieldExtensions.md
+    actor: Martin Bonnin
   - type: docCreated
     date: 2025-04-25T15:06:33+02:00
     href: https://github.com/graphql/graphql-wg/blob/02f0d30971b6d5183a23b8ceba11fd1af4f36e50/rfcs/FieldExtensions.md
@@ -29,6 +33,7 @@ image: /img/rfc_tracker.png
 
 ## Timeline
 
+- **[RFC document updated](https://github.com/graphql/graphql-wg/blob/bef7d62f7d5fb0a4ba718a99a205932f4f942d55/rfcs/FieldExtensions.md)** on 2025-10-03 by Martin Bonnin
 - **[RFC document created](https://github.com/graphql/graphql-wg/blob/02f0d30971b6d5183a23b8ceba11fd1af4f36e50/rfcs/FieldExtensions.md)** on 2025-04-25 by Martin Bonnin
 
 <!-- VERBATIM -->
@@ -37,7 +42,8 @@ image: /img/rfc_tracker.png
 
 > # RFC: Field Extensions
 > 
-> **Proposed by:** [Martin Bonnin](https://mastodon.mbonnin.net/@mb) - Apollo
+> **Champion:** [Emily Goodwin](https://github.com/egoodwinx)
+> **Co-Champion:** [Martin Bonnin](https://github.com/martinbonnin)
 > 
 > ## Problem statement
 > 
