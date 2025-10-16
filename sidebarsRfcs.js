@@ -299,6 +299,11 @@ const sidebars = {
       items: [
         {
           type: "doc",
+          id: "ObjectIdentification",
+          label: "ObjectIdentification: Object Identification [RFC0]",
+        },
+        {
+          type: "doc",
           id: "FieldExtensions",
           label: "FieldExtensions: Field Extensions [RFC0]",
         },

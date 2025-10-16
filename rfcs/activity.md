@@ -8,6 +8,7 @@ image: /img/rfc_tracker.png
 
 The below is an aggregate overview of the latest activity across all RFCs. Note that it's _roughly_ in cronological order, but some dates are less accurate than others (e.g. commit timestamps are to the second, whereas working groups are generally to the month...).
 
+- [ObjectIdentification](/rfcs/ObjectIdentification "Object Identification / RFC0"): **[RFC document created](https://github.com/graphql/graphql-wg/blob/f30bf3559c4deccaf7822a0a96b5f081098d8b91/rfcs/ObjectIdentification.md)** on 2025-10-15 by Lenz Weber-Tronic
 - [#1081](/rfcs/1081 "Fragment arguments/variables (syntax/validation/execution) / RFC2"): **Commit pushed**: [Merge branch 'main' into fragment-args-2024-amendments](https://github.com/graphql/graphql-spec/commit/b617e257d2b45c8f95288966ab28e4712c8d77b3) on 2025-10-07 by [@JoviDeCroock](https://github.com/JoviDeCroock)
 - [FieldExtensions](/rfcs/FieldExtensions "Field Extensions / RFC0"): **[RFC document updated](https://github.com/graphql/graphql-wg/blob/bef7d62f7d5fb0a4ba718a99a205932f4f942d55/rfcs/FieldExtensions.md)** on 2025-10-03 by Martin Bonnin
 - [MatchesDirective](/rfcs/MatchesDirective "Matches Directive / RFC0"): **[RFC document created](https://github.com/graphql/graphql-wg/blob/1f6dce664b79bb6fce63e9b4132df653f0ed0285/rfcs/MatchesDirective.md)** on 2025-09-19 by Mark Larah

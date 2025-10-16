@@ -17,7 +17,7 @@ be helpful for people to keep track of the various RFCs.
 Ping `@benjie` on the [GraphQL Discord](https://discord.graphql.org) (`#wg`
 channel) and ask for him to run an update!
 
-Last updated: 2025-10-09T15:43:28.047Z
+Last updated: 2025-10-16T12:05:22.428Z
 
 :::
 
@@ -61,6 +61,7 @@ Last updated: 2025-10-09T15:43:28.047Z
 <!-- prettier-ignore -->
 | RFC | Champion | Title | Latest |
 | --- | --- | --- | --- |
+| [ObjectIdentif…](/rfcs/ObjectIdentification "Object Identification / RFC0") | - | [Object Identification](/rfcs/ObjectIdentification) | **[RFC document created](https://github.com/graphql/graphql-wg/blob/f30bf3559c4deccaf7822a0a96b5f081098d8b91/rfcs/ObjectIdentification.md)** on 2025-10-15 by Lenz Weber-Tronic [_(more)_](/rfcs/ObjectIdentification#timeline) |
 | [FieldExtensions](/rfcs/FieldExtensions "Field Extensions / RFC0") | - | [Field Extensions](/rfcs/FieldExtensions) | **[RFC document updated](https://github.com/graphql/graphql-wg/blob/bef7d62f7d5fb0a4ba718a99a205932f4f942d55/rfcs/FieldExtensions.md)** on 2025-10-03 by Martin Bonnin [_(more)_](/rfcs/FieldExtensions#timeline) |
 | [MatchesDirect…](/rfcs/MatchesDirective "Matches Directive / RFC0") | - | [Matches Directive](/rfcs/MatchesDirective) | **[RFC document created](https://github.com/graphql/graphql-wg/blob/1f6dce664b79bb6fce63e9b4132df653f0ed0285/rfcs/MatchesDirective.md)** on 2025-09-19 by Mark Larah [_(more)_](/rfcs/MatchesDirective#timeline) |
 | [#1183](/rfcs/1183 "Fix &#x22;response position&#x22; definition; clarify sibling errors on propagation / RFC0") | [@benjie](https://github.com/benjie) | [Fix "response position" definition; clarify sibling errors on propagation](/rfcs/1183) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1183)</small> | **Added to [2025-07-17 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/07-Jul/17-wg-secondary-eu.md)** [_(more)_](/rfcs/1183#timeline) |
