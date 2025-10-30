@@ -17,7 +17,7 @@ be helpful for people to keep track of the various RFCs.
 Ping `@benjie` on the [GraphQL Discord](https://discord.graphql.org) (`#wg`
 channel) and ask for him to run an update!
 
-Last updated: 2025-10-23T09:01:08.923Z
+Last updated: 2025-10-30T11:11:34.483Z
 
 :::
 
@@ -41,7 +41,7 @@ Last updated: 2025-10-23T09:01:08.923Z
 | RFC | Champion | Title | Latest |
 | --- | --- | --- | --- |
 | [#1177](/rfcs/1177 "Incorporate meta-fields into ExecuteCollectedFields / RFC1") 🚀 | [@benjie](https://github.com/benjie) | [Incorporate meta-fields into ExecuteCollectedFields](/rfcs/1177) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1177)</small> | **4 commits pushed**: [(latest)](https://github.com/graphql/graphql-spec/commit/4b7c111802bebde1703ae8f6c661847f4fce3caa) on 2025-07-04 by [@benjie](https://github.com/benjie) [_(more)_](/rfcs/1177#timeline) |
-| [#1163](/rfcs/1163 "Allow clients to disable error propagation via request parameter (take 2) / RFC1") | [@benjie](https://github.com/benjie) | [Service capabilities / error behaviors](/rfcs/1163) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1163)</small> | **9 commits pushed**: [(latest)](https://github.com/graphql/graphql-spec/commit/955acd4098fc53833890415c0432d587013ff7b0) on 2025-08-29 by [@benjie](https://github.com/benjie) [_(more)_](/rfcs/1163#timeline) |
+| [#1163](/rfcs/1163 "Allow clients to disable error propagation via request parameter (take 2) / RFC1") | [@benjie](https://github.com/benjie) | [Service capabilities / error behaviors](/rfcs/1163) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1163)</small> | **Added to [2025-11-06 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/11-Nov/06-wg-primary.md)** [_(more)_](/rfcs/1163#timeline) |
 | [#1179](/rfcs/1179 "CoerceInputValue() / RFC1") | [@leebyron](https://github.com/leebyron) | [CoerceInputValue()](/rfcs/1179) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1179)</small> | **6 commits pushed**: [(latest)](https://github.com/graphql/graphql-spec/commit/e9a4ec2e67fc9e53a3b47012acc6758f7c9d867c) on 2025-07-05 by [@leebyron](https://github.com/leebyron) [_(more)_](/rfcs/1179#timeline) |
 | [#997](/rfcs/997 "Expand @deprecated to Objects / RFC1") | [@fotoetienne](https://github.com/fotoetienne) | [Expand @deprecated to Objects](/rfcs/997) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/997)</small> | **Added to [2025-06-26 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/06-Jun/26-wg-secondary-eu.md)** [_(more)_](/rfcs/997#timeline) |
 | [#1110](/rfcs/1110 "Incremental Delivery spec draft / RFC1") | [@robrichard](https://github.com/robrichard) | [Incremental Delivery spec draft](/rfcs/1110) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1110)</small> | **Commit pushed**: [skip deferred fragment spread when already in visited fragments](https://github.com/graphql/graphql-spec/commit/8e9cbcb46384399f5ed73996fac008de1d394551) on 2025-01-09 by [@robrichard](https://github.com/robrichard) [_(more)_](/rfcs/1110#timeline) |
@@ -61,6 +61,8 @@ Last updated: 2025-10-23T09:01:08.923Z
 <!-- prettier-ignore -->
 | RFC | Champion | Title | Latest |
 | --- | --- | --- | --- |
+| [#1200](/rfcs/1200 "Add Schema Coordinate to GraphQL Errors / RFC0") 🚀 | [@PascalSenn](https://github.com/PascalSenn) | [Add Schema Coordinate to GraphQL Errors](/rfcs/1200) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1200)</small> | **[Spec PR](https://github.com/graphql/graphql-spec/pull/1200) created** on 2025-10-28 by PascalSenn [_(more)_](/rfcs/1200#timeline) |
+| [TEMPLATE](/rfcs/TEMPLATE "&#x3c;!-- This template is provided as a suggested starting point. You may alter the / RFC0") | - | [&#x3c;!-- This template is provided as a suggested starting point. You may alter the](/rfcs/TEMPLATE) | **[RFC document created](https://github.com/graphql/graphql-wg/blob/8aea69549cdc57c8017e3d471a546b906aff785f/rfcs/TEMPLATE.md)** on 2025-10-29 by Mark Larah [_(more)_](/rfcs/TEMPLATE#timeline) |
 | [ObjectIdentif…](/rfcs/ObjectIdentification "Object Identification / RFC0") | - | [Object Identification](/rfcs/ObjectIdentification) | **[RFC document created](https://github.com/graphql/graphql-wg/blob/f30bf3559c4deccaf7822a0a96b5f081098d8b91/rfcs/ObjectIdentification.md)** on 2025-10-15 by Lenz Weber-Tronic [_(more)_](/rfcs/ObjectIdentification#timeline) |
 | [FieldExtensions](/rfcs/FieldExtensions "Field Extensions / RFC0") | - | [Field Extensions](/rfcs/FieldExtensions) | **[RFC document updated](https://github.com/graphql/graphql-wg/blob/bef7d62f7d5fb0a4ba718a99a205932f4f942d55/rfcs/FieldExtensions.md)** on 2025-10-03 by Martin Bonnin [_(more)_](/rfcs/FieldExtensions#timeline) |
 | [MatchesDirect…](/rfcs/MatchesDirective "Matches Directive / RFC0") | - | [Matches Directive](/rfcs/MatchesDirective) | **[RFC document created](https://github.com/graphql/graphql-wg/blob/1f6dce664b79bb6fce63e9b4132df653f0ed0285/rfcs/MatchesDirective.md)** on 2025-09-19 by Mark Larah [_(more)_](/rfcs/MatchesDirective#timeline) |

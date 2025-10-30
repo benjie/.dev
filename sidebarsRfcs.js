@@ -299,6 +299,16 @@ const sidebars = {
       items: [
         {
           type: "doc",
+          id: "1200",
+          label: "1200: Add Schema Coordinate to GraphQL Errors [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "TEMPLATE",
+          label: "TEMPLATE: <!-- This template is provided as a suggested starting point. You may alter the [RFC0]",
+        },
+        {
+          type: "doc",
           id: "ObjectIdentification",
           label: "ObjectIdentification: Object Identification [RFC0]",
         },
