@@ -9,6 +9,7 @@ image: /img/rfc_tracker.png
 The below is an aggregate overview of the latest activity across all RFCs. Note that it's _roughly_ in cronological order, but some dates are less accurate than others (e.g. commit timestamps are to the second, whereas working groups are generally to the month...).
 
 - [#1163](/rfcs/1163 "Allow clients to disable error propagation via request parameter (take 2) / RFC1"): **Added to [2025-11-06 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/11-Nov/06-wg-primary.md)**
+- [#673](/rfcs/673 "Servers must preserve lexical ordering between SDL and introspection / RFC0"): **Commit pushed**: [Merge branch 'main' into patch-2](https://github.com/graphql/graphql-spec/commit/0ab923d39148f8b4ea767835468db2db7298c339) on 2025-11-05 by [@spawnia](https://github.com/spawnia)
 - [TEMPLATE](/rfcs/TEMPLATE "&#x3c;!-- This template is provided as a suggested starting point. You may alter the / RFC0"): **[RFC document created](https://github.com/graphql/graphql-wg/blob/8aea69549cdc57c8017e3d471a546b906aff785f/rfcs/TEMPLATE.md)** on 2025-10-29 by Mark Larah
 - [#1200](/rfcs/1200 "Add Schema Coordinate to GraphQL Errors / RFC0"): **[Spec PR](https://github.com/graphql/graphql-spec/pull/1200) created** on 2025-10-28 by PascalSenn
 - [#1163](/rfcs/1163 "Allow clients to disable error propagation via request parameter (take 2) / RFC1"): **Commit pushed**: [Fix incorrect prefix](https://github.com/graphql/graphql-spec/commit/2fc8b0c3ed8ffb525d845d6ff64f53bb37aaf42f) on 2025-10-28 by [@benjie](https://github.com/benjie)

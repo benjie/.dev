@@ -17,7 +17,7 @@ be helpful for people to keep track of the various RFCs.
 Ping `@benjie` on the [GraphQL Discord](https://discord.graphql.org) (`#wg`
 channel) and ask for him to run an update!
 
-Last updated: 2025-10-30T11:11:34.483Z
+Last updated: 2025-11-06T11:02:30.880Z
 
 :::
 
@@ -97,7 +97,6 @@ Last updated: 2025-10-30T11:11:34.483Z
 | [wg#1096](/rfcs/wg1096 "&#x22;Metadata Directives&#x22; Proposal / RFC0") | [@leebyron](https://github.com/leebyron) | ["Metadata Directives" Proposal](/rfcs/wg1096) | **[WG discussion](https://github.com/graphql/graphql-wg/discussions/1096) created** on 2022-08-04 by leebyron [_(more)_](/rfcs/wg1096#timeline) |
 | [CompositeSche…](/rfcs/CompositeSchemas "GraphQL Composite Schemas / RFC0") | - | [GraphQL Composite Schemas](/rfcs/CompositeSchemas) | **[RFC document updated](https://github.com/graphql/graphql-wg/blob/acb8ff08d3f153b7511ddff2441ef11177fefb5b/rfcs/CompositeSchemas.md)** on 2022-07-22 by Daniel Winter [_(more)_](/rfcs/CompositeSchemas#timeline) |
 | [wg#1071](/rfcs/wg1071 "Struct type / RFC0") | [@benjie](https://github.com/benjie) | [Struct type](/rfcs/wg1071) | **[WG discussion](https://github.com/graphql/graphql-wg/discussions/1071) created** on 2022-07-18 by benjie [_(more)_](/rfcs/wg1071#timeline) |
-| [#673](/rfcs/673 "Servers must preserve lexical ordering between SDL and introspection / RFC0") | [@spawnia](https://github.com/spawnia) | [Servers must preserve lexical ordering between SDL and introspection](/rfcs/673) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/673)</small> | **2 commits pushed**: [(latest)](https://github.com/graphql/graphql-spec/commit/6e3d2d3fbc2d99fb505e7e268ca779763452ceb4) on 2022-06-16 by [@spawnia](https://github.com/spawnia) [_(more)_](/rfcs/673#timeline) |
 | [wg#944](/rfcs/wg944 "New Intersection Type / RFC0") | [@yaacovCR](https://github.com/yaacovCR) | [New Intersection Type](/rfcs/wg944) | **[WG discussion](https://github.com/graphql/graphql-wg/discussions/944) created** on 2022-04-30 by yaacovCR [_(more)_](/rfcs/wg944#timeline) |
 | [wg#857](/rfcs/wg857 "Fragment Modularity / RFC0") | [@mjmahone](https://github.com/mjmahone) | [Fragment Modularity](/rfcs/wg857) | **[WG discussion](https://github.com/graphql/graphql-wg/discussions/857) created** on 2022-01-07 by mjmahone [_(more)_](/rfcs/wg857#timeline) |
 | [FragmentModul…](/rfcs/FragmentModularity "Fragment Modularity / RFC0") | - | [Fragment Modularity](/rfcs/FragmentModularity) | **[RFC document created](https://github.com/graphql/graphql-wg/blob/d6103434afc3e516240f7b53721eb7b728ca525c/rfcs/FragmentModularity.md)** on 2022-01-06 by Matt Mahoney [_(more)_](/rfcs/FragmentModularity#timeline) |
@@ -115,6 +114,7 @@ Last updated: 2025-10-30T11:11:34.483Z
 | [#556](/rfcs/556 "Document Directives / RFC0") | [@langpavel](https://github.com/langpavel) | [Document Directives](/rfcs/556) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/556)</small> | **Commit pushed**: [Document directives are not special](https://github.com/graphql/graphql-spec/commit/f89de40eb8f7e0c2ab27a81ba9fac9cc1a89fbee) on 2019-02-01 by [@langpavel](https://github.com/langpavel) [_(more)_](/rfcs/556#timeline) |
 | [#521](/rfcs/521 "Scalar serialize as built-in scalar type / RFC0") | [@IvanGoncharov](https://github.com/IvanGoncharov) | [Scalar serialize as built-in scalar type](/rfcs/521) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/521)</small> | **[Spec PR](https://github.com/graphql/graphql-spec/pull/521) created** on 2018-10-14 by IvanGoncharov [_(more)_](/rfcs/521#timeline) |
 | [#325](/rfcs/325 "Add &#x22;Any&#x22; scalar type / RFC0") | [@IvanGoncharov](https://github.com/IvanGoncharov) | [Add "Any" scalar type](/rfcs/325) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/325)</small> | **[Spec PR](https://github.com/graphql/graphql-spec/pull/325) created** on 2017-06-19 by IvanGoncharov [_(more)_](/rfcs/325#timeline) |
+| ~~[#673](/rfcs/673 "Servers must preserve lexical ordering between SDL and introspection / RFC0")~~ | [@spawnia](https://github.com/spawnia) | [~~Servers must preserve lexical ordering between SDL and introspection~~](/rfcs/673) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/673)</small> | **Commit pushed**: [Merge branch 'main' into patch-2](https://github.com/graphql/graphql-spec/commit/0ab923d39148f8b4ea767835468db2db7298c339) on 2025-11-05 by [@spawnia](https://github.com/spawnia) [_(more)_](/rfcs/673#timeline) |
 
 
 

@@ -479,11 +479,6 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "673",
-          label: "673: Servers must preserve lexical ordering between SDL and introspection [RFC0]",
-        },
-        {
-          type: "doc",
           id: "wg944",
           label: "wg944: New Intersection Type [RFC0]",
         },
@@ -566,6 +561,11 @@ const sidebars = {
           type: "doc",
           id: "325",
           label: "325: Add \"Any\" scalar type [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "673",
+          label: "673: Servers must preserve lexical ordering between SDL and introspection [RFC0]",
         },
       ],
     },
