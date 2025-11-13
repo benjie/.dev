@@ -8,6 +8,12 @@ image: /img/rfc_tracker.png
 
 The below is an aggregate overview of the latest activity across all RFCs. Note that it's _roughly_ in cronological order, but some dates are less accurate than others (e.g. commit timestamps are to the second, whereas working groups are generally to the month...).
 
+- [#1180](/rfcs/1180 "Editorial: Fix cases in validation where technically a crash could occur due to non-existent definitions / RFC1"): **Commit pushed**: [Merge branch 'main' into fix-crash-cases](https://github.com/graphql/graphql-spec/commit/d65f5607b4dc0f641bcd8183d4d44ba96c18b7f2) on 2025-11-08 by [@JoviDeCroock](https://github.com/JoviDeCroock)
+- [#1163](/rfcs/1163 "Allow clients to disable error propagation via request parameter (take 2) / RFC1"): **4 commits pushed** on 2025-11-06:
+  - [Remove unnecessary negative lookahead](https://github.com/graphql/graphql-spec/commit/aef2e2daa10dd547d8fdb3d291375e65ba012e4f) by [@benjie](https://github.com/benjie)
+  - [Lee says empty braces are okay here!](https://github.com/graphql/graphql-spec/commit/4d2a94be23811c46e71733c02075368d66b63f72) by [@benjie](https://github.com/benjie)
+  - [Merge branch 'main' into error-behavior2](https://github.com/graphql/graphql-spec/commit/bbe251281454c2e6413b11dceca56b5f193337d0) by [@benjie](https://github.com/benjie)
+  - [Sync syntax with Lee's suggestions](https://github.com/graphql/graphql-spec/commit/55458b167baba01c3a2d1ebe390e4241683ecffe) by [@benjie](https://github.com/benjie)
 - [#1163](/rfcs/1163 "Allow clients to disable error propagation via request parameter (take 2) / RFC1"): **Added to [2025-11-06 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/11-Nov/06-wg-primary.md)**
 - [#673](/rfcs/673 "Servers must preserve lexical ordering between SDL and introspection / RFC0"): **Commit pushed**: [Merge branch 'main' into patch-2](https://github.com/graphql/graphql-spec/commit/0ab923d39148f8b4ea767835468db2db7298c339) on 2025-11-05 by [@spawnia](https://github.com/spawnia)
 - [TEMPLATE](/rfcs/TEMPLATE "&#x3c;!-- This template is provided as a suggested starting point. You may alter the / RFC0"): **[RFC document created](https://github.com/graphql/graphql-wg/blob/8aea69549cdc57c8017e3d471a546b906aff785f/rfcs/TEMPLATE.md)** on 2025-10-29 by Mark Larah
@@ -65,6 +71,7 @@ The below is an aggregate overview of the latest activity across all RFCs. Note 
   - [Clarify it's the "path" of the error that matters, not the position t…](https://github.com/graphql/graphql-spec/commit/67f07f7d8d4a3b08c9a444b280031816d4add602) by [@benjie](https://github.com/benjie)
   - [Rename response position to execution position](https://github.com/graphql/graphql-spec/commit/4d6f01bc0d40d778f7e4c7241ad6956a655c5fa6) by [@benjie](https://github.com/benjie)
 - [#1184](/rfcs/1184 "Sibling errors should not be added after propagation / RFC0"): **Commit pushed**: [Sibling errors should not be added after propagation](https://github.com/graphql/graphql-spec/commit/e199ebbc227f98d1eb8bd46245e4d51f57e86d28) on 2025-07-10 by [@benjie](https://github.com/benjie)
+- [#1180](/rfcs/1180 "Editorial: Fix cases in validation where technically a crash could occur due to non-existent definitions / RFC1"): **[Spec PR](https://github.com/graphql/graphql-spec/pull/1180) created** on 2025-07-05 by JoviDeCroock
 - [#1179](/rfcs/1179 "CoerceInputValue() / RFC1"): **6 commits pushed** on 2025-07-05:
   - [Update spec/Section 3 -- Type System.md](https://github.com/graphql/graphql-spec/commit/560ead4f20ce10992397de0cfe7fedd47999d8fc) by [@leebyron](https://github.com/leebyron)
   - [Update spec/Section 3 -- Type System.md](https://github.com/graphql/graphql-spec/commit/069811b312805429189e4a5fd975cb0f2445d36c) by [@leebyron](https://github.com/leebyron)
@@ -72,6 +79,7 @@ The below is an aggregate overview of the latest activity across all RFCs. Note 
   - [Update spec/Section 6 -- Execution.md](https://github.com/graphql/graphql-spec/commit/bc51bfa597b8138c759cea3fecce0bcd030bcb29) by [@leebyron](https://github.com/leebyron)
   - [Update spec/Section 6 -- Execution.md](https://github.com/graphql/graphql-spec/commit/49e367f91f899a1fc3f3e93dd8720a41aa87a8b3) by [@leebyron](https://github.com/leebyron)
   - [Update spec/Section 6 -- Execution.md](https://github.com/graphql/graphql-spec/commit/e9a4ec2e67fc9e53a3b47012acc6758f7c9d867c) by [@leebyron](https://github.com/leebyron)
+- [#1180](/rfcs/1180 "Editorial: Fix cases in validation where technically a crash could occur due to non-existent definitions / RFC1"): **Commit pushed**: [Fix cases in validation that cause crashes](https://github.com/graphql/graphql-spec/commit/6cc621e719eeecc80d8d1c3d8062352613a177cd) on 2025-07-05 by [@JoviDeCroock](https://github.com/JoviDeCroock)
 - [#1179](/rfcs/1179 "CoerceInputValue() / RFC1"): **[Spec PR](https://github.com/graphql/graphql-spec/pull/1179) created** on 2025-07-04 by leebyron
 - [#794](/rfcs/794 "Schema Coordinates / RFC3"): **4 commits pushed** on 2025-07-04:
   - [Update spec/Section 3 -- Type System.md](https://github.com/graphql/graphql-spec/commit/33b756255c62afc41fcf4c8094c1b7c0542db5da) by [@magicmark](https://github.com/magicmark)

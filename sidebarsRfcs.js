@@ -236,6 +236,11 @@ const sidebars = {
       items: [
         {
           type: "doc",
+          id: "1180",
+          label: "1180: Editorial: Fix cases in validation where technically a crash could occur due to non-existent definitions [RFC1]",
+        },
+        {
+          type: "doc",
           id: "1177",
           label: "1177*: Incorporate meta-fields into ExecuteCollectedFields [RFC1]",
         },

@@ -17,7 +17,7 @@ be helpful for people to keep track of the various RFCs.
 Ping `@benjie` on the [GraphQL Discord](https://discord.graphql.org) (`#wg`
 channel) and ask for him to run an update!
 
-Last updated: 2025-11-06T11:02:30.880Z
+Last updated: 2025-11-13T09:53:54.153Z
 
 :::
 
@@ -40,8 +40,9 @@ Last updated: 2025-11-06T11:02:30.880Z
 <!-- prettier-ignore -->
 | RFC | Champion | Title | Latest |
 | --- | --- | --- | --- |
+| [#1180](/rfcs/1180 "Editorial: Fix cases in validation where technically a crash could occur due to non-existent definitions / RFC1") 🚀 | [@JoviDeCroock](https://github.com/JoviDeCroock) | [Editorial: Fix cases in validation where technically a crash could occur due to non-existent definitions](/rfcs/1180) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1180)</small> | **Commit pushed**: [Merge branch 'main' into fix-crash-cases](https://github.com/graphql/graphql-spec/commit/d65f5607b4dc0f641bcd8183d4d44ba96c18b7f2) on 2025-11-08 by [@JoviDeCroock](https://github.com/JoviDeCroock) [_(more)_](/rfcs/1180#timeline) |
 | [#1177](/rfcs/1177 "Incorporate meta-fields into ExecuteCollectedFields / RFC1") 🚀 | [@benjie](https://github.com/benjie) | [Incorporate meta-fields into ExecuteCollectedFields](/rfcs/1177) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1177)</small> | **4 commits pushed**: [(latest)](https://github.com/graphql/graphql-spec/commit/4b7c111802bebde1703ae8f6c661847f4fce3caa) on 2025-07-04 by [@benjie](https://github.com/benjie) [_(more)_](/rfcs/1177#timeline) |
-| [#1163](/rfcs/1163 "Allow clients to disable error propagation via request parameter (take 2) / RFC1") | [@benjie](https://github.com/benjie) | [Service capabilities / error behaviors](/rfcs/1163) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1163)</small> | **Added to [2025-11-06 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/11-Nov/06-wg-primary.md)** [_(more)_](/rfcs/1163#timeline) |
+| [#1163](/rfcs/1163 "Allow clients to disable error propagation via request parameter (take 2) / RFC1") | [@benjie](https://github.com/benjie) | [Service capabilities / error behaviors](/rfcs/1163) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1163)</small> | **4 commits pushed**: [(latest)](https://github.com/graphql/graphql-spec/commit/55458b167baba01c3a2d1ebe390e4241683ecffe) on 2025-11-06 by [@benjie](https://github.com/benjie) [_(more)_](/rfcs/1163#timeline) |
 | [#1179](/rfcs/1179 "CoerceInputValue() / RFC1") | [@leebyron](https://github.com/leebyron) | [CoerceInputValue()](/rfcs/1179) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1179)</small> | **6 commits pushed**: [(latest)](https://github.com/graphql/graphql-spec/commit/e9a4ec2e67fc9e53a3b47012acc6758f7c9d867c) on 2025-07-05 by [@leebyron](https://github.com/leebyron) [_(more)_](/rfcs/1179#timeline) |
 | [#997](/rfcs/997 "Expand @deprecated to Objects / RFC1") | [@fotoetienne](https://github.com/fotoetienne) | [Expand @deprecated to Objects](/rfcs/997) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/997)</small> | **Added to [2025-06-26 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/06-Jun/26-wg-secondary-eu.md)** [_(more)_](/rfcs/997#timeline) |
 | [#1110](/rfcs/1110 "Incremental Delivery spec draft / RFC1") | [@robrichard](https://github.com/robrichard) | [Incremental Delivery spec draft](/rfcs/1110) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1110)</small> | **Commit pushed**: [skip deferred fragment spread when already in visited fragments](https://github.com/graphql/graphql-spec/commit/8e9cbcb46384399f5ed73996fac008de1d394551) on 2025-01-09 by [@robrichard](https://github.com/robrichard) [_(more)_](/rfcs/1110#timeline) |
