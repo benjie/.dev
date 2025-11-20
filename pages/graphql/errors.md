@@ -51,7 +51,7 @@ In my opinion, exceptions should not be modelled in the schema - there's way too
 many types of them, and they can happen basically anywhere. Adding them to the
 schema would add a lot of noise, would require frontend developers to put in a
 lot of boilerplate code to handle them all, and would slow down time to market
-without delivering significant value. User's don't typically care why it went
+without delivering significant value. Users don't typically care why it went
 wrong, they just care whether it's their fault or not, and if not when they
 should try again.
 
@@ -127,7 +127,7 @@ Thus:
 **Requests to data you are not permitted to access should be equivalent to the
 data not existing - the data _does not exist in the set of things you're allowed
 to see_.** (If you request a single item you're not allowed to see, GraphQL
-should return `null`. if you're requesting a list of things and some of them
+should return `null`. If you're requesting a list of things and some of them
 you're not allowed to see, the list should _skip over_ those items. If you're
 not allowed to see any of them, you get an empty list.)
 
