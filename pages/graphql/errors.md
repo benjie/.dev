@@ -74,7 +74,7 @@ response fed to application code. There are a number of options for this:
    [a `@catch` directive](https://relay.dev/docs/guides/catch-directive/), for
    example via a `Result` type where error or not is explicitly checked to
    access the underlying data
-2. the client can throw the error when the application code attempts to read
+2. the GraphQL client can throw the error when the application code attempts to read
    from an errored field (for example, using
    [GraphQL Throw On Error](https://www.npmjs.com/package/graphql-toe)), and
    application code can handle errors with traditional `try`/`catch` or
@@ -155,7 +155,7 @@ query (for example "read this article three times then it's forbidden") - if you
 need a side-effect like this then this access must be modelled as a mutation to
 be GraphQL compliant.
 
-This is actually pretty critical for doing GraphQL well - clients should be able
+This is actually pretty critical for doing GraphQL well - applications should be able
 to refetch data at will, with fragments that describe their data requirements,
 and not need to keep count of how many times they've accessed something.
 
@@ -204,7 +204,7 @@ We could encompass all of these errors into an aggregate error type
 (`AggregateValidationError` with `errors: [ValidationError!]!`), but not all the
 errors are necessarily validation errors... There might be validation errors
 _and_ they have insufficient balance. Go too far down this route, and you start
-reusing massive error types, and this becomes less useful to the client
+reusing massive error types, and this becomes less useful to the application
 developers again.
 
 Further, maybe we _did_ perform the mutation, but there was a non-fatal error
