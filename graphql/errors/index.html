@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en-GB" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-graphql/errors" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.1.0">
+<title data-rh="true">Modelling Errors | benjie.dev</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://benjie.dev/img/avatar.jpg"><meta data-rh="true" name="twitter:image" content="https://benjie.dev/img/avatar.jpg"><meta data-rh="true" property="og:url" content="https://benjie.dev/graphql/errors"><meta data-rh="true" property="og:locale" content="en_GB"><meta data-rh="true" name="docusaurus_locale" content="en-GB"><meta data-rh="true" name="docsearch:language" content="en-GB"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Modelling Errors | benjie.dev"><meta data-rh="true" name="description" content="There&#x27;s a lot of discussion about how to model errors in GraphQL, and a lot of"><meta data-rh="true" property="og:description" content="There&#x27;s a lot of discussion about how to model errors in GraphQL, and a lot of"><link data-rh="true" rel="icon" href="/favicon.ico"><link data-rh="true" rel="canonical" href="https://benjie.dev/graphql/errors"><link data-rh="true" rel="alternate" href="https://benjie.dev/graphql/errors" hreflang="en-GB"><link data-rh="true" rel="alternate" href="https://benjie.dev/graphql/errors" hreflang="x-default"><script src="https://assets.calendly.com/assets/external/widget.js"></script><link rel="stylesheet" href="/assets/css/styles.c47278a5.css">
+<script src="/assets/js/runtime~main.c09ce45e.js" defer="defer"></script>
+<script src="/assets/js/main.e5647e83.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/avatar.jpg" alt="benjie" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/avatar.jpg" alt="benjie" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">benjie.dev</b></a><a class="navbar__item navbar__link" href="/rfcs/">RFCs</a></div><div class="navbar__items navbar__items--right"><a class="navbar__item navbar__link" href="/book">📞 Book a call</a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/">about:benjie</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--active" href="/graphql/">GraphQL</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/graphql/security">GraphQL Security</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/graphql/trusted-documents">Trusted Documents</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/graphql/static-documents">Static Documents</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/graphql/naming">Naming Conventions</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/graphql/errors">Modelling Errors</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link" tabindex="0" href="/graphql/nullability/">Nullability</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/graphql/nullability/status">WG Status</a></li></ul></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/graphql/nested-mutations">Nested Mutations</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/graphql/traversal">Graph Traversal</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/graphql/normalized">Normalized Stores</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/graphql/ancestors">Referencing Ancestors</a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link" href="/talks/">Talks</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/talks/techniques-to-protect">Techniques to Protect Your GraphQL API</a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link" href="/linux/">Linux</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/linux/bluetooth-dual-boot">Dual boot bluetooth pairing</a></li></ul></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item"><a class="breadcrumbs__link" itemprop="item" href="/graphql/"><span itemprop="name">GraphQL</span></a><meta itemprop="position" content="1"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">Modelling Errors</span><meta itemprop="position" content="2"></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><h1>Modelling Errors</h1>
+<p>There&#x27;s a lot of discussion about how to model errors in GraphQL, and a lot of
+different approaches. Here&#x27;s my take on it.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="categorising-errors">Categorising errors<a href="#categorising-errors" class="hash-link" aria-label="Direct link to Categorising errors" title="Direct link to Categorising errors">​</a></h2>
+<p>I find it easiest to think in these terms; there are two broad categories of
+errors applicable to GraphQL:</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="domain-errors">Domain errors<a href="#domain-errors" class="hash-link" aria-label="Direct link to Domain errors" title="Direct link to Domain errors">​</a></h3>
+<p>These are things that are part of your business domain logic, for example:</p>
+<ul>
+<li>username is too short</li>
+<li>email address is already registered</li>
+<li>you don&#x27;t have enough credits to create that</li>
+<li>you must be logged in to do that</li>
+<li><em>arguably</em> rate limiting errors for non-malicious actors</li>
+</ul>
+<p>In most cases, domain errors are &quot;non-recoverable&quot; - the user must take some
+action to fix the problem in their request.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="exceptions">Exceptions<a href="#exceptions" class="hash-link" aria-label="Direct link to Exceptions" title="Direct link to Exceptions">​</a></h3>
+<p>Essentially exceptions are everything that isn&#x27;t a domain error: things that you
+wouldn&#x27;t generally <em>expect</em> to happen, like <code>us-east-1</code> going down [/irony].</p>
+<p>Typically exceptions are things that, in a perfect world (bug-free technology,
+infinitely scalable, zero cost, latency was zero, no bad actors existed, and
+user requests were serialized) would not happen:</p>
+<ul>
+<li>network errors</li>
+<li>storage errors</li>
+<li>order-of-operations errors (deadlocks, transaction conflicts, etc)</li>
+<li>service errors (e.g. microservice crashed)</li>
+<li>rate limiting errors (<em>arguably</em> just for malicious actors)</li>
+<li>etc</li>
+</ul>
+<p>In most cases, exceptions are &quot;recoverable&quot; - temporary failure, retry in a few
+hours time.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="no-modelling-for-exceptions">No modelling for exceptions<a href="#no-modelling-for-exceptions" class="hash-link" aria-label="Direct link to No modelling for exceptions" title="Direct link to No modelling for exceptions">​</a></h2>
+<p>In my opinion, exceptions should not be modelled in the schema - there&#x27;s way too
+many types of them, and they can happen basically anywhere. Adding them to the
+schema would add a lot of noise, would require frontend developers to put in a
+lot of boilerplate code to handle them all, and would slow down time to market
+without delivering significant value. Users don&#x27;t typically care why it went
+wrong, they just care whether it&#x27;s their fault or not, and if not when they
+should try again.</p>
+<p>Instead, exceptions should be handled through standard GraphQL error handling.
+Developers should make use of the <code>extensions</code> property to indicate common
+information that&#x27;s useful for the error page:</p>
+<ul>
+<li>A specific <code>errorCode</code> that uniquely identifies the error</li>
+<li>An error category that indicates the type of failure (this may be a prefix of
+the <code>errorCode</code>, or indicated separately)</li>
+<li>A <code>retryAfter</code> timestamp or duration indicating when a good time to retry
+would be</li>
+</ul>
+<p>The GraphQL client (Relay, Apollo Client, URQL, gql.tada, Graffle, GraphQL-TOE +
+window.fetch, etc) should ensure that errors are suitably represented in the
+response fed to application code. There are a number of options for this:</p>
+<ol>
+<li>application developers can indicate specifically where and how in the
+response errors should be handled via
+<a href="https://relay.dev/docs/guides/catch-directive/" target="_blank" rel="noopener noreferrer">a <code>@catch</code> directive</a>, for
+example via a <code>Result</code> type where error or not is explicitly checked to
+access the underlying data</li>
+<li>the GraphQL client can throw the error when the application code attempts to read
+from an errored field (for example, using
+<a href="https://www.npmjs.com/package/graphql-toe" target="_blank" rel="noopener noreferrer">GraphQL Throw On Error</a>), and
+application code can handle errors with traditional <code>try</code>/<code>catch</code> or
+<code>&lt;ErrorBoundary /&gt;</code> patterns.</li>
+</ol>
+<p>Either way, the application should render a generic error details page about the
+error, using the <code>extensions</code> property to guide them.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="domain-error-general-principles">Domain error general principles<a href="#domain-error-general-principles" class="hash-link" aria-label="Direct link to Domain error general principles" title="Direct link to Domain error general principles">​</a></h2>
+<p>This is where things get a bit more nuanced. Let&#x27;s start by thinking about some
+general principles:</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="existence">Existence<a href="#existence" class="hash-link" aria-label="Direct link to Existence" title="Direct link to Existence">​</a></h3>
+<p><code>null</code> means &quot;does not exist&quot;.</p>
+<p>If you request some data through GraphQL, and that data does not exist, then the
+GraphQL schema should return <code>null</code>, not an error, since <code>null</code> already means
+the data does not exist.</p>
+<p><strong>Requested data not existing is not an error.</strong> Most things you can imagine
+don&#x27;t exist.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="forbidden-access">Forbidden access<a href="#forbidden-access" class="hash-link" aria-label="Direct link to Forbidden access" title="Direct link to Forbidden access">​</a></h3>
+<p>Telling someone &quot;this exists, but you&#x27;re not allowed to see it&quot; and &quot;this does
+not exist <em>in the set of things you&#x27;re allowed to see</em>&quot; are two different
+things. The first reveals the existence of the thing, the latter does not say
+one way or the other whether it actually exists or not.</p>
+<p>From a security/privacy perspective, it&#x27;s preferred to reveal as little as
+possible about things that a user is not permitted to know about, including
+whether or not they exist. Thus I subscribe to the idea that <code>403 Forbidden</code>
+should not be used for data access unless <em>all</em> instances of that resource
+(extant or not) are forbidden to the user. Instead, <code>404 Not Found</code> should be
+used to indicate that the resource does not exist within the set of things the
+user is allowed to see.</p>
+<p>Take GitHub for example:</p>
+<ul>
+<li><a href="https://github.com/graphql/tsc" target="_blank" rel="noopener noreferrer">https://github.com/graphql/tsc</a> - if you&#x27;re a GraphQL TSC member (and logged in
+to GitHub) you&#x27;ll be able to see this repository, but otherwise it will render
+as a 404 Not Found page.</li>
+<li><a href="https://github.com/benjie/world-domination-plan" target="_blank" rel="noopener noreferrer">https://github.com/benjie/world-domination-plan</a> - this repository may or may
+not exist, and you&#x27;ll never know unless I reveal it</li>
+</ul>
+<p>Thus:</p>
+<p><strong>Requests to data you are not permitted to access should be equivalent to the
+data not existing - the data <em>does not exist in the set of things you&#x27;re allowed
+to see</em>.</strong> (If you request a single item you&#x27;re not allowed to see, GraphQL
+should return <code>null</code>. If you&#x27;re requesting a list of things and some of them
+you&#x27;re not allowed to see, the list should <em>skip over</em> those items. If you&#x27;re
+not allowed to see any of them, you get an empty list.)</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="no-side-effects-in-queries">No side effects in queries<a href="#no-side-effects-in-queries" class="hash-link" aria-label="Direct link to No side effects in queries" title="Direct link to No side effects in queries">​</a></h3>
+<p>The GraphQL specification states (emphasis mine):</p>
+<figure><blockquote>
+<p>Because <strong>the resolution of fields other than top-level mutation fields must
+always be side effect-free and idempotent</strong>, the execution order must not
+affect the result, and hence the service has the freedom to execute the field
+entries in whatever order it deems optimal.</p>
+</blockquote><figcaption><a href="https://spec.graphql.org/draft/#sel-GANVLDCB2BBiKn6D">6.3.4 Normal and Serial Execution</a></figcaption></figure>
+<p>Queries must be side-effect free and idempotent.</p>
+<p>That means, for example, that simply accessing a value should not change
+anything. So you cannot have fields that have a limited number of accesses in a
+query (for example &quot;read this article three times then it&#x27;s forbidden&quot;) - if you
+need a side-effect like this then this access must be modelled as a mutation to
+be GraphQL compliant.</p>
+<p>This is actually pretty critical for doing GraphQL well - applications should be able
+to refetch data at will, with fragments that describe their data requirements,
+and not need to keep count of how many times they&#x27;ve accessed something.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="no-domain-errors-in-queries">No domain errors in queries<a href="#no-domain-errors-in-queries" class="hash-link" aria-label="Direct link to No domain errors in queries" title="Direct link to No domain errors in queries">​</a></h3>
+<p>Combining the above principles, we can conclude that it&#x27;s very unlikely that
+domain errors should ever be returned from queries. And since the only remaining
+errors are exceptions, and these should not be modelled in the schema, query
+fields should never contain error types modelled in the schema. (Similar logic
+applies to subscriptions.)</p>
+<p>Thus, the <em>only</em> place where we need to consider modelling errors in the schema
+is in mutations.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="modelling-domain-errors-in-mutations">Modelling domain errors in mutations<a href="#modelling-domain-errors-in-mutations" class="hash-link" aria-label="Direct link to Modelling domain errors in mutations" title="Direct link to Modelling domain errors in mutations">​</a></h2>
+<p>So now we&#x27;ve limited our scope to mutation fields only, our job is much simpler!</p>
+<p>We have essentially three choices:</p>
+<ol>
+<li>Handle domain errors the same way as we would exceptions</li>
+<li>Model domain errors as mutation fields returning a union type</li>
+<li>Model domain errors as a list on the mutation result payload</li>
+</ol>
+<p>Option 1 is simple and Just Works (we already have exception handling code!);
+but is not very helpful for users of our application. Domain errors typically
+include information that users can act on to fix their request, so it&#x27;s better
+to outline to the application which types of errors are expected, so that they
+can be handled explicitly.</p>
+<p>Option 2 makes it explicit what errors are expected, but stops as soon as the
+first error occurs. This isn&#x27;t ideal for helping the user fix the form they were
+submitting:</p>
+<ul>
+<li>Server: &quot;that username is already in use&quot;</li>
+<li>Them: <em>fix and submit</em></li>
+<li>Server: &quot;that email address is invalid&quot;</li>
+<li>Them: <em>fix and submit</em></li>
+<li>Server: &quot;you have not agreed to the terms of service&quot;</li>
+<li>Them: <em>fix and submit</em></li>
+</ul>
+<p>Instead, all errors should be returned at once, so the user can fix them all in
+one go.</p>
+<p>We could encompass all of these errors into an aggregate error type
+(<code>AggregateValidationError</code> with <code>errors: [ValidationError!]!</code>), but not all the
+errors are necessarily validation errors... There might be validation errors
+<em>and</em> they have insufficient balance. Go too far down this route, and you start
+reusing massive error types, and this becomes less useful to the application
+developers again.</p>
+<p>Further, maybe we <em>did</em> perform the mutation, but there was a non-fatal error
+that happened that maybe the user has to deal with (e.g. &quot;we created your
+account, but we had to change your username due to a conflict&quot;).</p>
+<p>Option 3 contains a list of errors (using a mutation-specific error union), and
+lets you indicate separately the result of the mutation. This is my preferred
+option. It also has the advantage that anyone following
+<a href="https://www.apollographql.com/blog/designing-graphql-mutations" target="_blank" rel="noopener noreferrer">solid mutation design advice</a>
+can integrate it into existing schemas without a breaking change.</p></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/graphql/naming"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Naming Conventions</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/graphql/nullability/"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Nullability</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#categorising-errors" class="table-of-contents__link toc-highlight">Categorising errors</a><ul><li><a href="#domain-errors" class="table-of-contents__link toc-highlight">Domain errors</a></li><li><a href="#exceptions" class="table-of-contents__link toc-highlight">Exceptions</a></li></ul></li><li><a href="#no-modelling-for-exceptions" class="table-of-contents__link toc-highlight">No modelling for exceptions</a></li><li><a href="#domain-error-general-principles" class="table-of-contents__link toc-highlight">Domain error general principles</a><ul><li><a href="#existence" class="table-of-contents__link toc-highlight">Existence</a></li><li><a href="#forbidden-access" class="table-of-contents__link toc-highlight">Forbidden access</a></li><li><a href="#no-side-effects-in-queries" class="table-of-contents__link toc-highlight">No side effects in queries</a></li><li><a href="#no-domain-errors-in-queries" class="table-of-contents__link toc-highlight">No domain errors in queries</a></li></ul></li><li><a href="#modelling-domain-errors-in-mutations" class="table-of-contents__link toc-highlight">Modelling domain errors in mutations</a></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 Benjie Gillam; all rights reserved. RFC pages pull content from public GitHub issues/PRs/files/etc; this content remains owned its various authors.</div></div></div></footer></div>
+</body>
+</html>
