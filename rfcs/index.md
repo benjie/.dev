@@ -17,7 +17,7 @@ be helpful for people to keep track of the various RFCs.
 Ping `@benjie` on the [GraphQL Discord](https://discord.graphql.org) (`#wg`
 channel) and ask for him to run an update!
 
-Last updated: 2025-11-13T09:53:54.153Z
+Last updated: 2025-11-20T10:46:06.454Z
 
 :::
 
@@ -27,7 +27,7 @@ Last updated: 2025-11-13T09:53:54.153Z
 <!-- prettier-ignore -->
 | RFC | Champion | Title | Latest |
 | --- | --- | --- | --- |
-| [#1081](/rfcs/1081 "Fragment arguments/variables (syntax/validation/execution) / RFC2") | [@JoviDeCroock](https://github.com/JoviDeCroock) | [Fragment arguments/variables (syntax/validation/execution)](/rfcs/1081) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1081)</small> | **Commit pushed**: [Merge branch 'main' into fragment-args-2024-amendments](https://github.com/graphql/graphql-spec/commit/b617e257d2b45c8f95288966ab28e4712c8d77b3) on 2025-10-07 by [@JoviDeCroock](https://github.com/JoviDeCroock) [_(more)_](/rfcs/1081#timeline) |
+| [#1081](/rfcs/1081 "Fragment arguments/variables (syntax/validation/execution) / RFC2") | [@JoviDeCroock](https://github.com/JoviDeCroock) | [Fragment arguments/variables (syntax/validation/execution)](/rfcs/1081) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1081)</small> | **2 commits pushed**: [(latest)](https://github.com/graphql/graphql-spec/commit/4805a96dd766116a3a02174b39de51fa03d598ae) on 2025-11-13 by [@benjie](https://github.com/benjie) [_(more)_](/rfcs/1081#timeline) |
 | [#1058](/rfcs/1058 "List coercion algorithm / RFC2") | [@benjie](https://github.com/benjie) | [List coercion algorithm](/rfcs/1058) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1058)</small> | **Added to [2025-07-03 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/07-Jul/03-wg-primary.md)** [_(more)_](/rfcs/1058#timeline) |
 | ~~[#1063](/rfcs/1063 "Type system ordering of: object interfaces, directive arguments, input object fields, enum values / RFC2")~~ | [@benjie](https://github.com/benjie) | [~~Type system ordering of: object interfaces, directive arguments, input object fields, enum values~~](/rfcs/1063) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1063)</small> | **Added to [2025-05-01 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/05-May/01-wg-primary.md)** [_(more)_](/rfcs/1063#timeline) |
 

@@ -8,6 +8,9 @@ image: /img/rfc_tracker.png
 
 The below is an aggregate overview of the latest activity across all RFCs. Note that it's _roughly_ in cronological order, but some dates are less accurate than others (e.g. commit timestamps are to the second, whereas working groups are generally to the month...).
 
+- [#1081](/rfcs/1081 "Fragment arguments/variables (syntax/validation/execution) / RFC2"): **2 commits pushed** on 2025-11-13:
+  - [Merge branch 'main' into fragment-args-2024-amendments](https://github.com/graphql/graphql-spec/commit/185bbac32faad7a5ebe0f8121db66c70362ec376) by [@benjie](https://github.com/benjie)
+  - [Add missing grammar](https://github.com/graphql/graphql-spec/commit/4805a96dd766116a3a02174b39de51fa03d598ae) by [@benjie](https://github.com/benjie)
 - [#1180](/rfcs/1180 "Editorial: Fix cases in validation where technically a crash could occur due to non-existent definitions / RFC1"): **Commit pushed**: [Merge branch 'main' into fix-crash-cases](https://github.com/graphql/graphql-spec/commit/d65f5607b4dc0f641bcd8183d4d44ba96c18b7f2) on 2025-11-08 by [@JoviDeCroock](https://github.com/JoviDeCroock)
 - [#1163](/rfcs/1163 "Allow clients to disable error propagation via request parameter (take 2) / RFC1"): **4 commits pushed** on 2025-11-06:
   - [Remove unnecessary negative lookahead](https://github.com/graphql/graphql-spec/commit/aef2e2daa10dd547d8fdb3d291375e65ba012e4f) by [@benjie](https://github.com/benjie)
@@ -302,6 +305,7 @@ The below is an aggregate overview of the latest activity across all RFCs. Note 
 - [#1053](/rfcs/1053 "Implementations may not deprecate a field that the interface hasn't deprecated / RFC3"): **Commit pushed**: [Merge branch 'main' into interface-deprecated-field-consistency](https://github.com/graphql/graphql-spec/commit/06ea8d5c2fc0813ee063d1b88227650e1140f36f) on 2025-03-07 by [@benjie](https://github.com/benjie)
 - [SemanticNullability](/rfcs/SemanticNullability "Semantic Nullability / RFC0"): **[RFC document updated](https://github.com/graphql/graphql-wg/blob/3441a2d5eda2f7211f17f02f5a5cf7352b94f72c/rfcs/SemanticNullability.md)** on 2025-03-06 by Benjie
 - [#860](/rfcs/860 "Prevent @skip and @include on root subscription selection set / RFC3"): **Added to [2025-03-06 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/03-Mar/06-wg-primary.md)**
+- [#1081](/rfcs/1081 "Fragment arguments/variables (syntax/validation/execution) / RFC2"): **Added to [2025-03-06 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/03-Mar/06-wg-primary.md)**
 - [#1142](/rfcs/1142 "make &#x60;includeDeprecated&#x60; non nullable / RFC3"): **Added to [2025-03-06 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/03-Mar/06-wg-primary.md)**
 - [#1142](/rfcs/1142 "make &#x60;includeDeprecated&#x60; non nullable / RFC3"): **[Spec PR](https://github.com/graphql/graphql-spec/pull/1142) created** on 2025-03-04 by martinbonnin
 - [#1142](/rfcs/1142 "make &#x60;includeDeprecated&#x60; non nullable / RFC3"): **Commit pushed**: [make &#x60;includeDeprecated&#x60; non nullable](https://github.com/graphql/graphql-spec/commit/0f0967a8220c47bdd1ccd27fa4389d3e88b6639a) on 2025-03-04 by [@martinbonnin](https://github.com/martinbonnin)
