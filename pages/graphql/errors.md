@@ -106,7 +106,7 @@ about some general principles:
 
 If you request an item of data through GraphQL, and that datum does not exist,
 then the GraphQL schema should return `null`, not an error, since `null` already
-means the data does not exist. (Corrollary: if you request a collection of data
+means the data does not exist. (Corollary: if you request a collection of data
 and there is no data to return then an empty array should be returned, rather
 than `null`.)
 
@@ -263,6 +263,6 @@ If you cannot duplicate this logic on the client because it evolves too rapidly
 or because application development and server development are handled by
 separate teams, or if you have too many server-only domain errors, then I think
 both options 2 and 3 are valid; I'd lean gently towards option 3 for its
-flexibilty, power, and simplicity, but option 2 does have the advantage of
+flexibility, power, and simplicity, but option 2 does have the advantage of
 modelling essentially a `Result` type in the schema, forcing application
 developers to handle the polymorphism to be able to access the result data.
