@@ -81,30 +81,34 @@ response fed to application code. There are a number of options for this:
 
 1. application developers can indicate specifically where and how in the
    response errors should be handled via
-   [a `@catch` directive](https://relay.dev/docs/guides/catch-directive/), for
-   example via a `Result` type where error or not is explicitly checked to
-   access the underlying data
+   [a client-side `@catch` directive](https://relay.dev/docs/guides/catch-directive/),
+   for example they may wish that position to take on a `Result` type where
+   success must be explicitly checked to access the underlying data (and thus
+   errors can be explicitly handled)
 2. the GraphQL client can throw the error when the application code attempts to
    read from an errored field (for example, using
-   [GraphQL Throw On Error](https://www.npmjs.com/package/graphql-toe)), and
-   application code can handle errors with traditional `try`/`catch` or
-   `<ErrorBoundary />` patterns.
+   [GraphQL Throw On Error](https://www.npmjs.com/package/graphql-toe)) or
+   fragment; application code can then handle errors with traditional
+   `try`/`catch` or `<ErrorBoundary />` patterns.
 
-Either way, the application should render a generic error details page about the
-error, using the `extensions` property to guide them.
+Either way, the application should render a standard error details page about
+the error, using the `extensions` property to guide the information to share
+with and instructions to supply to the user.
 
 ## Domain error general principles
 
-This is where things get a bit more nuanced. Let's start by thinking about some
-general principles:
+Domain errors are where things get a bit more nuanced. Let's start by thinking
+about some general principles:
 
 ### Existence
 
 `null` means "does not exist".
 
-If you request some data through GraphQL, and that data does not exist, then the
-GraphQL schema should return `null`, not an error, since `null` already means
-the data does not exist.
+If you request an item of data through GraphQL, and that datum does not exist,
+then the GraphQL schema should return `null`, not an error, since `null` already
+means the data does not exist. (Corrollary: if you request a collection of data
+and there is no data to return then an empty array should be returned, rather
+than `null`.)
 
 **Requested data not existing is not an error.** Most things you can imagine
 don't exist.
@@ -132,14 +136,14 @@ Take GitHub for example:
 - https://github.com/benjie/world-domination-plan - this repository may or may
   not exist, and you'll never know unless I reveal it
 
-Thus:
+Mapping this same principle to GraphQL:
 
 **Requests to data you are not permitted to access should be equivalent to the
-data not existing - the data _does not exist in the set of things you're allowed
-to see_.** (If you request a single item you're not allowed to see, GraphQL
-should return `null`. If you're requesting a list of things and some of them
-you're not allowed to see, the list should _skip over_ those items. If you're
-not allowed to see any of them, you get an empty list.)
+data not existing** - the data _does not exist in the set of things you're
+allowed to see_. (If you request a single item you're not allowed to see,
+GraphQL should return `null`. If you're requesting a list of things and some of
+them you're not allowed to see, the list should _skip over_ those items. If
+you're not allowed to see any of them, you get an empty list.)
 
 ### No side effects in queries
 
@@ -157,9 +161,9 @@ The GraphQL specification states (emphasis mine):
 </figcaption>
 </figure>
 
-Queries must be side-effect free and idempotent.
+**Queries must be side-effect free and idempotent.**
 
-That means, for example, that simply accessing a value should not change
+This means, for example, that simply accessing a value should not change
 anything. So you cannot have fields that have a limited number of accesses in a
 query (for example "read this article three times then it's forbidden") - if you
 need a side-effect like this then this access must be modelled as a mutation to
@@ -168,7 +172,8 @@ be GraphQL compliant.
 This is actually pretty critical for doing GraphQL well - applications should be
 able to refetch data at will, with fragments that describe their data
 requirements, and not need to keep count of how many times they've accessed
-something.
+something. If they're doing something dangerous (in this example: increasing the
+access count) then they must explicitly opt to do that through a mutation.
 
 ### No domain errors in queries
 
@@ -191,15 +196,20 @@ We have essentially three choices:
 2. Model domain errors as mutation fields returning a union type
 3. Model domain errors as a list on the mutation result payload
 
+### Option 1: handling domain errors as exceptions
+
 Option 1 is simple and Just Works (we already have exception handling code!);
 but is not very helpful for users of our application. Domain errors typically
 include information that users can act on to fix their request, so it's better
 to outline to the application which types of errors are expected, so that they
 can be handled explicitly.
 
-Option 2 makes it explicit what errors are expected, but stops as soon as the
-first error occurs. This isn't ideal for helping the user fix the form they were
-submitting:
+### Option 2: mutation fields return union
+
+Option 2 makes it explicit what errors are expected (helping application
+developers ensure they've handled all the expected domain errors), but stops as
+soon as the first error occurs. This isn't ideal for helping the user fix the
+form they were submitting:
 
 - Server: "that username is already in use"
 - Them: _fix and submit_
@@ -207,23 +217,52 @@ submitting:
 - Them: _fix and submit_
 - Server: "you have not agreed to the terms of service"
 - Them: _fix and submit_
+- Server: "your password must contain at least one symbol"
+- Them: _leaves your website for a competitors_
 
 Instead, all errors should be returned at once, so the user can fix them all in
 one go.
 
 We could encompass all of these errors into an aggregate error type
-(`AggregateValidationError` with `errors: [ValidationError!]!`), but not all the
-errors are necessarily validation errors... There might be validation errors
-_and_ they have insufficient balance. Go too far down this route, and you start
-reusing massive error types, and this becomes less useful to the application
-developers again.
+(`AggregateConstraintError` with `errors: [ConstraintError!]!`), but not all the
+errors are necessarily errors from data constraints... There might be constraint
+errors _and_ business errors such as they have insufficient balance. Go too far
+down this route, and you start reusing massive error types, and this becomes
+less useful to the application developers again.
 
 Further, maybe we _did_ perform the mutation, but there was a non-fatal error
-that happened that maybe the user has to deal with (e.g. "we created your
-account, but we had to change your username due to a conflict").
+that occurred that the user ought to deal with or be aware of (e.g. "we created
+your account, but we had to change your username due to a conflict").
+
+### Option 3: mutation payloads contain a list of errors
 
 Option 3 contains a list of errors (using a mutation-specific error union), and
-lets you indicate separately the result of the mutation. This is my preferred
-option. It also has the advantage that anyone following
+lets you indicate separately the result of the mutation. It also has the
+advantage that anyone following
 [solid mutation design advice](https://www.apollographql.com/blog/designing-graphql-mutations)
 can integrate it into existing schemas without a breaking change.
+
+### My personal preference
+
+None of options 1-3 are wrong; you should choose the one that best suits your
+business logic and development model.
+
+My personal preference is to duplicate as many domain errors on the client as
+possible (simple validation of data: username length, password makeup and match;
+ahead of time checking to see if username is available, user has sufficient
+balance) such that they are indicated to the user in realtime (with no or
+minimal server cost); this significantly limits the number of domain errors that
+would be expected to come from the server for a valid submission. If these
+remaining domain errors are few enough, then Option 1 may be sufficient and
+doesn't have the modelling overhead of options 2 and 3. If you indicate the data
+validation rules on your fields through field metadata, and your client
+retrieves them through runtime introspection, then your legacy deployed clients
+can even evolve to handling changes in your data validation logic automatically!
+
+If you cannot duplicate this logic on the client because it evolves too rapidly
+or because application development and server development are handled by
+separate teams, or if you have too many server-only domain errors, then I think
+both options 2 and 3 are valid; I'd lean gently towards option 3 for its
+flexibilty, power, and simplicity, but option 2 does have the advantage of
+modelling essentially a `Result` type in the schema, forcing application
+developers to handle the polymorphism to be able to access the result data.
