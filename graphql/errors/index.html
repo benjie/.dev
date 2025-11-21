@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.1.0">
 <title data-rh="true">Modelling Errors | benjie.dev</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://benjie.dev/img/avatar.jpg"><meta data-rh="true" name="twitter:image" content="https://benjie.dev/img/avatar.jpg"><meta data-rh="true" property="og:url" content="https://benjie.dev/graphql/errors"><meta data-rh="true" property="og:locale" content="en_GB"><meta data-rh="true" name="docusaurus_locale" content="en-GB"><meta data-rh="true" name="docsearch:language" content="en-GB"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Modelling Errors | benjie.dev"><meta data-rh="true" name="description" content="There&#x27;s a lot of discussion about how to model errors in GraphQL, and a lot of"><meta data-rh="true" property="og:description" content="There&#x27;s a lot of discussion about how to model errors in GraphQL, and a lot of"><link data-rh="true" rel="icon" href="/favicon.ico"><link data-rh="true" rel="canonical" href="https://benjie.dev/graphql/errors"><link data-rh="true" rel="alternate" href="https://benjie.dev/graphql/errors" hreflang="en-GB"><link data-rh="true" rel="alternate" href="https://benjie.dev/graphql/errors" hreflang="x-default"><script src="https://assets.calendly.com/assets/external/widget.js"></script><link rel="stylesheet" href="/assets/css/styles.c47278a5.css">
-<script src="/assets/js/runtime~main.c09ce45e.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.6b78f3c3.js" defer="defer"></script>
 <script src="/assets/js/main.e5647e83.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -13,15 +13,18 @@
 different approaches. Here&#x27;s my take on it.</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="categorising-errors">Categorising errors<a href="#categorising-errors" class="hash-link" aria-label="Direct link to Categorising errors" title="Direct link to Categorising errors">​</a></h2>
 <p>I find it easiest to think in these terms; there are two broad categories of
-errors applicable to GraphQL:</p>
+errors applicable to GraphQL schemas: <strong>domain errors</strong> and <strong>exceptions</strong>.</p>
+<div class="theme-admonition theme-admonition-note admonition_xJq3 alert alert--secondary"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>Application-level errors only</div><div class="admonitionContent_BuS1"><p>Client misuse (malformed or malicious requests) and protocol-level errors such
+as document validation are outside the scope of this article - these are
+generally handled by the GraphQL server/engine before reaching your schema
+logic.</p></div></div>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="domain-errors">Domain errors<a href="#domain-errors" class="hash-link" aria-label="Direct link to Domain errors" title="Direct link to Domain errors">​</a></h3>
-<p>These are things that are part of your business domain logic, for example:</p>
+<p>These are errors that are part of your business domain logic, for example:</p>
 <ul>
-<li>username is too short</li>
-<li>email address is already registered</li>
-<li>you don&#x27;t have enough credits to create that</li>
-<li>you must be logged in to do that</li>
-<li><em>arguably</em> rate limiting errors for non-malicious actors</li>
+<li>data constraints: username is too short, email address is already registered,
+etc</li>
+<li>authn/authz: you must be logged in to do that, only admins may do that, etc</li>
+<li>business logic: you don&#x27;t have enough credits to create that, etc</li>
 </ul>
 <p>In most cases, domain errors are &quot;non-recoverable&quot; - the user must take some
 action to fix the problem in their request.</p>
@@ -32,12 +35,14 @@ wouldn&#x27;t generally <em>expect</em> to happen, like <code>us-east-1</code> g
 infinitely scalable, zero cost, latency was zero, no bad actors existed, and
 user requests were serialized) would not happen:</p>
 <ul>
-<li>network errors</li>
-<li>storage errors</li>
-<li>order-of-operations errors (deadlocks, transaction conflicts, etc)</li>
-<li>service errors (e.g. microservice crashed)</li>
-<li>rate limiting errors (<em>arguably</em> just for malicious actors)</li>
-<li>etc</li>
+<li>network errors: DNS resolution, can&#x27;t connect, etc</li>
+<li>storage errors: disk full, quota reached, read/write error, etc</li>
+<li>order-of-operations errors: deadlocks, transaction conflicts, etc</li>
+<li>service errors: downtime, load shedding, downstream service failure, etc</li>
+<li>operational policy: rate limiting, blocking abuse, rejecting robots, etc</li>
+<li>timeouts: execution took too long, request timed out, etc</li>
+<li>resource exhaustion: memory limits, CPU limits, storage limits, I/O limits,
+etc</li>
 </ul>
 <p>In most cases, exceptions are &quot;recoverable&quot; - temporary failure, retry in a few
 hours time.</p>
@@ -65,25 +70,29 @@ response fed to application code. There are a number of options for this:</p>
 <ol>
 <li>application developers can indicate specifically where and how in the
 response errors should be handled via
-<a href="https://relay.dev/docs/guides/catch-directive/" target="_blank" rel="noopener noreferrer">a <code>@catch</code> directive</a>, for
-example via a <code>Result</code> type where error or not is explicitly checked to
-access the underlying data</li>
-<li>the GraphQL client can throw the error when the application code attempts to read
-from an errored field (for example, using
-<a href="https://www.npmjs.com/package/graphql-toe" target="_blank" rel="noopener noreferrer">GraphQL Throw On Error</a>), and
-application code can handle errors with traditional <code>try</code>/<code>catch</code> or
-<code>&lt;ErrorBoundary /&gt;</code> patterns.</li>
+<a href="https://relay.dev/docs/guides/catch-directive/" target="_blank" rel="noopener noreferrer">a client-side <code>@catch</code> directive</a>,
+for example they may wish that position to take on a <code>Result</code> type where
+success must be explicitly checked to access the underlying data (and thus
+errors can be explicitly handled)</li>
+<li>the GraphQL client can throw the error when the application code attempts to
+read from an errored field (for example, using
+<a href="https://www.npmjs.com/package/graphql-toe" target="_blank" rel="noopener noreferrer">GraphQL Throw On Error</a>) or
+fragment; application code can then handle errors with traditional
+<code>try</code>/<code>catch</code> or <code>&lt;ErrorBoundary /&gt;</code> patterns.</li>
 </ol>
-<p>Either way, the application should render a generic error details page about the
-error, using the <code>extensions</code> property to guide them.</p>
+<p>Either way, the application should render a standard error details page about
+the error, using the <code>extensions</code> property to guide the information to share
+with and instructions to supply to the user.</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="domain-error-general-principles">Domain error general principles<a href="#domain-error-general-principles" class="hash-link" aria-label="Direct link to Domain error general principles" title="Direct link to Domain error general principles">​</a></h2>
-<p>This is where things get a bit more nuanced. Let&#x27;s start by thinking about some
-general principles:</p>
+<p>Domain errors are where things get a bit more nuanced. Let&#x27;s start by thinking
+about some general principles:</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="existence">Existence<a href="#existence" class="hash-link" aria-label="Direct link to Existence" title="Direct link to Existence">​</a></h3>
 <p><code>null</code> means &quot;does not exist&quot;.</p>
-<p>If you request some data through GraphQL, and that data does not exist, then the
-GraphQL schema should return <code>null</code>, not an error, since <code>null</code> already means
-the data does not exist.</p>
+<p>If you request an item of data through GraphQL, and that datum does not exist,
+then the GraphQL schema should return <code>null</code>, not an error, since <code>null</code> already
+means the data does not exist. (Corollary: if you request a collection of data
+and there is no data to return then an empty array should be returned, rather
+than <code>null</code>.)</p>
 <p><strong>Requested data not existing is not an error.</strong> Most things you can imagine
 don&#x27;t exist.</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="forbidden-access">Forbidden access<a href="#forbidden-access" class="hash-link" aria-label="Direct link to Forbidden access" title="Direct link to Forbidden access">​</a></h3>
@@ -106,13 +115,13 @@ as a 404 Not Found page.</li>
 <li><a href="https://github.com/benjie/world-domination-plan" target="_blank" rel="noopener noreferrer">https://github.com/benjie/world-domination-plan</a> - this repository may or may
 not exist, and you&#x27;ll never know unless I reveal it</li>
 </ul>
-<p>Thus:</p>
+<p>Mapping this same principle to GraphQL:</p>
 <p><strong>Requests to data you are not permitted to access should be equivalent to the
-data not existing - the data <em>does not exist in the set of things you&#x27;re allowed
-to see</em>.</strong> (If you request a single item you&#x27;re not allowed to see, GraphQL
-should return <code>null</code>. If you&#x27;re requesting a list of things and some of them
-you&#x27;re not allowed to see, the list should <em>skip over</em> those items. If you&#x27;re
-not allowed to see any of them, you get an empty list.)</p>
+data not existing</strong> - the data <em>does not exist in the set of things you&#x27;re
+allowed to see</em>. (If you request a single item you&#x27;re not allowed to see,
+GraphQL should return <code>null</code>. If you&#x27;re requesting a list of things and some of
+them you&#x27;re not allowed to see, the list should <em>skip over</em> those items. If
+you&#x27;re not allowed to see any of them, you get an empty list.)</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="no-side-effects-in-queries">No side effects in queries<a href="#no-side-effects-in-queries" class="hash-link" aria-label="Direct link to No side effects in queries" title="Direct link to No side effects in queries">​</a></h3>
 <p>The GraphQL specification states (emphasis mine):</p>
 <figure><blockquote>
@@ -121,15 +130,17 @@ always be side effect-free and idempotent</strong>, the execution order must not
 affect the result, and hence the service has the freedom to execute the field
 entries in whatever order it deems optimal.</p>
 </blockquote><figcaption><a href="https://spec.graphql.org/draft/#sel-GANVLDCB2BBiKn6D">6.3.4 Normal and Serial Execution</a></figcaption></figure>
-<p>Queries must be side-effect free and idempotent.</p>
-<p>That means, for example, that simply accessing a value should not change
+<p><strong>Queries must be side-effect free and idempotent.</strong></p>
+<p>This means, for example, that simply accessing a value should not change
 anything. So you cannot have fields that have a limited number of accesses in a
 query (for example &quot;read this article three times then it&#x27;s forbidden&quot;) - if you
 need a side-effect like this then this access must be modelled as a mutation to
 be GraphQL compliant.</p>
-<p>This is actually pretty critical for doing GraphQL well - applications should be able
-to refetch data at will, with fragments that describe their data requirements,
-and not need to keep count of how many times they&#x27;ve accessed something.</p>
+<p>This is actually pretty critical for doing GraphQL well - applications should be
+able to refetch data at will, with fragments that describe their data
+requirements, and not need to keep count of how many times they&#x27;ve accessed
+something. If they&#x27;re doing something dangerous (in this example: increasing the
+access count) then they must explicitly opt to do that through a mutation.</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="no-domain-errors-in-queries">No domain errors in queries<a href="#no-domain-errors-in-queries" class="hash-link" aria-label="Direct link to No domain errors in queries" title="Direct link to No domain errors in queries">​</a></h3>
 <p>Combining the above principles, we can conclude that it&#x27;s very unlikely that
 domain errors should ever be returned from queries. And since the only remaining
@@ -146,14 +157,17 @@ is in mutations.</p>
 <li>Model domain errors as mutation fields returning a union type</li>
 <li>Model domain errors as a list on the mutation result payload</li>
 </ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="option-1-handling-domain-errors-as-exceptions">Option 1: handling domain errors as exceptions<a href="#option-1-handling-domain-errors-as-exceptions" class="hash-link" aria-label="Direct link to Option 1: handling domain errors as exceptions" title="Direct link to Option 1: handling domain errors as exceptions">​</a></h3>
 <p>Option 1 is simple and Just Works (we already have exception handling code!);
 but is not very helpful for users of our application. Domain errors typically
 include information that users can act on to fix their request, so it&#x27;s better
 to outline to the application which types of errors are expected, so that they
 can be handled explicitly.</p>
-<p>Option 2 makes it explicit what errors are expected, but stops as soon as the
-first error occurs. This isn&#x27;t ideal for helping the user fix the form they were
-submitting:</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="option-2-mutation-fields-return-union">Option 2: mutation fields return union<a href="#option-2-mutation-fields-return-union" class="hash-link" aria-label="Direct link to Option 2: mutation fields return union" title="Direct link to Option 2: mutation fields return union">​</a></h3>
+<p>Option 2 makes it explicit what errors are expected (helping application
+developers ensure they&#x27;ve handled all the expected domain errors), but stops as
+soon as the first error occurs. This isn&#x27;t ideal for helping the user fix the
+form they were submitting:</p>
 <ul>
 <li>Server: &quot;that username is already in use&quot;</li>
 <li>Them: <em>fix and submit</em></li>
@@ -161,22 +175,46 @@ submitting:</p>
 <li>Them: <em>fix and submit</em></li>
 <li>Server: &quot;you have not agreed to the terms of service&quot;</li>
 <li>Them: <em>fix and submit</em></li>
+<li>Server: &quot;your password must contain at least one symbol&quot;</li>
+<li>Them: <em>leaves your website for a competitors</em></li>
 </ul>
 <p>Instead, all errors should be returned at once, so the user can fix them all in
 one go.</p>
 <p>We could encompass all of these errors into an aggregate error type
-(<code>AggregateValidationError</code> with <code>errors: [ValidationError!]!</code>), but not all the
-errors are necessarily validation errors... There might be validation errors
-<em>and</em> they have insufficient balance. Go too far down this route, and you start
-reusing massive error types, and this becomes less useful to the application
-developers again.</p>
+(<code>AggregateConstraintError</code> with <code>errors: [ConstraintError!]!</code>), but not all the
+errors are necessarily errors from data constraints... There might be constraint
+errors <em>and</em> business errors such as they have insufficient balance. Go too far
+down this route, and you start reusing massive error types, and this becomes
+less useful to the application developers again.</p>
 <p>Further, maybe we <em>did</em> perform the mutation, but there was a non-fatal error
-that happened that maybe the user has to deal with (e.g. &quot;we created your
-account, but we had to change your username due to a conflict&quot;).</p>
+that occurred that the user ought to deal with or be aware of (e.g. &quot;we created
+your account, but we had to change your username due to a conflict&quot;).</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="option-3-mutation-payloads-contain-a-list-of-errors">Option 3: mutation payloads contain a list of errors<a href="#option-3-mutation-payloads-contain-a-list-of-errors" class="hash-link" aria-label="Direct link to Option 3: mutation payloads contain a list of errors" title="Direct link to Option 3: mutation payloads contain a list of errors">​</a></h3>
 <p>Option 3 contains a list of errors (using a mutation-specific error union), and
-lets you indicate separately the result of the mutation. This is my preferred
-option. It also has the advantage that anyone following
+lets you indicate separately the result of the mutation. It also has the
+advantage that anyone following
 <a href="https://www.apollographql.com/blog/designing-graphql-mutations" target="_blank" rel="noopener noreferrer">solid mutation design advice</a>
-can integrate it into existing schemas without a breaking change.</p></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/graphql/naming"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Naming Conventions</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/graphql/nullability/"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Nullability</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#categorising-errors" class="table-of-contents__link toc-highlight">Categorising errors</a><ul><li><a href="#domain-errors" class="table-of-contents__link toc-highlight">Domain errors</a></li><li><a href="#exceptions" class="table-of-contents__link toc-highlight">Exceptions</a></li></ul></li><li><a href="#no-modelling-for-exceptions" class="table-of-contents__link toc-highlight">No modelling for exceptions</a></li><li><a href="#domain-error-general-principles" class="table-of-contents__link toc-highlight">Domain error general principles</a><ul><li><a href="#existence" class="table-of-contents__link toc-highlight">Existence</a></li><li><a href="#forbidden-access" class="table-of-contents__link toc-highlight">Forbidden access</a></li><li><a href="#no-side-effects-in-queries" class="table-of-contents__link toc-highlight">No side effects in queries</a></li><li><a href="#no-domain-errors-in-queries" class="table-of-contents__link toc-highlight">No domain errors in queries</a></li></ul></li><li><a href="#modelling-domain-errors-in-mutations" class="table-of-contents__link toc-highlight">Modelling domain errors in mutations</a></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 Benjie Gillam; all rights reserved. RFC pages pull content from public GitHub issues/PRs/files/etc; this content remains owned its various authors.</div></div></div></footer></div>
+can integrate it into existing schemas without a breaking change.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="my-personal-preference">My personal preference<a href="#my-personal-preference" class="hash-link" aria-label="Direct link to My personal preference" title="Direct link to My personal preference">​</a></h3>
+<p>None of options 1-3 are wrong; you should choose the one that best suits your
+business logic and development model.</p>
+<p>My personal preference is to duplicate as many domain errors on the client as
+possible (simple validation of data: username length, password makeup and match;
+ahead of time checking to see if username is available, user has sufficient
+balance) such that they are indicated to the user in realtime (with no or
+minimal server cost); this significantly limits the number of domain errors that
+would be expected to come from the server for a valid submission. If these
+remaining domain errors are few enough, then Option 1 may be sufficient and
+doesn&#x27;t have the modelling overhead of options 2 and 3. If you indicate the data
+validation rules on your fields through field metadata, and your client
+retrieves them through runtime introspection, then your legacy deployed clients
+can even evolve to handling changes in your data validation logic automatically!</p>
+<p>If you cannot duplicate this logic on the client because it evolves too rapidly
+or because application development and server development are handled by
+separate teams, or if you have too many server-only domain errors, then I think
+both options 2 and 3 are valid; I&#x27;d lean gently towards option 3 for its
+flexibility, power, and simplicity, but option 2 does have the advantage of
+modelling essentially a <code>Result</code> type in the schema, forcing application
+developers to handle the polymorphism to be able to access the result data.</p></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/graphql/naming"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Naming Conventions</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/graphql/nullability/"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Nullability</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#categorising-errors" class="table-of-contents__link toc-highlight">Categorising errors</a><ul><li><a href="#domain-errors" class="table-of-contents__link toc-highlight">Domain errors</a></li><li><a href="#exceptions" class="table-of-contents__link toc-highlight">Exceptions</a></li></ul></li><li><a href="#no-modelling-for-exceptions" class="table-of-contents__link toc-highlight">No modelling for exceptions</a></li><li><a href="#domain-error-general-principles" class="table-of-contents__link toc-highlight">Domain error general principles</a><ul><li><a href="#existence" class="table-of-contents__link toc-highlight">Existence</a></li><li><a href="#forbidden-access" class="table-of-contents__link toc-highlight">Forbidden access</a></li><li><a href="#no-side-effects-in-queries" class="table-of-contents__link toc-highlight">No side effects in queries</a></li><li><a href="#no-domain-errors-in-queries" class="table-of-contents__link toc-highlight">No domain errors in queries</a></li></ul></li><li><a href="#modelling-domain-errors-in-mutations" class="table-of-contents__link toc-highlight">Modelling domain errors in mutations</a><ul><li><a href="#option-1-handling-domain-errors-as-exceptions" class="table-of-contents__link toc-highlight">Option 1: handling domain errors as exceptions</a></li><li><a href="#option-2-mutation-fields-return-union" class="table-of-contents__link toc-highlight">Option 2: mutation fields return union</a></li><li><a href="#option-3-mutation-payloads-contain-a-list-of-errors" class="table-of-contents__link toc-highlight">Option 3: mutation payloads contain a list of errors</a></li><li><a href="#my-personal-preference" class="table-of-contents__link toc-highlight">My personal preference</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 Benjie Gillam; all rights reserved. RFC pages pull content from public GitHub issues/PRs/files/etc; this content remains owned its various authors.</div></div></div></footer></div>
 </body>
 </html>
