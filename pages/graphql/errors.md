@@ -11,17 +11,25 @@ different approaches. Here's my take on it.
 ## Categorising errors
 
 I find it easiest to think in these terms; there are two broad categories of
-errors applicable to GraphQL:
+errors applicable to GraphQL schemas: **domain errors** and **exceptions**.
+
+:::note[Application-level errors only]
+
+Client misuse (malformed or malicious requests) and protocol-level errors such
+as document validation are outside the scope of this article - these are
+generally handled by the GraphQL server/engine before reaching your schema
+logic.
+
+:::
 
 ### Domain errors
 
-These are things that are part of your business domain logic, for example:
+These are errors that are part of your business domain logic, for example:
 
-- username is too short
-- email address is already registered
-- you don't have enough credits to create that
-- you must be logged in to do that
-- _arguably_ rate limiting errors for non-malicious actors
+- data constraints: username is too short, email address is already registered,
+  etc
+- authn/authz: you must be logged in to do that, only admins may do that, etc
+- business logic: you don't have enough credits to create that, etc
 
 In most cases, domain errors are "non-recoverable" - the user must take some
 action to fix the problem in their request.
@@ -35,12 +43,14 @@ Typically exceptions are things that, in a perfect world (bug-free technology,
 infinitely scalable, zero cost, latency was zero, no bad actors existed, and
 user requests were serialized) would not happen:
 
-- network errors
-- storage errors
-- order-of-operations errors (deadlocks, transaction conflicts, etc)
-- service errors (e.g. microservice crashed)
-- rate limiting errors (_arguably_ just for malicious actors)
-- etc
+- network errors: DNS resolution, can't connect, etc
+- storage errors: disk full, quota reached, read/write error, etc
+- order-of-operations errors: deadlocks, transaction conflicts, etc
+- service errors: downtime, load shedding, downstream service failure, etc
+- operational policy: rate limiting, blocking abuse, rejecting robots, etc
+- timeouts: execution took too long, request timed out, etc
+- resource exhaustion: memory limits, CPU limits, storage limits, I/O limits,
+  etc
 
 In most cases, exceptions are "recoverable" - temporary failure, retry in a few
 hours time.
@@ -74,8 +84,8 @@ response fed to application code. There are a number of options for this:
    [a `@catch` directive](https://relay.dev/docs/guides/catch-directive/), for
    example via a `Result` type where error or not is explicitly checked to
    access the underlying data
-2. the GraphQL client can throw the error when the application code attempts to read
-   from an errored field (for example, using
+2. the GraphQL client can throw the error when the application code attempts to
+   read from an errored field (for example, using
    [GraphQL Throw On Error](https://www.npmjs.com/package/graphql-toe)), and
    application code can handle errors with traditional `try`/`catch` or
    `<ErrorBoundary />` patterns.
@@ -155,9 +165,10 @@ query (for example "read this article three times then it's forbidden") - if you
 need a side-effect like this then this access must be modelled as a mutation to
 be GraphQL compliant.
 
-This is actually pretty critical for doing GraphQL well - applications should be able
-to refetch data at will, with fragments that describe their data requirements,
-and not need to keep count of how many times they've accessed something.
+This is actually pretty critical for doing GraphQL well - applications should be
+able to refetch data at will, with fragments that describe their data
+requirements, and not need to keep count of how many times they've accessed
+something.
 
 ### No domain errors in queries
 
