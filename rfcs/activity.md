@@ -8,6 +8,20 @@ image: /img/rfc_tracker.png
 
 The below is an aggregate overview of the latest activity across all RFCs. Note that it's _roughly_ in cronological order, but some dates are less accurate than others (e.g. commit timestamps are to the second, whereas working groups are generally to the month...).
 
+- [#1081](/rfcs/1081 "Fragment arguments/variables (syntax/validation/execution) / RFC2"): **Commit pushed**: [Merge pull request #2 from benjie/fragments-editorial](https://github.com/graphql/graphql-spec/commit/ef8aaa38502a0601160db4082054d33bc18e8362) on 2025-11-28 by [@JoviDeCroock](https://github.com/JoviDeCroock)
+- [#1081](/rfcs/1081 "Fragment arguments/variables (syntax/validation/execution) / RFC2"): **12 commits pushed** on 2025-11-27:
+  - [&#x7b;operation,fragment&#x7d;-defined variable -&#x3e; &#x7b;operation,fragment&#x7d; variable](https://github.com/graphql/graphql-spec/commit/b02565326a00de26b32e14b81e96698bc571694e) by [@benjie](https://github.com/benjie)
+  - [Editorial](https://github.com/graphql/graphql-spec/commit/20fb2f7cb6f11331dbb64b0f911d73120350082b) by [@benjie](https://github.com/benjie)
+  - [Correct algorithm and provide clarifying note](https://github.com/graphql/graphql-spec/commit/276230f65bd084b2d6a078ffbc6a01ac6e938f40) by [@benjie](https://github.com/benjie)
+  - [Do not allow merging of fragments referencing different variables](https://github.com/graphql/graphql-spec/commit/665941619e04c03786408982d365d049a5981c4c) by [@benjie](https://github.com/benjie)
+  - [Split logic for fragment arguments from directive/field arguments](https://github.com/graphql/graphql-spec/commit/653694479ac0e9188d11ad29656872a76806e914) by [@benjie](https://github.com/benjie)
+  - [Consistency](https://github.com/graphql/graphql-spec/commit/7ec40df3424be56e53136ae84551d91a1b047b23) by [@benjie](https://github.com/benjie)
+  - [Precision and clarity](https://github.com/graphql/graphql-spec/commit/fa905f152332517c7cac932e8c6c6126d088d003) by [@benjie](https://github.com/benjie)
+  - [Add examples and clarify wording/algorithm](https://github.com/graphql/graphql-spec/commit/ed12965fd80ae04515b544ca47904e5d38c7e242) by [@benjie](https://github.com/benjie)
+  - [Spec consistency](https://github.com/graphql/graphql-spec/commit/c9cb79d5dc02249cee669e2d468e72ebe73853b5) by [@benjie](https://github.com/benjie)
+  - [Editorial](https://github.com/graphql/graphql-spec/commit/77c44e2ce4fcc310b5ef4e728d7bdc8088dc1cd6) by [@benjie](https://github.com/benjie)
+  - [Editorial](https://github.com/graphql/graphql-spec/commit/0bcdd927db6569d92c627703059a22424ba02f90) by [@benjie](https://github.com/benjie)
+  - [Fix algorithm mistake](https://github.com/graphql/graphql-spec/commit/d4bf32523992caf32eaeaf2c80f1425ab0e94137) by [@benjie](https://github.com/benjie)
 - [#1081](/rfcs/1081 "Fragment arguments/variables (syntax/validation/execution) / RFC2"): **2 commits pushed** on 2025-11-13:
   - [Merge branch 'main' into fragment-args-2024-amendments](https://github.com/graphql/graphql-spec/commit/185bbac32faad7a5ebe0f8121db66c70362ec376) by [@benjie](https://github.com/benjie)
   - [Add missing grammar](https://github.com/graphql/graphql-spec/commit/4805a96dd766116a3a02174b39de51fa03d598ae) by [@benjie](https://github.com/benjie)
