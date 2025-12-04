@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.1.0">
 <title data-rh="true">Fragment arguments/variables (syntax/validation/execution) | benjie.dev</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://benjie.dev/rfcs/1081"><meta data-rh="true" property="og:locale" content="en_GB"><meta data-rh="true" name="docusaurus_locale" content="en-GB"><meta data-rh="true" name="docsearch:language" content="en-GB"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-rfcs-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-rfcs-current"><meta data-rh="true" property="twitter:title" content="Fragment arguments/variables (syntax/validation/execution) | benjie.dev"><meta data-rh="true" property="og:title" content="Fragment arguments/variables (syntax/validation/execution) | benjie.dev"><meta data-rh="true" name="description" content="At a glance"><meta data-rh="true" property="og:description" content="At a glance"><meta data-rh="true" property="og:image" content="https://benjie.dev/img/rfc_tracker.png"><meta data-rh="true" name="twitter:image" content="https://benjie.dev/img/rfc_tracker.png"><link data-rh="true" rel="icon" href="/favicon.ico"><link data-rh="true" rel="canonical" href="https://benjie.dev/rfcs/1081"><link data-rh="true" rel="alternate" href="https://benjie.dev/rfcs/1081" hreflang="en-GB"><link data-rh="true" rel="alternate" href="https://benjie.dev/rfcs/1081" hreflang="x-default"><script src="https://assets.calendly.com/assets/external/widget.js"></script><link rel="stylesheet" href="/assets/css/styles.c47278a5.css">
-<script src="/assets/js/runtime~main.ebd5f5d4.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.28db4d21.js" defer="defer"></script>
 <script src="/assets/js/main.772b5840.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -22,6 +22,23 @@
 </ul>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="timeline">Timeline<a href="#timeline" class="hash-link" aria-label="Direct link to Timeline" title="Direct link to Timeline">​</a></h2>
 <ul>
+<li><strong>Commit pushed</strong>: <a href="https://github.com/graphql/graphql-spec/commit/ef8aaa38502a0601160db4082054d33bc18e8362" target="_blank" rel="noopener noreferrer">Merge pull request #2 from benjie/fragments-editorial</a> on 2025-11-28 by <a href="https://github.com/JoviDeCroock" target="_blank" rel="noopener noreferrer">@JoviDeCroock</a></li>
+<li><strong>12 commits pushed</strong> on 2025-11-27:<!-- -->
+<ul>
+<li><a href="https://github.com/graphql/graphql-spec/commit/b02565326a00de26b32e14b81e96698bc571694e" target="_blank" rel="noopener noreferrer">{operation,fragment}-defined variable -&gt; {operation,fragment} variable</a> by <a href="https://github.com/benjie" target="_blank" rel="noopener noreferrer">@benjie</a></li>
+<li><a href="https://github.com/graphql/graphql-spec/commit/20fb2f7cb6f11331dbb64b0f911d73120350082b" target="_blank" rel="noopener noreferrer">Editorial</a> by <a href="https://github.com/benjie" target="_blank" rel="noopener noreferrer">@benjie</a></li>
+<li><a href="https://github.com/graphql/graphql-spec/commit/276230f65bd084b2d6a078ffbc6a01ac6e938f40" target="_blank" rel="noopener noreferrer">Correct algorithm and provide clarifying note</a> by <a href="https://github.com/benjie" target="_blank" rel="noopener noreferrer">@benjie</a></li>
+<li><a href="https://github.com/graphql/graphql-spec/commit/665941619e04c03786408982d365d049a5981c4c" target="_blank" rel="noopener noreferrer">Do not allow merging of fragments referencing different variables</a> by <a href="https://github.com/benjie" target="_blank" rel="noopener noreferrer">@benjie</a></li>
+<li><a href="https://github.com/graphql/graphql-spec/commit/653694479ac0e9188d11ad29656872a76806e914" target="_blank" rel="noopener noreferrer">Split logic for fragment arguments from directive/field arguments</a> by <a href="https://github.com/benjie" target="_blank" rel="noopener noreferrer">@benjie</a></li>
+<li><a href="https://github.com/graphql/graphql-spec/commit/7ec40df3424be56e53136ae84551d91a1b047b23" target="_blank" rel="noopener noreferrer">Consistency</a> by <a href="https://github.com/benjie" target="_blank" rel="noopener noreferrer">@benjie</a></li>
+<li><a href="https://github.com/graphql/graphql-spec/commit/fa905f152332517c7cac932e8c6c6126d088d003" target="_blank" rel="noopener noreferrer">Precision and clarity</a> by <a href="https://github.com/benjie" target="_blank" rel="noopener noreferrer">@benjie</a></li>
+<li><a href="https://github.com/graphql/graphql-spec/commit/ed12965fd80ae04515b544ca47904e5d38c7e242" target="_blank" rel="noopener noreferrer">Add examples and clarify wording/algorithm</a> by <a href="https://github.com/benjie" target="_blank" rel="noopener noreferrer">@benjie</a></li>
+<li><a href="https://github.com/graphql/graphql-spec/commit/c9cb79d5dc02249cee669e2d468e72ebe73853b5" target="_blank" rel="noopener noreferrer">Spec consistency</a> by <a href="https://github.com/benjie" target="_blank" rel="noopener noreferrer">@benjie</a></li>
+<li><a href="https://github.com/graphql/graphql-spec/commit/77c44e2ce4fcc310b5ef4e728d7bdc8088dc1cd6" target="_blank" rel="noopener noreferrer">Editorial</a> by <a href="https://github.com/benjie" target="_blank" rel="noopener noreferrer">@benjie</a></li>
+<li><a href="https://github.com/graphql/graphql-spec/commit/0bcdd927db6569d92c627703059a22424ba02f90" target="_blank" rel="noopener noreferrer">Editorial</a> by <a href="https://github.com/benjie" target="_blank" rel="noopener noreferrer">@benjie</a></li>
+<li><a href="https://github.com/graphql/graphql-spec/commit/d4bf32523992caf32eaeaf2c80f1425ab0e94137" target="_blank" rel="noopener noreferrer">Fix algorithm mistake</a> by <a href="https://github.com/benjie" target="_blank" rel="noopener noreferrer">@benjie</a></li>
+</ul>
+</li>
 <li><strong>2 commits pushed</strong> on 2025-11-13:<!-- -->
 <ul>
 <li><a href="https://github.com/graphql/graphql-spec/commit/185bbac32faad7a5ebe0f8121db66c70362ec376" target="_blank" rel="noopener noreferrer">Merge branch &#x27;main&#x27; into fragment-args-2024-amendments</a> by <a href="https://github.com/benjie" target="_blank" rel="noopener noreferrer">@benjie</a></li>
