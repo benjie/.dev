@@ -266,3 +266,10 @@ both options 2 and 3 are valid; I'd lean gently towards option 3 for its
 flexibility, power, and simplicity, but option 2 does have the advantage of
 modelling essentially a `Result` type in the schema, forcing application
 developers to handle the polymorphism to be able to access the result data.
+
+## See also
+
+Here's some resources from fellow TSC members for their takes on error handling:
+
+- https://sachee.medium.com/200-ok-error-handling-in-graphql-7ec869aec9bc
+- https://productionreadygraphql.com/2020-08-01-guide-to-graphql-errors
