@@ -309,6 +309,11 @@ const sidebars = {
         },
         {
           type: "doc",
+          id: "wg1871",
+          label: "wg1871: Proposal: Omit fields when their resolver fails (optional execution mode, no new syntax) [RFC0]",
+        },
+        {
+          type: "doc",
           id: "TEMPLATE",
           label: "TEMPLATE: <!-- This template is provided as a suggested starting point. You may alter the [RFC0]",
         },

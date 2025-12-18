@@ -8,6 +8,7 @@ image: /img/rfc_tracker.png
 
 The below is an aggregate overview of the latest activity across all RFCs. Note that it's _roughly_ in cronological order, but some dates are less accurate than others (e.g. commit timestamps are to the second, whereas working groups are generally to the month...).
 
+- [wg#1871](/rfcs/wg1871 "Proposal: Omit fields when their resolver fails (optional execution mode, no new syntax) / RFC0"): **[WG discussion](https://github.com/graphql/graphql-wg/discussions/1871) created** on 2025-12-04 by nikolayandr
 - [#1081](/rfcs/1081 "Fragment arguments/variables (syntax/validation/execution) / RFC2"): **Commit pushed**: [Merge pull request #2 from benjie/fragments-editorial](https://github.com/graphql/graphql-spec/commit/ef8aaa38502a0601160db4082054d33bc18e8362) on 2025-11-28 by [@JoviDeCroock](https://github.com/JoviDeCroock)
 - [#1081](/rfcs/1081 "Fragment arguments/variables (syntax/validation/execution) / RFC2"): **12 commits pushed** on 2025-11-27:
   - [&#x7b;operation,fragment&#x7d;-defined variable -&#x3e; &#x7b;operation,fragment&#x7d; variable](https://github.com/graphql/graphql-spec/commit/b02565326a00de26b32e14b81e96698bc571694e) by [@benjie](https://github.com/benjie)

@@ -17,7 +17,7 @@ be helpful for people to keep track of the various RFCs.
 Ping `@benjie` on the [GraphQL Discord](https://discord.graphql.org) (`#wg`
 channel) and ask for him to run an update!
 
-Last updated: 2025-12-04T10:05:30.610Z
+Last updated: 2025-12-18T12:02:36.534Z
 
 :::
 
@@ -63,6 +63,7 @@ Last updated: 2025-12-04T10:05:30.610Z
 | RFC | Champion | Title | Latest |
 | --- | --- | --- | --- |
 | [#1200](/rfcs/1200 "Add Schema Coordinate to GraphQL Errors / RFC0") 🚀 | [@PascalSenn](https://github.com/PascalSenn) | [Add Schema Coordinate to GraphQL Errors](/rfcs/1200) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1200)</small> | **[Spec PR](https://github.com/graphql/graphql-spec/pull/1200) created** on 2025-10-28 by PascalSenn [_(more)_](/rfcs/1200#timeline) |
+| [wg#1871](/rfcs/wg1871 "Proposal: Omit fields when their resolver fails (optional execution mode, no new syntax) / RFC0") | [@nikolayandr](https://github.com/nikolayandr) | [Proposal: Omit fields when their resolver fails (optional execution mode, no new syntax)](/rfcs/wg1871) | **[WG discussion](https://github.com/graphql/graphql-wg/discussions/1871) created** on 2025-12-04 by nikolayandr [_(more)_](/rfcs/wg1871#timeline) |
 | [TEMPLATE](/rfcs/TEMPLATE "&#x3c;!-- This template is provided as a suggested starting point. You may alter the / RFC0") | - | [&#x3c;!-- This template is provided as a suggested starting point. You may alter the](/rfcs/TEMPLATE) | **[RFC document created](https://github.com/graphql/graphql-wg/blob/8aea69549cdc57c8017e3d471a546b906aff785f/rfcs/TEMPLATE.md)** on 2025-10-29 by Mark Larah [_(more)_](/rfcs/TEMPLATE#timeline) |
 | [ObjectIdentif…](/rfcs/ObjectIdentification "Object Identification / RFC0") | - | [Object Identification](/rfcs/ObjectIdentification) | **[RFC document created](https://github.com/graphql/graphql-wg/blob/f30bf3559c4deccaf7822a0a96b5f081098d8b91/rfcs/ObjectIdentification.md)** on 2025-10-15 by Lenz Weber-Tronic [_(more)_](/rfcs/ObjectIdentification#timeline) |
 | [FieldExtensions](/rfcs/FieldExtensions "Field Extensions / RFC0") | - | [Field Extensions](/rfcs/FieldExtensions) | **[RFC document updated](https://github.com/graphql/graphql-wg/blob/bef7d62f7d5fb0a4ba718a99a205932f4f942d55/rfcs/FieldExtensions.md)** on 2025-10-03 by Martin Bonnin [_(more)_](/rfcs/FieldExtensions#timeline) |
