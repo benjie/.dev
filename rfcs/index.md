@@ -17,7 +17,7 @@ be helpful for people to keep track of the various RFCs.
 Ping `@benjie` on the [GraphQL Discord](https://discord.graphql.org) (`#wg`
 channel) and ask for him to run an update!
 
-Last updated: 2025-12-18T12:02:36.534Z
+Last updated: 2026-01-08T09:14:06.910Z
 
 :::
 
@@ -50,8 +50,8 @@ Last updated: 2025-12-18T12:02:36.534Z
 | [#1059](/rfcs/1059 "Introduce Strict and Legacy All Variable Usages Are Allowed / RFC1") | [@benjie](https://github.com/benjie) | [Introduce Strict and Legacy All Variable Usages Are Allowed](/rfcs/1059) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1059)</small> | **Added to [2023-12-07 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2023/12-Dec/07-wg-primary.md)** [_(more)_](/rfcs/1059#timeline) |
 | [#950](/rfcs/950 "allow unions to include interfaces and unions / RFC1") | [@yaacovCR](https://github.com/yaacovCR) | [allow unions to include interfaces and unions](/rfcs/950) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/950)</small> | **Added to [2022-08-04 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2022/2022-08-04.md)** [_(more)_](/rfcs/950#timeline) |
 | [#939](/rfcs/939 "allow unions to declare implementation of interfaces / RFC1") | [@yaacovCR](https://github.com/yaacovCR) | [allow unions to declare implementation of interfaces](/rfcs/939) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/939)</small> | **Added to [2022-06-02 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2022/2022-06-02.md)** [_(more)_](/rfcs/939#timeline) |
-| [#907](/rfcs/907 "Add support for directives on directives / RFC1") | [@IvanGoncharov](https://github.com/IvanGoncharov) | [Add support for directives on directives](/rfcs/907) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/907)</small> | **Added to [2022-01-06 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2022/2022-01-06.md)** [_(more)_](/rfcs/907#timeline) |
 | [#509](/rfcs/509 "Allow singular variables in list locations / RFC1") | [@taion](https://github.com/taion) | [Allow singular variables in list locations](/rfcs/509) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/509)</small> | **Commit pushed**: [Remove CoerceVariableValues](https://github.com/graphql/graphql-spec/commit/16978d440b8657b443a6fad4983cd8caf692b6d9) on 2018-09-01 by [@taion](https://github.com/taion) [_(more)_](/rfcs/509#timeline) |
+| ~~[#907](/rfcs/907 "Add support for directives on directives / RFC1")~~ | [@IvanGoncharov](https://github.com/IvanGoncharov) | [~~Add support for directives on directives~~](/rfcs/907) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/907)</small> | **Added to [2022-01-06 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2022/2022-01-06.md)** [_(more)_](/rfcs/907#timeline) |
 
 
 

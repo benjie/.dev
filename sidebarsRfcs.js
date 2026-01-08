@@ -286,13 +286,13 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "907",
-          label: "907: Add support for directives on directives [RFC1]",
+          id: "509",
+          label: "509: Allow singular variables in list locations [RFC1]",
         },
         {
           type: "doc",
-          id: "509",
-          label: "509: Allow singular variables in list locations [RFC1]",
+          id: "907",
+          label: "907: Add support for directives on directives [RFC1]",
         },
       ],
     },
