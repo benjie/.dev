@@ -17,9 +17,20 @@ be helpful for people to keep track of the various RFCs.
 Ping `@benjie` on the [GraphQL Discord](https://discord.graphql.org) (`#wg`
 channel) and ask for him to run an update!
 
-Last updated: 2026-01-15T11:50:43.915Z
+Last updated: 2026-01-22T11:45:19.904Z
 
 :::
+
+## [Stage 3: Accepted (pending editorial)](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-3-accepted)
+
+
+<!-- prettier-ignore -->
+| RFC | Champion | Title | Latest |
+| --- | --- | --- | --- |
+| [#1193](/rfcs/1193 "Update description of Fragments to emphasize evolving data needs / RFC3") 🚀 | [@janettec](https://github.com/janettec) | [Update description of Fragments to emphasize evolving data needs](/rfcs/1193) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1193)</small> | **Added to [2026-01-15 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2026/01-Jan/15-wg-primary.md)** [_(more)_](/rfcs/1193#timeline) |
+
+
+
 
 ## [Stage 2: Draft](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-2-draft)
 
@@ -42,7 +53,8 @@ Last updated: 2026-01-15T11:50:43.915Z
 | --- | --- | --- | --- |
 | [#1180](/rfcs/1180 "Editorial: Fix cases in validation where technically a crash could occur due to non-existent definitions / RFC1") 🚀 | [@JoviDeCroock](https://github.com/JoviDeCroock) | [Editorial: Fix cases in validation where technically a crash could occur due to non-existent definitions](/rfcs/1180) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1180)</small> | **Commit pushed**: [Merge branch 'main' into fix-crash-cases](https://github.com/graphql/graphql-spec/commit/d65f5607b4dc0f641bcd8183d4d44ba96c18b7f2) on 2025-11-08 by [@JoviDeCroock](https://github.com/JoviDeCroock) [_(more)_](/rfcs/1180#timeline) |
 | [#1177](/rfcs/1177 "Incorporate meta-fields into ExecuteCollectedFields / RFC1") 🚀 | [@benjie](https://github.com/benjie) | [Incorporate meta-fields into ExecuteCollectedFields](/rfcs/1177) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1177)</small> | **4 commits pushed**: [(latest)](https://github.com/graphql/graphql-spec/commit/4b7c111802bebde1703ae8f6c661847f4fce3caa) on 2025-07-04 by [@benjie](https://github.com/benjie) [_(more)_](/rfcs/1177#timeline) |
-| [#1163](/rfcs/1163 "Allow clients to disable error propagation via request parameter (take 2) / RFC1") | [@benjie](https://github.com/benjie) | [Service capabilities / error behaviors](/rfcs/1163) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1163)</small> | **4 commits pushed**: [(latest)](https://github.com/graphql/graphql-spec/commit/55458b167baba01c3a2d1ebe390e4241683ecffe) on 2025-11-06 by [@benjie](https://github.com/benjie) [_(more)_](/rfcs/1163#timeline) |
+| [#1163](/rfcs/1163 "Allow clients to disable error propagation via request parameter (take 2) / RFC1") | [@benjie](https://github.com/benjie) | [Service capabilities / error behaviors](/rfcs/1163) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1163)</small> | **Added to [2026-01-15 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2026/01-Jan/15-wg-primary.md)** [_(more)_](/rfcs/1163#timeline) |
+| [#1206](/rfcs/1206 "Add support for directives on directive definitions / RFC1") | [@BoD](https://github.com/BoD) | [Add support for directives on directive definitions](/rfcs/1206) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1206)</small> | **Added to [2026-01-15 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2026/01-Jan/15-wg-primary.md)** [_(more)_](/rfcs/1206#timeline) |
 | [#1179](/rfcs/1179 "CoerceInputValue() / RFC1") | [@leebyron](https://github.com/leebyron) | [CoerceInputValue()](/rfcs/1179) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1179)</small> | **6 commits pushed**: [(latest)](https://github.com/graphql/graphql-spec/commit/e9a4ec2e67fc9e53a3b47012acc6758f7c9d867c) on 2025-07-05 by [@leebyron](https://github.com/leebyron) [_(more)_](/rfcs/1179#timeline) |
 | [#997](/rfcs/997 "Expand @deprecated to Objects / RFC1") | [@fotoetienne](https://github.com/fotoetienne) | [Expand @deprecated to Objects](/rfcs/997) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/997)</small> | **Added to [2025-06-26 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/06-Jun/26-wg-secondary-eu.md)** [_(more)_](/rfcs/997#timeline) |
 | [#1110](/rfcs/1110 "Incremental Delivery spec draft / RFC1") | [@robrichard](https://github.com/robrichard) | [Incremental Delivery spec draft](/rfcs/1110) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1110)</small> | **Commit pushed**: [skip deferred fragment spread when already in visited fragments](https://github.com/graphql/graphql-spec/commit/8e9cbcb46384399f5ed73996fac008de1d394551) on 2025-01-09 by [@robrichard](https://github.com/robrichard) [_(more)_](/rfcs/1110#timeline) |
@@ -112,11 +124,11 @@ Last updated: 2026-01-15T11:50:43.915Z
 | [#706](/rfcs/706 "Add support for directives for an object field name / RFC0") | [@francisu](https://github.com/francisu) | [Add support for directives for an object field name](/rfcs/706) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/706)</small> | **[Spec PR](https://github.com/graphql/graphql-spec/pull/706) created** on 2020-04-07 by francisu [_(more)_](/rfcs/706#timeline) |
 | [#674](/rfcs/674 "allow empty selections / RFC0") | [@kassens](https://github.com/kassens) | [allow empty selections](/rfcs/674) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/674)</small> | **[Spec PR](https://github.com/graphql/graphql-spec/pull/674) created** on 2020-01-21 by kassens [_(more)_](/rfcs/674#timeline) |
 | [#631](/rfcs/631 "Make root query operation type optional / RFC0") | [@victorandree](https://github.com/victorandree) | [Make root query operation type optional](/rfcs/631) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/631)</small> | **Added to [2019-12-05 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2019/2019-12-05.md)** [_(more)_](/rfcs/631#timeline) |
-| [#567](/rfcs/567 "allow directives on directive definitions / RFC0") | [@benhead](https://github.com/benhead) | [allow directives on directive definitions](/rfcs/567) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/567)</small> | **[Spec PR](https://github.com/graphql/graphql-spec/pull/567) created** on 2019-02-28 by benhead [_(more)_](/rfcs/567#timeline) |
 | [#556](/rfcs/556 "Document Directives / RFC0") | [@langpavel](https://github.com/langpavel) | [Document Directives](/rfcs/556) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/556)</small> | **Commit pushed**: [Document directives are not special](https://github.com/graphql/graphql-spec/commit/f89de40eb8f7e0c2ab27a81ba9fac9cc1a89fbee) on 2019-02-01 by [@langpavel](https://github.com/langpavel) [_(more)_](/rfcs/556#timeline) |
 | [#521](/rfcs/521 "Scalar serialize as built-in scalar type / RFC0") | [@IvanGoncharov](https://github.com/IvanGoncharov) | [Scalar serialize as built-in scalar type](/rfcs/521) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/521)</small> | **[Spec PR](https://github.com/graphql/graphql-spec/pull/521) created** on 2018-10-14 by IvanGoncharov [_(more)_](/rfcs/521#timeline) |
 | [#325](/rfcs/325 "Add &#x22;Any&#x22; scalar type / RFC0") | [@IvanGoncharov](https://github.com/IvanGoncharov) | [Add "Any" scalar type](/rfcs/325) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/325)</small> | **[Spec PR](https://github.com/graphql/graphql-spec/pull/325) created** on 2017-06-19 by IvanGoncharov [_(more)_](/rfcs/325#timeline) |
 | ~~[#673](/rfcs/673 "Servers must preserve lexical ordering between SDL and introspection / RFC0")~~ | [@spawnia](https://github.com/spawnia) | [~~Servers must preserve lexical ordering between SDL and introspection~~](/rfcs/673) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/673)</small> | **Commit pushed**: [Merge branch 'main' into patch-2](https://github.com/graphql/graphql-spec/commit/0ab923d39148f8b4ea767835468db2db7298c339) on 2025-11-05 by [@spawnia](https://github.com/spawnia) [_(more)_](/rfcs/673#timeline) |
+| ~~[#567](/rfcs/567 "allow directives on directive definitions / RFC0")~~ | [@benhead](https://github.com/benhead) | [~~allow directives on directive definitions~~](/rfcs/567) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/567)</small> | **[Spec PR](https://github.com/graphql/graphql-spec/pull/567) created** on 2019-02-28 by benhead [_(more)_](/rfcs/567#timeline) |
 
 
 

@@ -207,6 +207,19 @@ const sidebars = {
     },
     {
       type: "category",
+      label: "Stage 3: Accepted (pending edits)",
+      collapsed: false,
+      collapsible: true,
+      items: [
+        {
+          type: "doc",
+          id: "1193",
+          label: "1193: Update description of Fragments to emphasize evolving data needs [RFC3]",
+        },
+      ],
+    },
+    {
+      type: "category",
       label: "Stage 2: Draft",
       collapsed: false,
       collapsible: true,
@@ -248,6 +261,11 @@ const sidebars = {
           type: "doc",
           id: "1163",
           label: "1163*: Allow clients to disable error propagation via request parameter (take 2) [RFC1]",
+        },
+        {
+          type: "doc",
+          id: "1206",
+          label: "1206: Add support for directives on directive definitions [RFC1]",
         },
         {
           type: "doc",
@@ -554,11 +572,6 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "567",
-          label: "567: allow directives on directive definitions [RFC0]",
-        },
-        {
-          type: "doc",
           id: "556",
           label: "556: Document Directives [RFC0]",
         },
@@ -576,6 +589,11 @@ const sidebars = {
           type: "doc",
           id: "673",
           label: "673: Servers must preserve lexical ordering between SDL and introspection [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "567",
+          label: "567: allow directives on directive definitions [RFC0]",
         },
       ],
     },

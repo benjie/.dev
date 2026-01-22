@@ -8,7 +8,14 @@ image: /img/rfc_tracker.png
 
 The below is an aggregate overview of the latest activity across all RFCs. Note that it's _roughly_ in cronological order, but some dates are less accurate than others (e.g. commit timestamps are to the second, whereas working groups are generally to the month...).
 
+- [#1163](/rfcs/1163 "Allow clients to disable error propagation via request parameter (take 2) / RFC1"): **Added to [2026-01-15 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2026/01-Jan/15-wg-primary.md)**
+- [#1193](/rfcs/1193 "Update description of Fragments to emphasize evolving data needs / RFC3"): **Added to [2026-01-15 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2026/01-Jan/15-wg-primary.md)**
+- [#1206](/rfcs/1206 "Add support for directives on directive definitions / RFC1"): **Added to [2026-01-15 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2026/01-Jan/15-wg-primary.md)**
+- [#1206](/rfcs/1206 "Add support for directives on directive definitions / RFC1"): **Commit pushed**: [Directives are not types](https://github.com/graphql/graphql-spec/commit/a25789467caf85cbc2e6f63a1cb8091bec0837f8) on 2025-12-19 by [@BoD](https://github.com/BoD)
+- [#1206](/rfcs/1206 "Add support for directives on directive definitions / RFC1"): **[Spec PR](https://github.com/graphql/graphql-spec/pull/1206) created** on 2025-12-18 by BoD
+- [#1206](/rfcs/1206 "Add support for directives on directive definitions / RFC1"): **Commit pushed**: [Reformat with prettier](https://github.com/graphql/graphql-spec/commit/610d8db870b106049aa7a5c21ddc2d34a174e7df) on 2025-12-18 by [@BoD](https://github.com/BoD)
 - [wg#1871](/rfcs/wg1871 "Proposal: Omit fields when their resolver fails (optional execution mode, no new syntax) / RFC0"): **[WG discussion](https://github.com/graphql/graphql-wg/discussions/1871) created** on 2025-12-04 by nikolayandr
+- [#1206](/rfcs/1206 "Add support for directives on directive definitions / RFC1"): **Commit pushed**: [Change the directive definition syntax to have applied directives aft…](https://github.com/graphql/graphql-spec/commit/40fc00a94857e58f4865026c771ce4cf7349225f) on 2025-12-02 by [@BoD](https://github.com/BoD)
 - [#1081](/rfcs/1081 "Fragment arguments/variables (syntax/validation/execution) / RFC2"): **Commit pushed**: [Merge pull request #2 from benjie/fragments-editorial](https://github.com/graphql/graphql-spec/commit/ef8aaa38502a0601160db4082054d33bc18e8362) on 2025-11-28 by [@JoviDeCroock](https://github.com/JoviDeCroock)
 - [#1081](/rfcs/1081 "Fragment arguments/variables (syntax/validation/execution) / RFC2"): **12 commits pushed** on 2025-11-27:
   - [&#x7b;operation,fragment&#x7d;-defined variable -&#x3e; &#x7b;operation,fragment&#x7d; variable](https://github.com/graphql/graphql-spec/commit/b02565326a00de26b32e14b81e96698bc571694e) by [@benjie](https://github.com/benjie)
@@ -23,6 +30,10 @@ The below is an aggregate overview of the latest activity across all RFCs. Note 
   - [Editorial](https://github.com/graphql/graphql-spec/commit/77c44e2ce4fcc310b5ef4e728d7bdc8088dc1cd6) by [@benjie](https://github.com/benjie)
   - [Editorial](https://github.com/graphql/graphql-spec/commit/0bcdd927db6569d92c627703059a22424ba02f90) by [@benjie](https://github.com/benjie)
   - [Fix algorithm mistake](https://github.com/graphql/graphql-spec/commit/d4bf32523992caf32eaeaf2c80f1425ab0e94137) by [@benjie](https://github.com/benjie)
+- [#1206](/rfcs/1206 "Add support for directives on directive definitions / RFC1"): **3 commits pushed** on 2025-11-27:
+  - [Add directive extensions](https://github.com/graphql/graphql-spec/commit/5595ab35fcdbf3aa256738900c4a34e0c6b8ea34) by [@BoD](https://github.com/BoD)
+  - [Make @deprecated applicable to DIRECTIVE_DEFINITION](https://github.com/graphql/graphql-spec/commit/0ef522279a5fef12554944e1ba162e23ccfbcb9e) by [@BoD](https://github.com/BoD)
+  - [Update introspection](https://github.com/graphql/graphql-spec/commit/d2c5424b97aedbce381d3340797cf2d31c71fe88) by [@BoD](https://github.com/BoD)
 - [#1081](/rfcs/1081 "Fragment arguments/variables (syntax/validation/execution) / RFC2"): **2 commits pushed** on 2025-11-13:
   - [Merge branch 'main' into fragment-args-2024-amendments](https://github.com/graphql/graphql-spec/commit/185bbac32faad7a5ebe0f8121db66c70362ec376) by [@benjie](https://github.com/benjie)
   - [Add missing grammar](https://github.com/graphql/graphql-spec/commit/4805a96dd766116a3a02174b39de51fa03d598ae) by [@benjie](https://github.com/benjie)
@@ -33,15 +44,25 @@ The below is an aggregate overview of the latest activity across all RFCs. Note 
   - [Merge branch 'main' into error-behavior2](https://github.com/graphql/graphql-spec/commit/bbe251281454c2e6413b11dceca56b5f193337d0) by [@benjie](https://github.com/benjie)
   - [Sync syntax with Lee's suggestions](https://github.com/graphql/graphql-spec/commit/55458b167baba01c3a2d1ebe390e4241683ecffe) by [@benjie](https://github.com/benjie)
 - [#1163](/rfcs/1163 "Allow clients to disable error propagation via request parameter (take 2) / RFC1"): **Added to [2025-11-06 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/11-Nov/06-wg-primary.md)**
+- [#1193](/rfcs/1193 "Update description of Fragments to emphasize evolving data needs / RFC3"): **Added to [2025-11-06 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/11-Nov/06-wg-primary.md)**
 - [#673](/rfcs/673 "Servers must preserve lexical ordering between SDL and introspection / RFC0"): **Commit pushed**: [Merge branch 'main' into patch-2](https://github.com/graphql/graphql-spec/commit/0ab923d39148f8b4ea767835468db2db7298c339) on 2025-11-05 by [@spawnia](https://github.com/spawnia)
 - [TEMPLATE](/rfcs/TEMPLATE "&#x3c;!-- This template is provided as a suggested starting point. You may alter the / RFC0"): **[RFC document created](https://github.com/graphql/graphql-wg/blob/8aea69549cdc57c8017e3d471a546b906aff785f/rfcs/TEMPLATE.md)** on 2025-10-29 by Mark Larah
 - [#1200](/rfcs/1200 "Add Schema Coordinate to GraphQL Errors / RFC0"): **[Spec PR](https://github.com/graphql/graphql-spec/pull/1200) created** on 2025-10-28 by PascalSenn
 - [#1163](/rfcs/1163 "Allow clients to disable error propagation via request parameter (take 2) / RFC1"): **Commit pushed**: [Fix incorrect prefix](https://github.com/graphql/graphql-spec/commit/2fc8b0c3ed8ffb525d845d6ff64f53bb37aaf42f) on 2025-10-28 by [@benjie](https://github.com/benjie)
 - [#1200](/rfcs/1200 "Add Schema Coordinate to GraphQL Errors / RFC0"): **Commit pushed**: [RFC: Adds &#x60;"coordinate"&#x60; to errors](https://github.com/graphql/graphql-spec/commit/04e2431a3efc18e3b50b5d0e158631ba7fe6c0b5) on 2025-10-28 by [@PascalSenn](https://github.com/PascalSenn)
 - [ObjectIdentification](/rfcs/ObjectIdentification "Object Identification / RFC0"): **[RFC document created](https://github.com/graphql/graphql-wg/blob/f30bf3559c4deccaf7822a0a96b5f081098d8b91/rfcs/ObjectIdentification.md)** on 2025-10-15 by Lenz Weber-Tronic
+- [#1193](/rfcs/1193 "Update description of Fragments to emphasize evolving data needs / RFC3"): **Commit pushed**: [Respond to feedback from last working group meeting](https://github.com/graphql/graphql-spec/commit/df32811fe9141d99f047079df7272e5d5ce438e9) on 2025-10-10 by [@janettec](https://github.com/janettec)
 - [#1081](/rfcs/1081 "Fragment arguments/variables (syntax/validation/execution) / RFC2"): **Commit pushed**: [Merge branch 'main' into fragment-args-2024-amendments](https://github.com/graphql/graphql-spec/commit/b617e257d2b45c8f95288966ab28e4712c8d77b3) on 2025-10-07 by [@JoviDeCroock](https://github.com/JoviDeCroock)
 - [FieldExtensions](/rfcs/FieldExtensions "Field Extensions / RFC0"): **[RFC document updated](https://github.com/graphql/graphql-wg/blob/bef7d62f7d5fb0a4ba718a99a205932f4f942d55/rfcs/FieldExtensions.md)** on 2025-10-03 by Martin Bonnin
+- [#1193](/rfcs/1193 "Update description of Fragments to emphasize evolving data needs / RFC3"): **Added to [2025-10-02 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2025/10-Oct/02-wg-primary.md)**
 - [MatchesDirective](/rfcs/MatchesDirective "Matches Directive / RFC0"): **[RFC document created](https://github.com/graphql/graphql-wg/blob/1f6dce664b79bb6fce63e9b4132df653f0ed0285/rfcs/MatchesDirective.md)** on 2025-09-19 by Mark Larah
+- [#1193](/rfcs/1193 "Update description of Fragments to emphasize evolving data needs / RFC3"): **2 commits pushed** on 2025-09-19:
+  - [Simplify language and remove reference to 'colocation'](https://github.com/graphql/graphql-spec/commit/12793fc9604b07cca5830336582843cf1755c653) by [@janettec](https://github.com/janettec)
+  - [format](https://github.com/graphql/graphql-spec/commit/4dc59ca4b9b24060fa664a9ce0b3addc47b7d4b0) by [@janettec](https://github.com/janettec)
+- [#1193](/rfcs/1193 "Update description of Fragments to emphasize evolving data needs / RFC3"): **[Spec PR](https://github.com/graphql/graphql-spec/pull/1193) created** on 2025-09-12 by janettec
+- [#1193](/rfcs/1193 "Update description of Fragments to emphasize evolving data needs / RFC3"): **2 commits pushed** on 2025-09-12:
+  - [Update the description for when to use a fragment](https://github.com/graphql/graphql-spec/commit/5cf74db06e9660efb96cf0e82e70159f722aab4f) by [@janettec](https://github.com/janettec)
+  - [some small edits for new lines + updating a word](https://github.com/graphql/graphql-spec/commit/992fb158a5e3d5c4f54ee87c8bc5c6bfa99a78cc) by [@janettec](https://github.com/janettec)
 - [#1081](/rfcs/1081 "Fragment arguments/variables (syntax/validation/execution) / RFC2"): **Commit pushed**: [Merge branch 'main' into fragment-args-2024-amendments](https://github.com/graphql/graphql-spec/commit/766e90219635c53034667b9785d37e3e2df78e25) on 2025-09-10 by [@JoviDeCroock](https://github.com/JoviDeCroock)
 - [#794](/rfcs/794 "Schema Coordinates / RFC3"): **5 commits pushed** on 2025-09-01:
   - [Apply suggestions from code review](https://github.com/graphql/graphql-spec/commit/3a9e53720725c9fc1b9d6b7eb8bb74953c07e1b0) by [@leebyron](https://github.com/leebyron)
@@ -1338,6 +1359,7 @@ The below is an aggregate overview of the latest activity across all RFCs. Note 
 - [#895](/rfcs/895 "Client Controlled Nullability / RFCX"): **Mentioned in [2021-12-02 WG notes](https://github.com/graphql/graphql-wg/blob/main/notes/2021/2021-12-02.md)**
 - [#907](/rfcs/907 "Add support for directives on directives / RFC1"): **Commit pushed**: [Add support for directives on directives](https://github.com/graphql/graphql-spec/commit/93eb69457242b2fd2d30181d6badf90032dd448b) on 2021-12-02 by [@IvanGoncharov](https://github.com/IvanGoncharov)
 - [#907](/rfcs/907 "Add support for directives on directives / RFC1"): **Added to [2021-12-02 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2021/2021-12-02.md)**
+- [#1206](/rfcs/1206 "Add support for directives on directive definitions / RFC1"): **Commit pushed**: [Add support for directives on directives](https://github.com/graphql/graphql-spec/commit/7167aa988f2455d3d7ffefea1b160136288f5cde) on 2021-12-02 by [@IvanGoncharov](https://github.com/IvanGoncharov)
 - [#742](/rfcs/742 "Spec edits for @defer/@stream / RFCS"): **Commit pushed**: [fix typo](https://github.com/graphql/graphql-spec/commit/9449853523deb86ca8e0fc1e60a6255df6dd82d2) on 2021-11-26 by [@robrichard](https://github.com/robrichard)
 - [#1023](/rfcs/1023 "incremental delivery without branching / RFCS"): **Commit pushed**: [fix typo](https://github.com/graphql/graphql-spec/commit/de5004badca3d02f583379dc02a7dfc19eb0e73c) on 2021-11-26 by [@robrichard](https://github.com/robrichard)
 - [#1026](/rfcs/1026 "incremental delivery with deduplication + concurrent execution / RFCS"): **Commit pushed**: [fix typo](https://github.com/graphql/graphql-spec/commit/de5004badca3d02f583379dc02a7dfc19eb0e73c) on 2021-11-26 by [@robrichard](https://github.com/robrichard)
