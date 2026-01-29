@@ -327,6 +327,26 @@ const sidebars = {
         },
         {
           type: "doc",
+          id: "FullSchemas",
+          label: "FullSchemas: Full Schemas [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "ClientControlledNullability",
+          label: "ClientControlledNullability: Client Controlled Nullability [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "FieldExtensions",
+          label: "FieldExtensions: Field Extensions [RFC0]",
+        },
+        {
+          type: "doc",
+          id: "SchemaCoordinates",
+          label: "SchemaCoordinates: Schema Coordinates [RFC0]",
+        },
+        {
+          type: "doc",
           id: "wg1871",
           label: "wg1871: Proposal: Omit fields when their resolver fails (optional execution mode, no new syntax) [RFC0]",
         },
@@ -339,11 +359,6 @@ const sidebars = {
           type: "doc",
           id: "ObjectIdentification",
           label: "ObjectIdentification: Object Identification [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "FieldExtensions",
-          label: "FieldExtensions: Field Extensions [RFC0]",
         },
         {
           type: "doc",
@@ -397,11 +412,6 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "ClientControlledNullability",
-          label: "ClientControlledNullability: Client Controlled Nullability [RFC0]",
-        },
-        {
-          type: "doc",
           id: "1114",
           label: "1114: add __directive meta field parallel to __type [RFC0]",
         },
@@ -414,11 +424,6 @@ const sidebars = {
           type: "doc",
           id: "DeferStream",
           label: "DeferStream: GraphQL Defer and Stream Directives [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "SchemaCoordinates",
-          label: "SchemaCoordinates: Schema Coordinates [RFC0]",
         },
         {
           type: "doc",
@@ -444,11 +449,6 @@ const sidebars = {
           type: "doc",
           id: "wg1394",
           label: "wg1394: True Nullability Schema [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "FullSchemas",
-          label: "FullSchemas: Full Schemas [RFC0]",
         },
         {
           type: "doc",

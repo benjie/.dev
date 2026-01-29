@@ -1,8 +1,12 @@
 ---
 identifier: SchemaCoordinates
 stage: "0"
-title: Schema Coordinates
+title: Status
 events:
+  - type: docUpdated
+    date: 2026-01-26T12:12:06+01:00
+    href: https://github.com/graphql/graphql-wg/blob/e8be80df2a1d83f7bcae1a983fa2bfe084e16844/rfcs/SchemaCoordinates.md
+    actor: Martin Bonnin
   - type: docUpdated
     date: 2024-02-08T09:24:51+00:00
     href: https://github.com/graphql/graphql-wg/blob/6d02705dea034fb65ebc6799632adb7bd550d0aa/rfcs/SchemaCoordinates.md
@@ -35,6 +39,7 @@ image: /img/rfc_tracker.png
 
 ## Timeline
 
+- **[RFC document updated](https://github.com/graphql/graphql-wg/blob/e8be80df2a1d83f7bcae1a983fa2bfe084e16844/rfcs/SchemaCoordinates.md)** on 2026-01-26 by Martin Bonnin
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/6d02705dea034fb65ebc6799632adb7bd550d0aa/rfcs/SchemaCoordinates.md)** on 2024-02-08 by Benjie
 - **[RFC document created](https://github.com/graphql/graphql-wg/blob/257673b7ede31f1856b53ae833a43fc5034ac99b/rfcs/SchemaCoordinates.md)** on 2021-01-07 by Mark Larah
 
@@ -42,6 +47,13 @@ image: /img/rfc_tracker.png
 
 ---
 
+> # Status 
+> 
+> > [!IMPORTANT] 
+> > This RFC has been [merged](https://github.com/graphql/graphql-spec/pull/794) and is now part of the specification.
+> 
+> --- 
+> 
 > # RFC: Schema Coordinates
 > 
 > **Proposed by:** [Mark Larah](https://twitter.com/mark_larah) - Yelp

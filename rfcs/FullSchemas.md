@@ -3,11 +3,15 @@ identifier: FullSchemas
 stage: "0"
 title: Full Schemas
 events:
+  - type: docUpdated
+    date: 2026-01-28T16:24:37+01:00
+    href: https://github.com/graphql/graphql-wg/blob/dded0a4ff41064d6989be427feea6fba77ce9b6e/rfcs/FullSchemas.md
+    actor: Martin Bonnin
   - type: docCreated
     date: 2023-08-26T11:15:53+02:00
     href: https://github.com/graphql/graphql-wg/blob/297b11eabb3de0fff2457401ea147ecdb8228e24/rfcs/FullSchemas.md
     actor: Martin Bonnin
-related: 1036, 300
+related: 1036, 1163, 300
 shortname: Full Schemas
 image: /img/rfc_tracker.png
 ---
@@ -18,6 +22,8 @@ image: /img/rfc_tracker.png
 - **Stage**: [RFC0: Strawman](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-0-strawman)
 - **Champion**: -
 - **PR**: -
+- **Related**:
+  - [#1163](/rfcs/1163 "Allow clients to disable error propagation via request parameter (take 2) / RFC1") (Allow clients to disable error propagation via request parameter (take 2))
 
 <!-- BEGIN_CUSTOM_TEXT -->
 
@@ -27,6 +33,7 @@ image: /img/rfc_tracker.png
 
 ## Timeline
 
+- **[RFC document updated](https://github.com/graphql/graphql-wg/blob/dded0a4ff41064d6989be427feea6fba77ce9b6e/rfcs/FullSchemas.md)** on 2026-01-28 by Martin Bonnin
 - **[RFC document created](https://github.com/graphql/graphql-wg/blob/297b11eabb3de0fff2457401ea147ecdb8228e24/rfcs/FullSchemas.md)** on 2023-08-26 by Martin Bonnin
 
 <!-- VERBATIM -->
@@ -69,21 +76,13 @@ image: /img/rfc_tracker.png
 > 
 > In general, it would be nice to have a SDL format that would be a full representation of the server schema, even if it means it is more verbose.
 > 
+> With the advent of [service capabilities](https://github.com/graphql/graphql-spec/pull/1163), some SDL information is tied to the implementation and not to the type system. It makes sense to have "full schemas" contain this, but not too much in "source schemas"
+> 
 > This proposal is about allowing SDL documents that contain all the information required for tooling to validate any operation, later denominated as "full schema".
 > 
-> ## Proposal 1: relax SDL requirements
+> ## Proposal: be explicit about "full schemas" vs "source schemas"
 > 
-> An easy solution is to relax the SDL requirements and leave it up to tools to determine how they react to missing or existing built-in definitions.
-> 
-> A GraphQL implementation like graphql-js could decide to throw an error if it is fed with a definition that it itself provides. It could also decide to react on what is in the input schema. For an example, `@include`/`@skip` could be left unsupported by not adding them in the input schema.
-> 
-> A GraphQL client like apollo-kotlin could decide to throw an error if the introspection types are missing. Or add options to specify manually what built-in definitions to use for validation.
-> 
-> ## Proposal 2: be explicit about "full schemas" vs current, regular "schemas"
-> 
-> Another solution is to introduce "full schemas" in addition to the existing SDL schemas. A "full schema" is a schema that also contains the built-in definitions added by the implementation.
-> 
-> This proposal is more opinionated but also less flexible than proposal 1. It's either "regular schema" or "full schema" but an implementation could not decide to use some of the input definitions while still adding its own on top of them. 
+> Introduce "full schemas" in addition to the existing SDL schemas. A "full schema" is a schema that also contains the built-in definitions and service capabilities added by the implementation.
 > 
 > ## Questions
 > 

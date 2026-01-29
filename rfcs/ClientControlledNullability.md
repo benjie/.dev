@@ -1,11 +1,12 @@
 ---
 identifier: ClientControlledNullability
 stage: "0"
-title: "NOTE: this document is not being worked on at the moment, instead the
-  Nullability WG are currently exploring an alternative solution that addresses
-  many of the same underlying issues in a different way: [Semantic Nullability
-  RFC](SemanticNullability.md)."
+title: Status
 events:
+  - type: docUpdated
+    date: 2026-01-26T12:12:06+01:00
+    href: https://github.com/graphql/graphql-wg/blob/e8be80df2a1d83f7bcae1a983fa2bfe084e16844/rfcs/ClientControlledNullability.md
+    actor: Martin Bonnin
   - type: docUpdated
     date: 2025-02-24T18:01:28+01:00
     href: https://github.com/graphql/graphql-wg/blob/bc70c2c1aa125456449473a0b6d377462141fe2b/rfcs/ClientControlledNullability.md
@@ -50,6 +51,7 @@ image: /img/rfc_tracker.png
 
 ## Timeline
 
+- **[RFC document updated](https://github.com/graphql/graphql-wg/blob/e8be80df2a1d83f7bcae1a983fa2bfe084e16844/rfcs/ClientControlledNullability.md)** on 2026-01-26 by Martin Bonnin
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/bc70c2c1aa125456449473a0b6d377462141fe2b/rfcs/ClientControlledNullability.md)** on 2025-02-24 by Martin Bonnin
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/ca0fc775c66ae0e31c4ed605503a2679d9390705/rfcs/ClientControlledNullability.md)** on 2023-11-28 by Benjie Gillam
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/64c7f2e88b018de61763c780294d887b3c593b1e/rfcs/ClientControlledNullability.md)** on 2023-08-03 by Calvin Cestari
@@ -60,7 +62,10 @@ image: /img/rfc_tracker.png
 
 ---
 
-> NOTE: this document is not being worked on at the moment, instead the Nullability WG are currently exploring an alternative solution that addresses many of the same underlying issues in a different way: [Semantic Nullability RFC](SemanticNullability.md).
+> # Status
+> 
+> > [!IMPORTANT]
+> > this document is not being worked on at the moment, instead the Nullability working group is currently exploring an alternative solution that addresses many of the same underlying issues in a different way: [Semantic Nullability RFC](SemanticNullability.md).
 > 
 > --- 
 > 
