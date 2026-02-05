@@ -17,7 +17,7 @@ be helpful for people to keep track of the various RFCs.
 Ping `@benjie` on the [GraphQL Discord](https://discord.graphql.org) (`#wg`
 channel) and ask for him to run an update!
 
-Last updated: 2026-01-29T10:01:06.620Z
+Last updated: 2026-02-05T14:49:41.139Z
 
 :::
 
@@ -75,6 +75,7 @@ Last updated: 2026-01-29T10:01:06.620Z
 | RFC | Champion | Title | Latest |
 | --- | --- | --- | --- |
 | [#1200](/rfcs/1200 "Add Schema Coordinate to GraphQL Errors / RFC0") 🚀 | [@PascalSenn](https://github.com/PascalSenn) | [Add Schema Coordinate to GraphQL Errors](/rfcs/1200) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1200)</small> | **[Spec PR](https://github.com/graphql/graphql-spec/pull/1200) created** on 2025-10-28 by PascalSenn [_(more)_](/rfcs/1200#timeline) |
+| [MockSpec](/rfcs/MockSpec "GraphQL Response Mocking Specification / RFC0") | - | [GraphQL Response Mocking Specification](/rfcs/MockSpec) | **[RFC document created](https://github.com/graphql/graphql-wg/blob/5160deb91f76be77be56b1eb2c118c6dfe31087f/rfcs/MockSpec.md)** on 2026-02-02 by Mark Larah [_(more)_](/rfcs/MockSpec#timeline) |
 | [FullSchemas](/rfcs/FullSchemas "Full Schemas / RFC0") | - | [Full Schemas](/rfcs/FullSchemas) | **[RFC document updated](https://github.com/graphql/graphql-wg/blob/dded0a4ff41064d6989be427feea6fba77ce9b6e/rfcs/FullSchemas.md)** on 2026-01-28 by Martin Bonnin [_(more)_](/rfcs/FullSchemas#timeline) |
 | [ClientControl…](/rfcs/ClientControlledNullability "Client Controlled Nullability / RFC0") | - | [Status](/rfcs/ClientControlledNullability) | **[RFC document updated](https://github.com/graphql/graphql-wg/blob/e8be80df2a1d83f7bcae1a983fa2bfe084e16844/rfcs/ClientControlledNullability.md)** on 2026-01-26 by Martin Bonnin [_(more)_](/rfcs/ClientControlledNullability#timeline) |
 | [FieldExtensions](/rfcs/FieldExtensions "Field Extensions / RFC0") | - | [Status](/rfcs/FieldExtensions) | **[RFC document updated](https://github.com/graphql/graphql-wg/blob/e8be80df2a1d83f7bcae1a983fa2bfe084e16844/rfcs/FieldExtensions.md)** on 2026-01-26 by Martin Bonnin [_(more)_](/rfcs/FieldExtensions#timeline) |

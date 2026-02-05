@@ -327,6 +327,11 @@ const sidebars = {
         },
         {
           type: "doc",
+          id: "MockSpec",
+          label: "MockSpec: GraphQL Response Mocking Specification [RFC0]",
+        },
+        {
+          type: "doc",
           id: "FullSchemas",
           label: "FullSchemas: Full Schemas [RFC0]",
         },

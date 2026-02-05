@@ -9,6 +9,7 @@ image: /img/rfc_tracker.png
 The below is an aggregate overview of the latest activity across all RFCs. Note that it's _roughly_ in cronological order, but some dates are less accurate than others (e.g. commit timestamps are to the second, whereas working groups are generally to the month...).
 
 - [#1193](/rfcs/1193 "Update description of Fragments to emphasize evolving data needs / RFC3"): **Added to [2026-02-05 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2026/02-Feb/05-wg-primary.md)**
+- [MockSpec](/rfcs/MockSpec "GraphQL Response Mocking Specification / RFC0"): **[RFC document created](https://github.com/graphql/graphql-wg/blob/5160deb91f76be77be56b1eb2c118c6dfe31087f/rfcs/MockSpec.md)** on 2026-02-02 by Mark Larah
 - [FullSchemas](/rfcs/FullSchemas "Full Schemas / RFC0"): **[RFC document updated](https://github.com/graphql/graphql-wg/blob/dded0a4ff41064d6989be427feea6fba77ce9b6e/rfcs/FullSchemas.md)** on 2026-01-28 by Martin Bonnin
 - [ClientControlledNullability](/rfcs/ClientControlledNullability "Client Controlled Nullability / RFC0"): **[RFC document updated](https://github.com/graphql/graphql-wg/blob/e8be80df2a1d83f7bcae1a983fa2bfe084e16844/rfcs/ClientControlledNullability.md)** on 2026-01-26 by Martin Bonnin
 - [FieldExtensions](/rfcs/FieldExtensions "Field Extensions / RFC0"): **[RFC document updated](https://github.com/graphql/graphql-wg/blob/e8be80df2a1d83f7bcae1a983fa2bfe084e16844/rfcs/FieldExtensions.md)** on 2026-01-26 by Martin Bonnin
