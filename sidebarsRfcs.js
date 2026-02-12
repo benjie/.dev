@@ -20,6 +20,11 @@ const sidebars = {
       items: [
         {
           type: "doc",
+          id: "1193",
+          label: "1193: Update description of Fragments to emphasize evolving data needs [RFC3]",
+        },
+        {
+          type: "doc",
           id: "794",
           label: "794: Schema Coordinates [RFC3]",
         },
@@ -202,19 +207,6 @@ const sidebars = {
           type: "doc",
           id: "445",
           label: "445: Disallow non-breakable chains of circular references in Input Objects [RFC3]",
-        },
-      ],
-    },
-    {
-      type: "category",
-      label: "Stage 3: Accepted (pending edits)",
-      collapsed: false,
-      collapsible: true,
-      items: [
-        {
-          type: "doc",
-          id: "1193",
-          label: "1193: Update description of Fragments to emphasize evolving data needs [RFC3]",
         },
       ],
     },

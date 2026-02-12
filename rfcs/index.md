@@ -17,20 +17,9 @@ be helpful for people to keep track of the various RFCs.
 Ping `@benjie` on the [GraphQL Discord](https://discord.graphql.org) (`#wg`
 channel) and ask for him to run an update!
 
-Last updated: 2026-02-05T14:49:41.139Z
+Last updated: 2026-02-12T11:53:44.873Z
 
 :::
-
-## [Stage 3: Accepted (pending editorial)](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-3-accepted)
-
-
-<!-- prettier-ignore -->
-| RFC | Champion | Title | Latest |
-| --- | --- | --- | --- |
-| [#1193](/rfcs/1193 "Update description of Fragments to emphasize evolving data needs / RFC3") 🚀 | [@janettec](https://github.com/janettec) | [Update description of Fragments to emphasize evolving data needs](/rfcs/1193) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1193)</small> | **Added to [2026-02-05 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2026/02-Feb/05-wg-primary.md)** [_(more)_](/rfcs/1193#timeline) |
-
-
-
 
 ## [Stage 2: Draft](https://github.com/graphql/graphql-spec/blob/main/CONTRIBUTING.md#stage-2-draft)
 
@@ -140,6 +129,7 @@ Last updated: 2026-02-05T14:49:41.139Z
 <!-- prettier-ignore -->
 | RFC | Champion | Title | Latest |
 | --- | --- | --- | --- |
+| [#1193](/rfcs/1193 "Update description of Fragments to emphasize evolving data needs / RFC3") 🚀 | [@janettec](https://github.com/janettec) | [Update description of Fragments to emphasize evolving data needs](/rfcs/1193) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1193)</small> | **Commit pushed**: [Apply suggestion from @benjie](https://github.com/graphql/graphql-spec/commit/efbf718697026721091a8839c60f22821f1b2aa4) on 2026-02-05 by [@leebyron](https://github.com/leebyron) [_(more)_](/rfcs/1193#timeline) |
 | [#794](/rfcs/794 "Schema Coordinates / RFC3") | [@magicmark](https://github.com/magicmark) | [Schema Coordinates](/rfcs/794) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/794)</small> | **5 commits pushed**: [(latest)](https://github.com/graphql/graphql-spec/commit/6d3e3f020d18ec25797b095ae86f6727e5d66d65) on 2025-09-01 by [@leebyron](https://github.com/leebyron) [_(more)_](/rfcs/794#timeline) |
 | [#825](/rfcs/825 "OneOf Input Objects / RFC3") | [@benjie](https://github.com/benjie) | [OneOf Input Objects](/rfcs/825) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/825)</small> | **5 commits pushed**: [(latest)](https://github.com/graphql/graphql-spec/commit/d7173d16cda60716c67415f1096c87e4767e35ff) on 2025-09-01 by [@leebyron](https://github.com/leebyron) [_(more)_](/rfcs/825#timeline) |
 | [#1092](/rfcs/1092 "Recommend that order of unordered collections is maintained where possible / RFC3") | [@benjie](https://github.com/benjie) | [Recommend that order of unordered collections is maintained where possible](/rfcs/1092) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1092)</small> | **5 commits pushed**: [(latest)](https://github.com/graphql/graphql-spec/commit/a30a06e53a730c97a0c7c3573e6a65c216fdaac7) on 2025-09-01 by [@leebyron](https://github.com/leebyron) [_(more)_](/rfcs/1092#timeline) |
