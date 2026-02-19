@@ -319,6 +319,11 @@ const sidebars = {
         },
         {
           type: "doc",
+          id: "1211",
+          label: "1211: OneOf inhabitability [RFC0]",
+        },
+        {
+          type: "doc",
           id: "MockSpec",
           label: "MockSpec: GraphQL Response Mocking Specification [RFC0]",
         },
