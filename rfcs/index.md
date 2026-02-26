@@ -17,7 +17,7 @@ be helpful for people to keep track of the various RFCs.
 Ping `@benjie` on the [GraphQL Discord](https://discord.graphql.org) (`#wg`
 channel) and ask for him to run an update!
 
-Last updated: 2026-02-19T11:00:50.697Z
+Last updated: 2026-02-26T13:05:12.344Z
 
 :::
 
@@ -40,7 +40,6 @@ Last updated: 2026-02-19T11:00:50.697Z
 <!-- prettier-ignore -->
 | RFC | Champion | Title | Latest |
 | --- | --- | --- | --- |
-| [#1180](/rfcs/1180 "Editorial: Fix cases in validation where technically a crash could occur due to non-existent definitions / RFC1") 🚀 | [@JoviDeCroock](https://github.com/JoviDeCroock) | [Editorial: Fix cases in validation where technically a crash could occur due to non-existent definitions](/rfcs/1180) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1180)</small> | **Commit pushed**: [Merge branch 'main' into fix-crash-cases](https://github.com/graphql/graphql-spec/commit/d65f5607b4dc0f641bcd8183d4d44ba96c18b7f2) on 2025-11-08 by [@JoviDeCroock](https://github.com/JoviDeCroock) [_(more)_](/rfcs/1180#timeline) |
 | [#1177](/rfcs/1177 "Incorporate meta-fields into ExecuteCollectedFields / RFC1") 🚀 | [@benjie](https://github.com/benjie) | [Incorporate meta-fields into ExecuteCollectedFields](/rfcs/1177) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1177)</small> | **4 commits pushed**: [(latest)](https://github.com/graphql/graphql-spec/commit/4b7c111802bebde1703ae8f6c661847f4fce3caa) on 2025-07-04 by [@benjie](https://github.com/benjie) [_(more)_](/rfcs/1177#timeline) |
 | [#1163](/rfcs/1163 "Allow clients to disable error propagation via request parameter (take 2) / RFC1") | [@benjie](https://github.com/benjie) | [Service capabilities / error behaviors](/rfcs/1163) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1163)</small> | **Added to [2026-01-15 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2026/01-Jan/15-wg-primary.md)** [_(more)_](/rfcs/1163#timeline) |
 | [#1206](/rfcs/1206 "Add support for directives on directive definitions / RFC1") | [@BoD](https://github.com/BoD) | [Add support for directives on directive definitions](/rfcs/1206) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1206)</small> | **Added to [2026-01-15 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2026/01-Jan/15-wg-primary.md)** [_(more)_](/rfcs/1206#timeline) |
@@ -52,6 +51,7 @@ Last updated: 2026-02-19T11:00:50.697Z
 | [#950](/rfcs/950 "allow unions to include interfaces and unions / RFC1") | [@yaacovCR](https://github.com/yaacovCR) | [allow unions to include interfaces and unions](/rfcs/950) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/950)</small> | **Added to [2022-08-04 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2022/2022-08-04.md)** [_(more)_](/rfcs/950#timeline) |
 | [#939](/rfcs/939 "allow unions to declare implementation of interfaces / RFC1") | [@yaacovCR](https://github.com/yaacovCR) | [allow unions to declare implementation of interfaces](/rfcs/939) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/939)</small> | **Added to [2022-06-02 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2022/2022-06-02.md)** [_(more)_](/rfcs/939#timeline) |
 | [#509](/rfcs/509 "Allow singular variables in list locations / RFC1") | [@taion](https://github.com/taion) | [Allow singular variables in list locations](/rfcs/509) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/509)</small> | **Commit pushed**: [Remove CoerceVariableValues](https://github.com/graphql/graphql-spec/commit/16978d440b8657b443a6fad4983cd8caf692b6d9) on 2018-09-01 by [@taion](https://github.com/taion) [_(more)_](/rfcs/509#timeline) |
+| ~~[#1180](/rfcs/1180 "Editorial: Fix cases in validation where technically a crash could occur due to non-existent definitions / RFC1")~~ 🚀 | [@JoviDeCroock](https://github.com/JoviDeCroock) | [~~Editorial: Fix cases in validation where technically a crash could occur due to non-existent definitions~~](/rfcs/1180) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1180)</small> | **Commit pushed**: [Merge branch 'main' into fix-crash-cases](https://github.com/graphql/graphql-spec/commit/d65f5607b4dc0f641bcd8183d4d44ba96c18b7f2) on 2025-11-08 by [@JoviDeCroock](https://github.com/JoviDeCroock) [_(more)_](/rfcs/1180#timeline) |
 | ~~[#907](/rfcs/907 "Add support for directives on directives / RFC1")~~ | [@IvanGoncharov](https://github.com/IvanGoncharov) | [~~Add support for directives on directives~~](/rfcs/907) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/907)</small> | **Added to [2022-01-06 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2022/2022-01-06.md)** [_(more)_](/rfcs/907#timeline) |
 
 
@@ -63,6 +63,7 @@ Last updated: 2026-02-19T11:00:50.697Z
 <!-- prettier-ignore -->
 | RFC | Champion | Title | Latest |
 | --- | --- | --- | --- |
+| [#1208](/rfcs/1208 "Service capabilities / RFC0") 🚀 | [@benjie](https://github.com/benjie) | [Service capabilities](/rfcs/1208) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1208)</small> | **[Spec PR](https://github.com/graphql/graphql-spec/pull/1208) created** on 2026-01-15 by benjie [_(more)_](/rfcs/1208#timeline) |
 | [#1200](/rfcs/1200 "Add Schema Coordinate to GraphQL Errors / RFC0") 🚀 | [@PascalSenn](https://github.com/PascalSenn) | [Add Schema Coordinate to GraphQL Errors](/rfcs/1200) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1200)</small> | **[Spec PR](https://github.com/graphql/graphql-spec/pull/1200) created** on 2025-10-28 by PascalSenn [_(more)_](/rfcs/1200#timeline) |
 | [#1211](/rfcs/1211 "OneOf inhabitability / RFC0") | [@jbellenger](https://github.com/jbellenger) | [OneOf inhabitability](/rfcs/1211) <small>[GitHub](https://github.com/graphql/graphql-spec/pull/1211)</small> | **[Spec PR](https://github.com/graphql/graphql-spec/pull/1211) created** on 2026-02-17 by jbellenger [_(more)_](/rfcs/1211#timeline) |
 | [MockSpec](/rfcs/MockSpec "GraphQL Response Mocking Specification / RFC0") | - | [GraphQL Response Mocking Specification](/rfcs/MockSpec) | **[RFC document created](https://github.com/graphql/graphql-wg/blob/5160deb91f76be77be56b1eb2c118c6dfe31087f/rfcs/MockSpec.md)** on 2026-02-02 by Mark Larah [_(more)_](/rfcs/MockSpec#timeline) |

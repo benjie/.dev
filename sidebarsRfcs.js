@@ -241,11 +241,6 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          id: "1180",
-          label: "1180: Editorial: Fix cases in validation where technically a crash could occur due to non-existent definitions [RFC1]",
-        },
-        {
-          type: "doc",
           id: "1177",
           label: "1177*: Incorporate meta-fields into ExecuteCollectedFields [RFC1]",
         },
@@ -301,6 +296,11 @@ const sidebars = {
         },
         {
           type: "doc",
+          id: "1180",
+          label: "1180: Editorial: Fix cases in validation where technically a crash could occur due to non-existent definitions [RFC1]",
+        },
+        {
+          type: "doc",
           id: "907",
           label: "907: Add support for directives on directives [RFC1]",
         },
@@ -312,6 +312,11 @@ const sidebars = {
       collapsed: true,
       collapsible: true,
       items: [
+        {
+          type: "doc",
+          id: "1208",
+          label: "1208*: Service capabilities [RFC0]",
+        },
         {
           type: "doc",
           id: "1200",

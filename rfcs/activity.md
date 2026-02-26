@@ -18,12 +18,29 @@ The below is an aggregate overview of the latest activity across all RFCs. Note 
 - [ClientControlledNullability](/rfcs/ClientControlledNullability "Client Controlled Nullability / RFC0"): **[RFC document updated](https://github.com/graphql/graphql-wg/blob/e8be80df2a1d83f7bcae1a983fa2bfe084e16844/rfcs/ClientControlledNullability.md)** on 2026-01-26 by Martin Bonnin
 - [FieldExtensions](/rfcs/FieldExtensions "Field Extensions / RFC0"): **[RFC document updated](https://github.com/graphql/graphql-wg/blob/e8be80df2a1d83f7bcae1a983fa2bfe084e16844/rfcs/FieldExtensions.md)** on 2026-01-26 by Martin Bonnin
 - [SchemaCoordinates](/rfcs/SchemaCoordinates "Schema Coordinates / RFC0"): **[RFC document updated](https://github.com/graphql/graphql-wg/blob/e8be80df2a1d83f7bcae1a983fa2bfe084e16844/rfcs/SchemaCoordinates.md)** on 2026-01-26 by Martin Bonnin
+- [#1208](/rfcs/1208 "Service capabilities / RFC0"): **[Spec PR](https://github.com/graphql/graphql-spec/pull/1208) created** on 2026-01-15 by benjie
 - [#1163](/rfcs/1163 "Allow clients to disable error propagation via request parameter (take 2) / RFC1"): **Added to [2026-01-15 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2026/01-Jan/15-wg-primary.md)**
 - [#1193](/rfcs/1193 "Update description of Fragments to emphasize evolving data needs / RFC3"): **Added to [2026-01-15 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2026/01-Jan/15-wg-primary.md)**
 - [#1206](/rfcs/1206 "Add support for directives on directive definitions / RFC1"): **Added to [2026-01-15 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2026/01-Jan/15-wg-primary.md)**
+- [#1208](/rfcs/1208 "Service capabilities / RFC0"): **13 commits pushed** on 2026-01-15:
+  - [Extract service capabilities](https://github.com/graphql/graphql-spec/commit/5e01c0c6857a50a75c5e0968920408baeb703061) by [@benjie](https://github.com/benjie)
+  - [Reserve example.&#x2a; identifiers](https://github.com/graphql/graphql-spec/commit/ccb76ed9618d02ef83a195eb20f72e86d955d26e) by [@benjie](https://github.com/benjie)
+  - [Replace default capabilities](https://github.com/graphql/graphql-spec/commit/35b8067f07f77bdb7d64dee591f7d51fa0dcf7f5) by [@benjie](https://github.com/benjie)
+  - [Update syntax, add examples](https://github.com/graphql/graphql-spec/commit/62583e9fbfbe926210bf4c502fc05bee3d87f107) by [@benjie](https://github.com/benjie)
+  - [Editorial](https://github.com/graphql/graphql-spec/commit/601b84691cd4a94155def12b973ed621017a222f) by [@benjie](https://github.com/benjie)
+  - [Extend syntax](https://github.com/graphql/graphql-spec/commit/33a152486b7bd6172ef2037d60d0b5e320adc3ad) by [@benjie](https://github.com/benjie)
+  - [Note that IANA reserved domains are also reserved](https://github.com/graphql/graphql-spec/commit/6d0c2d64f4a883e2d8e9342051c4c6fb312ad7c7) by [@benjie](https://github.com/benjie)
+  - [Clearer](https://github.com/graphql/graphql-spec/commit/39b9b565daa538255e6a45586f147e0d90687d82) by [@benjie](https://github.com/benjie)
+  - [Lee suggested to not use +](https://github.com/graphql/graphql-spec/commit/fb440fadce5eb8fbf6ecfb65dc7073e94f6076ed) by [@benjie](https://github.com/benjie)
+  - [Move Service stuff to bottom of lists](https://github.com/graphql/graphql-spec/commit/f1659df71aad60c3d032c4042b24e145e431c16b) by [@benjie](https://github.com/benjie)
+  - [More editorial](https://github.com/graphql/graphql-spec/commit/9980de866257089f4f7535ebdf7c4a79567808d6) by [@benjie](https://github.com/benjie)
+  - [Format](https://github.com/graphql/graphql-spec/commit/e92af2935f5a2b3f7e3b5828c59184dd359dbfcf) by [@benjie](https://github.com/benjie)
+  - [Typo](https://github.com/graphql/graphql-spec/commit/aa7302b6bc19da0b2de82c18adb8945b867baace) by [@benjie](https://github.com/benjie)
+- [#1208](/rfcs/1208 "Service capabilities / RFC0"): **Added to [2026-01-15 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2026/01-Jan/15-wg-primary.md)**
 - [#1163](/rfcs/1163 "Allow clients to disable error propagation via request parameter (take 2) / RFC1"): **Mentioned in [2026-01 WG notes](https://github.com/graphql/graphql-wg/blob/main/notes/2026/2026-01.md)**
 - [#1193](/rfcs/1193 "Update description of Fragments to emphasize evolving data needs / RFC3"): **Mentioned in [2026-01 WG notes](https://github.com/graphql/graphql-wg/blob/main/notes/2026/2026-01.md)**
 - [#1206](/rfcs/1206 "Add support for directives on directive definitions / RFC1"): **Mentioned in [2026-01 WG notes](https://github.com/graphql/graphql-wg/blob/main/notes/2026/2026-01.md)**
+- [#1208](/rfcs/1208 "Service capabilities / RFC0"): **Mentioned in [2026-01 WG notes](https://github.com/graphql/graphql-wg/blob/main/notes/2026/2026-01.md)**
 - [#1206](/rfcs/1206 "Add support for directives on directive definitions / RFC1"): **Commit pushed**: [Directives are not types](https://github.com/graphql/graphql-spec/commit/a25789467caf85cbc2e6f63a1cb8091bec0837f8) on 2025-12-19 by [@BoD](https://github.com/BoD)
 - [#1206](/rfcs/1206 "Add support for directives on directive definitions / RFC1"): **[Spec PR](https://github.com/graphql/graphql-spec/pull/1206) created** on 2025-12-18 by BoD
 - [#1206](/rfcs/1206 "Add support for directives on directive definitions / RFC1"): **Commit pushed**: [Reformat with prettier](https://github.com/graphql/graphql-spec/commit/610d8db870b106049aa7a5c21ddc2d34a174e7df) on 2025-12-18 by [@BoD](https://github.com/BoD)
