@@ -8,6 +8,10 @@ image: /img/rfc_tracker.png
 
 The below is an aggregate overview of the latest activity across all RFCs. Note that it's _roughly_ in cronological order, but some dates are less accurate than others (e.g. commit timestamps are to the second, whereas working groups are generally to the month...).
 
+- [#1211](/rfcs/1211 "OneOf inhabitability / RFC0"): **Added to [2026-03-05 WG agenda](https://github.com/graphql/graphql-wg/blob/main/agendas/2026/03-Mar/05-wg-primary.md)**
+- [#1211](/rfcs/1211 "OneOf inhabitability / RFC0"): **Commit pushed**: [feedback](https://github.com/graphql/graphql-spec/commit/3ef9ff7ab561ae75b8f44bb35f0aae61068ff426) on 2026-03-03 by [@jbellenger](https://github.com/jbellenger)
+- [#1211](/rfcs/1211 "OneOf inhabitability / RFC0"): **Commit pushed**: [feedback](https://github.com/graphql/graphql-spec/commit/d73c3ea3cf1a044f51e5f28f8f9152dbc0563398) on 2026-02-28 by [@jbellenger](https://github.com/jbellenger)
+- [#1211](/rfcs/1211 "OneOf inhabitability / RFC0"): **Commit pushed**: [rework circular references section](https://github.com/graphql/graphql-spec/commit/3d521c28547673f2504aaf60bc96477919564f48) on 2026-02-26 by [@jbellenger](https://github.com/jbellenger)
 - [#1211](/rfcs/1211 "OneOf inhabitability / RFC0"): **[Spec PR](https://github.com/graphql/graphql-spec/pull/1211) created** on 2026-02-17 by jbellenger
 - [#1211](/rfcs/1211 "OneOf inhabitability / RFC0"): **Commit pushed**: [spec edits for OneOf inhabitability](https://github.com/graphql/graphql-spec/commit/1e86f0aba3c746cdd5cdba47b8ea1bd7973c4067) on 2026-02-16 by [@jbellenger](https://github.com/jbellenger)
 - [#1193](/rfcs/1193 "Update description of Fragments to emphasize evolving data needs / RFC3"): **Commit pushed**: [Apply suggestion from @benjie](https://github.com/graphql/graphql-spec/commit/efbf718697026721091a8839c60f22821f1b2aa4) on 2026-02-05 by [@leebyron](https://github.com/leebyron)
