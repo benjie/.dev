@@ -76,11 +76,9 @@ const config = {
         },
         items: [
           {
-            type: "doc",
-            docId: "index",
+            href: "https://rfcs.benjie.dev",
             position: "left",
             label: "RFCs",
-            docsPluginId: "rfcs",
           },
           {
             to: "book",
