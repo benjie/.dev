@@ -14,7 +14,15 @@ events:
     href: https://github.com/graphql/graphql-wg/blob/ca0fc775c66ae0e31c4ed605503a2679d9390705/rfcs/InputUnion.md
     actor: Benjie Gillam
   - type: docUpdated
+    date: 2023-11-28T18:43:39Z
+    href: https://github.com/graphql/graphql-wg/blob/ca0fc775c66ae0e31c4ed605503a2679d9390705/rfcs/InputUnion.md
+    actor: Benjie Gillam
+  - type: docUpdated
     date: 2023-11-28T17:58:57+00:00
+    href: https://github.com/graphql/graphql-wg/blob/5bfb8d590cc9693db1149b547d8db5041f05b731/rfcs/InputUnion.md
+    actor: Benjie Gillam
+  - type: docUpdated
+    date: 2023-11-28T17:58:57Z
     href: https://github.com/graphql/graphql-wg/blob/5bfb8d590cc9693db1149b547d8db5041f05b731/rfcs/InputUnion.md
     actor: Benjie Gillam
   - type: docUpdated
@@ -39,6 +47,10 @@ events:
     actor: Evan Huus
   - type: docUpdated
     date: 2020-11-04T16:08:34+00:00
+    href: https://github.com/graphql/graphql-wg/blob/9ac6a4d8fceb2d65b4ac0e2468e7fc5e5fd4110e/rfcs/InputUnion.md
+    actor: Benjie Gillam
+  - type: docUpdated
+    date: 2020-11-04T16:08:34Z
     href: https://github.com/graphql/graphql-wg/blob/9ac6a4d8fceb2d65b4ac0e2468e7fc5e5fd4110e/rfcs/InputUnion.md
     actor: Benjie Gillam
   - type: docUpdated
@@ -98,7 +110,15 @@ events:
     href: https://github.com/graphql/graphql-wg/blob/a30859f5cc1c48aa7a2808bbeb068d2db40aa68a/rfcs/InputUnion.md
     actor: Benjie Gillam
   - type: docUpdated
+    date: 2020-01-31T16:55:22Z
+    href: https://github.com/graphql/graphql-wg/blob/a30859f5cc1c48aa7a2808bbeb068d2db40aa68a/rfcs/InputUnion.md
+    actor: Benjie Gillam
+  - type: docUpdated
     date: 2020-01-25T18:11:14+00:00
+    href: https://github.com/graphql/graphql-wg/blob/798432aaa5e67e51b51ca0e4d4d85a76f6fcd2fc/rfcs/InputUnion.md
+    actor: Benjie Gillam
+  - type: docUpdated
+    date: 2020-01-25T18:11:14Z
     href: https://github.com/graphql/graphql-wg/blob/798432aaa5e67e51b51ca0e4d4d85a76f6fcd2fc/rfcs/InputUnion.md
     actor: Benjie Gillam
   - type: docUpdated
@@ -110,11 +130,23 @@ events:
     href: https://github.com/graphql/graphql-wg/blob/bf2762820b9f74fca56af7513a87396df18bdb00/rfcs/InputUnion.md
     actor: Benjie Gillam
   - type: docUpdated
+    date: 2019-12-17T16:13:50Z
+    href: https://github.com/graphql/graphql-wg/blob/bf2762820b9f74fca56af7513a87396df18bdb00/rfcs/InputUnion.md
+    actor: Benjie Gillam
+  - type: docUpdated
     date: 2019-12-11T02:02:38+00:00
     href: https://github.com/graphql/graphql-wg/blob/cbfa5ba8cca8a69e3ad362c26377132e4b0629d1/rfcs/InputUnion.md
     actor: Benjie Gillam
   - type: docUpdated
+    date: 2019-12-11T02:02:38Z
+    href: https://github.com/graphql/graphql-wg/blob/cbfa5ba8cca8a69e3ad362c26377132e4b0629d1/rfcs/InputUnion.md
+    actor: Benjie Gillam
+  - type: docUpdated
     date: 2019-12-04T19:24:48+00:00
+    href: https://github.com/graphql/graphql-wg/blob/784e21e989143ef5fda7b5d57e37c3b8e8cdd61d/rfcs/InputUnion.md
+    actor: Benjie Gillam
+  - type: docUpdated
+    date: 2019-12-04T19:24:48Z
     href: https://github.com/graphql/graphql-wg/blob/784e21e989143ef5fda7b5d57e37c3b8e8cdd61d/rfcs/InputUnion.md
     actor: Benjie Gillam
   - type: docUpdated
@@ -127,6 +159,10 @@ events:
     actor: Benedikt Franke
   - type: docUpdated
     date: 2019-11-11T21:56:20+00:00
+    href: https://github.com/graphql/graphql-wg/blob/638542f54333c0ae9216fb723fc1c2f16d6941d8/rfcs/InputUnion.md
+    actor: Benjie Gillam
+  - type: docUpdated
+    date: 2019-11-11T21:56:20Z
     href: https://github.com/graphql/graphql-wg/blob/638542f54333c0ae9216fb723fc1c2f16d6941d8/rfcs/InputUnion.md
     actor: Benjie Gillam
   - type: docUpdated
@@ -221,12 +257,15 @@ image: /img/rfc_tracker.png
 
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/87c54082d9851b2ed195f8208bc75fd751ceefa2/rfcs/InputUnion.md)** on 2025-06-05 by Benjie
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/ca0fc775c66ae0e31c4ed605503a2679d9390705/rfcs/InputUnion.md)** on 2023-11-28 by Benjie Gillam
+- **[RFC document updated](https://github.com/graphql/graphql-wg/blob/ca0fc775c66ae0e31c4ed605503a2679d9390705/rfcs/InputUnion.md)** on 2023-11-28 by Benjie Gillam
+- **[RFC document updated](https://github.com/graphql/graphql-wg/blob/5bfb8d590cc9693db1149b547d8db5041f05b731/rfcs/InputUnion.md)** on 2023-11-28 by Benjie Gillam
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/5bfb8d590cc9693db1149b547d8db5041f05b731/rfcs/InputUnion.md)** on 2023-11-28 by Benjie Gillam
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/8079f5885f03f78a5910a6a5bdeaea063f9a3184/rfcs/InputUnion.md)** on 2021-09-03 by Lee Byron
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/f520be18cc7794d6179f7c6e126b45085f273f1f/rfcs/InputUnion.md)** on 2021-09-02 by Ivan Goncharov
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/34c8f9d377e4338088a85389127a3cd6ea1ec792/rfcs/InputUnion.md)** on 2021-09-02 by ericvergnaud
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/bfcb1dd76e6095e95bcf92f4a835bea49bcd40c1/rfcs/InputUnion.md)** on 2021-04-05 by Lee Byron
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/fe76b61dfb8ece0de95fcf24bf2a65a4c74d8bac/rfcs/InputUnion.md)** on 2020-11-18 by Evan Huus
+- **[RFC document updated](https://github.com/graphql/graphql-wg/blob/9ac6a4d8fceb2d65b4ac0e2468e7fc5e5fd4110e/rfcs/InputUnion.md)** on 2020-11-04 by Benjie Gillam
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/9ac6a4d8fceb2d65b4ac0e2468e7fc5e5fd4110e/rfcs/InputUnion.md)** on 2020-11-04 by Benjie Gillam
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/d167baa69421602a4ace5fd1c24421f04b3a9fd6/rfcs/InputUnion.md)** on 2020-09-30 by Dan Freeman
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/52af70230eb2f69f9e92771f748608e71e038856/rfcs/InputUnion.md)** on 2020-07-02 by Joel Turkel
@@ -237,18 +276,24 @@ image: /img/rfc_tracker.png
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/d59706e2dea6a4e61f65adacd96a2957f0123cdb/rfcs/InputUnion.md)** on 2020-05-28 by Lee Byron
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/0d28b7a1137b1bbfd804cb3cd7d8e848e9129749/rfcs/InputUnion.md)** on 2020-05-08 by Blake Gentry
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/9e39f96b35f8c8535391c4d84a7098dc1349f533/rfcs/InputUnion.md)** on 2020-04-30 by Lee Byron
-- **[RFC document updated](https://github.com/graphql/graphql-wg/blob/2d32eb03011dfe07be1ceaea4c6ae40c008ad4ff/rfcs/InputUnion.md)** on 2020-04-01 by Vince Foley
+- **[RFC document updated](https://github.com/graphql/graphql-wg/blob/2d32eb03011dfe07be1ceaea4c6ae40c008ad4ff/rfcs/InputUnion.md)** on 2020-03-31 by Vince Foley
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/c5660e12f39cfda7db320e3f3094c17d1491a40a/rfcs/InputUnion.md)** on 2020-03-05 by Vince Foley
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/59feb21984d39e4f69cd4eda25d60a2dceb120c5/rfcs/InputUnion.md)** on 2020-03-05 by Vince Foley
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/fb1914a736bfcc141624395e2e508730bdbec340/rfcs/InputUnion.md)** on 2020-02-06 by Lee Byron
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/a30859f5cc1c48aa7a2808bbeb068d2db40aa68a/rfcs/InputUnion.md)** on 2020-01-31 by Benjie Gillam
+- **[RFC document updated](https://github.com/graphql/graphql-wg/blob/a30859f5cc1c48aa7a2808bbeb068d2db40aa68a/rfcs/InputUnion.md)** on 2020-01-31 by Benjie Gillam
+- **[RFC document updated](https://github.com/graphql/graphql-wg/blob/798432aaa5e67e51b51ca0e4d4d85a76f6fcd2fc/rfcs/InputUnion.md)** on 2020-01-25 by Benjie Gillam
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/798432aaa5e67e51b51ca0e4d4d85a76f6fcd2fc/rfcs/InputUnion.md)** on 2020-01-25 by Benjie Gillam
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/1c2d54263073a1b7dcc295331e056565417150f2/rfcs/InputUnion.md)** on 2020-01-09 by Vince Foley
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/bf2762820b9f74fca56af7513a87396df18bdb00/rfcs/InputUnion.md)** on 2019-12-17 by Benjie Gillam
+- **[RFC document updated](https://github.com/graphql/graphql-wg/blob/bf2762820b9f74fca56af7513a87396df18bdb00/rfcs/InputUnion.md)** on 2019-12-17 by Benjie Gillam
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/cbfa5ba8cca8a69e3ad362c26377132e4b0629d1/rfcs/InputUnion.md)** on 2019-12-11 by Benjie Gillam
+- **[RFC document updated](https://github.com/graphql/graphql-wg/blob/cbfa5ba8cca8a69e3ad362c26377132e4b0629d1/rfcs/InputUnion.md)** on 2019-12-11 by Benjie Gillam
+- **[RFC document updated](https://github.com/graphql/graphql-wg/blob/784e21e989143ef5fda7b5d57e37c3b8e8cdd61d/rfcs/InputUnion.md)** on 2019-12-04 by Benjie Gillam
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/784e21e989143ef5fda7b5d57e37c3b8e8cdd61d/rfcs/InputUnion.md)** on 2019-12-04 by Benjie Gillam
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/8157175faa2cb84a5c95bac552d1411958671433/rfcs/InputUnion.md)** on 2019-11-28 by Vince Foley
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/c8ffbf737fdaeb0389ec729fbbf0845cae5294f2/rfcs/InputUnion.md)** on 2019-11-26 by Benedikt Franke
+- **[RFC document updated](https://github.com/graphql/graphql-wg/blob/638542f54333c0ae9216fb723fc1c2f16d6941d8/rfcs/InputUnion.md)** on 2019-11-11 by Benjie Gillam
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/638542f54333c0ae9216fb723fc1c2f16d6941d8/rfcs/InputUnion.md)** on 2019-11-11 by Benjie Gillam
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/60183a9c292ef539d3c25ffc1d0a59d70c03a52a/rfcs/InputUnion.md)** on 2019-11-11 by Vince Foley
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/14e67c157a0ce69d7ccbb32c3fb0b18234b8ce21/rfcs/InputUnion.md)** on 2019-11-11 by Vince Foley

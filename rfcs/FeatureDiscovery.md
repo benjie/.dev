@@ -7,6 +7,10 @@ events:
     date: 2023-11-28T17:58:57+00:00
     href: https://github.com/graphql/graphql-wg/blob/5bfb8d590cc9693db1149b547d8db5041f05b731/rfcs/FeatureDiscovery.md
     actor: Benjie Gillam
+  - type: docUpdated
+    date: 2023-11-28T17:58:57Z
+    href: https://github.com/graphql/graphql-wg/blob/5bfb8d590cc9693db1149b547d8db5041f05b731/rfcs/FeatureDiscovery.md
+    actor: Benjie Gillam
   - type: docCreated
     date: 2023-08-19T03:02:15-07:00
     href: https://github.com/graphql/graphql-wg/blob/ced6f6f0566fcf06f775c2fb312ddbfbc47b9bf8/rfcs/FeatureDiscovery.md
@@ -34,6 +38,7 @@ image: /img/rfc_tracker.png
 
 ## Timeline
 
+- **[RFC document updated](https://github.com/graphql/graphql-wg/blob/5bfb8d590cc9693db1149b547d8db5041f05b731/rfcs/FeatureDiscovery.md)** on 2023-11-28 by Benjie Gillam
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/5bfb8d590cc9693db1149b547d8db5041f05b731/rfcs/FeatureDiscovery.md)** on 2023-11-28 by Benjie Gillam
 - **[RFC document created](https://github.com/graphql/graphql-wg/blob/ced6f6f0566fcf06f775c2fb312ddbfbc47b9bf8/rfcs/FeatureDiscovery.md)** on 2023-08-19 by Young Min Kim
 

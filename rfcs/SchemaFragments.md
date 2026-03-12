@@ -7,6 +7,10 @@ events:
     date: 2021-09-02T21:33:40+00:00
     href: https://github.com/graphql/graphql-wg/blob/47d7a8004b1469a9d0480446c820dc9ad01e78b9/rfcs/SchemaFragments.md
     actor: Daniel Starns
+  - type: docCreated
+    date: 2021-09-02T21:33:40Z
+    href: https://github.com/graphql/graphql-wg/blob/47d7a8004b1469a9d0480446c820dc9ad01e78b9/rfcs/SchemaFragments.md
+    actor: Daniel Starns
 shortname: Schema Fragments
 image: /img/rfc_tracker.png
 ---
@@ -26,6 +30,7 @@ image: /img/rfc_tracker.png
 
 ## Timeline
 
+- **[RFC document created](https://github.com/graphql/graphql-wg/blob/47d7a8004b1469a9d0480446c820dc9ad01e78b9/rfcs/SchemaFragments.md)** on 2021-09-02 by Daniel Starns
 - **[RFC document created](https://github.com/graphql/graphql-wg/blob/47d7a8004b1469a9d0480446c820dc9ad01e78b9/rfcs/SchemaFragments.md)** on 2021-09-02 by Daniel Starns
 
 <!-- VERBATIM -->

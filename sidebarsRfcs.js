@@ -218,13 +218,18 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          id: "1081",
-          label: "1081: Fragment arguments/variables (syntax/validation/execution) [RFC2]",
+          id: "1058",
+          label: "1058*: List coercion algorithm [RFC2]",
         },
         {
           type: "doc",
-          id: "1058",
-          label: "1058*: List coercion algorithm [RFC2]",
+          id: "1110",
+          label: "1110: Incremental Delivery spec draft [RFC2]",
+        },
+        {
+          type: "doc",
+          id: "1081",
+          label: "1081: Fragment arguments/variables (syntax/validation/execution) [RFC2]",
         },
         {
           type: "doc",
@@ -243,6 +248,11 @@ const sidebars = {
           type: "doc",
           id: "1177",
           label: "1177*: Incorporate meta-fields into ExecuteCollectedFields [RFC1]",
+        },
+        {
+          type: "doc",
+          id: "1211",
+          label: "1211: OneOf inhabitability [RFC1]",
         },
         {
           type: "doc",
@@ -266,11 +276,6 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "1110",
-          label: "1110: Incremental Delivery spec draft [RFC1]",
-        },
-        {
-          type: "doc",
           id: "1127",
           label: "1127*: When `sourceStream` errors, yield a `{ errors: [...] }` response [RFC1]",
         },
@@ -281,16 +286,6 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "950",
-          label: "950: allow unions to include interfaces and unions [RFC1]",
-        },
-        {
-          type: "doc",
-          id: "939",
-          label: "939: allow unions to declare implementation of interfaces [RFC1]",
-        },
-        {
-          type: "doc",
           id: "509",
           label: "509: Allow singular variables in list locations [RFC1]",
         },
@@ -298,6 +293,16 @@ const sidebars = {
           type: "doc",
           id: "1180",
           label: "1180: Editorial: Fix cases in validation where technically a crash could occur due to non-existent definitions [RFC1]",
+        },
+        {
+          type: "doc",
+          id: "950",
+          label: "950: allow unions to include interfaces and unions [RFC1]",
+        },
+        {
+          type: "doc",
+          id: "939",
+          label: "939: allow unions to declare implementation of interfaces [RFC1]",
         },
         {
           type: "doc",
@@ -321,11 +326,6 @@ const sidebars = {
           type: "doc",
           id: "1200",
           label: "1200: Add Schema Coordinate to GraphQL Errors [RFC0]",
-        },
-        {
-          type: "doc",
-          id: "1211",
-          label: "1211: OneOf inhabitability [RFC0]",
         },
         {
           type: "doc",

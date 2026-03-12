@@ -8,11 +8,19 @@ events:
     href: https://github.com/graphql/graphql-wg/blob/c46f67dad4154c3b693d337c815900a5c7909423/rfcs/Struct.md
     actor: Benjie
   - type: docUpdated
+    date: 2023-11-28T17:56:45Z
+    href: https://github.com/graphql/graphql-wg/blob/c46f67dad4154c3b693d337c815900a5c7909423/rfcs/Struct.md
+    actor: Benjie
+  - type: docUpdated
     date: 2023-08-24T18:44:37+05:30
     href: https://github.com/graphql/graphql-wg/blob/c599436ddf5737dcee28d46e77eec567921c0ac1/rfcs/Struct.md
     actor: Tushar Mathur
   - type: docUpdated
     date: 2023-01-19T10:17:18+00:00
+    href: https://github.com/graphql/graphql-wg/blob/a64fd6caea23299587aba7a66cd0d157ad9bcc3e/rfcs/Struct.md
+    actor: Benjie
+  - type: docUpdated
+    date: 2023-01-19T10:17:18Z
     href: https://github.com/graphql/graphql-wg/blob/a64fd6caea23299587aba7a66cd0d157ad9bcc3e/rfcs/Struct.md
     actor: Benjie
   - type: docUpdated
@@ -55,7 +63,9 @@ image: /img/rfc_tracker.png
 ## Timeline
 
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/c46f67dad4154c3b693d337c815900a5c7909423/rfcs/Struct.md)** on 2023-11-28 by Benjie
+- **[RFC document updated](https://github.com/graphql/graphql-wg/blob/c46f67dad4154c3b693d337c815900a5c7909423/rfcs/Struct.md)** on 2023-11-28 by Benjie
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/c599436ddf5737dcee28d46e77eec567921c0ac1/rfcs/Struct.md)** on 2023-08-24 by Tushar Mathur
+- **[RFC document updated](https://github.com/graphql/graphql-wg/blob/a64fd6caea23299587aba7a66cd0d157ad9bcc3e/rfcs/Struct.md)** on 2023-01-19 by Benjie
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/a64fd6caea23299587aba7a66cd0d157ad9bcc3e/rfcs/Struct.md)** on 2023-01-19 by Benjie
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/ab192ae0b078566ad2d2fafafb24248aab017968/rfcs/Struct.md)** on 2022-10-24 by Alexander Varwijk
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/e9e292f62912f36e75bd201901a4556e4b1128b0/rfcs/Struct.md)** on 2022-10-20 by Mark Larah

@@ -32,7 +32,15 @@ events:
     href: https://github.com/graphql/graphql-wg/blob/3441a2d5eda2f7211f17f02f5a5cf7352b94f72c/rfcs/SemanticNullability.md
     actor: Benjie
   - type: docUpdated
+    date: 2025-03-06T18:17:49Z
+    href: https://github.com/graphql/graphql-wg/blob/3441a2d5eda2f7211f17f02f5a5cf7352b94f72c/rfcs/SemanticNullability.md
+    actor: Benjie
+  - type: docUpdated
     date: 2025-02-22T12:45:51+00:00
+    href: https://github.com/graphql/graphql-wg/blob/36aff80993c5e4453274e9ed42ebce5e704971b5/rfcs/SemanticNullability.md
+    actor: Benjie
+  - type: docUpdated
+    date: 2025-02-22T12:45:51Z
     href: https://github.com/graphql/graphql-wg/blob/36aff80993c5e4453274e9ed42ebce5e704971b5/rfcs/SemanticNullability.md
     actor: Benjie
   - type: docUpdated
@@ -40,11 +48,23 @@ events:
     href: https://github.com/graphql/graphql-wg/blob/cd807eb3d6cb7d21616d98d71285dbf33facc7a1/rfcs/SemanticNullability.md
     actor: Benjie
   - type: docUpdated
+    date: 2025-02-22T11:32:00Z
+    href: https://github.com/graphql/graphql-wg/blob/cd807eb3d6cb7d21616d98d71285dbf33facc7a1/rfcs/SemanticNullability.md
+    actor: Benjie
+  - type: docUpdated
     date: 2025-02-20T22:03:18+00:00
     href: https://github.com/graphql/graphql-wg/blob/3ff9ab3a1cecf70e1d571838bc5358c2187a09f1/rfcs/SemanticNullability.md
     actor: Benjie
   - type: docUpdated
+    date: 2025-02-20T22:03:18Z
+    href: https://github.com/graphql/graphql-wg/blob/3ff9ab3a1cecf70e1d571838bc5358c2187a09f1/rfcs/SemanticNullability.md
+    actor: Benjie
+  - type: docUpdated
     date: 2025-02-20T21:54:01+00:00
+    href: https://github.com/graphql/graphql-wg/blob/93aa905f39d3be8bbe74dfad7964b05925933bd0/rfcs/SemanticNullability.md
+    actor: Benjie
+  - type: docUpdated
+    date: 2025-02-20T21:54:01Z
     href: https://github.com/graphql/graphql-wg/blob/93aa905f39d3be8bbe74dfad7964b05925933bd0/rfcs/SemanticNullability.md
     actor: Benjie
   - type: docUpdated
@@ -53,6 +73,10 @@ events:
     actor: Martin Bonnin
   - type: docUpdated
     date: 2025-02-17T23:00:49+00:00
+    href: https://github.com/graphql/graphql-wg/blob/b3d32a65ff9aaf944c9e733fdc43702aaf064cee/rfcs/SemanticNullability.md
+    actor: Benjie
+  - type: docUpdated
+    date: 2025-02-17T23:00:49Z
     href: https://github.com/graphql/graphql-wg/blob/b3d32a65ff9aaf944c9e733fdc43702aaf064cee/rfcs/SemanticNullability.md
     actor: Benjie
   - type: docUpdated
@@ -68,7 +92,15 @@ events:
     href: https://github.com/graphql/graphql-wg/blob/1abb4b36871a669fdd4206c3662ed4ce5d7f2931/rfcs/SemanticNullability.md
     actor: Benjie
   - type: docUpdated
+    date: 2025-02-17T17:12:27Z
+    href: https://github.com/graphql/graphql-wg/blob/1abb4b36871a669fdd4206c3662ed4ce5d7f2931/rfcs/SemanticNullability.md
+    actor: Benjie
+  - type: docUpdated
     date: 2025-02-17T16:57:59+00:00
+    href: https://github.com/graphql/graphql-wg/blob/a0d1ea9b68d074ada0a3e9d7a65ad7a95dcac562/rfcs/SemanticNullability.md
+    actor: Benjie
+  - type: docUpdated
+    date: 2025-02-17T16:57:59Z
     href: https://github.com/graphql/graphql-wg/blob/a0d1ea9b68d074ada0a3e9d7a65ad7a95dcac562/rfcs/SemanticNullability.md
     actor: Benjie
   - type: docUpdated
@@ -76,11 +108,23 @@ events:
     href: https://github.com/graphql/graphql-wg/blob/4ea256a2926b9dc47034a68056b1de20900f11a3/rfcs/SemanticNullability.md
     actor: Benjie
   - type: docUpdated
+    date: 2025-02-16T10:18:38Z
+    href: https://github.com/graphql/graphql-wg/blob/4ea256a2926b9dc47034a68056b1de20900f11a3/rfcs/SemanticNullability.md
+    actor: Benjie
+  - type: docUpdated
     date: 2025-02-16T10:16:21+00:00
+    href: https://github.com/graphql/graphql-wg/blob/f6809bd4fd099f7088e262d3d0fc732e4e3b4c57/rfcs/SemanticNullability.md
+    actor: Benjie
+  - type: docUpdated
+    date: 2025-02-16T10:16:21Z
     href: https://github.com/graphql/graphql-wg/blob/f6809bd4fd099f7088e262d3d0fc732e4e3b4c57/rfcs/SemanticNullability.md
     actor: Benjie
   - type: docCreated
     date: 2025-02-15T12:58:27+00:00
+    href: https://github.com/graphql/graphql-wg/blob/7535894a6deec5a618de02aaa16fdcf83a4e09ed/rfcs/SemanticNullability.md
+    actor: Benjie
+  - type: docCreated
+    date: 2025-02-15T12:58:27Z
     href: https://github.com/graphql/graphql-wg/blob/7535894a6deec5a618de02aaa16fdcf83a4e09ed/rfcs/SemanticNullability.md
     actor: Benjie
 related: 1065, 1165, wg1410, wg1700
@@ -115,18 +159,29 @@ image: /img/rfc_tracker.png
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/058bf9055d2c8235d3db3df8d365984d312769c9/rfcs/SemanticNullability.md)** on 2025-03-28 by Martin Bonnin
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/dd2c3c6fcda4f3b4a27345a57f1c63761a0bd2ac/rfcs/SemanticNullability.md)** on 2025-03-28 by Alex Reilly
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/3441a2d5eda2f7211f17f02f5a5cf7352b94f72c/rfcs/SemanticNullability.md)** on 2025-03-06 by Benjie
+- **[RFC document updated](https://github.com/graphql/graphql-wg/blob/3441a2d5eda2f7211f17f02f5a5cf7352b94f72c/rfcs/SemanticNullability.md)** on 2025-03-06 by Benjie
+- **[RFC document updated](https://github.com/graphql/graphql-wg/blob/36aff80993c5e4453274e9ed42ebce5e704971b5/rfcs/SemanticNullability.md)** on 2025-02-22 by Benjie
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/36aff80993c5e4453274e9ed42ebce5e704971b5/rfcs/SemanticNullability.md)** on 2025-02-22 by Benjie
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/cd807eb3d6cb7d21616d98d71285dbf33facc7a1/rfcs/SemanticNullability.md)** on 2025-02-22 by Benjie
+- **[RFC document updated](https://github.com/graphql/graphql-wg/blob/cd807eb3d6cb7d21616d98d71285dbf33facc7a1/rfcs/SemanticNullability.md)** on 2025-02-22 by Benjie
+- **[RFC document updated](https://github.com/graphql/graphql-wg/blob/3ff9ab3a1cecf70e1d571838bc5358c2187a09f1/rfcs/SemanticNullability.md)** on 2025-02-20 by Benjie
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/3ff9ab3a1cecf70e1d571838bc5358c2187a09f1/rfcs/SemanticNullability.md)** on 2025-02-20 by Benjie
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/93aa905f39d3be8bbe74dfad7964b05925933bd0/rfcs/SemanticNullability.md)** on 2025-02-20 by Benjie
+- **[RFC document updated](https://github.com/graphql/graphql-wg/blob/93aa905f39d3be8bbe74dfad7964b05925933bd0/rfcs/SemanticNullability.md)** on 2025-02-20 by Benjie
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/d3477790f7d0fddb79c58d799279f265e15768b6/rfcs/SemanticNullability.md)** on 2025-02-20 by Martin Bonnin
+- **[RFC document updated](https://github.com/graphql/graphql-wg/blob/b3d32a65ff9aaf944c9e733fdc43702aaf064cee/rfcs/SemanticNullability.md)** on 2025-02-17 by Benjie
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/b3d32a65ff9aaf944c9e733fdc43702aaf064cee/rfcs/SemanticNullability.md)** on 2025-02-17 by Benjie
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/2a09600d6c757b21e05560958b8fc68882581cf3/rfcs/SemanticNullability.md)** on 2025-02-17 by Alex Reilly
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/8f2f34308a1ba7abd49199595ec29ffd0d9f92a1/rfcs/SemanticNullability.md)** on 2025-02-17 by Martin Bonnin
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/1abb4b36871a669fdd4206c3662ed4ce5d7f2931/rfcs/SemanticNullability.md)** on 2025-02-17 by Benjie
+- **[RFC document updated](https://github.com/graphql/graphql-wg/blob/1abb4b36871a669fdd4206c3662ed4ce5d7f2931/rfcs/SemanticNullability.md)** on 2025-02-17 by Benjie
+- **[RFC document updated](https://github.com/graphql/graphql-wg/blob/a0d1ea9b68d074ada0a3e9d7a65ad7a95dcac562/rfcs/SemanticNullability.md)** on 2025-02-17 by Benjie
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/a0d1ea9b68d074ada0a3e9d7a65ad7a95dcac562/rfcs/SemanticNullability.md)** on 2025-02-17 by Benjie
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/4ea256a2926b9dc47034a68056b1de20900f11a3/rfcs/SemanticNullability.md)** on 2025-02-16 by Benjie
+- **[RFC document updated](https://github.com/graphql/graphql-wg/blob/4ea256a2926b9dc47034a68056b1de20900f11a3/rfcs/SemanticNullability.md)** on 2025-02-16 by Benjie
 - **[RFC document updated](https://github.com/graphql/graphql-wg/blob/f6809bd4fd099f7088e262d3d0fc732e4e3b4c57/rfcs/SemanticNullability.md)** on 2025-02-16 by Benjie
+- **[RFC document updated](https://github.com/graphql/graphql-wg/blob/f6809bd4fd099f7088e262d3d0fc732e4e3b4c57/rfcs/SemanticNullability.md)** on 2025-02-16 by Benjie
+- **[RFC document created](https://github.com/graphql/graphql-wg/blob/7535894a6deec5a618de02aaa16fdcf83a4e09ed/rfcs/SemanticNullability.md)** on 2025-02-15 by Benjie
 - **[RFC document created](https://github.com/graphql/graphql-wg/blob/7535894a6deec5a618de02aaa16fdcf83a4e09ed/rfcs/SemanticNullability.md)** on 2025-02-15 by Benjie
 
 <!-- VERBATIM -->
