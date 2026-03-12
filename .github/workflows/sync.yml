@@ -33,6 +33,8 @@ jobs:
 
       - name: Sync RFCs
         run: yarn sync-rfcs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Commit and push changes
         run: |
