@@ -1,0 +1,19 @@
+{
+  "redirects": [
+    {
+      "source": "/rfcs",
+      "destination": "https://rfcs.benjie.dev/",
+      "permanent": false
+    },
+    {
+      "source": "/rfcs/activity",
+      "destination": "https://rfcs.benjie.dev/activity",
+      "permanent": false
+    },
+    {
+      "source": "/rfcs/:path*",
+      "destination": "https://rfcs.benjie.dev/rfcs/:path*",
+      "permanent": false
+    }
+  ]
+}
