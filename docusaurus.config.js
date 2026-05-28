@@ -119,6 +119,17 @@ const config = {
         //<meta name="twitter:description" content={description} />
         //<meta name="twitter:image" content={image} />
       ],
+      mermaid: {
+        theme: {
+          light: "base",
+          dark: "base",
+        },
+        options: {
+          themeVariables: {
+            darkMode: false,
+          },
+        },
+      },
     }),
 };
 
