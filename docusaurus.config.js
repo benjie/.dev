@@ -121,13 +121,8 @@ const config = {
       ],
       mermaid: {
         theme: {
-          light: "base",
-          dark: "base",
-        },
-        options: {
-          themeVariables: {
-            darkMode: false,
-          },
+          light: "neutral",
+          dark: "neutral",
         },
       },
     }),
