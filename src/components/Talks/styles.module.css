@@ -1,0 +1,268 @@
+.page {
+  --talks-border: var(--ifm-color-emphasis-300);
+  --talks-muted: var(--ifm-color-emphasis-700);
+  container-type: inline-size;
+}
+
+.unavailable {
+  color: var(--talks-muted);
+  font-size: 0.85rem;
+}
+
+.kicker {
+  color: var(--ifm-color-primary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hero h1 em {
+  color: var(--ifm-color-primary);
+}
+
+.intro {
+  max-width: 34rem;
+  margin: 1.5rem 0;
+  font-size: 1.1rem;
+}
+
+.meta,
+.resultCount {
+  color: var(--talks-muted);
+  font-size: 0.85rem;
+}
+
+.topicTag,
+.topicFilter {
+  --topic-color: var(--ifm-color-primary);
+  --topic-text: var(--ifm-font-color-base);
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.55rem;
+  border-radius: var(--ifm-global-radius);
+  background: color-mix(
+    in srgb,
+    var(--topic-color) 16%,
+    var(--ifm-background-color)
+  );
+  color: var(--topic-text);
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.graphqlTag {
+  --topic-color: #e10098;
+  --topic-text: #9b0069;
+}
+
+.postgraphileTag {
+  --topic-color: #2267a5;
+  --topic-text: #14558f;
+}
+
+.grafastTag {
+  --topic-color: #21834b;
+  --topic-text: #17683a;
+}
+
+:global([data-theme="dark"]) .graphqlTag {
+  --topic-text: #ff8cd6;
+}
+
+:global([data-theme="dark"]) .postgraphileTag {
+  --topic-text: #8dc4f4;
+}
+
+:global([data-theme="dark"]) .grafastTag {
+  --topic-text: #86d8a1;
+}
+
+.topicFilter {
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.85rem;
+}
+
+.topicFilter:hover {
+  background: color-mix(
+    in srgb,
+    var(--topic-color) 24%,
+    var(--ifm-background-color)
+  );
+}
+
+.topicFilter[aria-pressed="true"] {
+  background: color-mix(
+    in srgb,
+    var(--topic-color) 28%,
+    var(--ifm-background-color)
+  );
+  box-shadow: inset 0 0 0 2px var(--topic-color);
+}
+
+.topicFilter:focus-visible {
+  outline: 2px solid var(--topic-color);
+  outline-offset: 2px;
+}
+
+.section {
+  border-top: 1px solid var(--talks-border);
+  padding: 2rem 0 3rem;
+}
+
+.featuredGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.featuredWithoutVideo {
+  grid-template-columns: 1fr;
+}
+
+.video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+}
+
+.featuredCopy {
+  min-width: 0;
+}
+
+.featuredCopy h2 {
+  margin-top: 1rem;
+}
+
+.eventDetails {
+  margin: 1rem 0 0;
+  color: #17683a;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+}
+
+:global([data-theme="dark"]) .eventDetails {
+  color: #a1ddaf;
+}
+
+.description > * {
+  margin: 0;
+}
+
+.description > * + * {
+  margin-top: 1rem;
+}
+
+.actions,
+.tags,
+.topicFilters {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.actions {
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.archiveHeading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.archiveHeading > p {
+  max-width: 14rem;
+  color: var(--talks-muted);
+  font-size: 0.9rem;
+}
+
+.topicFilters {
+  padding: 1rem 0;
+  margin-top: 1rem;
+}
+
+.resultCount {
+  margin-top: 1rem;
+}
+
+.talkRow {
+  display: grid;
+  grid-template-columns: 3.5rem minmax(0, 1fr) auto;
+  gap: 1.5rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--talks-border);
+}
+
+.year {
+  color: var(--ifm-color-primary);
+  font-weight: 700;
+}
+
+.talkBody h3 {
+  margin: 0.75rem 0;
+}
+
+.talkBody p:last-child {
+  margin-bottom: 0;
+}
+
+.talkLinks {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  padding-top: 2rem;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+/* Respond to the document width, including when the docs sidebar is visible. */
+@container (max-width: 650px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .heroNote {
+    max-width: 20rem;
+  }
+
+  .featuredGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .archiveHeading {
+    display: block;
+  }
+
+  .archiveHeading > p {
+    max-width: none;
+  }
+
+  .talkRow {
+    grid-template-columns: 3rem minmax(0, 1fr);
+    gap: 0.75rem;
+  }
+
+  .talkLinks {
+    grid-column: 2;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-top: 0;
+  }
+}
